@@ -11,7 +11,7 @@
         android:title="Уборки" />
     <item
         android:id="@+id/new_order"
-        android:icon="@drawable/home_last_image"
+        android:icon="@drawable/icon_home_inactive"
         android:title="" />
     <item
         android:id="@+id/help"

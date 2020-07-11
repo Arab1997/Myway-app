@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_white_rounded">
+
+    <com.chaos.view.PinView
+        android:id="@+id/codeEdt"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:itemBackground="@drawable/rounded_hint_card"
+        android:textSize="16sp"
+        app:itemCount="4"
+        app:itemHeight="48dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="12dp"
+        app:itemWidth="56dp"
+        app:lineColor="@color/edt"
+        app:viewType="rectangle" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:alpha="0.64"
+        android:fontFamily="@font/comfortaa_regular"
+        android:text="@string/enter_code"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:alpha="0.64"
+        android:fontFamily="@font/comfortaa_regular"
+        android:text="Упс, ты ввел неверный код"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24sp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/edt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:alpha="0.64"
+            android:fontFamily="@font/comfortaa_regular"
+            android:text="Ты можешь повторить отправку через"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timerBtn"
+            android:layout_width="181dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="18sp"
+            android:background="@drawable/rounded_hint_card"
+            android:gravity="center"
+            android:text="50 сек"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

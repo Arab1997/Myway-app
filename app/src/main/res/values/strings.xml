@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">MyWay</string>
-    <string name="lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</string>
     <string name="back_again">Нажмите еще раз, чтобы выйти</string>
     <string name="check_connection">Проверьте подключение к интернету. И попробуй еще раз</string>
     <string name="slow_internet">Скорость интернета низкая. пожалуйста, подождите</string>
     <string name="smth_wrong">Что-то пошло не так. Пожалуйста, попробуйте еще раз</string>
+    <string name="terms">Нажимая "Отправить код", я принимаю условия <u>лицензионного соглашения, пользовательского соглашения.</u></string>
+    <string name="enter_code">Введи 4-х значный код из СМС, которое мы отправили на твой номер</string>
 </resources>

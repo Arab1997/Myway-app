@@ -141,4 +141,8 @@ dependencies {
     // Masked Edit Text
     implementation 'ru.egslava:MaskedEditText:1.0.5'
 
+    // Pin view
+    implementation 'com.chaos.view:pinview:1.4.3'
+    implementation 'com.github.thealeksandr:PFLockScreen-Android:1.0.0-beta7'
+
 }

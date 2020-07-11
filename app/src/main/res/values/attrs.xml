@@ -42,4 +42,14 @@
     <declare-styleable name="MaxHeightScrollView">
         <attr name="maxHeight" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="MyWayEditText">
+        <attr name="hint" format="string" />
+        <attr name="input_type" format="flags">
+            <flag name="text" value="1" />
+            <flag name="number" value="2" />
+            <flag name="password" value="3" />
+        </attr>
+
+    </declare-styleable>
 </resources>

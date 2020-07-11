@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bottom_white_rounded"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="172dp"
+            android:layout_height="255dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-7dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/elements1"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="23dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="5sp"
+                android:src="@drawable/ic_arrow_back_ios_24"
+                android:tint="@color/hint"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="74dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="Регистрация"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Введи свой номер телефона.
+На него будет отправлен проверочный код"
+                android:textColor="@color/text"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp">
+
+                <TextView
+                    style="@style/edtStyle"
+                    android:layout_width="70dp"
+                    android:text="+7" />
+
+                <br.com.sapereaude.maskedEditText.MaskedEditText
+                    android:id="@+id/phone"
+                    style="@style/edtStyle"
+                    android:layout_marginStart="7dp"
+                    android:hint="9999999999"
+                    app:allowed_chars="1234567890"
+                    app:keep_hint="true"
+                    app:mask="### ### ## ##" />
+
+            </LinearLayout>
+
+            <com.snatap.myway.utils.views.MyWayEditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:hint="Пароль"
+                app:input_type="password"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/comfortaa_regular"
+                android:text="@string/terms"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/next"
+                style="@style/buttonStyle"
+                android:layout_marginTop="48dp"
+                android:text="Продолжить" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/haveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="22dp"
+        android:text="Уже есть аккаунт"
+        android:textColor="@color/hint"
+        android:textSize="14sp" />
+</LinearLayout>

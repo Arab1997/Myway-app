@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle">
+
+    <ImageView
+        android:layout_width="172dp"
+        android:layout_height="255dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="-10dp"
+        android:src="@drawable/elements1"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="23dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="Приветствуем тебя в Сообществе MyWay!"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Задай пароль для безопасности своего аккаунта"
+            android:textColor="@color/text"
+            android:textSize="14sp" />
+
+        <com.snatap.myway.utils.views.MyWayEditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            app:hint="Пароль"
+            app:input_type="password" />
+
+        <com.snatap.myway.utils.views.MyWayEditText
+            android:id="@+id/passConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Повтори пароль"
+            app:input_type="password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:fontFamily="@font/comfortaa_regular"
+            android:gravity="center"
+            android:text="Пароль должен содержать: Заглавные, прописные буквы, символы и цифры, длина от 6 до 18 символов"
+            android:textColor="@color/hint"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/next"
+            style="@style/buttonStyle"
+            android:layout_marginTop="24dp"
+            android:text="Готово" />
+
+    </LinearLayout>
+
+</RelativeLayout>
