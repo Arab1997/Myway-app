@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/general"
+        android:icon="@drawable/icon_home_inactive"
+        android:title="Главная" />
+    <item
+        android:id="@+id/orders"
+        android:icon="@drawable/icon_orders_inactive"
+        android:title="Уборки" />
+    <item
+        android:id="@+id/new_order"
+        android:icon="@drawable/home_last_image"
+        android:title="" />
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/icon_support_inactive"
+        android:title="Помощь" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/icon_profile_inactive"
+        android:title="Профиль" />
+</menu>
