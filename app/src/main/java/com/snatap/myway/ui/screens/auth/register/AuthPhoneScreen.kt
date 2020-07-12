@@ -1,7 +1,9 @@
-package com.snatap.myway.ui.screens.auth
+package com.snatap.myway.ui.screens.auth.register
 
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.screens.auth.ActivationBottomSheet
+import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
 import com.snatap.myway.utils.common.TextWatcher
 import com.snatap.myway.utils.extensions.disable
 import com.snatap.myway.utils.extensions.enable
@@ -14,10 +16,7 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
 
         back.setOnClickListener { finishFragment() }
 
-        terms.setOnClickListener {
-            popInclusive()
-            addFragment(AuthLoginScreen())
-        }
+        terms.setOnClickListener { inDevelopment(requireContext()) }
 
         next.apply {
             disable()
@@ -26,7 +25,10 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
             }
         }
 
-        haveAccount.setOnClickListener { inDevelopment(requireContext()) }
+        haveAccount.setOnClickListener {
+            popInclusive()
+            addFragment(AuthLoginScreen())
+        }
 
         phone.addTextChangedListener(object : TextWatcher(true) {
             override fun textChanged(s: String) {
@@ -38,12 +40,14 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
 
     private fun sendRequest() {
         next.enable()
+        hideKeyboard()
 
         // todo
     }
 
     private fun showBottomSheet() {
-        val bottomSheet = ActivationBottomSheet().apply {
+        val bottomSheet = ActivationBottomSheet()
+            .apply {
             setListener { addFragment(AuthPassScreen()) }
         }
         bottomSheet.show(childFragmentManager, "")

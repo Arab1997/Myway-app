@@ -42,7 +42,7 @@ abstract class BaseFragment(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
 
     fun addFragment(
         fragment: Fragment,
-        addBackStack: Boolean = true, @IdRes id: Int = navLayoutId(),
+        addBackStack: Boolean = true, @IdRes id: Int = parentLayoutId(),
         tag: String = fragment.hashCode().toString()
     ) {
         hideKeyboard()

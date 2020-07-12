@@ -4,17 +4,17 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.base.parentLayoutId
+import com.snatap.myway.ui.screens.main.BlankScreen
 import kotlinx.android.synthetic.main.screen_bottom_nav.*
 
 class BottomNavScreen : BaseFragment(R.layout.screen_bottom_nav) {
 
     private var bottomFragments = arrayListOf<Fragment>(
-        /* HomeScreen(),
-         OrderScreen(),
-         Step1Screen(),
-         HelpScreen(),
-         ProfileScreen()*/
+        BlankScreen(),
+        BlankScreen(),
+        BlankScreen(),
+        BlankScreen(),
+        BlankScreen()
     )
 
     override fun initialize() {
@@ -52,9 +52,7 @@ class BottomNavScreen : BaseFragment(R.layout.screen_bottom_nav) {
     }
 
     private fun selectFragment(pos: Int) {
-        if (pos == 2) {
-            addFragment(bottomFragments[pos], addBackStack = true, id = parentLayoutId())
-        } else replaceFragment(bottomFragments[pos])
+        replaceFragment(bottomFragments[pos])
     }
 
     override fun observe() {

@@ -21,10 +21,13 @@
             tools:ignore="ContentDescription" />
 
         <LinearLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="23dp">
+            android:paddingStart="23dp"
+            android:paddingTop="23dp"
+            android:paddingEnd="23dp">
 
             <ImageView
                 android:id="@+id/back"
@@ -69,6 +72,7 @@
                     style="@style/edtStyle"
                     android:layout_marginStart="7dp"
                     android:hint="9999999999"
+                    android:inputType="phone"
                     app:allowed_chars="1234567890"
                     app:keep_hint="true"
                     app:mask="### ### ## ##" />
@@ -93,6 +97,18 @@
                 android:text="@string/terms"
                 android:textColor="@color/hint"
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recoverPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/comfortaa_regular"
+                android:text="Восстановить пароль"
+                android:textColor="@color/hint"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <Button
                 android:id="@+id/next"

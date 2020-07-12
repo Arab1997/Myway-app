@@ -78,7 +78,7 @@ class MyWayEditText : LinearLayout {
     }
 
     fun showHideError(show: Boolean) {
-        if (show) edtHint.setTextColorRes(R.color.red)
+        edtHint.setTextColorRes(if (show) R.color.red else R.color.hint)
         errorEdt.showGone(show)
     }
 
