@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="178dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/card_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="Хочешь дополнительные RAAVA монетки?"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:text="Участвуй в викторине!"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="116dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/hurray"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="157dp"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/rounded_white_corner"
+        android:gravity="center"
+        android:text="Участвовать"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+</RelativeLayout>

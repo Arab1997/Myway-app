@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@drawable/toolbar_back"
+    android:elevation="5dp"
+    android:gravity="center_vertical"
+    android:padding="13sp"
+    android:translationZ="5dp">
+
+    <ImageView
+        android:id="@+id/left"
+        style="@style/imgStyle"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/leftExtra"
+        style="@style/imgStyle"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:text="@tools:sample/lorem" />
+
+    <ImageView
+        android:id="@+id/rightExtra"
+        style="@style/imgStyle"
+        android:src="@drawable/ic_message"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/right"
+        style="@style/imgStyle"
+        android:src="@drawable/ic_cart"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

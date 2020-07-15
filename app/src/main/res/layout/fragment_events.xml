@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.snatap.myway.utils.views.RoundImageView
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/eventsback" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            style="@style/cardStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/rounded_green_card"
+            android:drawableStart="@drawable/ic_star"
+            android:text="Здоровье"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/cardStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:background="@drawable/rounded_blue_card"
+            android:drawableStart="@drawable/ic_business"
+            android:text="Бизнес"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/cardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Как найти баланс?"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Узнай новый подход к жизни и успеху"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:gravity="bottom">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_rectangle_red"
+                android:padding="7dp"
+                android:src="@drawable/ic_calendar"
+                android:tint="@color/red" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="24, 23 июля"
+                android:textColor="@color/red"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/rounded_hint_card"
+                android:gravity="center"
+                android:text="Перейти"
+                android:textColor="@color/text" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

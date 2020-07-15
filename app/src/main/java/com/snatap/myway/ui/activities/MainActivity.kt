@@ -29,11 +29,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             fetchData()
         }
 
-//        debug()
-        startSplash()
+        debug()
+//        startSplash()
     }
 
-    private fun debug() = initialFragment(AuthLoginScreen())
+    private fun debug() = initialFragment(BottomNavScreen())
 
     private fun startSplash() {
         if (BuildConfig.DEBUG) startFragment()

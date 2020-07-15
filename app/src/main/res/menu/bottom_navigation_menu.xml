@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/general"
-        android:icon="@drawable/icon_home_inactive"
-        android:title="Главная" />
+        android:id="@+id/home"
+        android:icon="@drawable/ic_sidebar"
+        android:title="Инфополе" />
     <item
-        android:id="@+id/orders"
-        android:icon="@drawable/icon_orders_inactive"
-        android:title="Уборки" />
+        android:id="@+id/path"
+        android:icon="@drawable/ic_target"
+        android:title="Путь" />
     <item
-        android:id="@+id/new_order"
-        android:icon="@drawable/icon_home_inactive"
-        android:title="" />
+        android:id="@+id/me"
+        android:icon="@drawable/ic_me"
+        android:title="Я" />
     <item
-        android:id="@+id/help"
-        android:icon="@drawable/icon_support_inactive"
-        android:title="Помощь" />
+        android:id="@+id/breakthrough"
+        android:icon="@drawable/ic_zap"
+        android:title="Прорыв" />
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/icon_profile_inactive"
-        android:title="Профиль" />
+        android:id="@+id/events"
+        android:icon="@drawable/ic_calendar"
+        android:title="События" />
 </menu>

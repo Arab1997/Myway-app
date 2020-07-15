@@ -34,26 +34,24 @@ abstract class BottomSheetRoundedFragment(@LayoutRes val layoutId: Int) :
 
     abstract fun initialize()
 
-    fun setMaxHeight(height: Double, maxHeight: Double) {
+    fun setMaxHeight(height: Double) {
         val dm = DisplayMetrics()
         requireActivity().windowManager.defaultDisplay.getMetrics(dm)
         val currentHeight = (dm.heightPixels * height).toInt()
-        val maximumHeight = (dm.heightPixels * maxHeight).toInt()
         dialog?.setOnShowListener {
             val bottomSheetDialog = dialog as BottomSheetDialog
             val bottomSheetInternal: View? =
                 bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheetInternal?.apply {
                 val behavior = BottomSheetBehavior.from(this)
-                if (maximumHeight != 0) {
-                    behavior.peekHeight = maximumHeight
+                if (currentHeight != 0) {
+                    behavior.peekHeight = currentHeight
                     this.layoutParams.height = currentHeight
                 }
                 behavior.skipCollapsed = false
             }
         }
     }
-
 
     fun closeSheet() = this.dismiss()
 

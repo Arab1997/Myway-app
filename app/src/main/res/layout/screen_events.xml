@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/backStyle"
+    android:gravity="center_horizontal">
+
+    <include layout="@layout/content_rounded_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/filter"
+            style="@style/cardStyle"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_filter"
+            android:text="Фильтры" />
+
+        <TextView
+            android:id="@+id/tickets"
+            style="@style/cardStyle"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_ticket"
+            android:text="Мои билеты" />
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:layout_weight="1" />
+
+    <com.rd.PageIndicatorView
+        android:id="@+id/pager_indicator_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        app:piv_animationType="worm"
+        app:piv_interactiveAnimation="true"
+        app:piv_padding="12dp"
+        app:piv_radius="4dp"
+        app:piv_selectedColor="@color/red"
+        app:piv_unselectedColor="@color/hint"
+        app:piv_viewPager="@id/pager" />
+
+</LinearLayout>
