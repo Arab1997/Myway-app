@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardStyle"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:paddingStart="0dp"
+    android:paddingEnd="0dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/ic_art"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_marginStart="15sp"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/ic_business_blue"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_marginStart="15sp"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/ic_cariers"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Как найти баланс?"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/rounded_hint_card"
+            android:gravity="center"
+            android:text="Как это было"
+            android:textColor="@color/text"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <com.snatap.myway.utils.views.RoundImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user" />
+</LinearLayout>

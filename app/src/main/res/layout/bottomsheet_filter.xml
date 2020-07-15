@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_white_rounded"
+    android:paddingStart="12sp"
+    android:paddingEnd="12sp">
+
+    <ImageView
+        android:layout_width="27dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/close_sheet"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        style="@style/header"
+        android:text="Фильтр" />
+
+    <LinearLayout
+        android:id="@+id/tags"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Тэги"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17dp"
+            android:text="Все"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_forward_hint"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dates"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Даты"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="24sp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/rounded_red_card_transparent"
+            android:gravity="center"
+            android:text="23-27 июля"
+            android:textColor="@color/red" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_forward_hint"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cities"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Город"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="24sp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/rounded_red_card_transparent"
+            android:gravity="center"
+            android:text="Москва"
+            android:textColor="@color/red" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_forward_hint"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/filter"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_blue_card"
+        android:text="Применить" />
+
+</LinearLayout>

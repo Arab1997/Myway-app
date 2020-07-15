@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#5B3ED8</color>
     <color name="accent">@color/red</color>
 
     <color name="black">#212121</color>
@@ -12,6 +11,7 @@
     <color name="yellow">#FFC84C</color>
     <color name="green">#B6D83A</color>
     <color name="blue">#0C59F2</color>
+    <color name="white_transparent">#1AFFFFFF</color>
     <color name="red">#F32A1F</color>
     <color name="hint">#899196</color>
 

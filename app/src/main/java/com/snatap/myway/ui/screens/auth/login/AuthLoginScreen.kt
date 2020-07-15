@@ -51,7 +51,6 @@ class AuthLoginScreen : BaseFragment(R.layout.screen_registration_phone) {
 
         if (pass.getText().isNotEmpty() && phone.rawText.length >= 10) {
             next.enable()
-            hideKeyboard()
         }
     }
 

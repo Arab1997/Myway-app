@@ -47,7 +47,11 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
         rightExtra.setOnClickListener { inDevelopment(requireContext()) }
 
         participate.setOnClickListener {
-            val bottomSheet = ParticipateBottomSheet()
+            val bottomSheet = ParticipateBottomSheet().apply {
+                setListener {
+                    addFragment(TicketScreen())
+                }
+            }
             bottomSheet.show(childFragmentManager, "")
         }
 

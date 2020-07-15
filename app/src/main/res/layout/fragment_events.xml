@@ -24,7 +24,8 @@
             android:background="@drawable/rounded_green_card"
             android:drawableStart="@drawable/ic_star"
             android:text="Здоровье"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:translationZ="0dp" />
 
         <TextView
             style="@style/cardStyle"
@@ -33,7 +34,8 @@
             android:background="@drawable/rounded_blue_card"
             android:drawableStart="@drawable/ic_business"
             android:text="Бизнес"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:translationZ="0dp" />
     </LinearLayout>
 
     <LinearLayout
