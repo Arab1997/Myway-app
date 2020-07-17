@@ -24,7 +24,7 @@ class PastEventsScreen : BaseFragment(R.layout.screen_past_events) {
         right.apply {
             setImageResource(R.drawable.ic_filter_white)
             setOnClickListener {
-                val bottomSheet = FilterBottomSheet().apply {
+                val bottomSheet = FilterBottomSheet.newInstance(false).apply {
                     setListener {
                         inDevelopment(requireContext())
                     }

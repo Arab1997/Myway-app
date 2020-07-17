@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="18sp"
+    android:layout_marginEnd="18sp"
+    android:layout_marginBottom="31dp"
+    android:gravity="top">
+
+    <ImageView
+        android:id="@+id/tagIcon"
+        android:layout_width="14sp"
+        android:layout_height="15sp"
+        android:src="@drawable/ic_star"
+        android:tint="@color/green"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:text="Здоровье"
+        android:textColor="@color/text"
+        android:textSize="12sp" />
+</LinearLayout>

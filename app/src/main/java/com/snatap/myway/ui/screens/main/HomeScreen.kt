@@ -2,13 +2,13 @@ package com.snatap.myway.ui.screens.main
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.screens.main.home.MediaContentFragment
+import com.snatap.myway.ui.screens.main.home.media.MediaContentFragment
+import com.snatap.myway.ui.screens.main.home.news.NewsFragment
 import kotlinx.android.synthetic.main.screen_home.*
 
 class HomeScreen : BaseFragment(R.layout.screen_home) {
@@ -18,8 +18,12 @@ class HomeScreen : BaseFragment(R.layout.screen_home) {
     override fun initialize() {
 
         data = arrayListOf(
-            HomeData(R.drawable.ic_color_wand, "Контент дня", MediaContentFragment()),
-            HomeData(R.drawable.ic_today, "Новости", BlankScreen()),
+            HomeData(R.drawable.ic_color_wand, "Контент дня",
+                MediaContentFragment()
+            ),
+            HomeData(R.drawable.ic_today, "Новости",
+                NewsFragment()
+            ),
             HomeData(R.drawable.ic_videocam, "Прямые эфиры", BlankScreen()),
             HomeData(R.drawable.ic_microphone, "Подкасты", BlankScreen())
         )

@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.home
+package com.snatap.myway.ui.screens.main.home.media
 
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +11,12 @@ import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.inflate
 import kotlinx.android.synthetic.main.fragment_media_content.*
 import kotlinx.android.synthetic.main.item_content.view.*
-import kotlinx.android.synthetic.main.item_task.view.*
 
 class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
 
     override fun initialize() {
-        recycler.adapter = ContentAdapter().apply { setData(arrayListOf(1, 2, 3)) }
+        recycler.adapter = ContentAdapter()
+            .apply { setData(arrayListOf(1, 2, 3)) }
     }
 
     class ContentAdapter : BaseAdapter(R.layout.item_content) {
@@ -26,7 +26,8 @@ class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
                 setOnClickListener {
                     expandableLayout.toggle()
 
-                    recyclerTask.adapter = TaskAdapter().apply { setData(arrayListOf(1, 2, 3, 4, 5)) }
+                    recyclerTask.adapter = TaskAdapter()
+                        .apply { setData(arrayListOf(1, 2, 3, 4, 5)) }
                 }
             }
         }

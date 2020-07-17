@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="16dp"
+    android:padding="0dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/cardStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_green_card"
+            android:drawableStart="@drawable/ic_star"
+            android:paddingStart="11dp"
+            android:paddingEnd="14sp"
+            android:text="Здоровье"
+            android:textColor="@color/white"
+            android:translationZ="0dp" />
+
+        <TextView
+            style="@style/cardStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:background="@drawable/rounded_blue_card"
+            android:drawableStart="@drawable/ic_business"
+            android:paddingStart="11dp"
+            android:paddingEnd="14sp"
+            android:text="Бизнес"
+            android:textColor="@color/white"
+            android:translationZ="0dp" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/titleStyle"
+        android:layout_marginTop="6dp"
+        android:text="Как ставить цели правильно" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="9sp"
+        android:layout_marginEnd="15dp"
+        android:text="Занимайтесь три-четыре дня в неделю. Вместе с разминкой и растяжкой тренировка займёт около 40 минут."
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/eventsback"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical">
+
+        <com.snatap.myway.utils.views.RoundImageView
+            android:layout_width="24dp"
+            android:layout_height="24sp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_medium"
+            android:text="Анна Ковальт"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 декабря 2019"
+            android:textColor="@color/hint"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/edt" />
+
+    <LinearLayout
+        android:id="@+id/commentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_icon_comment"
+            android:drawablePadding="7dp"
+            android:text="15 K"
+            android:textColor="@color/hint"
+            android:textSize="15sp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_icon_share"
+            android:drawablePadding="7dp"
+            android:text="1222"
+            android:textColor="@color/hint"
+            android:textSize="15sp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_like"
+            android:gravity="center_vertical"
+            android:text="1222"
+            android:textColor="@color/red"
+            android:textSize="15sp"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+</LinearLayout>

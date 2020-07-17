@@ -14,23 +14,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        >
 
         <TextView
             style="@style/cardStyle"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="16dp"
             android:background="@drawable/rounded_green_card"
             android:drawableStart="@drawable/ic_star"
             android:text="Здоровье"
             android:textColor="@color/white"
+            android:paddingStart="11dp"
+            android:paddingEnd="14sp"
             android:translationZ="0dp" />
 
         <TextView
             style="@style/cardStyle"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
+            android:paddingStart="11dp"
+            android:paddingEnd="14sp"
             android:background="@drawable/rounded_blue_card"
             android:drawableStart="@drawable/ic_business"
             android:text="Бизнес"
