@@ -53,7 +53,7 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
             timerBtn.apply {
                 text = "Повторить"
                 setTextColorRes(R.color.black)
-                setBackgroundResource(R.drawable.rounded_hint_card)
+                setBackgroundResource(R.drawable.rounded_edt_card)
                 isClickable = false
             }
 

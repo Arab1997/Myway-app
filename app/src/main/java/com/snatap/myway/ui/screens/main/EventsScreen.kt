@@ -129,5 +129,12 @@ class EventsPagerAdapter(private val data: ArrayList<Any>, fm: FragmentManager) 
     override fun getCount(): Int = data.size
 
     override fun saveState(): Parcelable? = null
+
+    override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
+        try {
+            super.restoreState(state, loader)
+        } catch (e: Exception) {
+        }
+    }
 }
 

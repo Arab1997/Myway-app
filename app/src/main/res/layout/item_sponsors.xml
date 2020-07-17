@@ -3,7 +3,7 @@
     android:layout_width="241dp"
     android:layout_height="83dp"
     android:layout_marginStart="16dp"
-    android:background="@drawable/rounded_hint_card"
+    android:background="@drawable/rounded_edt_card"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingStart="16sp"

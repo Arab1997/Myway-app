@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
-        android:background="@drawable/rounded_hint_card"
+        android:background="@drawable/rounded_edt_card"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">

@@ -77,6 +77,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':pflockscreen')
+
     /**
      * Core
      */
@@ -144,6 +146,8 @@ dependencies {
     // Pin view
     implementation 'com.chaos.view:pinview:1.4.3'
 
-    implementation project(':pflockscreen')
+    // Expandable layout
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
 
+    implementation 'com.github.vipulasri:timelineview:1.1.5'
 }

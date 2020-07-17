@@ -29,8 +29,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             fetchData()
         }
 
-//        debug()
-        startSplash()
+        debug()
+//        startSplash()
     }
 
     private fun debug() = initialFragment(BottomNavScreen())
