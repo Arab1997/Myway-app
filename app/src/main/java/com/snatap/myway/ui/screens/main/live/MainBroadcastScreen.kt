@@ -5,6 +5,7 @@ import android.widget.TextView
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.AnnouncementAdapter
+import com.snatap.myway.ui.adapters.RepeatAdapter
 import kotlinx.android.synthetic.main.screen_main_broadcast.*
 
 class MainBroadcastScreen: BaseFragment(R.layout.screen_main_broadcast){
@@ -31,8 +32,17 @@ class MainBroadcastScreen: BaseFragment(R.layout.screen_main_broadcast){
         recyclerAnnouncements.adapter = AnnouncementAdapter().apply {
             setData(arrayListOf(1, 2))
         }
-        recyclerRepeats.adapter = AnnouncementAdapter().apply {
+
+        recyclerRepeats.adapter = RepeatAdapter().apply {
             setData(arrayListOf(1, 2))
+        }
+
+        recyclerAnnouncementsAllBtn.setOnClickListener {
+            addFragment(RecyclerBroadcastsScreen())
+        }
+
+        recyclerRepeatsAllBtn.setOnClickListener {
+            addFragment(RecyclerBroadcastsScreen.newInstance(true))
         }
     }
 

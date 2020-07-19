@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="138dp"
+        android:layout_height="138dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/eventsback" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignParentBottom="true"
+            android:text="1:02:39"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_black_card"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/ic_business"
+                android:tint="@color/blue" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/ic_cuboc" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/ic_star"
+                android:tint="@color/green" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/titleStyle"
+            android:layout_margin="0dp"
+            android:lineSpacingExtra="2sp"
+            android:text="Время перемен" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Как все успеть?!\nТоп 10 ошибок планирования +\n разбор примеров"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            tools:ignore="SmallSp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="09:32 Сегодня"
+                android:textAllCaps="false"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
