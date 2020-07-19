@@ -44,6 +44,8 @@ class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
         recyclerRepeatsAllBtn.setOnClickListener {
             addFragment(RecyclerBroadcastsScreen.newInstance(true))
         }
+
+        currentLiveView.setOnClickListener { addFragment(CurrentLiveScreen()) }
     }
 
 }

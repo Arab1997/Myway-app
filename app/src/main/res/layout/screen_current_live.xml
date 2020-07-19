@@ -49,12 +49,11 @@
         <ImageView
             android:id="@+id/close"
             android:layout_centerVertical="true"
-            android:rotation="45"
             android:tint="@color/white"
             android:layout_alignParentEnd="true"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/ic_plus"/>
+            android:src="@drawable/ic_close"/>
 
     </RelativeLayout>
 
