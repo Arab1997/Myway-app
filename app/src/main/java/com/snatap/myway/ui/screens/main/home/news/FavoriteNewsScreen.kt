@@ -1,10 +1,8 @@
 package com.snatap.myway.ui.screens.main.home.news
 
 import com.snatap.myway.R
-import com.snatap.myway.base.BaseAdapter
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.NewsAdapter
-import com.snatap.myway.utils.common.ViewHolder
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_recycler.*
 

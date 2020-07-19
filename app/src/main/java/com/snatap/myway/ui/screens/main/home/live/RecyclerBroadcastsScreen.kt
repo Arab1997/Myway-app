@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.live
+package com.snatap.myway.ui.screens.main.home.live
 
 import android.os.Bundle
 import com.snatap.myway.R

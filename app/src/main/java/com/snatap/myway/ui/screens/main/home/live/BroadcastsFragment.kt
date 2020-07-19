@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.live
+package com.snatap.myway.ui.screens.main.home.live
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -6,9 +6,9 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.AnnouncementAdapter
 import com.snatap.myway.ui.adapters.RepeatAdapter
-import kotlinx.android.synthetic.main.screen_main_broadcast.*
+import kotlinx.android.synthetic.main.fragment_broadcasts.*
 
-class MainBroadcastScreen: BaseFragment(R.layout.screen_main_broadcast){
+class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
 
     override fun initialize() {
         initViews()

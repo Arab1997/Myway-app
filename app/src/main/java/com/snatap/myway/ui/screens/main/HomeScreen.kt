@@ -9,7 +9,8 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.home.media.MediaContentFragment
 import com.snatap.myway.ui.screens.main.home.news.NewsFragment
-import com.snatap.myway.ui.screens.main.live.MainBroadcastScreen
+import com.snatap.myway.ui.screens.main.home.live.BroadcastsFragment
+import com.snatap.myway.ui.screens.main.home.podcast.PodcastsFragment
 import kotlinx.android.synthetic.main.screen_home.*
 
 class HomeScreen : BaseFragment(R.layout.screen_home) {
@@ -25,8 +26,8 @@ class HomeScreen : BaseFragment(R.layout.screen_home) {
             HomeData(R.drawable.ic_today, "Новости",
                 NewsFragment()
             ),
-            HomeData(R.drawable.ic_videocam, "Прямые эфиры", MainBroadcastScreen()),
-            HomeData(R.drawable.ic_microphone, "Подкасты", BlankScreen())
+            HomeData(R.drawable.ic_videocam, "Прямые эфиры", BroadcastsFragment()),
+            HomeData(R.drawable.ic_microphone, "Подкасты", PodcastsFragment())
         )
 
         pager.adapter = HomePagerAdapter(data, childFragmentManager)

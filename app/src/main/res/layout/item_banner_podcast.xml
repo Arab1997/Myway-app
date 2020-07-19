@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="10dp"
+    android:layout_width="340dp"
+    android:layout_height="155dp"
+    android:id="@+id/bannerBackground"
+    android:background="@drawable/rounded_red_card"
+    android:orientation="horizontal"
+    tools:ignore="HardcodedText">
+
+    <ImageView
+        android:id="@+id/bannerImage"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/banner_image" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="14dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            style="@style/titleStyle"
+            android:layout_margin="0dp"
+            android:text="Время перемен"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Глава 18. У каждого из нас был свой Бали."
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45 мин"
+            android:textColor="@color/white_50_opacity"
+            android:textSize="12sp"/>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:paddingStart="27dp"
+            android:paddingEnd="27dp"
+            android:text="Слушать"
+            android:drawableStart="@drawable/ic_white_play"
+            android:drawablePadding="6dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:background="@drawable/rounded_white_bordered_card"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="38dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginTop="31dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mark_white"
+            android:contentDescription="@string/icon" />
+    </RelativeLayout>
+</LinearLayout>
