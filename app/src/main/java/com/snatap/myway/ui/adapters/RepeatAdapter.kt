@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.snatap.myway.R
 import com.snatap.myway.utils.common.ViewHolder
 
-class RepeatAdapter : RecyclerView.Adapter<ViewHolder>() {
+class RepeatAdapter(private val listener: (Any) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
     private var data = arrayListOf<Any>()
     fun setData(data: ArrayList<Any>) {
@@ -21,6 +21,9 @@ class RepeatAdapter : RecyclerView.Adapter<ViewHolder>() {
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            listener.invoke(position)
+        }
     }
 
 }

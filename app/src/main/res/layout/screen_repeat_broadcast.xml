@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle">
+
+    <RelativeLayout
+        android:id="@+id/videoLayer"
+        android:layout_width="match_parent"
+        android:layout_height="373dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/img2"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="373dp"
+            android:rotation="180"
+            android:background="@drawable/rect_black_to_invisible"
+            android:contentDescription="@string/layer"/>
+
+
+        <LinearLayout
+            android:id="@+id/videoControllerLayer"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="19dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13:06"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_toStartOf="@id/resizeIcon"
+                    android:layout_marginEnd="17dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13:06"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/resizeIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_resize"
+                    android:contentDescription="@string/icon"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <com.google.android.material.slider.Slider
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:stepSize="1.0"
+                android:valueFrom="0"
+                android:valueTo="100.0"
+                android:value="80.0"
+                app:activeTrackColor="@color/red"
+                app:inactiveTrackColor="@color/white_50_opacity"
+                app:labelColor="@color/red"
+                app:thumbColor="@color/red"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageAdmin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@color/white"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/imageAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Анастасия Ковальт"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_centerVertical="true"
+            android:tint="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_close"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerComments"
+        android:layout_below="@id/videoLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_broadcast_comment"/>
+
+</RelativeLayout>

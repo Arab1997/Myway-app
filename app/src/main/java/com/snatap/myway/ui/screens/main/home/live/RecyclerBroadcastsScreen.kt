@@ -51,7 +51,9 @@ class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_recycler_broadcast
         val bundle = arguments ?: return
         title.text = "Повторы"
 
-        recyclerBroadcasts.adapter = RepeatAdapter().apply {
+        recyclerBroadcasts.adapter = RepeatAdapter{
+            addFragment(RepeatBroadcastScreen())
+        }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
         }
     }

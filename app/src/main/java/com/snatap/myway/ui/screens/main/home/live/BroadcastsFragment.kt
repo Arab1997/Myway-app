@@ -33,7 +33,9 @@ class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
             setData(arrayListOf(1, 2))
         }
 
-        recyclerRepeats.adapter = RepeatAdapter().apply {
+        recyclerRepeats.adapter = RepeatAdapter{
+            addFragment(RepeatBroadcastScreen())
+        }.apply {
             setData(arrayListOf(1, 2))
         }
 

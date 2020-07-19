@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/screenStyle">
+
+    <View
+        style="@style/screenStyle"
+        android:background="@drawable/splash"/>
+
+    <ImageView
+        style="@style/screenStyle"
+        android:background="@drawable/rect_black_to_invisible"
+        android:contentDescription="@string/layer"/>
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageAdmin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@color/white"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/imageAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Анастасия Ковальт"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_toStartOf="@id/close"
+            style="@style/buttonStyle"
+            android:layout_width="62dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:text="LIVE"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_centerVertical="true"
+            android:tint="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_close"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="14dp"
+        android:layout_above="@id/user2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@color/white"/>
+
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Александр Константинов"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Хэй, привет! Ну что, начнем? сразу прикрепляю ссылку и материал на тест ) Link/test.com"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="18dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                android:text="Техники.pdf"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:drawableStart="@drawable/ic_mark"
+                android:background="@drawable/rounded_black_card"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/user2"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@id/user1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@color/white"/>
+
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Мария Иванова"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Так ждала эту трансляцию!"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/user1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:layout_above="@id/videoControllerLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@color/white"/>
+
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Анастасия Ковальт"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Всем привет! 🖖😍"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/videoControllerLayer"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_black_card"
+            android:hint="Оставьте комментарий"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"/>
+
+        <ImageView
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/ic_resize"
+            android:background="@drawable/rounded_black_card"
+            android:contentDescription="@string/icon"/>
+
+        <ImageView
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="@drawable/rounded_black_card"
+            android:src="@drawable/ic_bordered_heart"
+            android:contentDescription="@string/icon"/>
+    </LinearLayout>
+</RelativeLayout>
