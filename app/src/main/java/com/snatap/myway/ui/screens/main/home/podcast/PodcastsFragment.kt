@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_podcasts.*
 class PodcastsFragment: BaseFragment(R.layout.fragment_podcasts){
     override fun initialize() {
         recyclerBanner.adapter = PodcastBannerAdapter{
-            Toast.makeText(context, "in Development", Toast.LENGTH_SHORT).show()
+            addFragment(PodcastInfoScreen("Ветер перемен"))
         }.apply {
             setData(arrayListOf(1,2,3,4,5,6,7))
         }
