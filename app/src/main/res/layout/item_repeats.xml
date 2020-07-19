@@ -10,26 +10,26 @@
         android:layout_width="138dp"
         android:layout_height="138dp">
 
-        <View
+        <com.snatap.myway.utils.views.RoundImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/eventsback" />
-
+            android:scaleType="centerCrop"
+            android:src="@drawable/eventsback" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/rounded_black_card"
             android:paddingStart="4dp"
+            android:paddingTop="4dp"
             android:paddingEnd="4dp"
             android:paddingBottom="2dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginStart="12dp"
-            android:layout_alignParentBottom="true"
             android:text="1:02:39"
             android:textColor="@color/white"
-            android:background="@drawable/rounded_black_card"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
     </RelativeLayout>
 

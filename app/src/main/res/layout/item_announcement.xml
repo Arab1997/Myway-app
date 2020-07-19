@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="16dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_marginBottom="2dp"
         android:layout_width="138dp"
-        android:layout_height="138dp">
-        <View
+        android:layout_height="138dp"
+        android:layout_marginBottom="2dp">
+
+        <com.snatap.myway.utils.views.RoundImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/event_gradient"/>
+            android:src="@drawable/event_gradient" />
 
         <LinearLayout
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginBottom="3dp"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
                 android:text="до эфира"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:layout_marginBottom="2dp"/>
+                android:textSize="12sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10 : 16 : 23"
                 android:textColor="@color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>
-    
+
     <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="10dp"
         android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -58,54 +60,56 @@
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
+                android:contentDescription="@string/icon"
                 android:src="@drawable/ic_business"
-                android:tint="@color/blue"
-                android:contentDescription="@string/icon"/>
+                android:tint="@color/blue" />
+
             <ImageView
-                android:layout_marginStart="10dp"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:src="@drawable/ic_cuboc"
-                android:contentDescription="@string/icon"/>
-            <ImageView
                 android:layout_marginStart="10dp"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/ic_cuboc" />
+
+            <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/icon"
                 android:src="@drawable/ic_star"
-                android:tint="@color/green"
-                android:contentDescription="@string/icon"/>
+                android:tint="@color/green" />
         </LinearLayout>
 
         <TextView
-            android:layout_margin="0dp"
             style="@style/titleStyle"
-            android:text="Время перемен"
-            android:lineSpacingExtra="2sp"/>
+            android:layout_margin="0dp"
+            android:lineSpacingExtra="2sp"
+            android:text="Время перемен" />
 
         <TextView
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Как все успеть?!\nТоп 10 ошибок планирования +\n разбор примеров"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:textStyle="normal"
-            android:text="Как все успеть?!\nТоп 10 ошибок планирования +\n разбор примеров"
             tools:ignore="SmallSp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <Button
-            android:layout_marginBottom="2dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="115dp"
-            android:layout_height="30dp"
-            android:background="@drawable/rounded_gradient_blue_card"
-            android:text="Регистрация"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textAllCaps="false"
-            />
+
+            <Button
+                android:layout_width="115dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/rounded_gradient_blue_card"
+                android:text="Регистрация"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

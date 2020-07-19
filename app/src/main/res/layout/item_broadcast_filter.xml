@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemFilterBackground"
-    android:layout_width="92dp"
+    android:layout_width="wrap_content"
     android:layout_height="24dp"
     android:layout_marginStart="4dp"
     android:layout_toEndOf="@id/main_health_layout"
     android:background="@drawable/rounded_green_card"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:gravity="center_vertical"
+    android:paddingStart="10sp"
+    android:paddingEnd="10sp">
 
     <include
         layout="@layout/item_tags_filter"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
-</RelativeLayout>
+        android:layout_height="wrap_content" />
+</LinearLayout>
