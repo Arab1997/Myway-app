@@ -1,6 +1,5 @@
 package com.snatap.myway.ui.screens.main.home.podcast
 
-import android.os.Bundle
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.PodcastChapterAdapter
@@ -19,7 +18,7 @@ class PodcastInfoScreen(title: String): BaseFragment(R.layout.screen_podcast_inf
     private fun initViews() {
         title.text = titleTxt
 
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
 
         info.text = ""
         info.setBackgroundResource(R.drawable.ic_mark_white)

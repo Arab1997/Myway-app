@@ -10,10 +10,7 @@ class FavoriteNewsScreen : BaseFragment(R.layout.screen_recycler) {
 
     override fun initialize() {
 
-        left.apply {
-            setImageResource(R.drawable.ic_arrow_back_white)
-            setOnClickListener { finishFragment() }
-        }
+        back.setOnClickListener { finishFragment() }
 
         title.text = "Моя подборка"
 

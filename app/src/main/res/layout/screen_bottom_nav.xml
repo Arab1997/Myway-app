@@ -17,11 +17,12 @@
         android:layout_height="66dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
+        android:translationZ="10dp"
         android:windowSoftInputMode="adjustNothing"
+        app:itemBackground="@drawable/bottom_nav_tab_background"
         app:itemIconSize="24dp"
         app:itemIconTint="@color/nav_color"
         app:itemRippleColor="@color/accent"
-        android:translationZ="10dp"
         app:itemTextColor="@color/nav_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu" />

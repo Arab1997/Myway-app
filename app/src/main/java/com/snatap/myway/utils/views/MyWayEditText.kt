@@ -14,7 +14,7 @@ import com.snatap.myway.utils.extensions.setTextColorRes
 import com.snatap.myway.utils.extensions.showGone
 import kotlinx.android.synthetic.main.view_edit_text.view.*
 
-class MyWayEditText : LinearLayout {
+class   MyWayEditText : LinearLayout {
 
     constructor(context: Context?) : super(context) {
         init(context, null)

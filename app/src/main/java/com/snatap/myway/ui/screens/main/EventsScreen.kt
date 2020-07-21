@@ -16,6 +16,7 @@ import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.inDevelopment
 import com.snatap.myway.utils.extensions.inflate
+import com.snatap.myway.utils.extensions.invisible
 import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.fragment_events.*
@@ -28,6 +29,8 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
     override fun initialize() {
 
         initClicks()
+
+        back.invisible()
 
         title.text = "События"
 

@@ -16,10 +16,7 @@ class PastEventsScreen : BaseFragment(R.layout.screen_past_events) {
 
         title.text = "Прошедшие события"
 
-        left.apply {
-            setImageResource(R.drawable.ic_arrow_back_white)
-            setOnClickListener { finishFragment() }
-        }
+        back.setOnClickListener { finishFragment() }
 
         right.apply {
             setImageResource(R.drawable.ic_filter_white)

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <com.snatap.myway.utils.views.RoundImageView
-        android:id="@+id/back"
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -13,8 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/cardStyle"
@@ -23,20 +22,20 @@
             android:layout_marginStart="16dp"
             android:background="@drawable/rounded_green_card"
             android:drawableStart="@drawable/ic_star"
-            android:text="Здоровье"
-            android:textColor="@color/white"
             android:paddingStart="11dp"
             android:paddingEnd="14sp"
+            android:text="Здоровье"
+            android:textColor="@color/white"
             android:translationZ="0dp" />
 
         <TextView
             style="@style/cardStyle"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
-            android:paddingStart="11dp"
-            android:paddingEnd="14sp"
             android:background="@drawable/rounded_blue_card"
             android:drawableStart="@drawable/ic_business"
+            android:paddingStart="11dp"
+            android:paddingEnd="14sp"
             android:text="Бизнес"
             android:textColor="@color/white"
             android:translationZ="0dp" />
@@ -76,7 +75,7 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:background="@drawable/ic_rectangle_red"
+                android:background="@drawable/ic_rectangle_red_015"
                 android:padding="7dp"
                 android:src="@drawable/ic_calendar"
                 android:tint="@color/red" />

@@ -10,8 +10,9 @@
     android:translationZ="5dp">
 
     <ImageView
-        android:id="@+id/left"
+        android:id="@+id/back"
         style="@style/imgStyle"
+        android:src="@drawable/ic_arrow_back_white"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="14sp"

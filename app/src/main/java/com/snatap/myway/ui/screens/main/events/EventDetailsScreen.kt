@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.CommentAdapter
+import com.snatap.myway.ui.adapters.GalleryAdapter
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.inDevelopment
 import kotlinx.android.synthetic.main.content_comments.*
@@ -27,10 +28,11 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
 
     private fun initRecycler() {
 
-        val data = arrayListOf(1, 2, 3, 4, 5, 6, 7, "")
+        val data = arrayListOf(1, 2, 3, 4, 5, "")
         sponsorAdapter = SponsorsAdapter {
         }.apply { setData(data) }
         galleryAdapter = GalleryAdapter {
+            addFragment(GalleryScreen())
         }.apply { setData(data) }
         commentAdapter = CommentAdapter {
         }.apply { setData(data) }
@@ -42,7 +44,7 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
 
     private fun setClicks() {
 
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
 
         right.setOnClickListener { inDevelopment(requireContext()) }
 
@@ -76,28 +78,6 @@ class SponsorsAdapter(private val listener: (Any) -> Unit) : RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_sponsors, parent, false)
-    )
-
-    override fun getItemCount(): Int = data.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.apply {
-            data[holder.adapterPosition].apply {
-            }
-        }
-    }
-}
-
-class GalleryAdapter(private val listener: (Any) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
-
-    private var data = arrayListOf<Any>()
-    fun setData(data: ArrayList<Any>) {
-        this.data = data
-        notifyDataSetChanged()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_gallery, parent, false)
     )
 
     override fun getItemCount(): Int = data.size

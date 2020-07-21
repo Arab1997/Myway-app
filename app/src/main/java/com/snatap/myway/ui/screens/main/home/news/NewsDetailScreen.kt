@@ -29,7 +29,7 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
     private fun setClicks() {
 
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
 
     }
 }

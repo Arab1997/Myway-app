@@ -9,7 +9,7 @@ class PodcastsPlaylistScreen: BaseFragment(R.layout.screen_podcasts_playlist) {
 
     override fun initialize() {
         title.text = "Мой плейлист"
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
         info.visibility = View.INVISIBLE
 
 

@@ -8,9 +8,9 @@ import com.snatap.myway.ui.adapters.BroadcastFilterItemAdapter
 import com.snatap.myway.ui.adapters.RepeatAdapter
 import kotlinx.android.synthetic.main.content_rounded_toolbar.title
 import kotlinx.android.synthetic.main.content_rounded_toolbar_info.*
-import kotlinx.android.synthetic.main.screen_recycler_broadcasts.*
+import kotlinx.android.synthetic.main.screen_broadcasts.*
 
-class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_recycler_broadcasts) {
+class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_broadcasts) {
 
     companion object {
 
@@ -25,14 +25,15 @@ class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_recycler_broadcast
 
     override fun initialize() {
 
-
         initSimilarViews()
+
         initAnnouncementViews()
+
         initRepeatsViews()
     }
 
     private fun initSimilarViews() {
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
 
         recyclerFilters.adapter = BroadcastFilterItemAdapter().apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
@@ -51,7 +52,7 @@ class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_recycler_broadcast
         val bundle = arguments ?: return
         title.text = "Повторы"
 
-        recyclerBroadcasts.adapter = RepeatAdapter{
+        recyclerBroadcasts.adapter = RepeatAdapter {
             addFragment(RepeatBroadcastScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))

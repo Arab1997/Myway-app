@@ -12,7 +12,7 @@ class TicketScreen : BaseFragment(R.layout.screen_ticket) {
 
     override fun initialize() {
 
-        left.setOnClickListener { finishFragment() }
+        back.setOnClickListener { finishFragment() }
 
         title.text = "Мои билеты"
 
