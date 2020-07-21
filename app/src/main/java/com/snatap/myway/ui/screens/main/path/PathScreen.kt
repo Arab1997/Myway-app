@@ -10,6 +10,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.EventsFragment
 import com.snatap.myway.ui.screens.main.EventsPagerAdapter
 import com.snatap.myway.ui.screens.main.PastEventsFragment
+import kotlinx.android.synthetic.main.fragment_past_path.*
 import kotlinx.android.synthetic.main.screen_events.*
 
 class PathScreen: BaseFragment(R.layout.screen_path){
@@ -28,6 +29,7 @@ class PathFragment: BaseFragment(R.layout.fragment_path){
 
 class PastPathFragment: BaseFragment(R.layout.fragment_past_path){
     override fun initialize() {
+        participate.setOnClickListener { addFragment(PathTasksScreen()) }
     }
 
 }
