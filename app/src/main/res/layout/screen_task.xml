@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/screenStyle">
+
+    <LinearLayout style="@style/screenStyle"
+        android:paddingBottom="24dp">
+
+        <TextView
+            style="@style/titleStyle"
+            android:text="Как ставить цели правильно" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:text="Занимайтесь три-четыре дня в неделю. Вместе с разминкой и растяжкой тренировка займёт около 40 минут."
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="395dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="center"
+            android:src="@drawable/eventsback" />
+
+        <TextView
+            style="@style/titleStyle"
+            android:text="Цель. Что это?"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#212121"
+            android:text="Цель — это конечный результат, к которому вы стремитесь. Чаще всего цель проистекает из мечты или вдохновенного желания. Но одного вдохновения мало, нужен еще и труд.
+            \n\nМожно сказать так: цель = желание + осознанное решение действовать.
+            \n\nПоставив цель, определите задачи, с помощью которых придете к задуманному.
+            \n\nЦель отвечает на вопрос «ЧТО нужно сделать?», задачи подсказывают, КАК добиться нужного результата.
+            \n\nНапример, вы захотели выучить английский язык. Сформулируйте цель (овладеть базовым уровнем языка через 1 год), примите решение и запишитесь на языковые курсы.
+            \n\nЦель обязательно нужно записать. Как правильно это сделать — смотрите в нашем видеоролике:"/>
+
+        <ImageView
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/video"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/rounded_hint_card"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:drawablePadding="14dp"
+            android:text="Документ.pdf"
+            android:drawableStart="@drawable/ic_plus"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/rounded_hint_card"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:drawablePadding="14dp"
+            android:text="Документ.pdf"
+            android:drawableStart="@drawable/ic_plus"/>
+
+        <Button
+            style="@style/buttonStyle"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:text="Отправить задание"
+            android:background="@drawable/rounded_violet_blue_gradient_card"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
