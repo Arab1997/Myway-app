@@ -35,7 +35,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startSplash()
     }
 
-    private fun debug() = initialFragment(EventDetailsScreen())
+    private fun debug() = initialFragment(BottomNavScreen())
 
     private fun startSplash() {
         if (BuildConfig.DEBUG) startFragment()

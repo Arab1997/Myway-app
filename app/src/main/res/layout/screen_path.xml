@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        style="@style/screenStyle" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginEnd="20dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_message"
+            android:contentDescription="@string/icon"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_cart"
+            android:contentDescription="@string/icon"/>
+    </LinearLayout>
+
+    <com.rd.PageIndicatorView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/pager_indicator_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:piv_animationType="worm"
+        app:piv_interactiveAnimation="true"
+        app:piv_padding="12dp"
+        app:piv_radius="4dp"
+        app:piv_selectedColor="@color/red"
+        app:piv_unselectedColor="@color/white"
+        app:piv_viewPager="@id/pager" />
+</RelativeLayout>
