@@ -35,17 +35,7 @@ class SendTaskScreen: BaseFragment(R.layout.screen_send_task){
         info.setOnClickListener { finishFragment() }
 
         chooseFileBtn.setOnClickListener {
-            val intent = Intent(context, FilePickerActivity::class.java)
-            intent.putExtra(
-                FilePickerActivity.CONFIGS, Configurations.Builder()
-                    .setCheckPermission(true)
-                    .enableVideoCapture(true)
-                    .setShowImages(false)
-                    .setMaxSelection(10)
-                    .setIgnorePaths(".*WhatsApp.*")
-                    .build()
-            )
-            startActivityForResult(intent, 1)
+            // TODO: 7/22/20 choose file 
         }
     }
 

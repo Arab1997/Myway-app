@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle">
+
+    <include layout="@layout/content_rounded_toolbar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            style="@style/edtStyle"
+            android:hint="Введите сообщение"
+            android:inputType="textMultiLine"
+            tools:ignore="Autofill" />
+
+        <RelativeLayout
+            android:paddingTop="6dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/addBtn"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_plus"/>
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:id="@+id/sendImageBtn"
+                android:layout_toEndOf="@id/addBtn"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_plus"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Отправить"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="6dp"
+                android:textAllCaps="false"
+                android:background="@drawable/rounded_light_blue_card"
+                android:textColor="@color/blue"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
