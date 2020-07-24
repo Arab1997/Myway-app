@@ -38,6 +38,10 @@ fun View.visible(): View {
     return this
 }
 
+fun View.enableDisable(enable: Boolean): View {
+    return if (enable) this.enable() else this.disable()
+}
+
 fun View.enable(): View {
     isEnabled = true
     alpha = 1f
