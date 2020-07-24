@@ -19,5 +19,6 @@
     <color name="hint">#899196</color>
     <color name="font_color">#112B4F</color>
     <color name="key">#232326</color>
+    <color name="gray_70_hint">#232326</color>
 
 </resources>

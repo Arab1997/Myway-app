@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:ignore="HardcodedText">
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/oval_red"
+        android:src="@drawable/ic_checked_dot"
+        android:padding="5dp"
+        android:contentDescription="@string/icon"
+        android:layout_gravity="bottom"/>
+
+    <LinearLayout
+        android:background="@drawable/rounded_white_card"
+        android:layout_marginStart="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="34dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="А вы уже видели новый прямой эфир?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray_70_hint"/>
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пн, 16:30"
+                android:textSize="12sp"
+                android:textColor="@color/hint"/>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are now connected on Messe..."
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+    </LinearLayout>
+</LinearLayout>
