@@ -2,16 +2,13 @@ package com.snatap.myway.ui.activities
 
 import android.view.KeyEvent
 import com.snatap.myway.ui.screens.splash.SplashScreen
-import com.snatap.myway.BuildConfig
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
-import com.snatap.myway.ui.screens.auth.register.AuthPassScreen
-import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
-import com.snatap.myway.ui.screens.splash.ChooseAuthScreen
+import com.snatap.myway.ui.screens.auth.register.AuthPhoneScreen
+import com.snatap.myway.ui.screens.main.home.chat.NotificationScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -35,11 +32,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startSplash()
     }
 
-    private fun debug() = initialFragment(AuthPhoneScreen())
+    private fun debug() = initialFragment(NotificationScreen())
 
     private fun startFragment() {
         initialFragment(
-            if (sharedManager.token.isEmpty()) ChooseAuthScreen()
+            if (sharedManager.token.isEmpty()) SplashScreen()
             else BottomNavScreen(), true
         )
     }

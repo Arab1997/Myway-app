@@ -35,7 +35,8 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/ic_message_add"
-                android:background="@drawable/rounded_light_blue_card"/>
+                android:background="@drawable/rounded_light_blue_card"
+                android:contentDescription="@string/icon" />
             <ImageView
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
@@ -44,7 +45,8 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/ic_camera"
-                android:background="@drawable/rounded_light_blue_card"/>
+                android:background="@drawable/rounded_light_blue_card"
+                android:contentDescription="@string/icon" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,10 +1,7 @@
 package com.snatap.myway.ui.screens.main.path
 
-import android.content.Intent
 import android.util.TypedValue
 import android.view.View
-import com.jaiselrahman.filepicker.activity.FilePickerActivity
-import com.jaiselrahman.filepicker.config.Configurations
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import kotlinx.android.synthetic.main.content_rounded_toolbar_info.*
