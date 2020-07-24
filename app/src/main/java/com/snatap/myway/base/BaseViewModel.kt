@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import com.snatap.myway.R
 import com.snatap.myway.network.ApiInterface
 import com.snatap.myway.network.ErrorResp
+import com.snatap.myway.network.LoginRequest
 import com.snatap.myway.network.RetrofitClient
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.loge
@@ -28,8 +29,7 @@ open class BaseViewModel(
     private val gson: Gson,
     private val context: Context,
     private val sharedManager: SharedManager
-) : ViewModel(),
-    KoinComponent {
+) : ViewModel(), KoinComponent {
 
     @LayoutRes
     var parentLayoutId: Int = 0
@@ -98,25 +98,25 @@ open class BaseViewModel(
     }
 
     private fun getToken() = "Bearer ${sharedManager.token}"
-/*
 
-    fun checkSuggestion(address: String) = compositeDisposable.add(
-        dadataApi.checkSuggestion(
-            DaDataRequest(
-                10,
-                FromBound("street"),
-                arrayListOf(Location("москва")),
-                address,
-                true
-            )
-        ).observeAndSubscribe()
+     fun login(phone: String, password: String) = compositeDisposable.add(
+        api.login(LoginRequest(phone, password)).observeAndSubscribe()
             .subscribe({
+                sharedManager.token = it.access_token
                 data.value = it
             }, {
                 parseError(it)
             })
     )
-*/
+
+    private fun logOut() = compositeDisposable.add(
+        api.logout().observeAndSubscribe()
+            .subscribe({
+                sharedManager.deleteAll()
+            }, {
+                parseError(it)
+            })
+    )
 
     override fun onCleared() {
         super.onCleared()

@@ -2,11 +2,15 @@ package com.snatap.myway.utils.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.preference.PreferenceManager
 
 object PreferenceHelper {
 
     fun customPrefs(context: Context, name: String): SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun defaultPrefs(context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = this.edit()

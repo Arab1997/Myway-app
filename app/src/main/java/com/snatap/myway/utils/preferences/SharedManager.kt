@@ -14,6 +14,7 @@ class SharedManager(
 
     companion object {
         const val TOKEN = "TOKEN"
+        const val CODE = "CODE"
         const val LANGUAGE = "LANGUAGE"
         const val USER = "USER"
     }
@@ -23,6 +24,13 @@ class SharedManager(
         set(value) {
             preferences[TOKEN] = value
         }
+
+    var code: String
+        get() = preferences[CODE, ""]
+        set(value) {
+            preferences[CODE] = value
+        }
+
 /*
     var user: User?
         get() {

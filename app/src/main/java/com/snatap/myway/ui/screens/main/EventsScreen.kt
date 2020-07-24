@@ -16,7 +16,6 @@ import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.*
 import com.snatap.myway.utils.extensions.inflate
-import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
 import kotlinx.android.synthetic.main.screen_events.*
@@ -27,10 +26,6 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
     override fun initialize() {
 
         initClicks()
-
-        back.invisible()
-
-        title.text = "События"
 
         pager.apply {
             adapter =
@@ -47,15 +42,8 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
 
     private fun initClicks() {
 
-        right.apply {
-            setImageResource(R.drawable.ic_cart)
-            setOnClickListener { inDevelopment(requireContext()) }
-        }
-        rightExtra.apply {
-            visible()
-            setImageResource(R.drawable.ic_message)
-            setOnClickListener { inDevelopment(requireContext()) }
-        }
+        cart.setOnClickListener { inDevelopment(requireContext()) }
+        message.setOnClickListener { inDevelopment(requireContext()) }
 
         filter.setOnClickListener { inDevelopment(requireContext()) }
         tickets.setOnClickListener { inDevelopment(requireContext()) }
