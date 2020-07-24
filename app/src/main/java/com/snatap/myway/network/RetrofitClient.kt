@@ -41,7 +41,7 @@ object RetrofitClient {
                 .newBuilder()
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
-            if (token.isNotEmpty()) request.addHeader("Authorization", "Token $token")
+            if (token.isNotEmpty()) request.addHeader("Authorization", "Bearer $token")
             chain.proceed(request.build())
         })
         if (BuildConfig.DEBUG) {

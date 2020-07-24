@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/screenStyle"
-    android:background="@drawable/splash">
+    style="@style/screenStyle">
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/oval_trans"
+        android:padding="10dp"
+        android:src="@drawable/ic_close"
+        android:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -11,4 +32,28 @@
         android:src="@drawable/logo"
         tools:ignore="ContentDescription" />
 
+    <Button
+        android:id="@+id/register"
+        style="@style/buttonStyle"
+        android:layout_above="@+id/haveAccount"
+        android:layout_marginBottom="31dp"
+        android:text="Регистрация" />
+
+    <Button
+        android:id="@+id/continueView"
+        style="@style/whiteButtonStyle"
+        android:layout_above="@+id/register"
+        android:layout_marginBottom="16dp"
+        android:text="Продолжить просмотр" />
+
+    <TextView
+        android:id="@+id/haveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="Уже есть аккаунт"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 </RelativeLayout>

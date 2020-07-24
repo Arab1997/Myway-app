@@ -8,6 +8,7 @@ import com.snatap.myway.ui.screens.auth.AuthPinScreen
 import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
 import com.snatap.myway.ui.screens.auth.register.AuthPassScreen
 import com.snatap.myway.utils.Constants
+import com.snatap.myway.utils.common.TextObservable
 import com.snatap.myway.utils.common.TextWatcher
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.screen_registration_phone.*
@@ -22,16 +23,17 @@ class AuthRecoverPhoneScreen : BaseFragment(R.layout.screen_registration_phone) 
             disable()
             text = "Продолжить"
 
+            sendRequest()
+
             setOnClickListener {
                 showBottomSheet()
             }
         }
 
-        phone.addTextChangedListener(object : TextWatcher(true) {
-            override fun textChanged(s: String) {
-                if (phone.rawText.length >= 10) sendRequest()
-            }
-        })
+        ccp.registerCarrierNumberEditText(phone)
+        ccp.setPhoneNumberValidityChangeListener {
+            next.enableDisable(it)
+        }
 
         title.text = "Восстановление пароля"
 
@@ -43,7 +45,7 @@ class AuthRecoverPhoneScreen : BaseFragment(R.layout.screen_registration_phone) 
 
     private fun sendRequest() {
         next.enable()
-        hideKeyboard()
+        ccp.fullNumberWithPlus
         // todo
     }
 

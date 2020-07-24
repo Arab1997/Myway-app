@@ -18,7 +18,6 @@ val viewModelModule = module {
     viewModel { BaseViewModel(get(), get(), get()) }
 
     single { provideMutableLiveData() }
-
     single(named("sharedLive")) { provideMutableLiveData() }
     single(named("errorLive")) { MutableLiveData<ErrorResp>() }
 }
