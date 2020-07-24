@@ -30,17 +30,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:layout_centerVertical="true"
                 android:id="@+id/addBtn"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:src="@drawable/ic_plus"/>
+                android:src="@drawable/ic_message_add"
+                android:background="@drawable/rounded_light_blue_card"/>
             <ImageView
+                android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:id="@+id/sendImageBtn"
                 android:layout_toEndOf="@id/addBtn"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:src="@drawable/ic_plus"/>
+                android:src="@drawable/ic_camera"
+                android:background="@drawable/rounded_light_blue_card"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,6 +55,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="6dp"
                 android:textAllCaps="false"
+                android:textSize="15sp"
                 android:background="@drawable/rounded_light_blue_card"
                 android:textColor="@color/blue"/>
         </RelativeLayout>
