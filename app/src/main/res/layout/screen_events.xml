@@ -29,12 +29,10 @@
             android:text="Мои билеты" />
     </LinearLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <com.snatap.myway.utils.views.KKViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
         android:layout_weight="1" />
 
     <com.rd.PageIndicatorView

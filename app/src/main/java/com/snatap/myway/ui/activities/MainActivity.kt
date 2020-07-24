@@ -7,6 +7,7 @@ import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
 import com.snatap.myway.ui.screens.auth.register.AuthPhoneScreen
+import com.snatap.myway.ui.screens.main.EventsScreen
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
@@ -27,11 +28,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             fetchData()
         }
 
-//        debug()
-        startFragment()
+        debug()
+//        startFragment()
     }
 
-    private fun debug() = initialFragment(AuthPhoneScreen())
+    private fun debug() = initialFragment(EventsScreen())
 
     private fun startFragment() {
         initialFragment(

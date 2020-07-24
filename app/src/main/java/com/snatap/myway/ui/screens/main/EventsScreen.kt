@@ -14,10 +14,8 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.utils.common.ViewHolder
-import com.snatap.myway.utils.extensions.inDevelopment
+import com.snatap.myway.utils.extensions.*
 import com.snatap.myway.utils.extensions.inflate
-import com.snatap.myway.utils.extensions.invisible
-import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
@@ -34,10 +32,17 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
 
         title.text = "События"
 
-        pager.setMargin()
-        pager.adapter =
-            EventsPagerAdapter(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9), childFragmentManager)
+        pager.apply {
+            adapter =
+                EventsPagerAdapter(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9), childFragmentManager)
 
+            pageMargin = dpToPx(mainActivity, 15)
+
+            setAnimationEnabled(true)
+
+            setFadeFactor(0.6f)
+            currentItem = 1
+        }
     }
 
     private fun initClicks() {
