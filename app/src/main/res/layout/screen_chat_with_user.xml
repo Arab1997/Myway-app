@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar"/>
+    <include layout="@layout/content_rounded_toolbar_chat"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_weight="1"
