@@ -6,7 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.snatap.myway.R
+import com.snatap.myway.network.ApiInterface
 import com.snatap.myway.network.ErrorResp
+import com.snatap.myway.network.RetrofitClient
+import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.loge
 import com.snatap.myway.utils.extensions.logi
 import com.snatap.myway.utils.extensions.toast
@@ -24,7 +27,7 @@ import retrofit2.HttpException
 open class BaseViewModel(
     private val gson: Gson,
     private val context: Context,
-    val sharedManager: SharedManager
+    private val sharedManager: SharedManager
 ) : ViewModel(),
     KoinComponent {
 
@@ -37,6 +40,10 @@ open class BaseViewModel(
     val data: MutableLiveData<Any> by inject()
     val shared: MutableLiveData<Any> by inject(named("sharedLive"))
     val error: MutableLiveData<ErrorResp> by inject(named("errorLive"))
+
+    private val api = RetrofitClient
+        .getRetrofit(Constants.BASE_URL, getToken(), context, gson)
+        .create(ApiInterface::class.java)
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -80,7 +87,6 @@ open class BaseViewModel(
         toast(context, message)
         error.value = ErrorResp(message)
     }
-
 
     fun fetchData() {
 

@@ -1,7 +1,6 @@
 package com.snatap.myway.ui.screens.splash
 
 import android.media.AudioManager
-import android.media.MediaPlayer.OnPreparedListener
 import android.net.Uri
 import android.os.Build
 import android.view.View
@@ -33,12 +32,9 @@ class SplashScreen : BaseFragment(R.layout.screen_splash) {
         val src = "android.resource://" + requireContext().packageName + "/" + R.raw.video
         val video = Uri.parse(src)
         videoView.setVideoURI(video)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        videoView.setOnPreparedListener { it.isLooping = true }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
-        }
-        videoView.setOnPreparedListener { mp ->
-            mp.isLooping = true
-        }
     }
 
     private fun playPauseVideo(play: Boolean, immediate: Boolean = false) {
