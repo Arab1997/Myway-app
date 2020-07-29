@@ -214,7 +214,7 @@
             android:valueTo="100.0"
             android:value="80.0"
             app:activeTrackColor="@color/red"
-            app:inactiveTrackColor="@color/white_50_opacity"
+            app:inactiveTrackColor="@color/white50"
             app:labelColor="@color/red"
             app:thumbColor="@color/red"/>
     </LinearLayout>
