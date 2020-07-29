@@ -1,13 +1,10 @@
 package com.snatap.myway.ui.screens.auth.login
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.base.parentLayoutId
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.auth.AuthPinScreen
-import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.disable
 import com.snatap.myway.utils.extensions.enable
 import com.snatap.myway.utils.views.MyWayEditText

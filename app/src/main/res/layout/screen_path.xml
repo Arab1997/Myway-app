@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         style="@style/screenStyle" />
 
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
 
         <ImageView
-            android:layout_marginEnd="20dp"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:src="@drawable/ic_message"
-            android:contentDescription="@string/icon"/>
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_message" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_cart"
-            android:contentDescription="@string/icon"/>
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_cart" />
     </LinearLayout>
 
     <com.rd.PageIndicatorView
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:id="@+id/pager_indicator_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
         app:piv_animationType="worm"
         app:piv_interactiveAnimation="true"

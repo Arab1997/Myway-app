@@ -20,11 +20,7 @@ class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
         passConfirm.onTextChanged { validate(it, passConfirm, pass) }
 
         next.setOnClickListener {
-            addFragment(AuthPinScreen().apply {
-                arguments = Bundle().apply {
-                    putBoolean(Constants.IS_REGISTER_KEY, true)
-                }
-            })
+            addFragment(AuthPinScreen.newInstance(true))
         }
     }
 

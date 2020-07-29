@@ -11,10 +11,9 @@ fun playStoreUrl(context: Context) =
     "https://play.google.com/store/apps/details?id=${context.packageName}"
 
 fun shareText(context: Context, text: String) {
-    val recommend = "$text в приложение ${context.getString(R.string.app_name)}\n"
     val sendIntent = Intent()
     sendIntent.action = Intent.ACTION_SEND
-    sendIntent.putExtra(Intent.EXTRA_TEXT, "Мой Реферрал $recommend")
+    sendIntent.putExtra(Intent.EXTRA_TEXT, text)
     sendIntent.type = "text/plain"
     context.startActivity(sendIntent)
 }

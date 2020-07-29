@@ -2,9 +2,9 @@ package com.snatap.myway.utils.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import com.snatap.myway.utils.preferences.PreferenceHelper.get
 import com.snatap.myway.utils.preferences.PreferenceHelper.set
-import com.google.gson.Gson
 
 class SharedManager(
     private val preferences: SharedPreferences,
@@ -14,8 +14,10 @@ class SharedManager(
 
     companion object {
         const val TOKEN = "TOKEN"
+        const val CODE = "CODE"
         const val LANGUAGE = "LANGUAGE"
         const val USER = "USER"
+        const val USER_ID = "USER_ID"
     }
 
     var token: String
@@ -23,6 +25,19 @@ class SharedManager(
         set(value) {
             preferences[TOKEN] = value
         }
+
+    var code: String
+        get() = preferences[CODE, ""]
+        set(value) {
+            preferences[CODE] = value
+        }
+
+    var userId: Int
+        get() = preferences[USER_ID, 0]
+        set(value) {
+            preferences[USER_ID] = value
+        }
+
 /*
     var user: User?
         get() {

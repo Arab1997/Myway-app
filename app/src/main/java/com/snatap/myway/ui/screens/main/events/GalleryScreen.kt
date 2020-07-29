@@ -20,7 +20,7 @@ class GalleryScreen : BaseFragment(R.layout.screen_recycler) {
 
         adapter = GalleryAdapter {
             inDevelopment(requireContext())
-        }.apply { setData((1..20).toList() + "") }
+        }.apply { setData(ArrayList((1..20).toList())) }
 
         recycler.adapter = adapter
         recycler.layoutManager = GridLayoutManager(requireContext(), 3)

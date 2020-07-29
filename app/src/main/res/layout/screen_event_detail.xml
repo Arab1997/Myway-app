@@ -207,7 +207,7 @@
                     android:id="@+id/like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_like"
+                    android:drawableStart="@drawable/ic_liked"
                     android:gravity="center_vertical"
                     android:text="1222"
                     android:textColor="@color/red"

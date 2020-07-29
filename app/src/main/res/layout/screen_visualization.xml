@@ -1,57 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar"/>
+    <include layout="@layout/content_rounded_toolbar" />
 
-    <LinearLayout
-        android:paddingStart="27dp"
-        android:paddingEnd="27dp"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        style="@style/TabCustomLayout"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:background="@color/white"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/red"
+        app:tabTextColor="@color/hint">
 
-        <RelativeLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Описание урока"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:textColor="@color/red"
-                android:textStyle="bold"/>
-            <View
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@color/red"/>
-        </RelativeLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Описание урока" />
 
-        <RelativeLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Задание"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:textColor="#899196"/>
-            <View
-                android:visibility="gone"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@drawable/rounded_red_card"/>
-        </RelativeLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Задание" />
 
-    </LinearLayout>
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"

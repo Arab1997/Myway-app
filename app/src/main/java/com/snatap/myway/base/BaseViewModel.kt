@@ -8,7 +8,10 @@ import com.google.gson.Gson
 import com.snatap.myway.R
 import com.snatap.myway.network.ApiInterface
 import com.snatap.myway.network.ErrorResp
+import com.snatap.myway.network.LoginRequest
 import com.snatap.myway.network.RetrofitClient
+import com.snatap.myway.network.models.Comment
+import com.snatap.myway.network.models.News
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.loge
 import com.snatap.myway.utils.extensions.logi
@@ -28,8 +31,7 @@ open class BaseViewModel(
     private val gson: Gson,
     private val context: Context,
     private val sharedManager: SharedManager
-) : ViewModel(),
-    KoinComponent {
+) : ViewModel(), KoinComponent {
 
     @LayoutRes
     var parentLayoutId: Int = 0
@@ -40,6 +42,8 @@ open class BaseViewModel(
     val data: MutableLiveData<Any> by inject()
     val shared: MutableLiveData<Any> by inject(named("sharedLive"))
     val error: MutableLiveData<ErrorResp> by inject(named("errorLive"))
+    val news: MutableLiveData<ArrayList<News>> by inject(named("news"))
+    val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, getToken(), context, gson)
@@ -91,32 +95,97 @@ open class BaseViewModel(
     fun fetchData() {
 
         if (sharedManager.token.isNotEmpty()) {
-
             logi("Current token : " + sharedManager.token)
 
+            getNews()
         }
     }
 
     private fun getToken() = "Bearer ${sharedManager.token}"
-/*
 
-    fun checkSuggestion(address: String) = compositeDisposable.add(
-        dadataApi.checkSuggestion(
-            DaDataRequest(
-                10,
-                FromBound("street"),
-                arrayListOf(Location("москва")),
-                address,
-                true
-            )
-        ).observeAndSubscribe()
+    fun login(phone: String, password: String) = compositeDisposable.add(
+        api.login(LoginRequest(phone, password)).observeAndSubscribe()
             .subscribe({
+                sharedManager.token = it.access_token
                 data.value = it
             }, {
                 parseError(it)
             })
     )
-*/
+
+    private fun logOut() = compositeDisposable.add(
+        api.logout().observeAndSubscribe()
+            .subscribe({
+                sharedManager.deleteAll()
+            }, {
+                parseError(it)
+            })
+    )
+
+    private fun getNews() = compositeDisposable.add(
+        api.getNews().observeAndSubscribe()
+            .subscribe({
+                if (it.success) news.postValue(it.news_items)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getNewsDetail(newsId: Int) = compositeDisposable.add(
+        api.getNewsDetail(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getComments(newsId: Int) = compositeDisposable.add(
+        api.getComments(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) comments.postValue(ArrayList(it.news_item_comments))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun addComment(newsId: Int, comment: String) = compositeDisposable.add(
+        api.addComment(newsId, comment).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getComments(newsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun addLike(newsId: Int) = compositeDisposable.add(
+        api.addLike(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getNews()
+                    getNewsDetail(newsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun addBookmark(newsId: Int) = compositeDisposable.add(
+        api.addBookmark(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getNews()
+                    getNewsDetail(newsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
 
     override fun onCleared() {
         super.onCleared()

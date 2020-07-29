@@ -21,31 +21,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="44dp"
             android:fontFamily="@font/comfortaa_bold"
             android:text="Привет, Татьяна 🤗"
             android:textColor="@color/black"
             android:textSize="24sp"
-            android:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="80dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:gravity="center"
-            android:text="Создай свой код-пароль для входа"
-            android:textColor="@color/text"
-            android:textSize="14sp" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <FrameLayout
             android:id="@+id/pinContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
 </RelativeLayout>

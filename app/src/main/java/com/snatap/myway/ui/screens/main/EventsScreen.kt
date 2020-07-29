@@ -14,11 +14,8 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.utils.common.ViewHolder
-import com.snatap.myway.utils.extensions.inDevelopment
+import com.snatap.myway.utils.extensions.*
 import com.snatap.myway.utils.extensions.inflate
-import com.snatap.myway.utils.extensions.invisible
-import com.snatap.myway.utils.extensions.visible
-import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
 import kotlinx.android.synthetic.main.screen_events.*
@@ -30,27 +27,23 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
 
         initClicks()
 
-        back.invisible()
+        pager.apply {
+            adapter =
+                EventsPagerAdapter(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9), childFragmentManager)
 
-        title.text = "События"
+            pageMargin = dpToPx(mainActivity, 15)
 
-        pager.setMargin()
-        pager.adapter =
-            EventsPagerAdapter(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9), childFragmentManager)
+            setAnimationEnabled(true)
 
+            setFadeFactor(0.6f)
+            currentItem = 1
+        }
     }
 
     private fun initClicks() {
 
-        right.apply {
-            setImageResource(R.drawable.ic_cart)
-            setOnClickListener { inDevelopment(requireContext()) }
-        }
-        rightExtra.apply {
-            visible()
-            setImageResource(R.drawable.ic_message)
-            setOnClickListener { inDevelopment(requireContext()) }
-        }
+        cart.setOnClickListener { inDevelopment(requireContext()) }
+        message.setOnClickListener { inDevelopment(requireContext()) }
 
         filter.setOnClickListener { inDevelopment(requireContext()) }
         tickets.setOnClickListener { inDevelopment(requireContext()) }

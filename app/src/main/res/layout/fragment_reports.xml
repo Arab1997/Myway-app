@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle">
 
-    <include android:id="@+id/toolbar" layout="@layout/content_rounded_toolbar_info"/>
-    
-    <RelativeLayout
-        style="@style/screenStyle">
-        
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/content_rounded_toolbar_info" />
+
+    <RelativeLayout style="@style/screenStyle">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerReports"
             style="@style/screenStyle"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_report"/>
-        
+            tools:listitem="@layout/item_report" />
+
         <Button
             android:id="@+id/sendTaskBtn"
             style="@style/buttonStyle"
-            android:background="@drawable/rounded_violet_blue_gradient_card"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="30dp"
-            android:text="Отправить задание"/>
-        
+            android:background="@drawable/rounded_violet_blue_gradient_card"
+            android:text="Отправить задание" />
+
     </RelativeLayout>
 </LinearLayout>

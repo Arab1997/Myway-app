@@ -1,15 +1,8 @@
 package com.snatap.myway.ui.screens.auth.login
 
-import android.os.Bundle
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.auth.ActivationBottomSheet
-import com.snatap.myway.ui.screens.auth.AuthPinScreen
-import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
-import com.snatap.myway.ui.screens.auth.register.AuthPassScreen
-import com.snatap.myway.utils.Constants
-import com.snatap.myway.utils.common.TextObservable
-import com.snatap.myway.utils.common.TextWatcher
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.screen_registration_phone.*
 
