@@ -1,19 +1,16 @@
 package com.snatap.myway.ui.screens.main.path
 
-import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.screens.main.EventsFragment
-import com.snatap.myway.ui.screens.main.EventsPagerAdapter
-import com.snatap.myway.ui.screens.main.PastEventsFragment
 import kotlinx.android.synthetic.main.fragment_past_path.*
-import kotlinx.android.synthetic.main.screen_events.*
+import kotlinx.android.synthetic.main.screen_path.*
 
 class PathScreen: BaseFragment(R.layout.screen_path){
+
     override fun initialize() {
         pager.adapter =
             PathsPagerAdapter(arrayListOf(1, 2, 3, 4), childFragmentManager)

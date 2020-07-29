@@ -1,8 +1,8 @@
 package com.snatap.myway.network
 
+import com.snatap.myway.network.models.*
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -17,6 +17,28 @@ interface ApiInterface {
 
     @POST("auth/forgot_password")
     fun forgotPassword(): Single<MessageResp>
+
+    @GET("news_items")
+    fun getNews(): Single<NewsResp>
+
+    @GET("news_items/{id}")
+    fun getNewsDetail(@Path("id") id: Int): Single<NewsDetailResp>
+
+    @GET("news_items/{id}/comments")
+    fun getComments(@Path("id") id: Int): Single<CommentsResp>
+
+    @POST("news_items/{id}/comment")
+    @FormUrlEncoded
+    fun addComment(
+        @Path("id") id: Int,
+        @Field("text") comment: String
+    ): Single<AddCommentResp>
+
+    @POST("news_items/{id}/bookmark")
+    fun addBookmark(@Path("id") id: Int): Single<Bookmark>
+
+    @POST("news_items/{id}/like")
+    fun addLike(@Path("id") id: Int): Single<Like>
 
 }
 

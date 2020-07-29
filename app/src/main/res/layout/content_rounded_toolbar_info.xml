@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/elevationStyle"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
     android:background="@drawable/toolbar_back"
@@ -29,8 +30,8 @@
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/hint"
-        android:text="Инфо" />
+        android:text="Инфо"
+        android:textColor="@color/hint" />
 
 
 </LinearLayout>

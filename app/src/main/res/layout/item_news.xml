@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     style="@style/cardStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_marginBottom="16dp"
+    android:orientation="vertical"
     android:padding="0dp">
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp">
 
-        <TextView
-            style="@style/cardStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/rounded_green_card"
-            android:drawableStart="@drawable/ic_star"
-            android:paddingStart="11dp"
-            android:paddingEnd="14sp"
-            android:text="Здоровье"
-            android:textColor="@color/white"
-            android:translationZ="0dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_tags" />
 
-        <TextView
-            style="@style/cardStyle"
+        <ImageView
+            android:id="@+id/mark"
             android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:background="@drawable/rounded_blue_card"
-            android:drawableStart="@drawable/ic_business"
-            android:paddingStart="11dp"
-            android:paddingEnd="14sp"
-            android:text="Бизнес"
-            android:textColor="@color/white"
-            android:translationZ="0dp" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mark"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/name"
         style="@style/titleStyle"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="0dp"
         android:text="Как ставить цели правильно" />
 
     <TextView
+        android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -55,6 +54,7 @@
         android:textSize="15sp" />
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="330dp"
         android:layout_marginTop="16dp"
@@ -69,12 +69,14 @@
         android:gravity="center_vertical">
 
         <com.snatap.myway.utils.views.RoundImageView
+            android:id="@+id/author"
             android:layout_width="24dp"
             android:layout_height="24sp"
             android:scaleType="centerCrop"
             android:src="@drawable/user" />
 
         <TextView
+            android:id="@+id/authorName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -84,6 +86,7 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/createdDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5 декабря 2019"
@@ -110,7 +113,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_icon_comment"
             android:drawablePadding="7dp"
-            android:text="15 K"
+            android:text="0"
             android:textColor="@color/hint"
             android:textSize="15sp"
             tools:ignore="ContentDescription" />
@@ -122,7 +125,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/ic_icon_share"
             android:drawablePadding="7dp"
-            android:text="1222"
+            android:text="0"
             android:textColor="@color/hint"
             android:textSize="15sp"
             tools:ignore="ContentDescription" />
@@ -132,9 +135,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_like"
+            android:drawablePadding="7dp"
             android:gravity="center_vertical"
             android:text="1222"
-            android:textColor="@color/red"
+            android:textColor="@color/hint"
             android:textSize="15sp"
             tools:ignore="ContentDescription" />
 

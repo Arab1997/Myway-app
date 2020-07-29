@@ -19,7 +19,7 @@ class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
             .apply { setData(arrayListOf(1, 2, 3)) }
     }
 
-    class ContentAdapter : BaseAdapter(R.layout.item_content) {
+    class ContentAdapter : BaseAdapter<Any>(R.layout.item_content) {
 
         override fun bindViewHolder(holder: ViewHolder, data: Any) {
             holder.itemView.apply {

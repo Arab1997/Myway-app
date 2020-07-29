@@ -3,7 +3,6 @@ package com.snatap.myway.ui.screens.main.events
 import android.os.Bundle
 import com.snatap.myway.R
 import com.snatap.myway.utils.bottomsheet.BottomSheetRoundedFragment
-import com.snatap.myway.utils.extensions.gone
 import com.snatap.myway.utils.extensions.showGone
 import kotlinx.android.synthetic.main.bottomsheet_filter.*
 
@@ -11,7 +10,6 @@ enum class FilterType { TAGS, DATES, CITIES, FILTER }
 
 class FilterBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_filter) {
     companion object {
-
         fun newInstance(newsFilter: Boolean): FilterBottomSheet {
             return FilterBottomSheet().apply {
                 arguments = Bundle().apply {

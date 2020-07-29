@@ -1,13 +1,16 @@
 package com.snatap.myway.utils.extensions
 
 import android.content.Context
+import android.os.Build
 import android.os.Handler
+import android.text.Html
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -68,12 +71,21 @@ internal fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean 
 internal fun TextView.setTextColorRes(@ColorRes color: Int) =
     setTextColor(ContextCompat.getColor(context, color))
 
-internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
+internal fun TextView.setDrawableStart(@DrawableRes img: Int) =
+    setCompoundDrawablesWithIntrinsicBounds(img, 0, 0, 0)
 
+internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
 fun dpToPx(activity: FragmentActivity, dp: Int): Int {
     val displayMetrics = activity.resources.displayMetrics
     return (dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToLong().toInt()
+}
+
+fun String.fromHtml(): String {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT).toString()
+    else Html.fromHtml(this).toString()
+
 }
 
 
