@@ -18,7 +18,7 @@ data class NewsDetail(
     val needs_push: Int,
     val notify_at: String,
     val photo: String,
-    val related: List<Any>,
+    val related: List<News>,
     val sharing: Boolean,
     val short_description: String,
     val tags: List<Tag>,

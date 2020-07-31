@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottom_sheet_white_rounded"
-    android:paddingStart="12sp"
-    android:paddingEnd="12sp">
+    android:background="@drawable/bottom_sheet_white_rounded">
 
     <ImageView
         android:layout_width="27dp"
@@ -17,8 +15,8 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:text="Список участников"
-        style="@style/header" />
+        style="@style/header"
+        android:text="Список участников" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -27,7 +25,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_participants" />
+        tools:listitem="@layout/item_members" />
 
     <Button
         android:id="@+id/ok"

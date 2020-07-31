@@ -56,7 +56,7 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
         }
 
         participants.setOnClickListener {
-            val bottomSheet = ParticipantsBottomSheet()
+            val bottomSheet = MembersBottomSheet()
             bottomSheet.show(childFragmentManager, "")
         }
 
