@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar_info" />
+    <include layout="@layout/content_rounded_toolbar" />
 
 
     <androidx.recyclerview.widget.RecyclerView

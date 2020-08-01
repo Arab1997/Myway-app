@@ -12,17 +12,26 @@ class MarketFragment : BaseFragment(R.layout.fragment_market){
     override fun initialize() {
         initViews()
 
-        recyclerMenu.adapter = MarketMenuAdapter().apply {
-            setData(arrayListOf(1,2,3,4,5,6))
-        }
-        recyclerItems.adapter = MarketItemAdapter().apply {
-            setData(arrayListOf(1,2,3,4,5,6,7,8,9,10,11,12,13))
-        }
+        setClicks()
+    }
+
+    private fun setClicks() {
+        right.setOnClickListener { addFragment(MarketCartScreen()) }
     }
 
     private fun initViews(){
         title.text = "Маркет MyWay"
         right.setImageResource(R.drawable.ic_cart)
+
+        recyclerMenu.adapter = MarketMenuAdapter().apply {
+            setData(arrayListOf(1,2,3,4,5,6))
+        }
+        recyclerItems.adapter = MarketItemAdapter{
+            addFragment(ProductDetailsScreen())
+        }.apply {
+            setData(arrayListOf(1,2,3,4,5,6,7,8,9,10,11,12,13))
+        }
+
     }
 
 }
