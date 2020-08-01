@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <com.snatap.myway.utils.views.RoundImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/img3"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Honor 10"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:textColor="@color/main_gray"/>
+
+    <TextView
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 554"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textSize="17sp"
+        android:drawablePadding="5dp"
+        android:drawableEnd="@drawable/ic_rub"/>
+
+    <TextView
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="34"
+        android:drawableEnd="@drawable/ic_bonus"
+        android:textSize="12sp"
+        android:textColor="@color/hint" />
+    
+    <Button
+        style="@style/buttonStyle"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:text="В корзину"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_minus"
+            android:background="@drawable/rounded_light_blue_card"
+            android:contentDescription="@string/icon"/>
+
+        <TextView
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="3 шт"
+            android:textSize="15sp"
+            android:textColor="@color/main_gray"/>
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_plus"
+            android:background="@drawable/rounded_light_blue_card"
+            android:contentDescription="@string/icon"/>
+
+    </LinearLayout>
+
+</LinearLayout>

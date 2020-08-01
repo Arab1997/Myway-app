@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/screenStyle">
+
+    <include layout="@layout/content_rounded_toolbar_info" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerItems"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_market_cart"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="24dp"
+        android:orientation="vertical">
+        
+        <EditText
+            style="@style/edtStyle"
+            android:background="@drawable/rounded_light_blue_card"
+            android:hint="Есть промокод"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
+        <TextView
+            style="@style/titleStyle"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:text="Итого:"/>
+
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_light_blue_card"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_bonus"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="10 350"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_red_card"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_rub"
+                    android:drawableTint="@color/white"
+                    android:drawablePadding="5dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="10 350"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
