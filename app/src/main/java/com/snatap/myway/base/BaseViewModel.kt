@@ -10,6 +10,7 @@ import com.snatap.myway.network.ApiInterface
 import com.snatap.myway.network.ErrorResp
 import com.snatap.myway.network.LoginRequest
 import com.snatap.myway.network.RetrofitClient
+import com.snatap.myway.network.models.Chats
 import com.snatap.myway.network.models.Comment
 import com.snatap.myway.network.models.News
 import com.snatap.myway.utils.Constants
@@ -43,6 +44,7 @@ open class BaseViewModel(
     val shared: MutableLiveData<Any> by inject(named("sharedLive"))
     val error: MutableLiveData<ErrorResp> by inject(named("errorLive"))
     val news: MutableLiveData<ArrayList<News>> by inject(named("news"))
+    val chats: MutableLiveData<ArrayList<Chats>> by inject(named("chats"))
     val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
 
     private val api = RetrofitClient
@@ -182,6 +184,33 @@ open class BaseViewModel(
                     getNews()
                     getNewsDetail(newsId)
                 }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getChats() = compositeDisposable.add(
+        api.getChats().observeAndSubscribe()
+            .subscribe({
+                if (it.success) chats.postValue(ArrayList(it.chat_items))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun sendMessageChats(text: String) = compositeDisposable.add(
+        api.sendMessageChats(text).observeAndSubscribe()
+            .subscribe({
+                if (it.success) getChats()
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun readMessageChats(chatId: Int) = compositeDisposable.add(
+        api.readMessageChats(chatId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) getChats()
             }, {
                 parseError(it)
             })

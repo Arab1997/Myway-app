@@ -6,9 +6,7 @@ import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.auth.register.AuthPhoneScreen
-import com.snatap.myway.ui.screens.main.home.market.MarketFragment
-import com.snatap.myway.ui.screens.main.home.market.ProductDetailsScreen
+import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
@@ -31,11 +29,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
         sharedManager.code = "4444" // todo
         sharedManager.userId = 36726 // todo
+
         debug()
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(MarketFragment())
+    private fun debug() = initialFragment(ChatScreen())
 
     private fun startFragment() {
         initialFragment(

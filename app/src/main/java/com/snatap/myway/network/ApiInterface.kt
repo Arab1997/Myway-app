@@ -40,13 +40,22 @@ interface ApiInterface {
     @POST("news_items/{id}/like")
     fun addLike(@Path("id") id: Int): Single<Like>
 
+    @GET("user/chat/messages")
+    fun getChats(): Single<ChatsResp>
+
+    @POST("user/chat/send_message")
+    @FormUrlEncoded
+    fun sendMessageChats(@Field("text") text: String): Single<SendMessageChatResp>
+
+    @POST("user/chat/read")
+    @FormUrlEncoded
+    fun readMessageChats(@Field("chat_items_ids") chat_items_ids: Int): Single<ReadMessageChatResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)
 
 data class MessageResp(val message: String)
-
-data class SuccessResp(val success: Boolean)
 
 data class Token(
     val access_token: String,

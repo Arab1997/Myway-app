@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.network.ErrorResp
+import com.snatap.myway.network.models.Chats
 import com.snatap.myway.network.models.Comment
 import com.snatap.myway.network.models.News
 import com.snatap.myway.utils.preferences.PreferenceHelper
@@ -23,6 +24,7 @@ val viewModelModule = module {
     single(named("sharedLive")) { provideMutableLiveData() }
     single(named("errorLive")) { MutableLiveData<ErrorResp>() }
     single(named("news")) { MutableLiveData<ArrayList<News>>() }
+    single(named("chats")) { MutableLiveData<ArrayList<Chats>>() }
     single(named("comments")) { MutableLiveData<ArrayList<Comment>>() }
 }
 

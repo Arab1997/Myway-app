@@ -7,6 +7,7 @@ import com.snatap.myway.network.models.Comment
 import com.snatap.myway.network.models.NewsDetail
 import com.snatap.myway.network.models.NewsDetailResp
 import com.snatap.myway.ui.adapters.CommentAdapter
+import com.snatap.myway.ui.adapters.SimilarNewsAdapter
 import com.snatap.myway.ui.adapters.TagsAdapter
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_add_comments.*
@@ -25,12 +26,19 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
     private lateinit var commentAdapter: CommentAdapter
     private var comments = arrayListOf<Comment>()
+    private lateinit var similarNewsAdapter: SimilarNewsAdapter
 
     override fun initialize() {
 
         commentAdapter = CommentAdapter(sharedManager)
 
+        similarNewsAdapter = SimilarNewsAdapter {
+            addFragment(newInstance(it.id))
+        }
+
         recyclerComments.adapter = commentAdapter
+
+        recyclerSimilarNews.adapter = similarNewsAdapter
 
         back.setOnClickListener { finishFragment() }
 
@@ -40,9 +48,9 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
         changeFontSize.setOnClickListener { inDevelopment(requireContext()) }
 
-        liked.setOnClickListener { inDevelopment(requireContext()) } // todo add fav icon
+        questions.setOnClickListener { inDevelopment(requireContext()) } // todo open victorina
 
-        readNext.setOnClickListener { inDevelopment(requireContext()) }
+        liked.setOnClickListener { viewModel.addLike(newsId) }
 
         allComments.setOnClickListener { openComments() }
 
@@ -74,7 +82,11 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
         shortDesc.text = it.short_description.fromHtml()
         photo.loadImage(it.photo)
 
-        if (it.is_liked) liked.gone()
+        liked.showGone(!it.is_liked)
+
+        relatedNews.showGone(it.related.isNotEmpty())
+
+        similarNewsAdapter.setData(ArrayList(it.related))
 
         recyclerTags.adapter = TagsAdapter().apply {
             setData(ArrayList(it.tags))

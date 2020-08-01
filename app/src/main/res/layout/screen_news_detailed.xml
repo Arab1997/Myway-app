@@ -168,6 +168,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/gradient_blue_purple"
+                    android:drawableEnd="@drawable/ic_heart_vector"
                     android:gravity="center_vertical"
                     android:paddingStart="18sp"
                     android:paddingEnd="18sp"
@@ -175,11 +176,11 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="15sp" />
-                <!--todo set heart icon-->
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/relatedNews"
                 style="@style/elevationStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,29 +194,18 @@
                     android:layout_marginBottom="8dp"
                     android:text="Читай далее" />
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerSimilarNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp">
-
-                    <com.snatap.myway.utils.views.RoundImageView
-                        android:layout_width="130dp"
-                        android:layout_height="90dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/item_content" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16sp"
-                        android:lineHeight="22sp"
-                        android:text="Приоритеты - наше все!\nКак начать действовать."
-                        android:textColor="@color/text"
-                        android:textSize="15sp" />
-                </LinearLayout>
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_news_similar" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/questions"
                 style="@style/elevationStyle"
                 android:layout_width="match_parent"
                 android:layout_height="154dp"

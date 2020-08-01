@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="45 мин"
-            android:textColor="@color/white_50_opacity"
+            android:textColor="@color/white50"
             android:textSize="12sp" />
 
         <View

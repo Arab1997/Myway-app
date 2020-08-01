@@ -47,7 +47,7 @@
                     style="@style/cardStyle"
                     android:layout_margin="0dp"
                     android:layout_weight="1"
-                    android:background="@color/white_transparent"
+                    android:background="@color/white10"
                     android:drawableStart="@drawable/ic_mark"
                     android:paddingStart="11dp"
                     android:paddingEnd="15dp"

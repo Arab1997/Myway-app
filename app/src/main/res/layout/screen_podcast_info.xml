@@ -24,7 +24,7 @@
                     android:layout_marginEnd="21dp"
                     android:text="Это подкаст история. Моя история. Когда-то давно я бросила карьеру и уехала на Бали целых семь лет."
                     android:textAlignment="center"
-                    android:textColor="@color/white_50_opacity"
+                    android:textColor="@color/white50"
                     android:textSize="12sp" />
 
             </RelativeLayout>
