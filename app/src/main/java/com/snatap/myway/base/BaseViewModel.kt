@@ -10,9 +10,7 @@ import com.snatap.myway.network.ApiInterface
 import com.snatap.myway.network.ErrorResp
 import com.snatap.myway.network.LoginRequest
 import com.snatap.myway.network.RetrofitClient
-import com.snatap.myway.network.models.Chats
-import com.snatap.myway.network.models.Comment
-import com.snatap.myway.network.models.News
+import com.snatap.myway.network.models.*
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.loge
 import com.snatap.myway.utils.extensions.logi
@@ -46,6 +44,9 @@ open class BaseViewModel(
     val news: MutableLiveData<ArrayList<News>> by inject(named("news"))
     val chats: MutableLiveData<ArrayList<Chats>> by inject(named("chats"))
     val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
+    val user: MutableLiveData<User> by inject(named("user"))
+    val notification: MutableLiveData<ArrayList<Notification>> by inject(named("notification"))
+    val achievement: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievement"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, getToken(), context, gson)
@@ -99,7 +100,10 @@ open class BaseViewModel(
         if (sharedManager.token.isNotEmpty()) {
             logi("Current token : " + sharedManager.token)
 
+            getUser()
             getNews()
+            getUserAchievements()
+            getUserNotifications()
         }
     }
 
@@ -211,6 +215,37 @@ open class BaseViewModel(
         api.readMessageChats(chatId).observeAndSubscribe()
             .subscribe({
                 if (it.success) getChats()
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getUser() = compositeDisposable.add(
+        api.getUser().observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    user.postValue(it.user)
+                    sharedManager.user = it.user
+                    sharedManager.userId = it.user.id
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getUserNotifications() = compositeDisposable.add(
+        api.getUserNotifications().observeAndSubscribe()
+            .subscribe({
+                if (it.success) notification.postValue(ArrayList(it.user_notifications))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getUserAchievements() = compositeDisposable.add(
+        api.getUserAchievements().observeAndSubscribe()
+            .subscribe({
+                if (it.success) achievement.postValue(ArrayList(it.user_achievements))
             }, {
                 parseError(it)
             })

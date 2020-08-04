@@ -51,6 +51,15 @@ interface ApiInterface {
     @FormUrlEncoded
     fun readMessageChats(@Field("chat_items_ids") chat_items_ids: Int): Single<ReadMessageChatResp>
 
+    @GET("user/info")
+    fun getUser(): Single<UserResp>
+
+    @GET("user/notifications")
+    fun getUserNotifications(): Single<NotificationsResp>
+
+    @GET("user/achievements")
+    fun getUserAchievements(): Single<AchievementsResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)
