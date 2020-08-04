@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar" />
+    <include layout="@layout/content_simple_toolbar" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

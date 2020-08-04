@@ -21,6 +21,8 @@
     <color name="font_color">#112B4F</color>
     <color name="key">#232326</color>
     <color name="gray_70_hint">#232326</color>
+    <color name="main_gray">#3B393D</color>
+    <color name="font_blue">#1F304D</color>
 
     <!--Background color-->
     <color name="calendar_day_selected_bg">@color/red</color>
