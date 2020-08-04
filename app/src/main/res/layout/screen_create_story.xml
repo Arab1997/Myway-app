@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle"
     android:orientation="vertical">
 
@@ -12,8 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/img2" />
-
+            android:src="@drawable/img2"
+            tools:ignore="ContentDescription" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -47,7 +48,8 @@
                     android:layout_margin="5dp"
                     android:alpha="0.3"
                     android:src="@drawable/circle_white_card"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -65,7 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:src="@drawable/circle_white_card" />
+                    android:src="@drawable/circle_white_card"
+                    tools:ignore="ContentDescription" />
             </RelativeLayout>
 
             <ImageView
@@ -85,13 +88,14 @@
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_margin="24dp"
-            android:src="@drawable/ic_close" />
+            android:src="@drawable/ic_close"
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:layout_alignParentBottom="true"
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:background="@color/black"
             android:gravity="center"
             android:paddingTop="15dp"

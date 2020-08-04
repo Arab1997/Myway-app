@@ -1,18 +1,16 @@
-package com.snatap.myway.ui.screens.main.home.history
+package com.snatap.myway.ui.screens.main.home.story
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import android.os.CountDownTimer
-import android.util.TypedValue
 import android.view.MotionEvent
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.view.setMargins
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.utils.extensions.dpToPx
+import com.snatap.myway.utils.extensions.showGone
+import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.screen_create_story.*
-
 
 class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
 
@@ -31,13 +29,9 @@ class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
                 timer = getTimer(timeRemaining)
                 timer?.start()
             }
-            if (event?.action == MotionEvent.ACTION_UP) {
-                addFragment(StoryFragment())
-                timer?.cancel()
-            }
+            info.showGone(event?.action != MotionEvent.ACTION_DOWN)
             true
         }
-//        timer?.start()
     }
 
     private fun changeView() {
@@ -45,36 +39,26 @@ class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
             RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.MATCH_PARENT
         )
-        lp.setMargins(dpToPx(15f).toInt())
+        lp.setMargins(dpToPx(mainActivity, 15))
         recordStartBtn.layoutParams = lp
 
-        progressBarBg.visibility = View.VISIBLE
+        progressBarBg.visible()
 
         startRecordLayout.setBackgroundResource(0)
 
-        info.visibility = View.GONE
-    }
-
-    private fun dpToPx(dip: Float): Float {
-        val r: Resources = resources
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dip,
-            r.displayMetrics
-        )
     }
 
     private fun getTimer(time: Long = 0) = object :
-        CountDownTimer(if (time > 0) time else recordTime.times(1000.toLong()) ?: 0, 50) {
+        CountDownTimer(if (time > 0) time else recordTime.times(1000.toLong()), 50) {
         override fun onFinish() {
         }
 
         override fun onTick(millisUntilFinished: Long) {
             timeRemaining = millisUntilFinished
-            val numerator = (recordTime.times(1000.toLong()) ?: 0) - millisUntilFinished
+            val numerator = recordTime.times(1000.toLong()) - millisUntilFinished
             timeFinished = numerator
             progressBar.progress =
-                (numerator * 100 / (recordTime.times(1000.toLong()) ?: 0)).toInt()
+                (numerator * 100 / recordTime.times(1000.toLong())).toInt()
         }
     }
 
