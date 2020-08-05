@@ -5,7 +5,7 @@
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:progressTint="@color/white"
-    android:backgroundTint="@color/white50"
+    android:background="@drawable/rounded_hint_card"
     android:layout_weight="1"
     android:paddingStart="2dp"
     android:paddingEnd="2dp"

@@ -15,7 +15,7 @@
         android:id="@+id/progress_counter"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="2dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="16dp"
@@ -25,14 +25,19 @@
     </LinearLayout>
 
     <View
+        android:rotation="180"
         android:id="@+id/leftLayer"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
+        android:background="@drawable/gradient_from_null_to_dark"
+        android:alpha="0"
         android:layout_height="match_parent"/>
 
     <View
         android:layout_alignParentEnd="true"
         android:id="@+id/rightLayer"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
+        android:background="@drawable/gradient_from_null_to_dark"
+        android:alpha="0"
         android:layout_height="match_parent"/>
 
 <!--    <LinearLayout-->
@@ -51,6 +56,7 @@
 
 
     <LinearLayout
+        android:id="@+id/bottomLayer"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         android:layout_marginBottom="18dp"

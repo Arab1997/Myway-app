@@ -29,6 +29,8 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
     private var timer: CountDownTimer? = null
     private var data = arrayListOf<Any>(1, 2, 3, 4, 5, 6)
     private var listener: SnappyStoryListener? = null
+    private var isLongClickNext = false
+    private var isLongClickLeft = false
 
     override fun initialize() {
 
@@ -59,7 +61,66 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
             }
             true
         }
+        rightLayer.setOnLongClickListener { it ->
+            isLongClickNext = true
+            timer?.cancel()
+            hideViews(true)
+            false
+        }
+        rightLayer.setOnTouchListener { v, event ->
+            if (event?.action == MotionEvent.ACTION_UP) {
+                if (isLongClickNext) {
+                    timer = getTimer(timeRemaining)
+                    timer?.start()
+                    showViews(true)
+                    isLongClickNext = false
+                }
+            }
+            false
+        }
+
+        leftLayer.setOnTouchListener { v, event ->
+            if (event?.action == MotionEvent.ACTION_UP) {
+                if (isLongClickLeft) {
+                    timer = getTimer(timeRemaining)
+                    timer?.start()
+                    showViews()
+                    isLongClickLeft = false
+                }
+            }
+            false
+        }
+        leftLayer.setOnLongClickListener { it ->
+            isLongClickLeft = true
+            timer?.cancel()
+            hideViews()
+            false
+        }
+
+
         timer?.start()
+    }
+
+    private fun showViews(isRight: Boolean = false){
+        bottomLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
+        progress_counter.animate().alphaBy(0f).alpha(1f).duration = 1000
+
+        if (isRight){
+            rightLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
+        } else {
+            leftLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
+        }
+    }
+
+    private fun hideViews(isRight: Boolean = false){
+        bottomLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
+        progress_counter.animate().alphaBy(1f).alpha(0f).duration = 1000
+
+        if (isRight){
+            rightLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
+        } else {
+            leftLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
+        }
     }
 
     private fun getTimer(time: Long = 0) = object :
@@ -83,9 +144,6 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
         }
     }
 
-    //
-//    // Public Functions
-//
     fun load(
         stories: ArrayList<Any> = arrayListOf(),
         listener: SnappyStoryListener? = null
@@ -114,16 +172,20 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
                 }
             }
             leftLayer.setOnClickListener {
-                if (timeFinished > 1000) {
+//                if (currentStoryIndex == 0) {
+//                    timer?.cancel()
+//                    timer = getTimer(0)
+//                    this.progressBars[0].progress = 0
+////                    timer?.start()
+////                    return@setOnClickListener
+//                }
+                if (currentStoryIndex > 0 ) {
                     timer?.cancel()
-                    timer = getTimer(0)
-                    timer?.start()
-                    return@setOnClickListener
-                }
-                if (currentStoryIndex > 0) {
-                    timer?.cancel()
+//                    timer = getTimer(0)
+//                    for (i in 0..currentStoryIndex)
                     this.progressBars[currentStoryIndex].progress = 0
-                    currentStoryIndex--
+                    currentStoryIndex--;
+                    this.progressBars[currentStoryIndex].progress = 0
                     next(currentStoryIndex)
                 }
             }
