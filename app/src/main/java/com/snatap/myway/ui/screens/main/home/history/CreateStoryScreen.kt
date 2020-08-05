@@ -6,7 +6,6 @@ import android.os.CountDownTimer
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.view.setMargins
 import com.snatap.myway.R
