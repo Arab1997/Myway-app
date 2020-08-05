@@ -3,24 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
-    android:elevation="5dp"
-    android:padding="5dp"
     android:gravity="center_vertical"
-    android:translationZ="5dp"
-    android:background="@color/white">
+    android:padding="5dp"
+    tools:background="@color/back">
 
     <ImageView
         android:id="@+id/back"
         style="@style/imgStyle"
-        android:src="@drawable/ic_arrow_back_white"
+        android:src="@drawable/ic_arrow_back_ios_24"
+        android:tint="@color/black"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/font_color"
-        android:textSize="17sp"/>
+        android:layout_centerInParent="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        tools:text="@tools:sample/lorem" />
 </RelativeLayout>

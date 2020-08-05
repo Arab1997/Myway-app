@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.home.market
+package com.snatap.myway.ui.screens.main.home.cart
 
 import android.os.Parcelable
 import androidx.fragment.app.Fragment

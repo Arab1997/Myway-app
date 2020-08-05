@@ -7,7 +7,9 @@ import com.snatap.myway.ui.adapters.NewsAdapter
 import com.snatap.myway.ui.adapters.NewsRoundedAdapter
 import com.snatap.myway.ui.screens.main.events.FilterBottomSheet
 import com.snatap.myway.ui.screens.main.events.FilterType
+import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
 import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
+import com.snatap.myway.ui.screens.main.home.story.StoriesFragment
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : BaseFragment(R.layout.fragment_news) {
@@ -21,6 +23,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
             val bottomSheet = FilterBottomSheet.newInstance(false).apply {
                 setListener {
                     if (it == FilterType.TAGS) addFragment(FilterTagsScreen())
+                    if (it == FilterType.DATES) addFragment(FilterDatesScreen())
                 }
             }
             bottomSheet.show(childFragmentManager, "")
@@ -31,6 +34,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
         val data = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, "")
         newsRoundedAdapter = NewsRoundedAdapter {
+            addFragment(StoriesFragment())
         }.apply { setData(data) }
 
         newsAdapter = NewsAdapter({

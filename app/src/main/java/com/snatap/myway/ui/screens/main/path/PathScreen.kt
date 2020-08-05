@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
-import com.snatap.myway.ui.screens.main.home.market.MarketFragment
+import com.snatap.myway.ui.screens.main.home.cart.CartScreen
 import kotlinx.android.synthetic.main.fragment_past_path.*
 import kotlinx.android.synthetic.main.screen_path.*
 
@@ -17,8 +17,8 @@ class PathScreen: BaseFragment(R.layout.screen_path){
         pager.adapter =
             PathsPagerAdapter(arrayListOf(1, 2, 3, 4), childFragmentManager)
 
-        chatBtn.setOnClickListener { addFragment(ChatScreen()) }
-        shopBtn.setOnClickListener { addFragment(MarketFragment()) }
+        message.setOnClickListener { addFragment(ChatScreen()) }
+        cart.setOnClickListener { addFragment(CartScreen()) }
     }
 
 }

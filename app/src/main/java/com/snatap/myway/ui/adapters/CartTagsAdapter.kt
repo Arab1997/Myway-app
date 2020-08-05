@@ -4,7 +4,7 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseAdapter
 import com.snatap.myway.utils.common.ViewHolder
 
-class MarketMenuAdapter: BaseAdapter<Any>(R.layout.item_market_menu) {
+class CartTagsAdapter: BaseAdapter<Any>(R.layout.item_cart_tags) {
     override fun bindViewHolder(holder: ViewHolder, data: Any) {
 
     }

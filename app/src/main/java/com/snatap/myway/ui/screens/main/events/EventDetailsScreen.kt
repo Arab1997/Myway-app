@@ -5,7 +5,8 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.ui.adapters.GalleryAdapter
 import com.snatap.myway.ui.adapters.SponsorsAdapter
-import com.snatap.myway.utils.extensions.inDevelopment
+import com.snatap.myway.ui.screens.main.chat.ChatScreen
+import com.snatap.myway.ui.screens.main.home.cart.CartScreen
 import kotlinx.android.synthetic.main.content_comments.*
 import kotlinx.android.synthetic.main.content_events_toolbar.*
 import kotlinx.android.synthetic.main.screen_event_detail.*
@@ -42,9 +43,9 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
 
         back.setOnClickListener { finishFragment() }
 
-        right.setOnClickListener { inDevelopment(requireContext()) }
+        right.setOnClickListener {  addFragment(CartScreen()) }
 
-        rightExtra.setOnClickListener { inDevelopment(requireContext()) }
+        rightExtra.setOnClickListener { addFragment(ChatScreen())  }
 
         participate.setOnClickListener {
             val bottomSheet = ParticipateBottomSheet().apply {

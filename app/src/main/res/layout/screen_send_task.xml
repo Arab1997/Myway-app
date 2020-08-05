@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/screenStyle">
 
-    <include android:id="@+id/toolbar" layout="@layout/content_rounded_toolbar_info"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/content_rounded_toolbar" />
 
     <EditText
-        android:layout_marginTop="12dp"
-        android:layout_below="@id/toolbar"
         style="@style/edtStyle"
         android:layout_height="120dp"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="12dp"
         android:gravity="start"
         android:hint="Введите сообщение"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no"/>
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine" />
 
     <RelativeLayout
-        android:layout_alignParentBottom="true"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/chooseFileBtn"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:padding="9dp"
-            android:src="@drawable/ic_choose_file"
             android:background="@drawable/rounded_light_blue_card"
-            android:contentDescription="@string/icon"/>
+            android:contentDescription="@string/icon"
+            android:padding="9dp"
+            android:src="@drawable/ic_choose_file" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/rounded_light_blue_card"
+            android:paddingStart="32dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="8dp"
             android:text="Отправить"
             android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:layout_alignParentEnd="true"/>
+            android:textSize="15sp" />
     </RelativeLayout>
 </RelativeLayout>

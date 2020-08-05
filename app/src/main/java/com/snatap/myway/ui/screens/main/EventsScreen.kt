@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
+import com.snatap.myway.ui.screens.main.home.cart.CartScreen
 import com.snatap.myway.utils.common.ViewHolder
-import com.snatap.myway.utils.extensions.*
+import com.snatap.myway.utils.extensions.dpToPx
+import com.snatap.myway.utils.extensions.inDevelopment
 import com.snatap.myway.utils.extensions.inflate
 import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
@@ -42,8 +45,8 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
 
     private fun initClicks() {
 
-        cart.setOnClickListener { inDevelopment(requireContext()) }
-        message.setOnClickListener { inDevelopment(requireContext()) }
+        cart.setOnClickListener { addFragment(CartScreen()) }
+        message.setOnClickListener { addFragment(ChatScreen()) }
 
         filter.setOnClickListener { inDevelopment(requireContext()) }
         tickets.setOnClickListener { inDevelopment(requireContext()) }

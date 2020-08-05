@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/content_rounded_toolbar_info" />
+        layout="@layout/content_rounded_toolbar" />
 
     <RelativeLayout style="@style/screenStyle">
 

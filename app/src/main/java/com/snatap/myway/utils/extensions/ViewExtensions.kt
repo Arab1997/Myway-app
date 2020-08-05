@@ -74,6 +74,9 @@ internal fun TextView.setTextColorRes(@ColorRes color: Int) =
 internal fun TextView.setDrawableStart(@DrawableRes img: Int) =
     setCompoundDrawablesWithIntrinsicBounds(img, 0, 0, 0)
 
+internal fun TextView.setDrawableEnd(@DrawableRes img: Int) =
+    setCompoundDrawablesWithIntrinsicBounds(0, 0, img, 0)
+
 internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
 fun dpToPx(activity: FragmentActivity, dp: Int): Int {

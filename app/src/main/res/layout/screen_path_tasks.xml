@@ -7,16 +7,19 @@
 
     <View
         style="@style/screenStyle"
-        android:background="@drawable/event_gradient"
-        android:alpha=".64"/>
+        android:alpha=".64"
+        android:background="@drawable/event_gradient" />
 
-    <include android:id="@+id/toolbar" layout="@layout/content_rounded_toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/content_rounded_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toolbar"
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_path_task"/>
+        tools:listitem="@layout/item_path_task" />
 </RelativeLayout>
