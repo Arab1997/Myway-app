@@ -4,7 +4,9 @@ import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.Token
+import com.snatap.myway.ui.screens.auth.AgreementScreen
 import com.snatap.myway.ui.screens.auth.AuthPinScreen
+import com.snatap.myway.ui.screens.auth.register.makeTextLink
 import com.snatap.myway.utils.extensions.disable
 import com.snatap.myway.utils.extensions.enableDisable
 import com.snatap.myway.utils.extensions.gone
@@ -17,6 +19,20 @@ class AuthLoginScreen : BaseFragment(R.layout.screen_registration_phone) {
     override fun initialize() {
 
         back.setOnClickListener { finishFragment() }
+
+        terms.apply {
+            text = getString(
+                R.string.terms,
+                getString(R.string.licence_agreement),
+                getString(R.string.user_agreement)
+            )
+            makeTextLink(getString(R.string.licence_agreement)) {
+                addFragment(AgreementScreen.newInstance(true))
+            }
+            makeTextLink(getString(R.string.user_agreement)) {
+                addFragment(AgreementScreen.newInstance(false))
+            }
+        }
 
         next.apply {
             disable()

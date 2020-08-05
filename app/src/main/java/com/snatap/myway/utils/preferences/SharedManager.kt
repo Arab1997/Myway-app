@@ -13,6 +13,8 @@ class SharedManager(
     private val context: Context
 ) {
 
+    val default = PreferenceHelper.defaultPrefs(context)
+
     companion object {
         const val TOKEN = "TOKEN"
         const val CODE = "CODE"
@@ -28,9 +30,9 @@ class SharedManager(
         }
 
     var code: String
-        get() = preferences[CODE, ""]
+        get() = default[CODE, ""]
         set(value) {
-            preferences[CODE] = value
+            default[CODE] = value
         }
 
     var userId: Int

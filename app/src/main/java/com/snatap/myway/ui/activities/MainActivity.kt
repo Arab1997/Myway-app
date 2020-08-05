@@ -6,8 +6,7 @@ import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.main.home.story.CreateStoryScreen
-import com.snatap.myway.ui.screens.main.path.VisualizationScreen
+import com.snatap.myway.ui.screens.auth.AuthPinScreen
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
@@ -35,7 +34,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         startFragment()
     }
 
-    private fun debug() = initialFragment(VisualizationScreen())
+    private fun debug() = initialFragment(AuthPinScreen.newInstance(false))
 
     private fun startFragment() {
         initialFragment(

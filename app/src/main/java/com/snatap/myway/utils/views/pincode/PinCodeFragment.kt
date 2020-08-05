@@ -137,6 +137,8 @@ class PinCodeFragment : Fragment(R.layout.fragment_pin_code) {
             }
 
             mCode = code
+            loge(mCode)
+            loge("shared ${sharedManager.code}")
             if (sharedManager.code == mCode) {
                 loginListener.onCodeInputSuccessful()
             } else {

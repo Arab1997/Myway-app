@@ -69,26 +69,26 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
             }
         bottomSheet.show(childFragmentManager, "")
     }
+}
 
-    private fun TextView.makeTextLink(str: String, action: (() -> Unit)) {
-        val spannableString = SpannableString(this.text)
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                action.invoke()
-            }
-
-            override fun updateDrawState(drawState: TextPaint) {
-                super.updateDrawState(drawState)
-                drawState.isUnderlineText = true
-            }
+fun TextView.makeTextLink(str: String, action: (() -> Unit)) {
+    val spannableString = SpannableString(this.text)
+    val clickableSpan = object : ClickableSpan() {
+        override fun onClick(textView: View) {
+            action.invoke()
         }
-        val index = spannableString.indexOf(str)
-        spannableString.setSpan(
-            clickableSpan, index, index + str.length,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        this.text = spannableString
-        this.movementMethod = LinkMovementMethod.getInstance()
-        this.highlightColor = Color.TRANSPARENT
+
+        override fun updateDrawState(drawState: TextPaint) {
+            super.updateDrawState(drawState)
+            drawState.isUnderlineText = true
+        }
     }
+    val index = spannableString.indexOf(str)
+    spannableString.setSpan(
+        clickableSpan, index, index + str.length,
+        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+    )
+    this.text = spannableString
+    this.movementMethod = LinkMovementMethod.getInstance()
+    this.highlightColor = Color.TRANSPARENT
 }

@@ -32,9 +32,22 @@ class SplashScreen : BaseFragment(R.layout.screen_splash) {
         val src = "android.resource://" + requireContext().packageName + "/" + R.raw.video
         val video = Uri.parse(src)
         videoView.setVideoURI(video)
-        videoView.setOnPreparedListener { it.isLooping = true }
+        videoView.setOnPreparedListener {
+            it.isLooping = true
+
+            val videoRatio = (it.videoWidth / it.videoHeight).toFloat()
+            val screenRatio = videoView.width / videoView.height.toFloat()
+            val scaleX = videoRatio / screenRatio
+            if (scaleX >= 1f) {
+                videoView.scaleX = scaleX
+            } else {
+                videoView.scaleY = 1f / scaleX
+            }
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
+
+
     }
 
     private fun playPauseVideo(play: Boolean, immediate: Boolean = false) {
