@@ -10,10 +10,6 @@ import kotlinx.android.synthetic.main.item_gallery.view.*
 class GalleryAdapter(private val listener: (Any) -> Unit) :
     BaseAdapter<Any>(R.layout.item_gallery) {
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-    }
-
     override fun bindViewHolder(holder: ViewHolder, data: Any) {
         holder.itemView.apply {
             data.apply {

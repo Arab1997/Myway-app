@@ -6,39 +6,58 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.adapters.MyTaskAdapter
+import com.snatap.myway.ui.adapters.TaskAdapter
 import kotlinx.android.synthetic.main.content_simple_toolbar.*
-import kotlinx.android.synthetic.main.screen_path.pager
+import kotlinx.android.synthetic.main.fragement_task_detail.*
+import kotlinx.android.synthetic.main.fragment_task.*
 import kotlinx.android.synthetic.main.screen_visualization.*
-import kotlinx.android.synthetic.main.screen_visualization.view.tabLayout
 
-class VisualizationScreen: BaseFragment(R.layout.screen_visualization){
+class VisualizationScreen : BaseFragment(R.layout.screen_visualization) {
 
     override fun initialize() {
         title.text = "Визуализация"
 
-        pager.adapter =
-            VisualizationPagerAdapter(arrayListOf(1, 2), childFragmentManager)
+        pager.adapter = VisualizationPagerAdapter(
+            arrayListOf("Описание урока", "Задание"),
+            childFragmentManager
+        )
         tabLayout.setupWithViewPager(pager)
     }
 
 }
 
-class TaskScreen: BaseFragment(R.layout.screen_task){
+class TaskDetailFragment : BaseFragment(R.layout.fragement_task_detail) {
     override fun initialize() {
+
+        myTasks.setOnClickListener {
+            addFragment(MyTasksScreen())
+        }
+
+        recycler.adapter = MyTaskAdapter().apply {
+            setData(arrayListOf(1, 2, 3))
+        }
+    }
+}
+
+class TasksFragment : BaseFragment(R.layout.fragment_task) {
+    override fun initialize() {
+
+        recyclerTask.adapter = TaskAdapter()
+            .apply { setData(arrayListOf(1, 2, 3, 4, 5)) }
     }
 
 }
 
-class LessonDetailsScreen: BaseFragment(R.layout.screen_details_lesson){
-    override fun initialize() {
-    }
-
-}
-
-class VisualizationPagerAdapter(private val data: ArrayList<Any>, fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+class VisualizationPagerAdapter(private val data: ArrayList<String>, fm: FragmentManager) :
+    FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getItem(position: Int): Fragment {
-        return if (position == 0) LessonDetailsScreen()
-        else TaskScreen()
+        return if (position == 0) TaskDetailFragment()
+        else TasksFragment()
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return data[position]
     }
 
     override fun getCount(): Int = data.size

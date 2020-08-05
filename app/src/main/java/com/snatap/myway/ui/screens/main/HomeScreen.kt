@@ -7,9 +7,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.screens.main.home.live.BroadcastsFragment
 import com.snatap.myway.ui.screens.main.home.media.MediaContentFragment
 import com.snatap.myway.ui.screens.main.home.news.NewsFragment
-import com.snatap.myway.ui.screens.main.home.live.BroadcastsFragment
 import com.snatap.myway.ui.screens.main.home.podcast.PodcastsFragment
 import kotlinx.android.synthetic.main.screen_home.*
 
@@ -20,12 +20,8 @@ class HomeScreen : BaseFragment(R.layout.screen_home) {
     override fun initialize() {
 
         data = arrayListOf(
-            HomeData(R.drawable.ic_color_wand, "Контент дня",
-                MediaContentFragment()
-            ),
-            HomeData(R.drawable.ic_today, "Новости",
-                NewsFragment()
-            ),
+            HomeData(R.drawable.ic_color_wand, "Контент дня", MediaContentFragment()),
+            HomeData(R.drawable.ic_today, "Новости", NewsFragment()),
             HomeData(R.drawable.ic_videocam, "Прямые эфиры", BroadcastsFragment()),
             HomeData(R.drawable.ic_microphone, "Подкасты", PodcastsFragment())
         )

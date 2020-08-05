@@ -7,10 +7,11 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        style="@style/TabCustomLayout"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/white"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="4dp"
         app:tabRippleColor="@color/black"
         app:tabSelectedTextColor="@color/red"
         app:tabTextColor="@color/black">

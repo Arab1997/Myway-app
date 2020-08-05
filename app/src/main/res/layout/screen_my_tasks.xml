@@ -8,21 +8,19 @@
         android:id="@+id/toolbar"
         layout="@layout/content_rounded_toolbar" />
 
-    <RelativeLayout style="@style/screenStyle">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        style="@style/screenStyle"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_my_task" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerReports"
-            style="@style/screenStyle"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_report" />
+    <Button
+        android:id="@+id/sendTaskBtn"
+        style="@style/buttonStyle"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_violet_blue_gradient_card"
+        android:text="Отправить задание" />
 
-        <Button
-            android:id="@+id/sendTaskBtn"
-            style="@style/buttonStyle"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/rounded_violet_blue_gradient_card"
-            android:text="Отправить задание" />
-
-    </RelativeLayout>
 </LinearLayout>

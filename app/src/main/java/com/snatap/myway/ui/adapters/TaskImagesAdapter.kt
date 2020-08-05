@@ -4,11 +4,10 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseAdapter
 import com.snatap.myway.utils.common.ViewHolder
 
-class PathTasksScreenAdapter(private var listener: (Any) -> Unit) :
-    BaseAdapter<Any>(R.layout.item_path_task) {
+class TaskImagesAdapter : BaseAdapter<Any>(R.layout.item_task_images) {
+
     override fun bindViewHolder(holder: ViewHolder, data: Any) {
         holder.itemView.apply {
-            setOnClickListener { listener.invoke(data) }
         }
     }
 }
