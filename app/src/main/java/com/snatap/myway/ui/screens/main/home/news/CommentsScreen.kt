@@ -5,6 +5,7 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.utils.common.TextWatcherInterface
+import com.snatap.myway.utils.extensions.loadImage
 import com.snatap.myway.utils.extensions.showGone
 import kotlinx.android.synthetic.main.content_add_comments.*
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
@@ -43,7 +44,7 @@ class CommentsScreen : BaseFragment(R.layout.screen_comments) {
             viewModel.addComment(newsId, addComment.text.toString())
             addComment.text.clear()
         }
-        //            userImg.loadImage() // todo user img
+        userImg.loadImage(sharedManager.user.avatar)
 
     }
 

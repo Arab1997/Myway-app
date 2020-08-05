@@ -4,9 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.network.ErrorResp
-import com.snatap.myway.network.models.Chats
-import com.snatap.myway.network.models.Comment
-import com.snatap.myway.network.models.News
+import com.snatap.myway.network.models.*
 import com.snatap.myway.utils.preferences.PreferenceHelper
 import com.snatap.myway.utils.preferences.SharedManager
 import org.koin.android.viewmodel.dsl.viewModel
@@ -26,6 +24,9 @@ val viewModelModule = module {
     single(named("news")) { MutableLiveData<ArrayList<News>>() }
     single(named("chats")) { MutableLiveData<ArrayList<Chats>>() }
     single(named("comments")) { MutableLiveData<ArrayList<Comment>>() }
+    single(named("user")) { MutableLiveData<User>() }
+    single(named("notification")) { MutableLiveData<ArrayList<Notification>>() }
+    single(named("achievement")) { MutableLiveData<ArrayList<UserAchievement>>() }
 }
 
 val networkModule = module {

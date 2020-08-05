@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.home.history
+package com.snatap.myway.ui.screens.main.home.story
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,21 +6,17 @@ import android.os.CountDownTimer
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.network.models.StoryModel
+import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_story.*
 import kotlinx.android.synthetic.main.screen_path.pager
-import kotlin.collections.ArrayList
 
-class StoryFragment : BaseFragment(R.layout.fragment_story) {
+class StoriesFragment : BaseFragment(R.layout.fragment_story) {
 
     private var currentStoryIndex: Int = 0
     private var progressBars: ArrayList<ProgressBar> = arrayListOf()
@@ -47,7 +43,6 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
         loadImage()
     }
 
-    //
     @SuppressLint("ClickableViewAccessibility")
     private fun loadImage() {
         timer = getTimer()
@@ -156,8 +151,7 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
             progressBars.add(view)
             progress_counter.addView(view)
         }
-//        invalidate()
-        progress_counter.visibility = View.VISIBLE
+        progress_counter.visible()
         this.data = stories
         this.listener = listener
         if (data.isNotEmpty()) {
@@ -181,8 +175,6 @@ class StoryFragment : BaseFragment(R.layout.fragment_story) {
 //                }
                 if (currentStoryIndex > 0 ) {
                     timer?.cancel()
-//                    timer = getTimer(0)
-//                    for (i in 0..currentStoryIndex)
                     this.progressBars[currentStoryIndex].progress = 0
                     currentStoryIndex--;
                     this.progressBars[currentStoryIndex].progress = 0

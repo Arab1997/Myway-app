@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.home.history
+package com.snatap.myway.ui.screens.main.home.story
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
@@ -31,7 +31,7 @@ class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
                 timer?.start()
             }
             if (event?.action == MotionEvent.ACTION_UP) {
-                addFragment(StoryFragment())
+                addFragment(StoriesFragment())
                 timer?.cancel()
             }
             true

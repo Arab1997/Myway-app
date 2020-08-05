@@ -3,6 +3,7 @@ package com.snatap.myway.utils.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.snatap.myway.network.models.User
 import com.snatap.myway.utils.preferences.PreferenceHelper.get
 import com.snatap.myway.utils.preferences.PreferenceHelper.set
 
@@ -38,15 +39,14 @@ class SharedManager(
             preferences[USER_ID] = value
         }
 
-/*
-    var user: User?
+    var user: User
         get() {
             val json = preferences.getString(USER, "")
             return gson.fromJson(json, User::class.java)
         }
         set(value) {
             preferences[USER] = gson.toJson(value)
-        }*/
+        }
 
     fun deleteAll() {
         preferences.edit().clear().apply()

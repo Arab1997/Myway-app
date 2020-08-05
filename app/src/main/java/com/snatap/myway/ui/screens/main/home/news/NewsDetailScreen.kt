@@ -99,7 +99,7 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
             else commentAdapter.setData(ArrayList(it.comments))
 
             comments = ArrayList(it.comments)
-//            userImg.loadImage() // todo user img
+            userImg.loadImage(sharedManager.user.avatar)
         }
     }
 
