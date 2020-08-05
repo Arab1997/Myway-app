@@ -32,6 +32,13 @@ class ChatScreen : BaseFragment(R.layout.screen_recycler) {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
         }
         recycler.adapter = adapter
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
     private fun delete(data: Any) {

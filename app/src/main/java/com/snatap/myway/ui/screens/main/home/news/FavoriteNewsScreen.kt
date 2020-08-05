@@ -24,6 +24,13 @@ class FavoriteNewsScreen : BaseFragment(R.layout.screen_recycler) {
         })
 
         recycler.adapter = newsAdapter
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
     override fun observe() {

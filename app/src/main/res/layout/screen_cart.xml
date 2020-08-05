@@ -4,22 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/backStyle">
 
-    <include layout="@layout/content_rounded_toolbar"/>
+    <include layout="@layout/content_rounded_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMenu"
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_cart_tags"/>
+    <com.snatap.myway.utils.views.MySwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        style="@style/backStyle">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerItems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_cart"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:spanCount="2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_cart_tags" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/item_cart" />
+        </LinearLayout>
+    </com.snatap.myway.utils.views.MySwipeRefreshLayout>
 </LinearLayout>

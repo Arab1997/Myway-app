@@ -10,10 +10,18 @@ class MembersScreen : BaseFragment(R.layout.screen_recycler) {
 
     override fun initialize() {
         back.setOnClickListener { finishFragment() }
+
         title.text = "Список участников"
 
         recycler.adapter = MembersAdapter().apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
+        }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
         }
     }
 

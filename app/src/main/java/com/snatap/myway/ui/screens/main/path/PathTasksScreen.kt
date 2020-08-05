@@ -17,11 +17,17 @@ class PathTasksScreen : BaseFragment(R.layout.screen_path_tasks) {
 
         title.setDrawableEnd(R.drawable.ic_arrow_down_white_24)
 
-
         recycler.adapter = PathTasksScreenAdapter{
             addFragment(VisualizationScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
+        }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
         }
     }
 }

@@ -15,6 +15,13 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
         title.text = "Тэги"
 
         recycler.adapter = FilterTagsAdapter {}.apply { setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)) }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
 }

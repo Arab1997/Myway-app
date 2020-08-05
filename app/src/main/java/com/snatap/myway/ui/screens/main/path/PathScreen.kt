@@ -24,16 +24,16 @@ class PathScreen: BaseFragment(R.layout.screen_path){
 }
 
 class PathFragment: BaseFragment(R.layout.fragment_path){
+
     override fun initialize() {
     }
-
 }
 
 class PastPathFragment: BaseFragment(R.layout.fragment_past_path){
+
     override fun initialize() {
         participate.setOnClickListener { addFragment(PathTasksScreen()) }
     }
-
 }
 
 class PathsPagerAdapter(private val data: ArrayList<Any>, fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
@@ -47,9 +47,6 @@ class PathsPagerAdapter(private val data: ArrayList<Any>, fm: FragmentManager): 
     override fun saveState(): Parcelable? = null
 
     override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
-        try {
-            super.restoreState(state, loader)
-        } catch (e: Exception) {
-        }
+        try { super.restoreState(state, loader) } catch (e: Exception) { }
     }
 }

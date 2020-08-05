@@ -1,5 +1,6 @@
 package com.snatap.myway.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.MutableLiveData
@@ -17,6 +18,7 @@ import com.snatap.myway.utils.extensions.logi
 import com.snatap.myway.utils.extensions.toast
 import com.snatap.myway.utils.network.Errors
 import com.snatap.myway.utils.preferences.SharedManager
+import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -41,18 +43,31 @@ open class BaseViewModel(
     val data: MutableLiveData<Any> by inject()
     val shared: MutableLiveData<Any> by inject(named("sharedLive"))
     val error: MutableLiveData<ErrorResp> by inject(named("errorLive"))
+
+    val user: MutableLiveData<User> by inject(named("user"))
     val news: MutableLiveData<ArrayList<News>> by inject(named("news"))
     val chats: MutableLiveData<ArrayList<Chats>> by inject(named("chats"))
     val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
-    val user: MutableLiveData<User> by inject(named("user"))
-    val notification: MutableLiveData<ArrayList<Notification>> by inject(named("notification"))
-    val achievement: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievement"))
+    val notifications: MutableLiveData<ArrayList<Notification>> by inject(named("notifications"))
+    val achievements: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievements"))
 
     private val api = RetrofitClient
-        .getRetrofit(Constants.BASE_URL, getToken(), context, gson)
+        .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
         .create(ApiInterface::class.java)
 
     private val compositeDisposable = CompositeDisposable()
+
+    @SuppressLint("CheckResult")
+    fun newThread(action: () -> Unit) {
+        Observable.fromCallable { action() }
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+            }, { e ->
+                e.printStackTrace()
+                parseError(e)
+            })
+    }
 
     private fun parseError(e: Throwable?) {
         var message = context.resources.getString(R.string.smth_wrong)
@@ -107,13 +122,12 @@ open class BaseViewModel(
         }
     }
 
-    private fun getToken() = "Bearer ${sharedManager.token}"
-
     fun login(phone: String, password: String) = compositeDisposable.add(
         api.login(LoginRequest(phone, password)).observeAndSubscribe()
             .subscribe({
                 sharedManager.token = it.access_token
                 data.value = it
+                fetchData()
             }, {
                 parseError(it)
             })
@@ -128,7 +142,7 @@ open class BaseViewModel(
             })
     )
 
-    private fun getNews() = compositeDisposable.add(
+    fun getNews() = compositeDisposable.add(
         api.getNews().observeAndSubscribe()
             .subscribe({
                 if (it.success) news.postValue(it.news_items)
@@ -236,7 +250,7 @@ open class BaseViewModel(
     fun getUserNotifications() = compositeDisposable.add(
         api.getUserNotifications().observeAndSubscribe()
             .subscribe({
-                if (it.success) notification.postValue(ArrayList(it.user_notifications))
+                if (it.success) notifications.postValue(ArrayList(it.user_notifications))
             }, {
                 parseError(it)
             })
@@ -245,7 +259,7 @@ open class BaseViewModel(
     fun getUserAchievements() = compositeDisposable.add(
         api.getUserAchievements().observeAndSubscribe()
             .subscribe({
-                if (it.success) achievement.postValue(ArrayList(it.user_achievements))
+                if (it.success) achievements.postValue(ArrayList(it.user_achievements))
             }, {
                 parseError(it)
             })

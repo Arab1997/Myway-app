@@ -25,8 +25,8 @@ val viewModelModule = module {
     single(named("chats")) { MutableLiveData<ArrayList<Chats>>() }
     single(named("comments")) { MutableLiveData<ArrayList<Comment>>() }
     single(named("user")) { MutableLiveData<User>() }
-    single(named("notification")) { MutableLiveData<ArrayList<Notification>>() }
-    single(named("achievement")) { MutableLiveData<ArrayList<UserAchievement>>() }
+    single(named("notifications")) { MutableLiveData<ArrayList<Notification>>() }
+    single(named("achievements")) { MutableLiveData<ArrayList<UserAchievement>>() }
 }
 
 val networkModule = module {

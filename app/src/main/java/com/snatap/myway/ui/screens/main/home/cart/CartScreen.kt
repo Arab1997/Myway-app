@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.screen_cart.*
 class CartScreen : BaseFragment(R.layout.screen_cart) {
 
     override fun initialize() {
+
         initViews()
 
         setClicks()
@@ -33,6 +34,12 @@ class CartScreen : BaseFragment(R.layout.screen_cart) {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13))
         }
 
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
 }

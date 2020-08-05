@@ -8,14 +8,12 @@ import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_my_tasks.*
 
 class MyTasksScreen : BaseFragment(R.layout.screen_my_tasks) {
+
     override fun initialize() {
+
         setClicks()
 
         initViews()
-
-        recycler.adapter = MyTaskAdapter().apply {
-            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
-        }
     }
 
     private fun initViews() {
@@ -25,6 +23,16 @@ class MyTasksScreen : BaseFragment(R.layout.screen_my_tasks) {
 
         right.setImageResource(R.drawable.ic_close)
 
+        recycler.adapter = MyTaskAdapter().apply {
+            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
+        }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
     private fun setClicks() {

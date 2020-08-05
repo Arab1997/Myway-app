@@ -8,9 +8,10 @@ import com.snatap.myway.ui.adapters.AnnouncementAdapter
 import com.snatap.myway.ui.adapters.RepeatAdapter
 import kotlinx.android.synthetic.main.fragment_broadcasts.*
 
-class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
+class BroadcastsFragment : BaseFragment(R.layout.fragment_broadcasts) {
 
     override fun initialize() {
+
         initViews()
 
     }
@@ -33,7 +34,7 @@ class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
             setData(arrayListOf(1, 2))
         }
 
-        recyclerRepeats.adapter = RepeatAdapter{
+        recyclerRepeats.adapter = RepeatAdapter {
             addFragment(RepeatBroadcastScreen())
         }.apply {
             setData(arrayListOf(1, 2))
@@ -48,6 +49,14 @@ class BroadcastsFragment: BaseFragment(R.layout.fragment_broadcasts){
         }
 
         currentLiveView.setOnClickListener { addFragment(CurrentLiveScreen()) }
+
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
 }

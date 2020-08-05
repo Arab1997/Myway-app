@@ -46,6 +46,12 @@ class CommentsScreen : BaseFragment(R.layout.screen_comments) {
         }
         userImg.loadImage(sharedManager.user.avatar)
 
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
     override fun observe() {

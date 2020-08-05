@@ -13,8 +13,12 @@ val userDF = SimpleDateFormat("HH:mm, dd MMM", Locale("ru"))
 @SuppressLint("SimpleDateFormat")
 val userDF2 = SimpleDateFormat("dd MM yyyy", Locale("ru"))
 
+@SuppressLint("SimpleDateFormat")
+val userDF3 = SimpleDateFormat("EE, HH:mm", Locale("ru"))
+
 fun String.formatTime(): String = userDF.format(serverDF.parse(this)!!)
 fun String.formatTime2(): String = userDF2.format(serverDF.parse(this)!!)
+fun String.formatTime3(): String = userDF3.format(serverDF.parse(this)!!)
 
 @SuppressLint("SimpleDateFormat")
 fun utcToLocal(utcTime: String): Long {

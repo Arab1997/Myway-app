@@ -8,8 +8,10 @@ import java.util.*
 class FilterDatesScreen : BaseFragment(R.layout.screen_filter_dates) {
 
     override fun initialize() {
+
         val startDate = Calendar.getInstance(TimeZone.getDefault(), Locale("ru"))
         val endDate = Calendar.getInstance(TimeZone.getDefault(), Locale("ru"))
+
         startDate.add(Calendar.MONTH, -2)
 
         calendar_view.apply {

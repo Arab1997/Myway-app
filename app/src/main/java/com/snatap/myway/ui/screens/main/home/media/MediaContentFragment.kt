@@ -10,6 +10,13 @@ class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
     override fun initialize() {
         recycler.adapter = MediaContentAdapter()
             .apply { setData(arrayListOf(1, 2, 3)) }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 
 }

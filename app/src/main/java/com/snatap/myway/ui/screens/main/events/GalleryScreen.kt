@@ -24,5 +24,12 @@ class GalleryScreen : BaseFragment(R.layout.screen_recycler) {
 
         recycler.adapter = adapter
         recycler.layoutManager = GridLayoutManager(requireContext(), 3)
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
 }

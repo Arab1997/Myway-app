@@ -46,10 +46,15 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
         recycler.adapter = newsRoundedAdapter
         recyclerNews.adapter = newsAdapter
+
+        swipeLayout.setOnRefreshListener {
+            viewModel.getNews()
+        }
     }
 
     override fun observe() {
         viewModel.news.observe(viewLifecycleOwner, Observer {
+            swipeLayout?.isRefreshing = false
             val count = ArrayList(it.filter { it.is_bookmarked }).size
             favCount.text = if (count != 0) count.toString() else ""
             newsAdapter.setData(it)

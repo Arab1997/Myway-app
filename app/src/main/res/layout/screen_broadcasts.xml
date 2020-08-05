@@ -6,25 +6,36 @@
 
     <include layout="@layout/content_rounded_toolbar_info" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerFilters"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_broadcast_filter" />
+    <com.snatap.myway.utils.views.MySwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        style="@style/screenStyle">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBroadcasts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        android:paddingBottom="20dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_announcement" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerFilters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_broadcast_filter" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerBroadcasts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_announcement" />
+        </LinearLayout>
+    </com.snatap.myway.utils.views.MySwipeRefreshLayout>
 </LinearLayout>

@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/screenStyle">
+    style="@style/backStyle">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/content_rounded_toolbar" />
+    <include layout="@layout/content_rounded_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        style="@style/screenStyle"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_my_task" />
+    <com.snatap.myway.utils.views.MySwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/sendTaskBtn"
-        style="@style/buttonStyle"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/rounded_violet_blue_gradient_card"
-        android:text="Отправить задание" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="10sp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <Button
+                android:id="@+id/sendTaskBtn"
+                style="@style/buttonStyle"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_violet_blue_gradient_card"
+                android:text="Отправить задание" />
+
+        </LinearLayout>
+    </com.snatap.myway.utils.views.MySwipeRefreshLayout>
 </LinearLayout>

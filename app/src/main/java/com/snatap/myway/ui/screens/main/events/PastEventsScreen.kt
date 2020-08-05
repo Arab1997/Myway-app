@@ -7,9 +7,9 @@ import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
 import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.utils.extensions.inDevelopment
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
-import kotlinx.android.synthetic.main.fragment_past_events.*
+import kotlinx.android.synthetic.main.screen_recycler.*
 
-class PastEventsScreen : BaseFragment(R.layout.screen_past_events) {
+class PastEventsScreen : BaseFragment(R.layout.screen_recycler) {
 
     override fun initialize() {
 
@@ -33,7 +33,12 @@ class PastEventsScreen : BaseFragment(R.layout.screen_past_events) {
         recycler.adapter = PastEventsAdapter {
             inDevelopment(requireContext())
         }.apply { setData(arrayListOf(1, 2, 3, 4, 5, 6)) }
+
+        swipeLayout.setOnRefreshListener {
+            removePreviousCallback({
+                swipeLayout?.isRefreshing = false
+            })
+            // todo
+        }
     }
-
-
 }

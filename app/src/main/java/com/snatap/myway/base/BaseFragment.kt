@@ -1,18 +1,24 @@
 package com.snatap.myway.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.KeyEvent
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.snatap.myway.R
 import com.snatap.myway.ui.activities.MainActivity
 import com.snatap.myway.utils.preferences.SharedManager
-import com.snatap.myway.R
 
 abstract class BaseFragment(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
 
@@ -112,6 +118,28 @@ abstract class BaseFragment(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
             }
         }
     }
+
+    fun windowAdjustPan() =
+        mainActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+    fun windowAdjustResize() =
+        mainActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
+    @SuppressLint("CheckResult")
+    fun newThread(action: () -> Unit) {
+        viewModel.newThread { action() }
+    }
+
+    private val baseHandler = Handler()
+    private var baseRunnable = Runnable {
+    }
+
+    fun removePreviousCallback(action: () -> Unit, millis: Long = 1000) {
+        baseHandler.removeCallbacks(baseRunnable)
+        baseRunnable = Runnable { action() }
+        baseHandler.postDelayed(baseRunnable, millis)
+    }
+
 }
 
 fun FragmentActivity.initialFragment(fragment: BaseFragment, showAnim: Boolean = false) {
