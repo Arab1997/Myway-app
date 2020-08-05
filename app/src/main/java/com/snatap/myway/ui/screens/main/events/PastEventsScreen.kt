@@ -3,6 +3,8 @@ package com.snatap.myway.ui.screens.main.events
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.PastEventsAdapter
+import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
+import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.utils.extensions.inDevelopment
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
@@ -20,7 +22,8 @@ class PastEventsScreen : BaseFragment(R.layout.screen_past_events) {
             setOnClickListener {
                 val bottomSheet = FilterBottomSheet.newInstance(false).apply {
                     setListener {
-                        inDevelopment(requireContext())
+                        if (it == FilterType.TAGS) addFragment(FilterTagsScreen())
+                        if (it == FilterType.DATES) addFragment(FilterDatesScreen())
                     }
                 }
                 bottomSheet.show(childFragmentManager, "")

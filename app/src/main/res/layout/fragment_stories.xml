@@ -3,13 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"/>
-
 
     <LinearLayout
         android:id="@+id/progress_counter"
@@ -40,21 +38,6 @@
         android:alpha="0"
         android:layout_height="match_parent"/>
 
-<!--    <LinearLayout-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="4dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <include layout="@layout/item_history_menu"/>-->
-<!--        <include layout="@layout/item_history_menu"/>-->
-<!--        <include layout="@layout/item_history_menu"/>-->
-
-<!--    </LinearLayout>-->
-
-
     <LinearLayout
         android:id="@+id/bottomLayer"
         android:paddingStart="24dp"
@@ -70,7 +53,7 @@
             android:layout_height="48dp"
             android:background="@drawable/rounded_white_card_transparent"
             android:padding="15dp"
-            android:src="@drawable/ic_bordered_heart"
+            android:src="@drawable/ic_check_circle"
             android:contentDescription="@string/icon"/>
 
         <ImageView

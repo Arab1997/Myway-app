@@ -9,6 +9,8 @@ class NewsRoundedAdapter(private val listener: (Any) -> Unit) :
     BaseAdapter<Any>(R.layout.item_news_rounded) {
 
     override fun bindViewHolder(holder: ViewHolder, data: Any) {
-
+        holder.itemView.apply {
+            setOnClickListener { listener.invoke(data) }
+        }
     }
 }

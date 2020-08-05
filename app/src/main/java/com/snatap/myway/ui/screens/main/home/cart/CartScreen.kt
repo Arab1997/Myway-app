@@ -7,7 +7,7 @@ import com.snatap.myway.ui.adapters.CartTagsAdapter
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_cart.*
 
-class CartScreen : BaseFragment(R.layout.screen_cart){
+class CartScreen : BaseFragment(R.layout.screen_cart) {
 
     override fun initialize() {
         initViews()
@@ -19,17 +19,18 @@ class CartScreen : BaseFragment(R.layout.screen_cart){
         right.setOnClickListener { addFragment(AddCartScreen()) }
     }
 
-    private fun initViews(){
+    private fun initViews() {
+
         title.text = "Маркет MyWay"
         right.setImageResource(R.drawable.ic_cart)
 
         recyclerMenu.adapter = CartTagsAdapter().apply {
-            setData(arrayListOf(1,2,3,4,5,6))
+            setData(arrayListOf(1, 2, 3, 4, 5, 6))
         }
-        recyclerItems.adapter = CartAdapter{
+        recyclerItems.adapter = CartAdapter {
             addFragment(ProductDetailsScreen())
         }.apply {
-            setData(arrayListOf(1,2,3,4,5,6,7,8,9,10,11,12,13))
+            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13))
         }
 
     }

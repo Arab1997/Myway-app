@@ -13,10 +13,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.utils.extensions.visible
-import kotlinx.android.synthetic.main.fragment_story.*
+import kotlinx.android.synthetic.main.fragment_stories.*
 import kotlinx.android.synthetic.main.screen_path.pager
 
-class StoriesFragment : BaseFragment(R.layout.fragment_story) {
+class StoriesFragment : BaseFragment(R.layout.fragment_stories) {
 
     private var currentStoryIndex: Int = 0
     private var progressBars: ArrayList<ProgressBar> = arrayListOf()
@@ -33,20 +33,18 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
         pager.adapter =
             HistoryPagerAdapter(data, childFragmentManager)
 
-
-
         load(data)
     }
 
     private fun next(pos: Int) {
-        pager.setCurrentItem(pos, true)
+        pager?.setCurrentItem(pos, true)
         loadImage()
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun loadImage() {
         timer = getTimer()
-        pager.setOnTouchListener { _, event ->
+        pager?.setOnTouchListener { _, event ->
             if (event?.action == MotionEvent.ACTION_DOWN) {
                 timer?.cancel()
             }
@@ -56,13 +54,13 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
             }
             true
         }
-        rightLayer.setOnLongClickListener { it ->
+        rightLayer?.setOnLongClickListener {
             isLongClickNext = true
             timer?.cancel()
             hideViews(true)
             false
         }
-        rightLayer.setOnTouchListener { v, event ->
+        rightLayer?.setOnTouchListener { v, event ->
             if (event?.action == MotionEvent.ACTION_UP) {
                 if (isLongClickNext) {
                     timer = getTimer(timeRemaining)
@@ -74,7 +72,7 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
             false
         }
 
-        leftLayer.setOnTouchListener { v, event ->
+        leftLayer?.setOnTouchListener { v, event ->
             if (event?.action == MotionEvent.ACTION_UP) {
                 if (isLongClickLeft) {
                     timer = getTimer(timeRemaining)
@@ -85,7 +83,7 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
             }
             false
         }
-        leftLayer.setOnLongClickListener { it ->
+        leftLayer?.setOnLongClickListener {
             isLongClickLeft = true
             timer?.cancel()
             hideViews()
@@ -96,22 +94,22 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
         timer?.start()
     }
 
-    private fun showViews(isRight: Boolean = false){
+    private fun showViews(isRight: Boolean = false) {
         bottomLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
         progress_counter.animate().alphaBy(0f).alpha(1f).duration = 1000
 
-        if (isRight){
+        if (isRight) {
             rightLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
         } else {
             leftLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
         }
     }
 
-    private fun hideViews(isRight: Boolean = false){
+    private fun hideViews(isRight: Boolean = false) {
         bottomLayer.animate().alphaBy(1f).alpha(0f).duration = 1000
         progress_counter.animate().alphaBy(1f).alpha(0f).duration = 1000
 
-        if (isRight){
+        if (isRight) {
             rightLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
         } else {
             leftLayer.animate().alphaBy(0f).alpha(1f).duration = 1000
@@ -119,7 +117,7 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
     }
 
     private fun getTimer(time: Long = 0) = object :
-        CountDownTimer(if (time > 0) time else 4.times(1000.toLong()) ?: 0, 50) {
+        CountDownTimer(if (time > 0) time else 4.times(1000.toLong()), 50) {
         override fun onFinish() {
             if (currentStoryIndex < data.size - 1) {
                 listener?.onFinished(currentStoryIndex)
@@ -139,7 +137,7 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
         }
     }
 
-    fun load(
+    private fun load(
         stories: ArrayList<Any> = arrayListOf(),
         listener: SnappyStoryListener? = null
     ) {
@@ -166,14 +164,7 @@ class StoriesFragment : BaseFragment(R.layout.fragment_story) {
                 }
             }
             leftLayer.setOnClickListener {
-//                if (currentStoryIndex == 0) {
-//                    timer?.cancel()
-//                    timer = getTimer(0)
-//                    this.progressBars[0].progress = 0
-////                    timer?.start()
-////                    return@setOnClickListener
-//                }
-                if (currentStoryIndex > 0 ) {
+                if (currentStoryIndex > 0) {
                     timer?.cancel()
                     this.progressBars[currentStoryIndex].progress = 0
                     currentStoryIndex--;
