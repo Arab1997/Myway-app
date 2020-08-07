@@ -201,7 +201,7 @@
                 android:id="@+id/resizeIcon"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@drawable/ic_resize"
+                android:src="@drawable/ic_resize_off"
                 android:contentDescription="@string/icon"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>

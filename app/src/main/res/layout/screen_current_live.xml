@@ -6,178 +6,153 @@
 
 
     <RelativeLayout
-        android:id="@+id/videoLayer"
         android:layout_width="match_parent"
-        android:layout_height="373dp">
-        <View
-            style="@style/screenStyle"
-            android:background="@drawable/splash"/>
-
-        <ImageView
-            style="@style/screenStyle"
-            android:background="@drawable/rect_black_to_invisible"
-            android:contentDescription="@string/layer"/>
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageAdmin"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@color/white"/>
-
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/imageAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Анастасия Ковальт"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-
-        <Button
-            android:layout_toStartOf="@id/close"
-            style="@style/buttonStyle"
-            android:layout_width="62dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="20dp"
-            android:layout_centerVertical="true"
-            android:text="LIVE"
-            android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/close"
-            android:layout_centerVertical="true"
-            android:tint="@color/white"
-            android:layout_alignParentEnd="true"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_close"/>
-
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:layout_below="@id/videoLayer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:paddingStart="16dp"
-            android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layerComments"
+        tools:ignore="InefficientWeight,Suspicious0dp">
+        <RelativeLayout
+            android:id="@+id/videoLayer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#26F32A1F">
+            android:layout_height="wrap_content">
+            <View
+                style="@style/screenStyle"
+                android:background="@drawable/splash"/>
+
+            <ImageView
+                style="@style/screenStyle"
+                android:background="@drawable/rect_black_to_invisible"
+                android:contentDescription="@string/layer"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/video"/>
+                android:id="@+id/imageAdmin"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@color/white"/>
 
-            <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/imageAdmin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Анастасия Ковальт"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Александр Константинов"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/inter_bold"
-                    android:textColor="@color/black"/>
-                <TextView
-                    android:layout_marginTop="7dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Хэй, привет! Ну что, начнем? сразу прикрепляю ссылку и материал на тест ) Link/test.com"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"/>
+            <Button
+                android:layout_toStartOf="@id/close"
+                style="@style/buttonStyle"
+                android:layout_width="62dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
+                android:text="LIVE"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp"
-                    android:text="Техники.pdf"
-                    android:gravity="center_vertical"
-                    android:drawablePadding="5dp"
-                    android:textStyle="italic"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    android:drawableStart="@drawable/ic_mark"
-                    android:drawableTint="@color/red"
-                    android:background="#4DFFFFFF"/>
+            <ImageView
+                android:id="@+id/close"
+                android:layout_centerVertical="true"
+                android:tint="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_close"/>
 
-            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/layerCommentsOff"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:paddingBottom="80dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@id/recyclerComments"
+            android:id="@+id/recyclerCommentsOff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_live_comment"
+            android:fadingEdgeLength="200dp"
+            android:requiresFadingEdge="vertical"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/layerComments"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:paddingBottom="80dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerComments"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_broadcast_comment"/>
+            tools:listitem="@layout/item_live_comment"/>
 
-        <LinearLayout
-            android:id="@+id/videoControllerLayer"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_edt_card"
-                android:hint="Оставьте комментарий"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"/>
-
-            <ImageView
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:src="@drawable/ic_resize"
-                android:tint="@color/black"
-                android:background="@drawable/rounded_edt_card"
-                android:contentDescription="@string/icon"/>
-
-            <ImageView
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:background="@drawable/rounded_edt_card"
-                android:tint="@color/black"
-                android:src="@drawable/ic_bordered_heart"
-                android:contentDescription="@string/icon"/>
-        </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/videoControllerLayer"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/sendCommentEdt"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_black_transparent_card"
+            android:hint="Оставьте комментарий"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"/>
+
+        <ImageView
+            android:id="@+id/resizeBtn"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_resize_off"
+            android:tint="@color/white"
+            android:background="@drawable/rounded_black_transparent_card"
+            android:contentDescription="@string/icon"/>
+
+        <ImageView
+            android:id="@+id/heartBtn"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:background="@drawable/rounded_black_transparent_card"
+            android:tint="@color/white"
+            android:src="@drawable/ic_bordered_heart"
+            android:contentDescription="@string/icon"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

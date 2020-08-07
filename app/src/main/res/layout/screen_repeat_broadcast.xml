@@ -62,7 +62,7 @@
                     android:layout_height="18dp"
                     android:layout_alignParentEnd="true"
                     android:contentDescription="@string/icon"
-                    android:src="@drawable/ic_resize" />
+                    android:src="@drawable/ic_resize_off" />
             </RelativeLayout>
 
             <SeekBar

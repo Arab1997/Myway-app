@@ -6,9 +6,9 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.AnnouncementAdapter
 import com.snatap.myway.ui.adapters.RepeatAdapter
-import kotlinx.android.synthetic.main.fragment_broadcasts.*
+import kotlinx.android.synthetic.main.fragment_lives.*
 
-class BroadcastsFragment : BaseFragment(R.layout.fragment_broadcasts) {
+class LivesFragment : BaseFragment(R.layout.fragment_lives) {
 
     override fun initialize() {
 

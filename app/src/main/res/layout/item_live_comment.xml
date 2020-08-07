@@ -20,6 +20,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Александр Константинов"
@@ -28,6 +29,7 @@
             android:fontFamily="@font/inter_bold"
             android:textColor="@color/black"/>
         <TextView
+            android:id="@+id/comment"
             android:layout_marginTop="7dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

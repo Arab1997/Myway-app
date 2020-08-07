@@ -214,7 +214,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/ic_resize"
+            android:src="@drawable/ic_resize_off"
             android:background="@drawable/rounded_black_card"
             android:contentDescription="@string/icon"/>
 

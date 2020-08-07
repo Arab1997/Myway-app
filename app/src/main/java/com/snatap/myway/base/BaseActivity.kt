@@ -36,7 +36,7 @@ abstract class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatAct
 
     override fun onResume() {
         super.onResume()
-        updateManager.onResume()
+//        updateManager.onResume()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

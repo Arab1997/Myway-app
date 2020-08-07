@@ -13,6 +13,9 @@ object Constants {
     const val IMAGE_MY = 103
     const val IMAGE_SERVER = 104
 
+    const val COMMENT_WITH_FILE = 105
+    const val COMMENT_MSG = 106
+
     const val IS_REGISTER_KEY = "register"
 }
 
