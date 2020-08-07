@@ -7,6 +7,7 @@ import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
 import com.snatap.myway.ui.screens.main.home.live.CurrentLiveScreen
+import com.snatap.myway.ui.screens.main.home.live.RepeatLiveScreen
 import com.snatap.myway.ui.screens.main.path.PathScreen
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(CurrentLiveScreen())
+    private fun debug() = initialFragment(RepeatLiveScreen())
 
     private fun startFragment() {
         initialFragment(

@@ -35,7 +35,7 @@ class LivesFragment : BaseFragment(R.layout.fragment_lives) {
         }
 
         recyclerRepeats.adapter = RepeatAdapter {
-            addFragment(RepeatBroadcastScreen())
+            addFragment(RepeatLiveScreen())
         }.apply {
             setData(arrayListOf(1, 2))
         }
