@@ -29,8 +29,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         sharedManager.code = "4444" // todo
         sharedManager.userId = 36726 // todo
 
-//        debug()
-        startFragment()
+        debug()
+//        startFragment()
     }
 
     private fun debug() = initialFragment(BottomNavScreen())

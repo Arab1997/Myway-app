@@ -7,8 +7,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.ChatMessageAdapter
 import com.snatap.myway.utils.extensions.inDevelopment
 import com.snatap.myway.utils.extensions.showGone
-import com.vansuita.pickimage.bundle.PickSetup
-import com.vansuita.pickimage.dialog.PickImageDialog
+import gun0912.tedimagepicker.builder.TedImagePicker
 import id.zelory.compressor.Compressor
 import kotlinx.android.synthetic.main.screen_chat_user.*
 import kotlinx.coroutines.launch
@@ -41,12 +40,12 @@ class ChatUserScreen : BaseFragment(R.layout.screen_chat_user) {
         attach.setOnClickListener { inDevelopment(requireContext()) }
 
         img.setOnClickListener {
-            PickImageDialog.build(PickSetup()).setOnPickResult { result ->
-                lifecycleScope.launch {
-                    val compressedImg = Compressor.compress(requireContext(), File(result.path))
+            TedImagePicker.with(requireContext())
+                .start { uri ->
+                    lifecycleScope.launch {
+                        val compressedImg = Compressor.compress(requireContext(), File(uri.path))
+                    }
                 }
-
-            }.show(childFragmentManager)
         }
 
         send.setOnClickListener {

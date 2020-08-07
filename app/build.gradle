@@ -22,6 +22,8 @@ android {
         preDexLibraries = false
         javaMaxHeapSize "4g"
     }
+    dataBinding { enabled = true }
+
     /*signingConfigs {
         debug {
             storeFile file("/Volumes/HDD/keys/new-buynow/buynow")
@@ -37,6 +39,7 @@ android {
             keyPassword "DXHvNTbVdfvbKSQbnzkVK"
         }
     }*/
+
     buildTypes {
         debug {
             manifestPlaceholders = [enableCrashReporting: "false"]
@@ -156,9 +159,12 @@ dependencies {
 
     implementation 'com.andrewjapar.rangedatepicker:rangedatepicker:0.2.4'
 
-    implementation 'com.github.jrvansuita:PickImage:2.5'
+    // todo enable databinding //    dataBinding { enabled = true }
+    implementation 'gun0912.ted:tedimagepicker:1.1.3'
 
     // Image Compressor
     implementation 'id.zelory:compressor:3.0.0'
 
+    // Auto Update
+    implementation 'com.google.android.play:core:1.8.0'
 }
