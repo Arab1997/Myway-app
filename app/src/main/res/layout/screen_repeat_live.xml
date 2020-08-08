@@ -10,6 +10,11 @@
         android:layout_height="350dp"
         android:background="@color/black"
         app:controller_layout_id="@layout/custom_controller"
+        android:layout_height="match_parent"
+        app:resize_mode="fit"
+        app:hide_on_touch="true"
+        app:show_timeout="2000"
+        app:rewind_increment="3000"
         app:fastforward_increment="3000"
         app:hide_on_touch="true"
         app:player_layout_id="@layout/exo_simple_player_view"
@@ -17,6 +22,32 @@
         app:rewind_increment="3000"
         app:show_timeout="5000"
         app:use_controller="true" />
+        app:controller_layout_id="@layout/custom_controller"
+        android:background="@color/black" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageAdmin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/imageAdmin"
+            android:text="Анастасия Ковальт"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     <include layout="@layout/content_live_header" />
 
@@ -28,4 +59,21 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_comment" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/recyclerCommentsTrans"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginBottom="50dp"
+        android:fadingEdgeLength="200dp"
+        android:requiresFadingEdge="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_comment" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="40dp"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>
