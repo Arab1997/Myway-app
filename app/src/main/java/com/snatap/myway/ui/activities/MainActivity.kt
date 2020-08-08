@@ -36,7 +36,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(RepeatLiveScreen())
+    private fun debug() = initialFragment(CurrentLiveScreen())
 
     private fun startFragment() {
         initialFragment(

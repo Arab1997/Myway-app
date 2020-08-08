@@ -10,112 +10,134 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/layerComments"
         tools:ignore="InefficientWeight,Suspicious0dp">
+
         <RelativeLayout
             android:id="@+id/videoLayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <View
                 style="@style/screenStyle"
-                android:background="@drawable/splash"/>
+                android:background="@drawable/splash" />
 
-            <ImageView
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerView"
                 style="@style/screenStyle"
-                android:background="@drawable/rect_black_to_invisible"
-                android:contentDescription="@string/layer"/>
+                android:background="@color/black"
+                android:contentDescription="@string/layer"
+                app:hide_on_touch="true"
+                app:player_layout_id="@layout/exo_simple_player_view"
+                app:resize_mode="zoom"
+                app:show_timeout="2000" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_centerInParent="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageAdmin"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@color/white"/>
+                android:src="@color/white" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/imageAdmin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Анастасия Ковальт"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <Button
-                android:layout_toStartOf="@id/close"
                 style="@style/buttonStyle"
                 android:layout_width="62dp"
                 android:layout_height="24dp"
-                android:layout_marginEnd="20dp"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toStartOf="@id/close"
                 android:text="LIVE"
                 android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/close"
-                android:layout_centerVertical="true"
-                android:tint="@color/white"
-                android:layout_alignParentEnd="true"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:src="@drawable/ic_close"/>
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_close"
+                android:tint="@color/white" />
 
         </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_alignParentBottom="true"
         android:id="@+id/layerCommentsOff"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:paddingBottom="80dp"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:paddingBottom="80dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCommentsOff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_live_comment"
             android:fadingEdgeLength="200dp"
-            android:requiresFadingEdge="vertical"/>
+            android:requiresFadingEdge="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_live_comment" />
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/layerComments"
         android:layout_width="match_parent"
         android:layout_height="450dp"
+        android:layout_alignParentBottom="true"
         android:paddingBottom="80dp"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:visibility="gone">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerComments"
-            android:layout_weight="1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_live_comment"/>
+            android:layout_height="450dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <include layout="@layout/item_live_comment_file" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerComments"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_live_comment" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
-        android:layout_alignParentBottom="true"
         android:id="@+id/videoControllerLayer"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp">
 
         <EditText
             android:id="@+id/sendCommentEdt"
@@ -123,35 +145,35 @@
             android:layout_height="50dp"
             android:background="@drawable/rounded_black_transparent_card"
             android:hint="Оставьте комментарий"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:textSize="14sp"
             android:paddingStart="15dp"
-            android:paddingEnd="15dp"/>
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/resizeBtn"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_black_transparent_card"
+            android:contentDescription="@string/icon"
             android:padding="15dp"
             android:src="@drawable/ic_resize_off"
-            android:tint="@color/white"
-            android:background="@drawable/rounded_black_transparent_card"
-            android:contentDescription="@string/icon"/>
+            android:tint="@color/white" />
 
         <ImageView
             android:id="@+id/heartBtn"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_black_transparent_card"
-            android:tint="@color/white"
+            android:contentDescription="@string/icon"
+            android:padding="15dp"
             android:src="@drawable/ic_bordered_heart"
-            android:contentDescription="@string/icon"/>
+            android:tint="@color/white" />
     </LinearLayout>
 
 
