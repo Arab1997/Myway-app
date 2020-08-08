@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/screenStyle">
+    style="@style/screenStyle"
+    android:keepScreenOn="true">
 
     <RelativeLayout
         android:id="@+id/videoLayer"
@@ -16,19 +17,20 @@
             android:layout_height="match_parent"
             android:background="@color/black"
             app:controller_layout_id="@layout/custom_controller"
-            app:fastforward_increment="3000"
             app:hide_on_touch="true"
             app:player_layout_id="@layout/exo_simple_player_view"
-            app:resize_mode="fit"
-            app:rewind_increment="3000"
-            app:show_timeout="2000"
+            app:resize_mode="fill"
+            app:show_buffering="never"
+            app:show_timeout="0"
             app:use_controller="true" />
 
         <ImageView
             android:id="@+id/gradient"
             style="@style/screenStyle"
             android:background="@drawable/live_gradient"
-            android:contentDescription="@string/layer" />
+            android:clickable="false"
+            android:contentDescription="@string/layer"
+            android:focusable="false" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -45,25 +47,34 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerBlack"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="320dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:orientation="vertical"
-        android:paddingBottom="80dp"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_live_comment" />
+        tools:listitem="@layout/item_live_comment"
+        tools:visibility="visible" />
 
     <RelativeLayout
         android:id="@+id/whiteContainer"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_above="@id/bottom">
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerWhite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
             android:requiresFadingEdge="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_live_comment" />

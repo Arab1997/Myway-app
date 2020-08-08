@@ -60,7 +60,7 @@ class RecyclerBroadcastsScreen : BaseFragment(R.layout.screen_broadcasts) {
         title.text = "Повторы"
 
         recyclerBroadcasts.adapter = RepeatAdapter {
-            addFragment(RepeatLiveScreen())
+            addFragment(LiveScreen.newInstance(false))
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
         }
