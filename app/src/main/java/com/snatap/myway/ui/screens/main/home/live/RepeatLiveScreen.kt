@@ -1,7 +1,6 @@
 package com.snatap.myway.ui.screens.main.home.live
 
 import android.net.Uri
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
@@ -17,11 +16,8 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.LiveCommentAdapter
 import com.snatap.myway.utils.extensions.gone
 import com.snatap.myway.utils.extensions.visible
-import kotlinx.android.synthetic.main.content_live_header.*
 import kotlinx.android.synthetic.main.custom_controller.*
-import kotlinx.android.synthetic.main.custom_controller.view.*
 import kotlinx.android.synthetic.main.screen_repeat_live.*
-import timber.log.Timber
 
 class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
 
@@ -30,10 +26,7 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
     var isPlay: Boolean = true
 
     override fun initialize() {
-
-        liveBtn.gone()
-
-        recyclerComments.adapter = LiveCommentAdapter().apply {
+        recyclerComments.adapter = LiveCommentAdapter(false).apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         }
         recyclerCommentsTrans.adapter = LiveCommentAdapter(true).apply {

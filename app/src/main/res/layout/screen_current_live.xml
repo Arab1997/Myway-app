@@ -10,15 +10,34 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/recyclerBlack">
 
-        <View
-            style="@style/screenStyle"
-            android:background="@drawable/splash" />
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/videoPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:controller_layout_id="@layout/custom_controller"
+            app:fastforward_increment="3000"
+            app:hide_on_touch="true"
+            app:player_layout_id="@layout/exo_simple_player_view"
+            app:resize_mode="fit"
+            app:rewind_increment="3000"
+            app:show_timeout="2000"
+            app:use_controller="true" />
 
         <ImageView
             android:id="@+id/gradient"
             style="@style/screenStyle"
             android:background="@drawable/live_gradient"
             android:contentDescription="@string/layer" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="100dp" />
+
     </RelativeLayout>
 
     <include layout="@layout/content_live_header" />
