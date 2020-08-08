@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_marginTop="7dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="8dp"
-    android:layout_marginBottom="14dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_marginTop="7dp"
+    android:layout_marginBottom="14dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/video"/>
+        android:src="@drawable/user" />
 
     <LinearLayout
-        android:layout_marginStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Александр Константинов"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:fontFamily="@font/inter_bold"
-            android:textColor="@color/black"/>
+            android:text="Александр Константинов"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/comment"
-            android:layout_marginTop="7dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:text=" Хэй, привет! Ну что, начнем? сразу прикрепляю ссылку и материал на тест ) Link/test.com"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

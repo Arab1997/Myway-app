@@ -48,7 +48,7 @@ class LivesFragment : BaseFragment(R.layout.fragment_lives) {
             addFragment(RecyclerBroadcastsScreen.newInstance(true))
         }
 
-        currentLiveView.setOnClickListener { addFragment(CurrentLiveScreen()) }
+        currentLiveView.setOnClickListener { addFragment(LiveScreen()) }
 
 
         swipeLayout.setOnRefreshListener {

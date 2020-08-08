@@ -8,7 +8,7 @@ import com.snatap.myway.BuildConfig
 
 abstract class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatActivity() {
 
-    private lateinit var updateManager: UpdateManager
+    private var updateManager: UpdateManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
@@ -19,8 +19,8 @@ abstract class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatAct
     }
 
     private fun initUpdateManager() {
-        updateManager = UpdateManager(this).apply {
-            if (!BuildConfig.DEBUG) checkUpdate()
+        if (!BuildConfig.DEBUG) updateManager = UpdateManager(this).apply {
+            checkUpdate()
         }
     }
 
@@ -36,13 +36,13 @@ abstract class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatAct
 
     override fun onResume() {
         super.onResume()
-//        updateManager.onResume()
+        updateManager?.onResume()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         fragmentsActivityResults(requestCode, resultCode, data)
-        updateManager.onActivityResult(requestCode, resultCode)
+        updateManager?.onActivityResult(requestCode, resultCode)
     }
 
     private fun fragmentsActivityResults(requestCode: Int, resultCode: Int, data: Intent?) {

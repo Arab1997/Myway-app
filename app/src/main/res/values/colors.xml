@@ -2,6 +2,7 @@
 <resources>
     <color name="accent">@color/red</color>
 
+    <color name="dark">#000000</color>
     <color name="black">#212121</color>
     <color name="edt">#F5F9FE</color>
     <color name="text">#1F304D</color>

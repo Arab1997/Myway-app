@@ -4,7 +4,6 @@ import android.net.Uri
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
@@ -16,6 +15,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.LiveCommentAdapter
 import com.snatap.myway.utils.extensions.gone
 import com.snatap.myway.utils.extensions.visible
+import kotlinx.android.synthetic.main.content_live_header.*
 import kotlinx.android.synthetic.main.custom_controller.*
 import kotlinx.android.synthetic.main.screen_repeat_live.*
 
@@ -25,8 +25,11 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
     var flag: Boolean = false
 
     override fun initialize() {
+
+        liveBtn.gone()
+
         recyclerComments.adapter = LiveCommentAdapter(false).apply {
-            setData(arrayListOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14))
+            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         }
 
         initStreamingSettings()
@@ -53,7 +56,7 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
         simpleExoPlayer.prepare(mediaSource)
         simpleExoPlayer.playWhenReady = true
 
-        simpleExoPlayer.addListener(object: Player.EventListener{
+        simpleExoPlayer.addListener(object : Player.EventListener {
             override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {
                 TODO("Not yet implemented")
             }
@@ -87,9 +90,9 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
             }
 
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-                if (playbackState == Player.STATE_BUFFERING){
+                if (playbackState == Player.STATE_BUFFERING) {
                     progressBar.visible()
-                } else if (playbackState == Player.STATE_READY){
+                } else if (playbackState == Player.STATE_READY) {
                     progressBar.gone()
                 }
             }
@@ -97,7 +100,7 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
         })
 
         btnFullScreen.setOnClickListener {
-            if (flag){
+            if (flag) {
                 // todo resize screen
 
                 btnFullScreen.setImageResource(R.drawable.ic_resize_on)
