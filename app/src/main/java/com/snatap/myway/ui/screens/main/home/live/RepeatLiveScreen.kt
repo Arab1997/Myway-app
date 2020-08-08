@@ -33,7 +33,7 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
         recyclerComments.adapter = LiveCommentAdapter().apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         }
-        recyclerComments.adapter = LiveCommentAdapter(true).apply {
+        recyclerCommentsTrans.adapter = LiveCommentAdapter(true).apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         }
 

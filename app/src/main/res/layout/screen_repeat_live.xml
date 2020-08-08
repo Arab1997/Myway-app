@@ -62,7 +62,6 @@
         tools:listitem="@layout/item_comment" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:id="@+id/recyclerCommentsTrans"
         android:layout_width="match_parent"
