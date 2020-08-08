@@ -9,7 +9,7 @@ import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.inflate
 import kotlinx.android.synthetic.main.item_live_comment_file.view.*
 
-class LiveCommentAdapter(isTransparent: Boolean) : RecyclerView.Adapter<ViewHolder>() {
+class LiveCommentAdapter(isTransparent: Boolean = false) : RecyclerView.Adapter<ViewHolder>() {
 
     private var isTransparent: Boolean = isTransparent
 

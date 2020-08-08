@@ -1,6 +1,8 @@
 package com.snatap.myway.ui.screens.main.home.live
 
 import android.net.Uri
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
@@ -17,19 +19,63 @@ import com.snatap.myway.ui.adapters.LiveCommentAdapter
 import com.snatap.myway.utils.extensions.gone
 import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.custom_controller.*
+import kotlinx.android.synthetic.main.custom_controller.view.*
 import kotlinx.android.synthetic.main.screen_repeat_live.*
+import timber.log.Timber
 
 class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
 
     private lateinit var simpleExoPlayer: SimpleExoPlayer
-    var flag: Boolean = false
+    var flag: Boolean = true
+    var isPlay: Boolean = true
 
     override fun initialize() {
-        recyclerComments.adapter = LiveCommentAdapter(false).apply {
-            setData(arrayListOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14))
+        recyclerComments.adapter = LiveCommentAdapter().apply {
+            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+        }
+        recyclerComments.adapter = LiveCommentAdapter(true).apply {
+            setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         }
 
         initStreamingSettings()
+        initClicks()
+    }
+
+    private fun initClicks() {
+        btnFullScreen.setOnClickListener {
+            if (flag) {
+                btnFullScreen.setImageResource(R.drawable.ic_resize_on)
+
+                val params: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+                )
+                videoPlayer.layoutParams = params
+                recyclerCommentsTrans.gone()
+                flag = false
+            } else {
+                btnFullScreen.setImageResource(R.drawable.ic_resize_off)
+
+                val params: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT
+                )
+                videoPlayer.layoutParams = params
+                recyclerCommentsTrans.visible()
+
+                flag = true
+            }
+        }
+
+        rewind.setOnClickListener {
+            simpleExoPlayer.apply { seekTo(currentPosition - 3000) }
+        }
+
+        forward.setOnClickListener {
+            simpleExoPlayer.apply { seekTo(currentPosition + 3000) }
+        }
+
+
     }
 
     private fun initStreamingSettings() {
@@ -53,13 +99,11 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
         simpleExoPlayer.prepare(mediaSource)
         simpleExoPlayer.playWhenReady = true
 
-        simpleExoPlayer.addListener(object: Player.EventListener{
+        simpleExoPlayer.addListener(object : Player.EventListener {
             override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {
-                TODO("Not yet implemented")
             }
 
             override fun onSeekProcessed() {
-                TODO("Not yet implemented")
             }
 
             override fun onTracksChanged(
@@ -87,30 +131,14 @@ class RepeatLiveScreen : BaseFragment(R.layout.screen_repeat_live) {
             }
 
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-                if (playbackState == Player.STATE_BUFFERING){
+                if (playbackState == Player.STATE_BUFFERING) {
                     progressBar.visible()
-                } else if (playbackState == Player.STATE_READY){
+                } else if (playbackState == Player.STATE_READY) {
                     progressBar.gone()
                 }
             }
 
         })
-
-        btnFullScreen.setOnClickListener {
-            if (flag){
-                // todo resize screen
-
-                btnFullScreen.setImageResource(R.drawable.ic_resize_on)
-
-                flag = false
-            } else {
-                // todo resize screen
-                btnFullScreen.setImageResource(R.drawable.ic_resize_off)
-
-
-                flag = true
-            }
-        }
     }
 
     override fun onPause() {
