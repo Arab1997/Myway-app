@@ -7,13 +7,13 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"/>
+        android:background="@color/black" />
 
     <LinearLayout
         android:id="@+id/progress_counter"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="16dp"
@@ -23,57 +23,57 @@
     </LinearLayout>
 
     <View
-        android:rotation="180"
         android:id="@+id/leftLayer"
         android:layout_width="70dp"
-        android:background="@drawable/gradient_from_null_to_dark"
+        android:layout_height="match_parent"
         android:alpha="0"
-        android:layout_height="match_parent"/>
+        android:background="@drawable/gradient_from_null_to_dark"
+        android:rotation="180" />
 
     <View
-        android:layout_alignParentEnd="true"
         android:id="@+id/rightLayer"
         android:layout_width="70dp"
-        android:background="@drawable/gradient_from_null_to_dark"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
         android:alpha="0"
-        android:layout_height="match_parent"/>
+        android:background="@drawable/gradient_from_null_to_dark" />
 
     <LinearLayout
         android:id="@+id/bottomLayer"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:layout_marginBottom="18dp"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
 
         <ImageView
-            android:layout_marginEnd="8dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_white_card_transparent"
+            android:contentDescription="@string/icon"
             android:padding="15dp"
-            android:src="@drawable/ic_check_circle"
-            android:contentDescription="@string/icon"/>
+            android:src="@drawable/ic_check_circle" />
 
         <ImageView
-            android:layout_marginEnd="8dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_white_card_transparent"
+            android:contentDescription="@string/icon"
             android:padding="15dp"
-            android:src="@drawable/ic_bordered_heart"
-            android:contentDescription="@string/icon"/>
+            android:src="@drawable/ic_bordered_heart" />
 
         <Button
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_white_card"
             android:text="Подробнее"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:background="@drawable/rounded_white_card"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 </RelativeLayout>

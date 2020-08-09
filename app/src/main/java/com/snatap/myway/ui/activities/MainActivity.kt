@@ -6,7 +6,7 @@ import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.main.home.live.LiveScreen
+import com.snatap.myway.ui.screens.main.home.live.StreamsFragment
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
@@ -34,7 +34,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(LiveScreen.newInstance(false))
+    private fun debug() = initialFragment(StreamsFragment())
 
     private fun startFragment() {
         initialFragment(

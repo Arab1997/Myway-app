@@ -27,6 +27,8 @@ val viewModelModule = module {
     single(named("user")) { MutableLiveData<User>() }
     single(named("notifications")) { MutableLiveData<ArrayList<Notification>>() }
     single(named("achievements")) { MutableLiveData<ArrayList<UserAchievement>>() }
+    single(named("stream_messages")) { MutableLiveData<ArrayList<StreamMessage>>() }
+    single(named("streams")) { MutableLiveData<ArrayList<Stream>>() }
 }
 
 val networkModule = module {

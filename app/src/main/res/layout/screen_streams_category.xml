@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar_info" />
+    <include layout="@layout/content_rounded_toolbar" />
 
     <com.snatap.myway.utils.views.MySwipeRefreshLayout
         android:id="@+id/swipeLayout"
@@ -16,17 +16,17 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerFilters"
+                android:id="@+id/recyclerTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_broadcast_filter" />
+                tools:listitem="@layout/item_tags" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerBroadcasts"
+                android:id="@+id/recyclerStreams"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_announcement" />
+                tools:listitem="@layout/item_streams" />
         </LinearLayout>
     </com.snatap.myway.utils.views.MySwipeRefreshLayout>
 </LinearLayout>

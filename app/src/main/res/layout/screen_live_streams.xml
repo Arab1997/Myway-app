@@ -21,7 +21,7 @@
             app:player_layout_id="@layout/exo_simple_player_view"
             app:resize_mode="fill"
             app:show_buffering="never"
-            app:show_timeout="0"
+            app:show_timeout="4000"
             app:use_controller="true" />
 
         <ImageView
@@ -47,7 +47,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerBlack"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="240dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:clickable="false"
@@ -56,8 +56,8 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_live_comment"
-        tools:visibility="visible" />
+        app:reverseLayout="true"
+        tools:listitem="@layout/item_live_comment" />
 
     <RelativeLayout
         android:id="@+id/whiteContainer"
@@ -77,6 +77,7 @@
             android:focusable="false"
             android:requiresFadingEdge="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="true"
             tools:listitem="@layout/item_live_comment" />
 
     </RelativeLayout>
@@ -91,21 +92,40 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/commentEdt"
+        <LinearLayout
+            android:id="@+id/commentsLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/rounded_black_transparent_card"
-            android:hint="Оставьте комментарий"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/commentEdt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Оставьте комментарий"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/send"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_send_rounded"
+                android:visibility="gone"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/resize"

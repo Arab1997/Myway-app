@@ -50,6 +50,8 @@ open class BaseViewModel(
     val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
     val notifications: MutableLiveData<ArrayList<Notification>> by inject(named("notifications"))
     val achievements: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievements"))
+    val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
+    val streams: MutableLiveData<ArrayList<Stream>> by inject(named("streams"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
@@ -117,6 +119,7 @@ open class BaseViewModel(
 
             getUser()
             getNews()
+            getStreams()
             getUserAchievements()
             getUserNotifications()
         }
@@ -260,6 +263,41 @@ open class BaseViewModel(
         api.getUserAchievements().observeAndSubscribe()
             .subscribe({
                 if (it.success) achievements.postValue(ArrayList(it.user_achievements))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getStreams() = compositeDisposable.add(
+        api.getStreams().observeAndSubscribe()
+            .subscribe({
+                if (it.success) streams.postValue(ArrayList(it.streams))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getStreamMessages(streamId: Int) = compositeDisposable.add(
+        api.getStreamMessages(streamId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) streamsMessages.postValue(ArrayList(it.stream_chat_items))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun sendStreamMessage(streamId: Int, message: String) = compositeDisposable.add(
+        api.sendStreamMessages(streamId, message).observeAndSubscribe()
+            .subscribe({
+                if (it.success) getStreamMessages(streamId)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun joinStream(streamId: Int) = compositeDisposable.add(
+        api.joinStream(streamId).observeAndSubscribe()
+            .subscribe({
             }, {
                 parseError(it)
             })

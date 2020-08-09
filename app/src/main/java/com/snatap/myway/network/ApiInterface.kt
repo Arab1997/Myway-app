@@ -60,6 +60,21 @@ interface ApiInterface {
     @GET("user/achievements")
     fun getUserAchievements(): Single<AchievementsResp>
 
+    @GET("streams")
+    fun getStreams(): Single<StreamsResp>
+
+    @GET("streams/{id}/messages")
+    fun getStreamMessages(@Path("id") id: Int): Single<StreamMessagesResp>
+
+    @POST("streams/{id}/send_message")
+    @FormUrlEncoded
+    fun sendStreamMessages(
+        @Path("id") id: Int, @Field("text") text: String
+    ): Single<StreamMessageResp>
+
+    @POST("streams/{id}/join")
+    fun joinStream(@Path("id") id: Int): Single<SuccessResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)
