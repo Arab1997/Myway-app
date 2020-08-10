@@ -24,7 +24,7 @@ class StreamsFragment : BaseFragment(R.layout.fragment_streams) {
             addFragment(LiveStreamScreen.newInstance(true, it))
         }
 
-        announcementAdapter = StreamsAdapter(false) {
+        announcementAdapter = StreamsAdapter(true) {
             addFragment(LiveStreamScreen.newInstance(false, it))
         }
 
@@ -47,7 +47,8 @@ class StreamsFragment : BaseFragment(R.layout.fragment_streams) {
 
     override fun observe() {
         viewModel.streams.observe(viewLifecycleOwner, Observer {
-            liveAdapter.setData(it)// todo set data
+            // todo set data
+            liveAdapter.setData(it)
             announcementAdapter.setData(it)
             repeatAdapter.setData(it)
             swipeLayout?.isRefreshing = false

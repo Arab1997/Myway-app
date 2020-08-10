@@ -22,7 +22,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_cart_tags" />
+                tools:listitem="@layout/item_store_tags" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerItems"
@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:spanCount="2"
-                tools:listitem="@layout/item_cart" />
+                tools:listitem="@layout/item_store" />
         </LinearLayout>
     </com.snatap.myway.utils.views.MySwipeRefreshLayout>
 </LinearLayout>

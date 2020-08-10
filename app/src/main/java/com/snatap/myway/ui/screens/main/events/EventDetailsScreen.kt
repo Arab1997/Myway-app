@@ -6,7 +6,8 @@ import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.ui.adapters.GalleryAdapter
 import com.snatap.myway.ui.adapters.SponsorsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
-import com.snatap.myway.ui.screens.main.home.cart.CartScreen
+import com.snatap.myway.ui.screens.main.home.cart.StoreScreen
+import com.snatap.myway.utils.extensions.blockClickable
 import kotlinx.android.synthetic.main.content_comments.*
 import kotlinx.android.synthetic.main.content_events_toolbar.*
 import kotlinx.android.synthetic.main.screen_event_detail.*
@@ -43,9 +44,9 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
 
         back.setOnClickListener { finishFragment() }
 
-        right.setOnClickListener {  addFragment(CartScreen()) }
+        right.setOnClickListener { addFragment(StoreScreen()) }
 
-        rightExtra.setOnClickListener { addFragment(ChatScreen())  }
+        rightExtra.setOnClickListener { addFragment(ChatScreen()) }
 
         participate.setOnClickListener {
             val bottomSheet = ParticipateBottomSheet().apply {
@@ -54,9 +55,11 @@ class EventDetailsScreen : BaseFragment(R.layout.screen_event_detail) {
                 }
             }
             bottomSheet.show(childFragmentManager, "")
+            it.blockClickable()
         }
 
         participants.setOnClickListener {
+            it.blockClickable()
             val bottomSheet = MembersBottomSheet()
             bottomSheet.show(childFragmentManager, "")
         }

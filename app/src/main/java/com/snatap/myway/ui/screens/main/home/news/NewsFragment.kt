@@ -10,6 +10,7 @@ import com.snatap.myway.ui.screens.main.events.FilterType
 import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
 import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.ui.screens.main.home.story.StoriesFragment
+import com.snatap.myway.utils.extensions.blockClickable
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : BaseFragment(R.layout.fragment_news) {
@@ -20,6 +21,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
     override fun initialize() {
 
         filter.setOnClickListener {
+            it.blockClickable()
             val bottomSheet = FilterBottomSheet.newInstance(false).apply {
                 setListener {
                     if (it == FilterType.TAGS) addFragment(FilterTagsScreen())

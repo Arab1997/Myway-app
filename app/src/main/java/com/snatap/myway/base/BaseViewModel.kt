@@ -52,6 +52,7 @@ open class BaseViewModel(
     val achievements: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievements"))
     val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
     val streams: MutableLiveData<ArrayList<Stream>> by inject(named("streams"))
+    val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
@@ -122,6 +123,7 @@ open class BaseViewModel(
             getStreams()
             getUserAchievements()
             getUserNotifications()
+            getStoreItems()
         }
     }
 
@@ -298,6 +300,24 @@ open class BaseViewModel(
     fun joinStream(streamId: Int) = compositeDisposable.add(
         api.joinStream(streamId).observeAndSubscribe()
             .subscribe({
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getStoreItems() = compositeDisposable.add(
+        api.getStoreItems().observeAndSubscribe()
+            .subscribe({
+                if (it.success) stores.postValue(ArrayList(it.store_items))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getStoreCategories() = compositeDisposable.add(
+        api.getStoreCategories().observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(ArrayList(it.store_item_categories))
             }, {
                 parseError(it)
             })

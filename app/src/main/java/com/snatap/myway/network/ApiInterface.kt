@@ -75,6 +75,12 @@ interface ApiInterface {
     @POST("streams/{id}/join")
     fun joinStream(@Path("id") id: Int): Single<SuccessResp>
 
+    @GET("store_items/categories")
+    fun getStoreCategories(): Single<StoreCategories>
+
+    @GET("store_items")
+    fun getStoreItems(): Single<StoreResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)

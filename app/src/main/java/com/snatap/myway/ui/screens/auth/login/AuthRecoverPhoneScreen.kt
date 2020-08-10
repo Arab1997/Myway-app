@@ -19,6 +19,7 @@ class AuthRecoverPhoneScreen : BaseFragment(R.layout.screen_registration_phone) 
             sendRequest()
 
             setOnClickListener {
+                it.blockClickable()
                 showBottomSheet()
             }
         }

@@ -6,12 +6,12 @@
 
     <include layout="@layout/content_rounded_toolbar" />
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerItems"
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_add_cart" />
 
@@ -57,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:drawableEnd="@drawable/ic_bonus"
+                    android:drawableTint="@color/black"
                     android:gravity="center"
                     android:text="10 350"
                     android:textColor="@color/black"
@@ -69,6 +70,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_red_card_gradient"
+                android:drawableTint="@color/white"
                 android:gravity="center">
 
                 <TextView
@@ -76,17 +78,12 @@
                     android:layout_height="50dp"
                     android:drawableEnd="@drawable/ic_rub"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="10 350"
                     android:textColor="@color/white"
                     android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>
