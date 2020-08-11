@@ -34,7 +34,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(MediaPlayerScreen())
+    private fun debug() = initialFragment(BottomNavScreen())
 
     private fun startFragment() {
         initialFragment(
