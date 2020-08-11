@@ -1,60 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle">
 
-    <include layout="@layout/content_rounded_toolbar_info" />
+    <LinearLayout style="@style/screenStyle">
 
-    <androidx.core.widget.NestedScrollView
-        style="@style/screenStyle"
-        android:layout_marginTop="-10dp">
+        <include layout="@layout/content_rounded_toolbar_info" />
 
-        <LinearLayout style="@style/screenStyle">
+        <androidx.core.widget.NestedScrollView
+            style="@style/screenStyle"
+            android:layout_marginTop="-10dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="-90dp"
-                android:background="@drawable/rounded_gradient_blue_card"
-                android:paddingTop="10dp">
+            <LinearLayout style="@style/screenStyle">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="-90dp"
+                    android:background="@drawable/rounded_gradient_blue_card"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="21dp"
+                        android:layout_marginTop="105dp"
+                        android:layout_marginEnd="21dp"
+                        android:text="Это подкаст история. Моя история. Когда-то давно я бросила карьеру и уехала на Бали целых семь лет."
+                        android:textAlignment="center"
+                        android:textColor="@color/white50"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <com.snatap.myway.utils.views.RoundImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-130dp"
+                    android:background="@drawable/rounded_black_card"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user"
+                    app:rect_radius="10sp" />
+
+                <TextView
+                    style="@style/titleStyle"
+                    android:text="23 выпуска" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerChapters"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:nestedScrollingEnabled="false"
+                    android:focusable="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_podcast_chapter" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/rect_black_to_invisible"
+        android:rotation="180"
+        android:layout_gravity="bottom"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="bottom"
+        android:id="@+id/lastMusicLayer"
+        android:background="@color/white"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        tools:ignore="HardcodedText" >
+
+        <LinearLayout
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="105dp"
-                    android:layout_marginEnd="21dp"
-                    android:text="Это подкаст история. Моя история. Когда-то давно я бросила карьеру и уехала на Бали целых семь лет."
-                    android:textAlignment="center"
-                    android:textColor="@color/white50"
-                    android:textSize="12sp" />
+                    android:text="Ветер перемен"
+                    android:textColor="@color/font_blue"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Глава 19. Ода людям-сканерам"
+                    android:textColor="@color/hint"
+                    android:textSize="12sp"/>
+            </LinearLayout>
 
-            </RelativeLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_pause"
+                android:tint="@color/red"
+                android:contentDescription="@string/icon"/>
 
-            <com.snatap.myway.utils.views.RoundImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:rect_radius="10sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-130dp"
-                android:background="@drawable/rounded_black_card"
-                android:scaleType="centerCrop"
-                android:src="@drawable/user" />
-
-            <TextView
-                style="@style/titleStyle"
-                android:text="23 выпуска" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerChapters"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_podcast_chapter" />
-
+            <ImageView
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_next_video"
+                android:tint="@color/hint"
+                android:contentDescription="@string/icon"/>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

@@ -120,7 +120,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_white_play"
+            android:src="@drawable/ic_white_pause"
             android:tint="@color/dark"
             android:contentDescription="Play"/>
 
@@ -135,6 +135,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/speedUpLayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
