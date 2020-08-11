@@ -15,15 +15,15 @@ import kotlinx.android.synthetic.main.screen_podcast_play.*
 
 class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
-    private lateinit var mediaPlayer: MediaPlayer
     private var runnable: Runnable? = null
     private var handler: Handler? = null
-    private var playerSpeed:Float = 1f
+    private var playerSpeed: Float = 1f
 
     companion object {
-        private var currentPos: Int = 0
-        public fun newInstance(currentPos: Int){
-            this.currentPos = currentPos
+        private var mediaPlayer: MediaPlayer? = null
+        public fun newInstance(mediaPlayer: MediaPlayer): PodcastPlayScreen {
+            this.mediaPlayer = mediaPlayer
+            return PodcastPlayScreen()
         }
     }
 
@@ -37,29 +37,14 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     override fun onDestroy() {
         if (handler != null)
             handler!!.removeCallbacks(runnable)
-        mediaPlayer.stop()
-        val bundle = Bundle()
-        bundle.putInt("time", mediaPlayer.currentPosition)
-        viewModel.data.value = bundle
         super.onDestroy()
     }
 
     private fun initViews() {
-
-
-        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.musicc)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mediaPlayer.playbackParams = mediaPlayer.playbackParams.setSpeed(playerSpeed)
-        }
-        mediaPlayer.seekTo(currentPos)
-        mediaPlayer.setOnPreparedListener {
-            seekBar.max = mediaPlayer.duration
-            mediaPlayer.start()
-            changeSeekBar()
-        }
+        seekBar.max = mediaPlayer!!.duration
+        txtEndTime.text = stringForTime(mediaPlayer!!.duration)
         handler = Handler()
-
-        txtEndTime.text = stringForTime(mediaPlayer.duration)
+        changeSeekBar()
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             speedUpLayer.gone()
@@ -70,7 +55,7 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    mediaPlayer.seekTo(progress)
+                    mediaPlayer!!.seekTo(progress)
                 }
             }
 
@@ -86,22 +71,22 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     @SuppressLint("SetTextI18n")
     private fun initClicks() {
         play.setOnClickListener {
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.pause()
+            if (mediaPlayer!!.isPlaying) {
+                mediaPlayer!!.pause()
                 play.setImageResource(R.drawable.ic_white_play)
             } else {
-                mediaPlayer.start()
+                mediaPlayer!!.start()
                 changeSeekBar()
                 play.setImageResource(R.drawable.ic_white_pause)
             }
         }
 
         forwardBtn.setOnClickListener {
-            mediaPlayer.seekTo(mediaPlayer.currentPosition + 30000)
+            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition + 30000)
         }
 
         backBtn.setOnClickListener {
-            mediaPlayer.seekTo(mediaPlayer.currentPosition - 30000)
+            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition - 30000)
         }
 
         speedUp.setOnClickListener {
@@ -112,16 +97,16 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
             speedUp.text = "${playerSpeed}X"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mediaPlayer.playbackParams = mediaPlayer.playbackParams.setSpeed(playerSpeed)
+                mediaPlayer!!.playbackParams = mediaPlayer!!.playbackParams.setSpeed(playerSpeed)
             }
         }
     }
 
     private fun changeSeekBar() {
-        txtCurrentTime.text = stringForTime(mediaPlayer.currentPosition)
-        seekBar.progress = mediaPlayer.currentPosition
+        txtCurrentTime.text = stringForTime(mediaPlayer!!.currentPosition)
+        seekBar.progress = mediaPlayer!!.currentPosition
 
-        if (mediaPlayer.isPlaying) {
+        if (mediaPlayer!!.isPlaying) {
             runnable = Runnable { changeSeekBar() }
             handler!!.postDelayed(runnable, 50)
         }

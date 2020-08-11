@@ -9,7 +9,9 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.PodcastChapterAdapter
+import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.content_rounded_toolbar_info.*
+import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.screen_podcast_info.*
 import kotlinx.android.synthetic.main.screen_podcast_play.*
 import java.util.*
@@ -27,7 +29,7 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
             return PodcastInfoScreen()
         }
 
-        public fun stringForTime(timeMs: Int): String? {
+        fun stringForTime(timeMs: Int): String? {
             val mFormatter: Formatter
             val mFormatBuilder: StringBuilder = StringBuilder()
             mFormatter = Formatter(mFormatBuilder, Locale.getDefault())
@@ -42,37 +44,30 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
                 mFormatter.format("%02d:%02d", minutes, seconds).toString()
             }
         }
+
     }
 
     override fun initialize() {
         initViews()
-        onReceiveData()
+        initClicks()
+        createMusic()
     }
 
-    private fun onReceiveData(){
-        viewModel.data.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if (it is Bundle){
-                val bundle: Bundle = it
-
-                val time = bundle.getInt("time")
-                mediaPlayer = MediaPlayer.create(requireContext(), R.raw.musicc)
-                mediaPlayer!!.seekTo(time)
-                mediaPlayer!!.setOnPreparedListener {
-                    mediaPlayer!!.start()
-                    changeSeekBar()
-                }
-                handler = Handler()
-            }
-        })
+    private fun startMusic(){
+        musicBackground.visible()
+        musicLayer.visible()
+        mediaPlayer!!.seekTo(0)
+        mediaPlayer!!.start()
     }
 
+    private fun createMusic(){
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.musicc)
 
-    private fun changeSeekBar() {
-
-        if (mediaPlayer!!.isPlaying) {
-            runnable = Runnable { changeSeekBar() }
-            handler!!.postDelayed(runnable, 50)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mediaPlayer!!.playbackParams = mediaPlayer!!.playbackParams.setSpeed(1f)
         }
+        mediaPlayer!!.seekTo(0)
+        mediaPlayer!!.pause()
     }
 
     private fun initViews() {
@@ -84,15 +79,31 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
         info.setBackgroundResource(R.drawable.ic_mark_white)
 
         recyclerChapters.adapter = PodcastChapterAdapter {
-            if (mediaPlayer != null)
-                mediaPlayer!!.stop()
-            addFragment(PodcastPlayScreen())
+            startMusic()
+            addFragment(PodcastPlayScreen.newInstance(mediaPlayer!!))
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
         }
 
-        lastMusicLayer.setOnClickListener {
-            PodcastPlayScreen.newInstance(mediaPlayer!!.currentPosition)
+    }
+
+    private fun initClicks() {
+        musicScreenBtn.setOnClickListener {
+            addFragment(PodcastPlayScreen.newInstance(mediaPlayer!!))
+        }
+
+        playBtn.setOnClickListener {
+            if (mediaPlayer!!.isPlaying) {
+                mediaPlayer!!.pause()
+                playBtn.setImageResource(R.drawable.ic_white_play)
+            } else {
+                mediaPlayer!!.start()
+                playBtn.setImageResource(R.drawable.ic_white_pause)
+            }
+        }
+
+        nextBtn.setOnClickListener {
+            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition + 30000)
         }
     }
 
