@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
-import com.snatap.myway.ui.screens.main.home.cart.StoreScreen
+import com.snatap.myway.ui.screens.main.store.StoreScreen
 import kotlinx.android.synthetic.main.fragment_past_path.*
 import kotlinx.android.synthetic.main.screen_path.*
 

@@ -6,7 +6,7 @@ import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.ui.adapters.GalleryAdapter
 import com.snatap.myway.ui.adapters.SponsorsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
-import com.snatap.myway.ui.screens.main.home.cart.StoreScreen
+import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.extensions.blockClickable
 import kotlinx.android.synthetic.main.content_comments.*
 import kotlinx.android.synthetic.main.content_events_toolbar.*

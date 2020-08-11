@@ -46,6 +46,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/payCoin"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
@@ -54,18 +55,20 @@
                 android:gravity="center">
 
                 <TextView
+                    android:id="@+id/coin"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:drawableEnd="@drawable/ic_bonus"
                     android:drawableTint="@color/black"
                     android:gravity="center"
-                    android:text="10 350"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/payRub"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -74,12 +77,13 @@
                 android:gravity="center">
 
                 <TextView
+                    android:id="@+id/rub"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:drawableEnd="@drawable/ic_rub"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:text="10 350"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="17sp"
                     android:textStyle="bold" />

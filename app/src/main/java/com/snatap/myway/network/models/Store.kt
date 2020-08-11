@@ -19,7 +19,8 @@ data class Store(
     val quantity: Int,
     val short_description: String,
     val title: String,
-    val updated_at: String
+    val updated_at: String,
+    var count: Int = 0
 )
 
 data class StoreCategories(

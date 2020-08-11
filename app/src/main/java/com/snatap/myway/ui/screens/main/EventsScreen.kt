@@ -14,7 +14,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
-import com.snatap.myway.ui.screens.main.home.cart.StoreScreen
+import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.dpToPx
 import com.snatap.myway.utils.extensions.inDevelopment

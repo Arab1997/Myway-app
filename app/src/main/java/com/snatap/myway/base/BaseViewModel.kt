@@ -53,6 +53,7 @@ open class BaseViewModel(
     val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
     val streams: MutableLiveData<ArrayList<Stream>> by inject(named("streams"))
     val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
+    val sharedStore: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
@@ -111,6 +112,23 @@ open class BaseViewModel(
         }
         toast(context, message)
         error.value = ErrorResp(message)
+    }
+
+    private val sharedStoreList = arrayListOf<Store>()
+    fun setSharedData(data: Store, fragmentName: String) {
+        loge(fragmentName)
+        val item = sharedStoreList.filter { it.id == data.id }
+        if (item.isNotEmpty()) {
+            for (i in 0 until sharedStoreList.size) {
+                if (sharedStoreList[i].id == data.id) sharedStoreList[i] = data
+            }
+        } else sharedStoreList.add(data)
+        sharedStore.value = ArrayList(sharedStoreList.filter { it.count != 0 })
+    }
+
+    fun clearSharedProducts() {
+        sharedStoreList.clear()
+        sharedStore.value = sharedStoreList
     }
 
     fun fetchData() {
@@ -317,7 +335,7 @@ open class BaseViewModel(
     fun getStoreCategories() = compositeDisposable.add(
         api.getStoreCategories().observeAndSubscribe()
             .subscribe({
-                if (it.success) data.postValue(ArrayList(it.store_item_categories))
+                if (it.success) data.postValue(it)
             }, {
                 parseError(it)
             })
