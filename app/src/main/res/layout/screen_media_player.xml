@@ -73,7 +73,7 @@
         android:layout_above="@id/recycler"
         android:layout_alignParentEnd="true"
         android:layout_margin="16sp"
-        android:background="@drawable/blur"
+        android:background="@drawable/rounded_black_trans_card"
         android:gravity="center"
         android:text="Завершить просмотр"
         android:textColor="@color/white"

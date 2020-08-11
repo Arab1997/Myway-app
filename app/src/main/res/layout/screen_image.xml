@@ -23,4 +23,19 @@
         android:src="@drawable/ic_close"
         tools:ignore="ContentDescription" />
 
+    <Button
+        android:id="@+id/publish"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/rounded_white_card"
+        android:text="Опубликовать"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 </RelativeLayout>

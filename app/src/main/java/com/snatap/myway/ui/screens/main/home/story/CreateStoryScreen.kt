@@ -10,6 +10,9 @@ import android.widget.RelativeLayout
 import androidx.core.view.setMargins
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.screens.main.path.ImageScreen
+import com.snatap.myway.utils.extensions.blockClickable
+import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.screen_create_story.*
 
 
@@ -20,9 +23,23 @@ class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
     private var timeFinished = 0L
 
     private val recordTime = 10;
+    private var imgFilePath = ""
 
     @SuppressLint("ClickableViewAccessibility")
     override fun initialize() {
+
+        addImage.setOnClickListener {
+            it.blockClickable()
+            TedImagePicker.with(requireContext()).start { uri ->
+                imgFilePath = mainActivity.getFilePath(uri)
+                val fragment = ImageScreen.newInstance(imgFilePath, true).apply {
+                    setPublishListener {
+                        // todo
+                    }
+                }
+                removePreviousCallback({ addFragment(fragment) })
+            }
+        }
 
         startRecordLayout.setOnTouchListener { _, event ->
             if (event?.action == MotionEvent.ACTION_DOWN) {
