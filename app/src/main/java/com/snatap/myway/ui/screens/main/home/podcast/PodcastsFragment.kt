@@ -17,13 +17,13 @@ class PodcastsFragment : BaseFragment(R.layout.fragment_podcasts) {
         favorites.setOnClickListener { addFragment(PodcastsPlaylistScreen()) }
 
         recyclerBanner.adapter = PodcastBannerAdapter {
-            addFragment(PodcastInfoScreen("Ветер перемен"))
+            addFragment(PodcastInfoScreen.newInstance("Ветер перемен"))
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
         }
 
         recyclerPodcasts.adapter = PodcastAdapter {
-            addFragment(PodcastInfoScreen("Ветер перемен"))
+            addFragment(PodcastInfoScreen.newInstance("Ветер перемен"))
         }.apply {
             setData(arrayListOf(1, 2, 3, 4))
         }

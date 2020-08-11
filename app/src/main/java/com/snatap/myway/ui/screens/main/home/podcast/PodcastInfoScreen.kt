@@ -6,17 +6,22 @@ import com.snatap.myway.ui.adapters.PodcastChapterAdapter
 import kotlinx.android.synthetic.main.content_rounded_toolbar_info.*
 import kotlinx.android.synthetic.main.screen_podcast_info.*
 
-class PodcastInfoScreen(title: String) : BaseFragment(R.layout.screen_podcast_info) {
+class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
 
-    val titleTxt = title
+    companion object{
+        private var txtTitle: String? = null
+        fun newInstance(txtTitle: String): PodcastInfoScreen{
+            this.txtTitle = txtTitle
+            return PodcastInfoScreen()
+        }
+    }
 
     override fun initialize() {
-
         initViews()
     }
 
     private fun initViews() {
-        title.text = titleTxt
+        title.text = txtTitle
 
         back.setOnClickListener { finishFragment() }
 
