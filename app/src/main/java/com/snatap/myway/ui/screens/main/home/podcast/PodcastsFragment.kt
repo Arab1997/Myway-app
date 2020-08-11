@@ -22,7 +22,9 @@ class PodcastsFragment : BaseFragment(R.layout.fragment_podcasts) {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7))
         }
 
-        recyclerPodcasts.adapter = PodcastAdapter().apply {
+        recyclerPodcasts.adapter = PodcastAdapter {
+            addFragment(PodcastInfoScreen("Ветер перемен"))
+        }.apply {
             setData(arrayListOf(1, 2, 3, 4))
         }
 
@@ -33,4 +35,5 @@ class PodcastsFragment : BaseFragment(R.layout.fragment_podcasts) {
             // todo
         }
     }
+
 }

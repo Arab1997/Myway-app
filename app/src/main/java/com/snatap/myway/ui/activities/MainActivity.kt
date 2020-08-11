@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 //        startFragment()
     }
 
-    private fun debug() = initialFragment(CreateStoryScreen())
+    private fun debug() = initialFragment(BottomNavScreen())
 
     private fun startFragment() {
         initialFragment(

@@ -22,7 +22,9 @@ class PodcastsPlaylistScreen : BaseFragment(R.layout.screen_recycler) {
         }
 
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
-        recycler.adapter = PodcastAdapter().apply {
+        recycler.adapter = PodcastAdapter {
+            addFragment(PodcastInfoScreen("Ветер перемен"))
+        }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6))
         }
     }
