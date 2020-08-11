@@ -16,33 +16,41 @@ import kotlinx.android.synthetic.main.screen_podcast_play.*
 class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
     private var runnable: Runnable? = null
-    private var handler: Handler? = null
+    private lateinit var handler: Handler
     private var playerSpeed: Float = 1f
 
     companion object {
-        private var mediaPlayer: MediaPlayer? = null
-        public fun newInstance(mediaPlayer: MediaPlayer): PodcastPlayScreen {
+        private lateinit var mediaPlayer: MediaPlayer
+        fun newInstance(mediaPlayer: MediaPlayer): PodcastPlayScreen {
             this.mediaPlayer = mediaPlayer
             return PodcastPlayScreen()
         }
     }
 
     override fun initialize() {
-
+        checkMedia()
         initViews()
         initClicks()
         seekBarListener()
     }
 
+    private fun checkMedia() {
+        if (mediaPlayer.isPlaying) {
+            play.setImageResource(R.drawable.ic_white_pause)
+        } else {
+            play.setImageResource(R.drawable.ic_white_play)
+        }
+    }
+
     override fun onDestroy() {
-        if (handler != null)
-            handler!!.removeCallbacks(runnable)
+        handler.removeCallbacks(runnable)
+        viewModel.data.value = true
         super.onDestroy()
     }
 
     private fun initViews() {
-        seekBar.max = mediaPlayer!!.duration
-        txtEndTime.text = stringForTime(mediaPlayer!!.duration)
+        seekBar.max = mediaPlayer.duration
+        txtEndTime.text = stringForTime(mediaPlayer.duration)
         handler = Handler()
         changeSeekBar()
 
@@ -55,7 +63,7 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    mediaPlayer!!.seekTo(progress)
+                    mediaPlayer.seekTo(progress)
                 }
             }
 
@@ -71,22 +79,22 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     @SuppressLint("SetTextI18n")
     private fun initClicks() {
         play.setOnClickListener {
-            if (mediaPlayer!!.isPlaying) {
-                mediaPlayer!!.pause()
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
                 play.setImageResource(R.drawable.ic_white_play)
             } else {
-                mediaPlayer!!.start()
+                mediaPlayer.start()
                 changeSeekBar()
                 play.setImageResource(R.drawable.ic_white_pause)
             }
         }
 
         forwardBtn.setOnClickListener {
-            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition + 30000)
+            mediaPlayer.seekTo(mediaPlayer.currentPosition + 30000)
         }
 
         backBtn.setOnClickListener {
-            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition - 30000)
+            mediaPlayer.seekTo(mediaPlayer.currentPosition - 30000)
         }
 
         speedUp.setOnClickListener {
@@ -97,18 +105,18 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
             speedUp.text = "${playerSpeed}X"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mediaPlayer!!.playbackParams = mediaPlayer!!.playbackParams.setSpeed(playerSpeed)
+                mediaPlayer.playbackParams = mediaPlayer.playbackParams.setSpeed(playerSpeed)
             }
         }
     }
 
     private fun changeSeekBar() {
-        txtCurrentTime.text = stringForTime(mediaPlayer!!.currentPosition)
-        seekBar.progress = mediaPlayer!!.currentPosition
+        txtCurrentTime.text = stringForTime(mediaPlayer.currentPosition)
+        seekBar.progress = mediaPlayer.currentPosition
 
-        if (mediaPlayer!!.isPlaying) {
+        if (mediaPlayer.isPlaying) {
             runnable = Runnable { changeSeekBar() }
-            handler!!.postDelayed(runnable, 50)
+            handler.postDelayed(runnable, 50)
         }
     }
 

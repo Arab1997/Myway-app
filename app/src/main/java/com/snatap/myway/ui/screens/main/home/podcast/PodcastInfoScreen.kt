@@ -18,13 +18,11 @@ import java.util.*
 
 class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
 
-    private var mediaPlayer: MediaPlayer? = null
-    private var runnable: Runnable? = null
-    private var handler: Handler? = null
+    private lateinit var mediaPlayer: MediaPlayer
 
-    companion object{
+    companion object {
         private var txtTitle: String? = null
-        fun newInstance(txtTitle: String): PodcastInfoScreen{
+        fun newInstance(txtTitle: String): PodcastInfoScreen {
             this.txtTitle = txtTitle
             return PodcastInfoScreen()
         }
@@ -44,30 +42,41 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
                 mFormatter.format("%02d:%02d", minutes, seconds).toString()
             }
         }
-
     }
 
     override fun initialize() {
         initViews()
         initClicks()
         createMusic()
+        checkMedia()
     }
 
-    private fun startMusic(){
-        musicBackground.visible()
+    private fun checkMedia() {
+        viewModel.data.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it == true){
+                if (mediaPlayer.isPlaying) {
+                    playBtn.setImageResource(R.drawable.ic_white_pause)
+                } else {
+                    playBtn.setImageResource(R.drawable.ic_white_play)
+                }
+            }
+        })
+    }
+
+    private fun startMusic() {
         musicLayer.visible()
-        mediaPlayer!!.seekTo(0)
-        mediaPlayer!!.start()
+        mediaPlayer.seekTo(0)
+        mediaPlayer.start()
     }
 
-    private fun createMusic(){
+    private fun createMusic() {
         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.musicc)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mediaPlayer!!.playbackParams = mediaPlayer!!.playbackParams.setSpeed(1f)
+            mediaPlayer.playbackParams = mediaPlayer.playbackParams.setSpeed(1f)
         }
-        mediaPlayer!!.seekTo(0)
-        mediaPlayer!!.pause()
+        mediaPlayer.seekTo(0)
+        mediaPlayer.pause()
     }
 
     private fun initViews() {
@@ -80,7 +89,7 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
 
         recyclerChapters.adapter = PodcastChapterAdapter {
             startMusic()
-            addFragment(PodcastPlayScreen.newInstance(mediaPlayer!!))
+            addFragment(PodcastPlayScreen.newInstance(mediaPlayer))
         }.apply {
             setData(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
         }
@@ -89,21 +98,21 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
 
     private fun initClicks() {
         musicScreenBtn.setOnClickListener {
-            addFragment(PodcastPlayScreen.newInstance(mediaPlayer!!))
+            addFragment(PodcastPlayScreen.newInstance(mediaPlayer))
         }
 
         playBtn.setOnClickListener {
-            if (mediaPlayer!!.isPlaying) {
-                mediaPlayer!!.pause()
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
                 playBtn.setImageResource(R.drawable.ic_white_play)
             } else {
-                mediaPlayer!!.start()
+                mediaPlayer.start()
                 playBtn.setImageResource(R.drawable.ic_white_pause)
             }
         }
 
         nextBtn.setOnClickListener {
-            mediaPlayer!!.seekTo(mediaPlayer!!.currentPosition + 30000)
+            mediaPlayer.seekTo(mediaPlayer.currentPosition + 30000)
         }
     }
 
