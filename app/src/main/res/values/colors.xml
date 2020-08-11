@@ -4,6 +4,7 @@
 
     <color name="dark">#000000</color>
     <color name="black">#212121</color>
+    <color name="black50">#AB212121</color>
     <color name="edt">#F5F9FE</color>
     <color name="text">#1F304D</color>
     <color name="white">#FFFFFF</color>

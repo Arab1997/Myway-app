@@ -13,11 +13,9 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.adapters.MediaPlayerAdapter
 import com.snatap.myway.ui.screens.main.home.live.PlayerListener
-import com.snatap.myway.utils.extensions.gone
-import com.snatap.myway.utils.extensions.loge
-import com.snatap.myway.utils.extensions.showGone
-import com.snatap.myway.utils.extensions.toast
+import com.snatap.myway.utils.extensions.*
 import com.snatap.myway.utils.views.CountDownAnimation
 import kotlinx.android.synthetic.main.screen_media_player.*
 import java.util.*
@@ -35,12 +33,31 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
 
     private val timerTime = 4
     private lateinit var exoPlayer: SimpleExoPlayer
+    private lateinit var adapter: MediaPlayerAdapter
     override fun initialize() {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+        initData()
 
         startAnimation()
 
         initPlayer()
+    }
+
+    private fun initData() {
+        next.setOnClickListener { inDevelopment(requireContext()) }
+
+        finish.setOnClickListener { finishFragment() }
+
+        adapter = MediaPlayerAdapter {
+
+        }.apply { setData(arrayListOf(1, 2, 3, 4)) }
+
+        recycler.adapter = adapter
+
+        next.invisible()
+        finish.invisible()
+        recycler.invisible()
     }
 
     private fun startAnimation() {
@@ -58,6 +75,9 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
     private fun showHideContent(show: Boolean) {
         name.showGone(show)
         gradient.showGone(show)
+        next.showGone(show)
+        finish.showGone(show)
+        recycler.showGone(show)
     }
 
     private fun initPlayer() {
@@ -79,7 +99,7 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
             }
 
             override fun onPlayingChanged(isPlaying: Boolean) {
-                showHideContent(!isPlaying)
+//                showHideContent(!isPlaying)
             }
 
             override fun onError(error: ExoPlaybackException?) {
@@ -89,6 +109,9 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
                 loge(error?.localizedMessage.toString())
             }
         })
+        videoPlayer.setControllerVisibilityListener {
+            showHideContent(it == 0)
+        }
     }
 
     private fun play(url: String) {
