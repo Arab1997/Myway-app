@@ -19,8 +19,8 @@ import com.snatap.myway.network.models.Stream
 import com.snatap.myway.ui.adapters.LiveCommentAdapter
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_live_header.*
-import kotlinx.android.synthetic.main.custom_controller.*
 import kotlinx.android.synthetic.main.screen_live_streams.*
+import kotlinx.android.synthetic.main.stream_controller.*
 import java.util.*
 
 
@@ -145,6 +145,9 @@ class LiveStreamScreen : BaseFragment(R.layout.screen_live_streams) {
                 progressBar.showGone(!isReady)
             }
 
+            override fun onPlayingChanged(isPlaying: Boolean) {
+            }
+
             override fun onError(error: ExoPlaybackException?) {
                 progressBar.gone()
                 toast(requireContext(), R.string.smth_wrong)
@@ -206,6 +209,11 @@ interface PlayerListener : Player.EventListener {
         onError(error)
     }
 
+    override fun onIsPlayingChanged(isPlaying: Boolean) {
+        onPlayingChanged(isPlaying)
+    }
+
     fun onStateChanged(isReady: Boolean)
+    fun onPlayingChanged(isPlaying: Boolean)
     fun onError(error: ExoPlaybackException?)
 }

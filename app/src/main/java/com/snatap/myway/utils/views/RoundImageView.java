@@ -14,7 +14,7 @@ import com.snatap.myway.R;
 public class RoundImageView extends AppCompatImageView {
 
     TypedArray typedArray;
-    private float radius = 18.0f;
+    private float radius = 0.0f;
     private Path path;
     private RectF rect;
 
@@ -42,7 +42,7 @@ public class RoundImageView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         rect = new RectF(0, 0, this.getWidth(), this.getHeight());
-        radius = typedArray.getDimension(R.styleable.RoundImageView_rect_radius, 5);
+        radius = typedArray.getDimension(R.styleable.RoundImageView_rect_radius, 10);
         path.addRoundRect(rect, radius, radius, Path.Direction.CW);
         canvas.clipPath(path);
         super.onDraw(canvas);

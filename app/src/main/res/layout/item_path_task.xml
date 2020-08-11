@@ -1,79 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.snatap.myway.utils.views.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="12dp"
-    android:layout_marginEnd="8dp"
-    android:background="@drawable/rounded_blue_bordered_card"
-    android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp">
+    android:layout_marginEnd="8dp">
 
     <LinearLayout
+        android:id="@+id/dataBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:background="@drawable/rounded_blue_bordered_card"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_pin"
-            tools:ignore="ContentDescription" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_pin"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:alpha="0.64"
+                android:text="8 апреля 2020"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_medium"
+                android:text="Новый"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:alpha="0.64"
-            android:text="8 апреля 2020"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Визуализация"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:background="#F5F9FE" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inter_medium"
-            android:text="Новый"
-            android:textAlignment="textEnd"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_calendar_white"
+            android:drawablePadding="11dp"
+            android:gravity="center_vertical"
+            android:text="Срок сдачи: 18:00,  07 июля"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
+
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Визуализация"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
+    <FrameLayout
+        android:id="@+id/rightView"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        app:bring_to_clamp="no"
+        app:clamp="self"
+        app:gravity="right"
+        app:sticky="none">
 
-    <View
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginTop="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F5F9FE" />
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_gradient_blue_card"
+            android:padding="12dp"
+            android:src="@drawable/ic_paperclip"
+            android:tint="@color/white"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
 
-    <TextView
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_calendar_white"
-        android:drawablePadding="11dp"
-        android:gravity="center_vertical"
-        android:text="Срок сдачи: 18:00,  07 июля"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
-
-</LinearLayout>
+</com.snatap.myway.utils.views.SwipeLayout>

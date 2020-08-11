@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/videoPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        app:controller_layout_id="@layout/media_controller"
+        app:hide_on_touch="true"
+        app:player_layout_id="@layout/exo_simple_player_view"
+        app:resize_mode="fill"
+        app:show_buffering="never"
+        app:show_timeout="0" />
+
+    <ImageView
+        android:id="@+id/gradient"
+        style="@style/screenStyle"
+        android:background="@drawable/live_gradient"
+        android:clickable="false"
+        android:contentDescription="@string/layer"
+        android:focusable="false" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="100dp" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/inter_bold"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textSize="75sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:fontFamily="@font/comfortaa_bold"
+        android:text="Название видео"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+</RelativeLayout>

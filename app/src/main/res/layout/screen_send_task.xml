@@ -29,7 +29,7 @@
             android:background="@drawable/rounded_light_blue_card"
             android:contentDescription="@string/icon"
             android:padding="9dp"
-            android:src="@drawable/ic_choose_file" />
+            android:src="@drawable/ic_paperclip" />
 
         <TextView
             android:layout_width="wrap_content"

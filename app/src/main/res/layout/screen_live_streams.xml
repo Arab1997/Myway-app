@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
-            app:controller_layout_id="@layout/custom_controller"
+            app:controller_layout_id="@layout/stream_controller"
             app:hide_on_touch="true"
             app:player_layout_id="@layout/exo_simple_player_view"
             app:resize_mode="fill"
