@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,13 +64,13 @@
         android:textStyle="bold" />
 
     <SeekBar
-        android:padding="0dp"
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="24dp" />
+        android:layout_marginEnd="24dp"
+        android:padding="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,35 +103,39 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:ignore="InefficientWeight"
-        android:gravity="center">
+        android:gravity="center"
+        tools:ignore="InefficientWeight">
 
         <ImageView
             android:id="@+id/backBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:src="@drawable/ic_back_video"
             android:tint="@color/hint"
-            android:src="@drawable/ic_back_video"/>
+            android:contentDescription="back"/>
 
         <ImageView
             android:id="@+id/play"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_white_play"
-            android:tint="@color/dark"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/ic_white_pause"
+            android:tint="@color/dark"
+            android:contentDescription="Play"/>
 
         <ImageView
             android:id="@+id/forwardBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:src="@drawable/ic_next_video"
             android:tint="@color/hint"
-            android:src="@drawable/ic_next_video"/>
+            android:contentDescription="forward"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/speedUpLayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -142,11 +147,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp"
+            android:text="Скорость воспроизведения"
             android:textColor="@color/hint"
-            android:text="Скорость воспроизведения" />
+            android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/speedUp"
             android:layout_width="92dp"
             android:layout_height="36dp"
             android:layout_marginStart="2dp"
