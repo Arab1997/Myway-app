@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "414587540826",
+    "firebase_url": "https://myway-d10cb.firebaseio.com",
+    "project_id": "myway-d10cb",
+    "storage_bucket": "myway-d10cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414587540826:android:0c8b939c64684a586c8f63",
+        "android_client_info": {
+          "package_name": "com.snatap.myway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414587540826-n8ql0nechtt0liv4jfqfrm8qcrj8n71d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBL-ZrUcu5HhbPr1gXZGJ1CZO6xDrRv-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414587540826-n8ql0nechtt0liv4jfqfrm8qcrj8n71d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

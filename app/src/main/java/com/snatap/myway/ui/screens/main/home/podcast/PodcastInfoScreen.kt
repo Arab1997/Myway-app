@@ -2,21 +2,14 @@ package com.snatap.myway.ui.screens.main.home.podcast
 
 import android.media.MediaPlayer
 import android.os.Build
-import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.PodcastChapterAdapter
 import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.content_rounded_toolbar_info.*
-import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.screen_podcast_info.*
-import kotlinx.android.synthetic.main.screen_podcast_play.*
-import java.util.*
 
-class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
+class PodcastInfoScreen : BaseFragment(R.layout.screen_podcast_info) {
 
     private lateinit var mediaPlayer: MediaPlayer
 
@@ -25,22 +18,6 @@ class PodcastInfoScreen() : BaseFragment(R.layout.screen_podcast_info) {
         fun newInstance(txtTitle: String): PodcastInfoScreen {
             this.txtTitle = txtTitle
             return PodcastInfoScreen()
-        }
-
-        fun stringForTime(timeMs: Int): String? {
-            val mFormatter: Formatter
-            val mFormatBuilder: StringBuilder = StringBuilder()
-            mFormatter = Formatter(mFormatBuilder, Locale.getDefault())
-            val totalSeconds = timeMs / 1000
-            val seconds = totalSeconds % 60
-            val minutes = totalSeconds / 60 % 60
-            val hours = totalSeconds / 3600
-            mFormatBuilder.setLength(0)
-            return if (hours > 0) {
-                mFormatter.format("%d:%02d:%02d", hours, minutes, seconds).toString()
-            } else {
-                mFormatter.format("%02d:%02d", minutes, seconds).toString()
-            }
         }
     }
 

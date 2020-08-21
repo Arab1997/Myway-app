@@ -16,6 +16,11 @@ object Constants {
     const val COMMENT_WITH_FILE = 105
     const val COMMENT_MSG = 106
 
+    const val DAILY_CONTENT_TYPE_MORNING_VIP = "morning_vip"
+    const val DAILY_CONTENT_TYPE_DAY_VIP = "day_vip"
+    const val DAILY_CONTENT_TYPE_DAY = "day"
+    const val DAILY_CONTENT_TYPE_EVENING_VIP = "evening_vip"
+
     const val IS_REGISTER_KEY = "register"
 }
 

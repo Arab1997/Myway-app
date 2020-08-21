@@ -2,16 +2,14 @@ package com.snatap.myway.ui.screens.main.home.podcast
 
 import android.annotation.SuppressLint
 import android.media.MediaPlayer
-import android.media.PlaybackParams
 import android.os.Build
-import android.os.Bundle
 import android.os.Handler
 import android.widget.SeekBar
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.screens.main.home.podcast.PodcastInfoScreen.Companion.stringForTime
 import com.snatap.myway.utils.extensions.gone
 import kotlinx.android.synthetic.main.screen_podcast_play.*
+import java.util.*
 
 class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
@@ -98,10 +96,8 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         }
 
         speedUp.setOnClickListener {
-            if (playerSpeed < 2f)
-                playerSpeed += 0.5f
-            else
-                playerSpeed = 1f
+            if (playerSpeed < 2f) playerSpeed += 0.5f
+            else playerSpeed = 1f
 
             speedUp.text = "${playerSpeed}X"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -117,6 +113,22 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         if (mediaPlayer.isPlaying) {
             runnable = Runnable { changeSeekBar() }
             handler.postDelayed(runnable, 50)
+        }
+    }
+
+    private fun stringForTime(timeMs: Int): String? {
+        val mFormatter: Formatter
+        val mFormatBuilder: StringBuilder = StringBuilder()
+        mFormatter = Formatter(mFormatBuilder, Locale.getDefault())
+        val totalSeconds = timeMs / 1000
+        val seconds = totalSeconds % 60
+        val minutes = totalSeconds / 60 % 60
+        val hours = totalSeconds / 3600
+        mFormatBuilder.setLength(0)
+        return if (hours > 0) {
+            mFormatter.format("%d:%02d:%02d", hours, minutes, seconds).toString()
+        } else {
+            mFormatter.format("%02d:%02d", minutes, seconds).toString()
         }
     }
 

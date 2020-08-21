@@ -81,6 +81,9 @@ interface ApiInterface {
     @GET("store_items")
     fun getStoreItems(): Single<StoreResp>
 
+    @GET("user/lesson_day_items")
+    fun getLessonsDay(): Single<LessonsDayResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)

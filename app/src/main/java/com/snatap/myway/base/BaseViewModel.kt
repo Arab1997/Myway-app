@@ -52,6 +52,7 @@ open class BaseViewModel(
     val achievements: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievements"))
     val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
     val streams: MutableLiveData<ArrayList<Stream>> by inject(named("streams"))
+    val lessonsDay: MutableLiveData<ArrayList<LessonDay>> by inject(named("lessonsDay"))
     val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
     val sharedStore: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
 
@@ -142,6 +143,7 @@ open class BaseViewModel(
             getUserAchievements()
             getUserNotifications()
             getStoreItems()
+            getLessonsDay()
         }
     }
 
@@ -336,6 +338,15 @@ open class BaseViewModel(
         api.getStoreCategories().observeAndSubscribe()
             .subscribe({
                 if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getLessonsDay() = compositeDisposable.add(
+        api.getLessonsDay().observeAndSubscribe()
+            .subscribe({
+                if (it.success) lessonsDay.postValue(ArrayList(it.lesson_day_items))
             }, {
                 parseError(it)
             })

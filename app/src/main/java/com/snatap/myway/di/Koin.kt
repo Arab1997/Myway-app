@@ -29,6 +29,7 @@ val viewModelModule = module {
     single(named("achievements")) { MutableLiveData<ArrayList<UserAchievement>>() }
     single(named("stream_messages")) { MutableLiveData<ArrayList<StreamMessage>>() }
     single(named("streams")) { MutableLiveData<ArrayList<Stream>>() }
+    single(named("lessonsDay")) { MutableLiveData<ArrayList<LessonDay>>() }
     factory(named("stores")) { MutableLiveData<ArrayList<Store>>() }
 }
 
