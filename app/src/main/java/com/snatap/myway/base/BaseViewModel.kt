@@ -7,10 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.snatap.myway.R
-import com.snatap.myway.network.ApiInterface
-import com.snatap.myway.network.ErrorResp
-import com.snatap.myway.network.LoginRequest
-import com.snatap.myway.network.RetrofitClient
+import com.snatap.myway.network.*
 import com.snatap.myway.network.models.*
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.loge
@@ -31,7 +28,7 @@ import retrofit2.HttpException
 open class BaseViewModel(
     private val gson: Gson,
     private val context: Context,
-    private val sharedManager: SharedManager
+    val sharedManager: SharedManager
 ) : ViewModel(), KoinComponent {
 
     @LayoutRes
@@ -153,6 +150,26 @@ open class BaseViewModel(
                 sharedManager.token = it.access_token
                 data.value = it
                 fetchData()
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun register(phone: String, code: String? = null) = compositeDisposable.add(
+        api.register(RegisterRequest(phone, code)).observeAndSubscribe()
+            .subscribe({
+//                sharedManager.token = it.access_token
+                data.value = it
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun setPassword(password: String) = compositeDisposable.add(
+        api.setPassword(PasswordRequest(password)).observeAndSubscribe()
+            .subscribe({
+//                sharedManager.token = it.access_token
+                data.value = it
             }, {
                 parseError(it)
             })

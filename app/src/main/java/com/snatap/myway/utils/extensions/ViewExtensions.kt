@@ -41,6 +41,16 @@ fun View.visible(): View {
     return this
 }
 
+fun View.show(): View {
+    visibility = View.VISIBLE
+    return this
+}
+
+fun View.hide(): View {
+    visibility = View.GONE
+    return this
+}
+
 fun View.enableDisable(enable: Boolean): View {
     return if (enable) this.enable() else this.disable()
 }

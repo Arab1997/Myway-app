@@ -1,10 +1,12 @@
 package com.snatap.myway.ui.screens.auth.register
 
-import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.base.parentLayoutId
+import com.snatap.myway.network.models.SuccessResp
 import com.snatap.myway.ui.screens.auth.AuthPinScreen
-import com.snatap.myway.utils.Constants
+import com.snatap.myway.utils.extensions.blockClickable
 import com.snatap.myway.utils.extensions.disable
 import com.snatap.myway.utils.extensions.enable
 import com.snatap.myway.utils.views.MyWayEditText
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.screen_registration_pass.*
 
 class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
 
+    private var request = false
     override fun initialize() {
 
         next.disable()
@@ -20,7 +23,10 @@ class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
         passConfirm.onTextChanged { validate(it, passConfirm, pass) }
 
         next.setOnClickListener {
-            addFragment(AuthPinScreen.newInstance(true))
+            it.blockClickable()
+            request = true
+            showProgress(true)
+            viewModel.setPassword(pass.getText())
         }
     }
 
@@ -45,6 +51,17 @@ class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
 
         view1.showHideError(false)
         view2.showHideError(false)
+
         next.enable()
+    }
+
+    override fun observe() {
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            if (request && it is SuccessResp) {
+                request = false
+                showProgress(false)
+                replaceFragment(AuthPinScreen.newInstance(true), id = parentLayoutId())
+            }
+        })
     }
 }

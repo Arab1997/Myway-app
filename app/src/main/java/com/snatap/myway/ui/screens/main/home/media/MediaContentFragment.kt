@@ -25,5 +25,4 @@ class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
             adapter.setData(it)
         })
     }
-
 }

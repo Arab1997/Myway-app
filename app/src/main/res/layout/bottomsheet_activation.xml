@@ -25,6 +25,19 @@
         app:lineColor="@color/edt"
         app:viewType="rectangle" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/yellow"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/desc"
         android:layout_width="wrap_content"

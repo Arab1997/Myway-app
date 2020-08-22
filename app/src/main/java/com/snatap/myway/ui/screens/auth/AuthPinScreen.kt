@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.screen_registration_pin.*
 
 class AuthPinScreen : BaseFragment(R.layout.screen_registration_pin) {
 
-
     companion object {
         private var isRegister = true
         fun newInstance(isRegister: Boolean): AuthPinScreen {

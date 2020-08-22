@@ -8,17 +8,21 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.RegisterResponse
 import com.snatap.myway.ui.screens.auth.ActivationBottomSheet
 import com.snatap.myway.ui.screens.auth.AgreementScreen
 import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
 import com.snatap.myway.utils.extensions.disable
+import com.snatap.myway.utils.extensions.enable
 import com.snatap.myway.utils.extensions.enableDisable
 import kotlinx.android.synthetic.main.screen_registration_phone.*
 
 class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
 
+    private var request = false
     override fun initialize() {
 
         back.setOnClickListener { finishFragment() }
@@ -29,6 +33,7 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
                 getString(R.string.licence_agreement),
                 getString(R.string.user_agreement)
             )
+
             makeTextLink(getString(R.string.licence_agreement)) {
                 addFragment(AgreementScreen.newInstance(true))
             }
@@ -39,10 +44,7 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
 
         next.apply {
             disable()
-            setOnClickListener {
-                sendRequest()
-                showBottomSheet()
-            }
+            setOnClickListener { sendRequest() }
         }
 
         haveAccount.setOnClickListener {
@@ -51,23 +53,36 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
         }
 
         ccp.registerCarrierNumberEditText(phone)
+
         ccp.setPhoneNumberValidityChangeListener {
             next.enableDisable(it)
         }
+
     }
 
     private fun sendRequest() {
         hideKeyboard()
-//        ccp.fullNumberWithPlus
-        // todo
+        showProgress(true)
+        request = true
+        viewModel.register(ccp.fullNumberWithPlus)
     }
 
-    private fun showBottomSheet() {
-        val bottomSheet = ActivationBottomSheet()
-            .apply {
-                setListener { addFragment(AuthPassScreen()) }
+    override fun observe() {
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            if (request && it is RegisterResponse) {
+                showProgress(false)
+                request = false
+                next.enable()
+                if (it.needs_verification != null
+                    && it.needs_verification
+                ) {
+                    val bottomSheet = ActivationBottomSheet
+                        .newInstance(viewModel, ccp.fullNumberWithPlus, true)
+                        .apply { setListener { addFragment(AuthPassScreen()) } }
+                    if (!bottomSheet.isAdded) bottomSheet.show(childFragmentManager, "")
+                }
             }
-        bottomSheet.show(childFragmentManager, "")
+        })
     }
 }
 

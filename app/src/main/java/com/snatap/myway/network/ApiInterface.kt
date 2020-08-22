@@ -10,7 +10,10 @@ interface ApiInterface {
     fun login(@Body body: LoginRequest): Single<Token>
 
     @POST("auth/register")
-    fun register(@Body body: RegisterRequest): Single<RegisterRequest>
+    fun register(@Body body: RegisterRequest): Single<RegisterResponse>
+
+    @POST("auth/register")
+    fun setPassword(@Body body: PasswordRequest): Single<SuccessResp>
 
     @POST("auth/logout")
     fun logout(): Single<MessageResp>
@@ -97,10 +100,20 @@ data class Token(
 )
 
 data class RegisterRequest(
-    val full_name: String,
-    val email: String,
-    val phone: String
+    val phone: String,
+    val сode: String? = null
 )
+
+data class RegisterResponse(
+    val success: Boolean,
+    val needs_verification: Boolean?,
+    val access_token: String?,
+    val token_type: String?,
+    val unique_id: String?,
+    val message: String
+)
+
+data class PasswordRequest(val password: String)
 
 data class LoginRequest(
     val phone: String,
