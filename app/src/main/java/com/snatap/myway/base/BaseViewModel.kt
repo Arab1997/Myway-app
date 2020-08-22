@@ -158,7 +158,20 @@ open class BaseViewModel(
     fun register(phone: String, code: String? = null) = compositeDisposable.add(
         api.register(RegisterRequest(phone, code)).observeAndSubscribe()
             .subscribe({
-//                sharedManager.token = it.access_token
+                data.value = it
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun forgotPassword(
+        phone: String,
+        code: String? = null,
+        token: String? = null,
+        password: String? = null
+    ) = compositeDisposable.add(
+        api.forgotPassword(ForgotRequest(phone, code, password, token)).observeAndSubscribe()
+            .subscribe({
                 data.value = it
             }, {
                 parseError(it)

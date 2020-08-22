@@ -35,7 +35,7 @@
                 android:layout_height="40dp"
                 android:padding="5sp"
                 android:src="@drawable/ic_arrow_back_ios_24"
-                android:tint="@color/hint"
+                app:tint="@color/hint"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -106,9 +106,9 @@
             <TextView
                 android:id="@+id/recoverPass"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_height="40dp"
                 android:fontFamily="@font/comfortaa_regular"
+                android:gravity="center_vertical"
                 android:text="Восстановить пароль"
                 android:textColor="@color/hint"
                 android:textSize="12sp"

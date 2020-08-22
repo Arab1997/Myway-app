@@ -40,11 +40,11 @@
         <ImageView
             android:id="@+id/close"
             android:layout_centerVertical="true"
-            android:tint="@color/white"
             android:layout_alignParentEnd="true"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/ic_close"/>
+            android:src="@drawable/ic_close"
+            app:tint="@color/white" />
 
     </RelativeLayout>
 

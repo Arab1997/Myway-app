@@ -5,6 +5,7 @@ import android.os.CountDownTimer
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseViewModel
+import com.snatap.myway.network.ForgotResponse
 import com.snatap.myway.network.RegisterResponse
 import com.snatap.myway.utils.bottomsheet.BottomSheetRoundedFragment
 import com.snatap.myway.utils.common.TextWatcherInterface
@@ -19,7 +20,7 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
     companion object {
         private var viewModel: BaseViewModel? = null
         private var phone: String = ""
-        private var isRegister: Boolean = false
+        private var isRegister: Boolean = true
         fun newInstance(
             viewModel: BaseViewModel,
             phone: String,
@@ -33,8 +34,8 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
     }
 
     private var request = false
-    private lateinit var listener: () -> Unit
-    fun setListener(listener: () -> Unit) {
+    private lateinit var listener: (String?) -> Unit
+    fun setListener(listener: (String?) -> Unit) {
         this.listener = listener
     }
 
@@ -54,7 +55,8 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
                 if (s.length == 4) {
                     hideKeyboard(codeEdt)
                     request = true
-                    viewModel?.register(phone, codeEdt.text.toString())
+                    if (isRegister) viewModel?.register(phone, codeEdt.text.toString())
+                    else viewModel?.forgotPassword(phone, codeEdt.text.toString())
                 } else {
                     progressBar.gone()
                     desc.visible()
@@ -69,7 +71,8 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
                 setTextColorRes(R.color.black)
                 setBackgroundResource(R.drawable.rounded_edt_card)
                 isClickable = false
-                viewModel?.register(phone)
+                if (isRegister) viewModel?.register(phone)
+                else viewModel?.forgotPassword(phone)
             }
 
             initTimer()
@@ -106,18 +109,29 @@ class ActivationBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_ac
 
     private fun observe() {
         viewModel?.data?.observe(viewLifecycleOwner, Observer {
-            if (request && it is RegisterResponse) {
+            if (request) {
                 request = false
-                if (it.access_token != null) {
-                    viewModel?.sharedManager?.token = it.access_token
-                    dismiss()
-                    listener.invoke()
-                } else {
-                    progressBar.gone()
-                    error.visible()
-                    desc.gone()
-                }
+                progressBar.gone()
 
+                if (it is RegisterResponse) {
+                    if (it.access_token != null) {
+                        viewModel?.sharedManager?.token = it.access_token
+                        dismiss()
+                        listener.invoke(null)
+                    } else {
+                        error.visible()
+                        desc.gone()
+                    }
+                }
+                if (it is ForgotResponse) {
+                    if (it.token != null) {
+                        dismiss()
+                        listener.invoke(it.token)
+                    } else {
+                        error.visible()
+                        desc.gone()
+                    }
+                }
             }
         })
     }

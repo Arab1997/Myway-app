@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.auth.register
+package com.snatap.myway.ui.screens.auth.auth
 
 import android.graphics.Color
 import android.text.SpannableString
@@ -11,21 +11,50 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.ForgotResponse
 import com.snatap.myway.network.RegisterResponse
 import com.snatap.myway.ui.screens.auth.ActivationBottomSheet
 import com.snatap.myway.ui.screens.auth.AgreementScreen
-import com.snatap.myway.ui.screens.auth.login.AuthLoginScreen
-import com.snatap.myway.utils.extensions.disable
-import com.snatap.myway.utils.extensions.enable
-import com.snatap.myway.utils.extensions.enableDisable
+import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.screen_registration_phone.*
 
 class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
 
+    companion object {
+        private var isRegister = true
+        fun newInstance(isRegister: Boolean): AuthPhoneScreen {
+            this.isRegister = isRegister
+            return AuthPhoneScreen()
+        }
+    }
+
     private var request = false
     override fun initialize() {
 
+        initCommonView()
+
+        if (isRegister) initRegisterView()
+        else initRecoverView()
+
+    }
+
+    private fun initCommonView() {
+
         back.setOnClickListener { finishFragment() }
+
+        next.apply {
+            disable()
+            setOnClickListener { sendRequest() }
+        }
+
+        ccp.registerCarrierNumberEditText(phone)
+
+        ccp.setPhoneNumberValidityChangeListener {
+            next.enableDisable(it)
+        }
+    }
+
+    private fun initRegisterView() {
 
         terms.apply {
             text = getString(
@@ -42,45 +71,57 @@ class AuthPhoneScreen : BaseFragment(R.layout.screen_registration_phone) {
             }
         }
 
-        next.apply {
-            disable()
-            setOnClickListener { sendRequest() }
-        }
-
         haveAccount.setOnClickListener {
             popInclusive()
             addFragment(AuthLoginScreen())
         }
 
-        ccp.registerCarrierNumberEditText(phone)
+    }
 
-        ccp.setPhoneNumberValidityChangeListener {
-            next.enableDisable(it)
-        }
+    private fun initRecoverView() {
+        next.text = "Продолжить"
+        title.text = "Восстановление пароля"
 
+        pass.gone()
+        terms.invisible()
+        recoverPass.invisible()
+        haveAccount.gone()
     }
 
     private fun sendRequest() {
         hideKeyboard()
         showProgress(true)
         request = true
-        viewModel.register(ccp.fullNumberWithPlus)
+        if (isRegister) viewModel.register(ccp.fullNumberWithPlus)
+        else viewModel.forgotPassword(ccp.fullNumberWithPlus)
     }
 
     override fun observe() {
         viewModel.data.observe(viewLifecycleOwner, Observer {
-            if (request && it is RegisterResponse) {
+            if (request) {
                 showProgress(false)
                 request = false
                 next.enable()
-                if (it.needs_verification != null
-                    && it.needs_verification
-                ) {
-                    val bottomSheet = ActivationBottomSheet
-                        .newInstance(viewModel, ccp.fullNumberWithPlus, true)
-                        .apply { setListener { addFragment(AuthPassScreen()) } }
+
+                var phone = ccp.fullNumberWithPlus
+                val bottomSheet = ActivationBottomSheet
+                    .newInstance(viewModel, phone, isRegister)
+                    .apply {
+                        setListener { token ->
+                            addFragment(
+                                AuthPassScreen.newInstance(isRegister, token, phone)
+                            )
+                        }
+                    }
+
+                if (it is RegisterResponse && it.needs_verification != null && it.needs_verification) {
                     if (!bottomSheet.isAdded) bottomSheet.show(childFragmentManager, "")
                 }
+
+                if (it is ForgotResponse) {
+                    if (!bottomSheet.isAdded) bottomSheet.show(childFragmentManager, "")
+                }
+
             }
         })
     }

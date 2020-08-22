@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.auth.login
+package com.snatap.myway.ui.screens.auth.auth
 
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
@@ -6,7 +6,6 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.Token
 import com.snatap.myway.ui.screens.auth.AgreementScreen
 import com.snatap.myway.ui.screens.auth.AuthPinScreen
-import com.snatap.myway.ui.screens.auth.register.makeTextLink
 import com.snatap.myway.utils.extensions.disable
 import com.snatap.myway.utils.extensions.enableDisable
 import com.snatap.myway.utils.extensions.gone
@@ -52,7 +51,7 @@ class AuthLoginScreen : BaseFragment(R.layout.screen_registration_phone) {
 
         pass.onTextChanged { validate() }
 
-        recoverPass.setOnClickListener { addFragment(AuthRecoverPhoneScreen()) }
+        recoverPass.setOnClickListener { addFragment(AuthPhoneScreen.newInstance(false)) }
 
         title.text = "Авторизация"
 

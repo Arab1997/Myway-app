@@ -1,10 +1,14 @@
-package com.snatap.myway.ui.screens.auth.register
+package com.snatap.myway.ui.screens.auth.auth
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.base.parentLayoutId
+import com.snatap.myway.network.ForgotResponse
+import com.snatap.myway.network.Token
 import com.snatap.myway.network.models.SuccessResp
+import com.snatap.myway.ui.screens.BottomNavScreen
 import com.snatap.myway.ui.screens.auth.AuthPinScreen
 import com.snatap.myway.utils.extensions.blockClickable
 import com.snatap.myway.utils.extensions.disable
@@ -14,8 +18,31 @@ import kotlinx.android.synthetic.main.screen_registration_pass.*
 
 class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
 
+    companion object {
+        private var isRegister = true
+        private var token: String? = null
+        private var phone: String? = null
+        fun newInstance(
+            isRegister: Boolean,
+            token: String? = null,
+            phone: String? = null
+        ): AuthPassScreen {
+            this.token = token
+            this.phone = phone
+            this.isRegister = isRegister
+            return AuthPassScreen()
+        }
+    }
+
     private var request = false
     override fun initialize() {
+
+        initCommonView()
+
+        if (!isRegister) initRecoverView()
+    }
+
+    private fun initCommonView() {
 
         next.disable()
 
@@ -26,8 +53,15 @@ class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
             it.blockClickable()
             request = true
             showProgress(true)
-            viewModel.setPassword(pass.getText())
+            if (isRegister) viewModel.setPassword(pass.getText())
+            else viewModel.forgotPassword(phone!!, null, token!!, pass.getText())
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initRecoverView() {
+        title.text = "С возвращением! \uD83E\uDD17"
+        next.text = "Готово"
     }
 
     private fun validate(text: String, view1: MyWayEditText, view2: MyWayEditText) {
@@ -60,8 +94,20 @@ class AuthPassScreen : BaseFragment(R.layout.screen_registration_pass) {
             if (request && it is SuccessResp) {
                 request = false
                 showProgress(false)
-                replaceFragment(AuthPinScreen.newInstance(true), id = parentLayoutId())
+                replaceFragment(AuthPinScreen.newInstance(true))
             }
+            if (request && it is ForgotResponse) {
+                request = false
+                showProgress(false)
+                viewModel.login(phone!!, pass.getText())
+                showProgress(true)
+            }
+
+            if (it is Token) {
+                showProgress(false)
+                replaceFragment(BottomNavScreen(), id = parentLayoutId())
+            }
+
         })
     }
 }

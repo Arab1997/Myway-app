@@ -19,7 +19,7 @@ interface ApiInterface {
     fun logout(): Single<MessageResp>
 
     @POST("auth/forgot_password")
-    fun forgotPassword(): Single<MessageResp>
+    fun forgotPassword(@Body body: ForgotRequest): Single<ForgotResponse>
 
     @GET("news_items")
     fun getNews(): Single<NewsResp>
@@ -101,7 +101,7 @@ data class Token(
 
 data class RegisterRequest(
     val phone: String,
-    val сode: String? = null
+    val code: String? = null
 )
 
 data class RegisterResponse(
@@ -110,6 +110,19 @@ data class RegisterResponse(
     val access_token: String?,
     val token_type: String?,
     val unique_id: String?,
+    val message: String
+)
+
+data class ForgotRequest(
+    val phone: String,
+    val code: String? = null,
+    val password: String? = null,
+    val token: String? = null
+)
+
+data class ForgotResponse(
+    val success: Boolean,
+    val token: String?,
     val message: String
 )
 
