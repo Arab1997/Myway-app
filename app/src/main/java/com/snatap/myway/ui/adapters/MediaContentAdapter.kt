@@ -8,12 +8,15 @@ import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.extensions.fromHtml
 import com.snatap.myway.utils.extensions.loadImage
+import com.snatap.myway.utils.extensions.showGone
+import com.snatap.myway.utils.extensions.visible
 import kotlinx.android.synthetic.main.item_content.view.*
 import java.text.SimpleDateFormat
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
-class MediaContentAdapter : BaseAdapter<LessonDay>(R.layout.item_content) {
+class MediaContentAdapter(private val listener: (LessonDay) -> Unit) :
+    BaseAdapter<LessonDay>(R.layout.item_content) {
 
     @SuppressLint("SimpleDateFormat")
     private val sdf = SimpleDateFormat("HH:mm:ss")
@@ -34,6 +37,13 @@ class MediaContentAdapter : BaseAdapter<LessonDay>(R.layout.item_content) {
                 title2.text = it.title
                 desc.text = it.text.fromHtml()
                 image.loadImage(it.photo)
+                it.video?.let { video ->
+                    videoContainer.visible()
+                    videoImage.loadImage(it.photo)
+                }
+
+                it.training_items?.let { taskContainer.showGone(it.isNotEmpty()) }
+                play.setOnClickListener { v -> listener.invoke(it) }
 
                 duration.text = generateDuration(it.start_time, it.end_time)
                 duration1.text =

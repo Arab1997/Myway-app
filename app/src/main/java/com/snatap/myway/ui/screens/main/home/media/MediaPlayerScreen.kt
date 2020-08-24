@@ -25,8 +25,12 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
 
     companion object {
         private var url: String = "https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4"
-        fun newInstance(url: String): MediaPlayerScreen {
+        private var showContents: Boolean = true
+        private var videoName: String = ""
+        fun newInstance(url: String, showContents: Boolean, videoName: String): MediaPlayerScreen {
             this.url = url
+            this.videoName = videoName
+            this.showContents = showContents
             return MediaPlayerScreen()
         }
     }
@@ -55,6 +59,8 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
 
         recycler.adapter = adapter
 
+        name.text = videoName
+
         next.invisible()
         finish.invisible()
         recycler.invisible()
@@ -73,11 +79,13 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
     }
 
     private fun showHideContent(show: Boolean) {
-        name.showGone(show)
         gradient.showGone(show)
-        next.showGone(show)
-        finish.showGone(show)
-        recycler.showGone(show)
+        name.showGone(show)
+        if (showContents) {
+            next.showGone(show)
+            finish.showGone(show)
+            recycler.showGone(show)
+        }
     }
 
     private fun initPlayer() {

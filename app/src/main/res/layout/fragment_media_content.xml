@@ -89,8 +89,8 @@
                             android:background="@drawable/rounded_white_card_transparent"
                             android:padding="7dp"
                             android:src="@drawable/ic_calendar"
-                            android:tint="@color/white"
-                            tools:ignore="ContentDescription" />
+                            tools:ignore="ContentDescription"
+                            app:tint="@color/white" />
 
                         <TextView
                             android:layout_width="match_parent"

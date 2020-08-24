@@ -11,7 +11,9 @@ class MediaContentFragment : BaseFragment(R.layout.fragment_media_content) {
     private lateinit var adapter: MediaContentAdapter
 
     override fun initialize() {
-        adapter = MediaContentAdapter()
+        adapter = MediaContentAdapter {
+            addFragment(MediaPlayerScreen.newInstance(it.video!!, false, it.title))
+        }
         recycler.adapter = adapter
 
         swipeLayout.setOnRefreshListener {

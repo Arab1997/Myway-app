@@ -163,32 +163,73 @@
                     android:src="@drawable/item_content"
                     tools:ignore="ContentDescription" />
 
-                <TextView
-                    style="@style/titleStyle"
-                    android:text="Задания" />
-
-                <Button
-                    style="@style/buttonStyle"
+                <FrameLayout
+                    android:id="@+id/videoContainer"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="17sp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/rounded_blue_card"
-                    android:text="Приступить" />
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerTask"
+                    <ImageView
+                        android:id="@+id/videoImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/item_content"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/gradient"
+                        style="@style/screenStyle"
+                        android:background="@drawable/live_gradient"
+                        android:clickable="false"
+                        android:contentDescription="@string/layer"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@id/play"
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_play"
+                        tools:ignore="ContentDescription" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/taskContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_task" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/titleStyle"
+                        android:text="Задания" />
+
+                    <Button
+                        style="@style/buttonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="17sp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/rounded_blue_card"
+                        android:text="Приступить" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerTask"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_task" />
+                </LinearLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
     </net.cachapa.expandablelayout.ExpandableLayout>
-
 </LinearLayout>
