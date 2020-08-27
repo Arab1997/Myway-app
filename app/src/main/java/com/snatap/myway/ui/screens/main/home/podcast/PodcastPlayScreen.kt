@@ -13,10 +13,6 @@ import java.util.*
 
 class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
-    private var runnable: Runnable? = null
-    private lateinit var handler: Handler
-    private var playerSpeed: Float = 1f
-
     companion object {
         private lateinit var mediaPlayer: MediaPlayer
         fun newInstance(mediaPlayer: MediaPlayer): PodcastPlayScreen {
@@ -25,10 +21,17 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         }
     }
 
+    private var handler = Handler()
+    private var runnable = Runnable {}
+    private var playerSpeed: Float = 1f
+
     override fun initialize() {
         checkMedia()
+
         initViews()
+
         initClicks()
+
         seekBarListener()
     }
 
@@ -40,21 +43,14 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
         }
     }
 
-    override fun onDestroy() {
-        handler.removeCallbacks(runnable)
-        viewModel.data.value = true
-        super.onDestroy()
-    }
-
     private fun initViews() {
         seekBar.max = mediaPlayer.duration
+
         txtEndTime.text = stringForTime(mediaPlayer.duration)
-        handler = Handler()
+
         changeSeekBar()
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            speedUpLayer.gone()
-        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) speedUpLayer.gone()
     }
 
     private fun seekBarListener() {
@@ -76,6 +72,8 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
     @SuppressLint("SetTextI18n")
     private fun initClicks() {
+        close.setOnClickListener { finishFragment() }
+
         play.setOnClickListener {
             if (mediaPlayer.isPlaying) {
                 mediaPlayer.pause()
@@ -100,6 +98,7 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
             else playerSpeed = 1f
 
             speedUp.text = "${playerSpeed}X"
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mediaPlayer.playbackParams = mediaPlayer.playbackParams.setSpeed(playerSpeed)
             }
@@ -131,5 +130,12 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
             mFormatter.format("%02d:%02d", minutes, seconds).toString()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        handler.removeCallbacks(runnable)
+        viewModel.data.value = true
+    }
+
 
 }

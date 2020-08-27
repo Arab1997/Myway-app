@@ -77,7 +77,7 @@
                 android:layout_height="15dp"
                 android:contentDescription="@string/icon"
                 android:src="@drawable/ic_business"
-                android:tint="@color/blue" />
+                app:tint="@color/blue" />
 
             <ImageView
                 android:layout_width="15dp"
@@ -92,7 +92,7 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/icon"
                 android:src="@drawable/ic_star"
-                android:tint="@color/green" />
+                app:tint="@color/green" />
         </LinearLayout>
 
         <TextView
@@ -100,12 +100,14 @@
             style="@style/titleStyle"
             android:layout_margin="0dp"
             android:lineSpacingExtra="2sp"
+            android:maxLines="2"
             android:text="Время перемен" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
+            android:maxLines="2"
             android:text="Как все успеть?!\nТоп 10 ошибок планирования +\n разбор примеров"
             android:textColor="@color/black"
             android:textSize="10sp"

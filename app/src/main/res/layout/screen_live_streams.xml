@@ -19,7 +19,7 @@
             app:controller_layout_id="@layout/stream_controller"
             app:hide_on_touch="true"
             app:player_layout_id="@layout/exo_simple_player_view"
-            app:resize_mode="fill"
+            app:resize_mode="fit"
             app:show_buffering="never"
             app:show_timeout="4000"
             app:use_controller="true" />
@@ -136,7 +136,7 @@
             android:contentDescription="@string/icon"
             android:padding="15dp"
             android:src="@drawable/ic_resize_off"
-            android:tint="@color/white" />
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/like"
@@ -147,7 +147,7 @@
             android:contentDescription="@string/icon"
             android:padding="15dp"
             android:src="@drawable/ic_bordered_heart"
-            android:tint="@color/white" />
+            app:tint="@color/white" />
     </LinearLayout>
 
 </RelativeLayout>

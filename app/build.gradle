@@ -171,4 +171,6 @@ dependencies {
     // Exo Player
     implementation 'com.google.android.exoplayer:exoplayer:2.10.8'
     implementation 'com.github.HaarigerHarald:android-youtubeExtractor:v2.1.0'
+
+    implementation 'org.jsoup:jsoup:1.12.1'
 }

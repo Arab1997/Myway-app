@@ -5,7 +5,7 @@ import com.snatap.myway.BuildConfig
 object Constants {
 
     const val BASE_URL = BuildConfig.BASE_URL
-    const val TIMEOUT = 20.toLong()
+    const val TIMEOUT = 40.toLong()
 
     const val MESSAGE_MY = 100
     const val MESSAGE_SERVER = 101

@@ -355,6 +355,15 @@ open class BaseViewModel(
             })
     )
 
+    fun getStreamUrl(streamId: Int, html: String, script: String) = compositeDisposable.add(
+        api.getStreamUrl(streamId, html, script).observeAndSubscribe()
+            .subscribe({
+                data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
     fun getStoreItems() = compositeDisposable.add(
         api.getStoreItems().observeAndSubscribe()
             .subscribe({

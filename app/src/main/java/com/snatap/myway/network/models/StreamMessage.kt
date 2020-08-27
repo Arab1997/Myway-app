@@ -1,5 +1,10 @@
 package com.snatap.myway.network.models
 
+data class StreamUrlResp(
+    val url: String,
+    val success: Boolean
+)
+
 data class StreamMessageResp(
     val stream_chat_item: StreamMessage,
     val success: Boolean

@@ -29,10 +29,12 @@
 
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:id="@+id/close"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/icon"
+            android:padding="8sp"
             android:src="@drawable/ic_arrow_down_24" />
     </LinearLayout>
 
@@ -110,9 +112,9 @@
             android:id="@+id/backBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:contentDescription="back"
             android:src="@drawable/ic_back_video"
-            android:tint="@color/hint"
-            android:contentDescription="back"/>
+            app:tint="@color/hint" />
 
         <ImageView
             android:id="@+id/play"
@@ -120,17 +122,17 @@
             android:layout_height="80dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
+            android:contentDescription="Play"
             android:src="@drawable/ic_white_pause"
-            android:tint="@color/dark"
-            android:contentDescription="Play"/>
+            app:tint="@color/dark" />
 
         <ImageView
             android:id="@+id/forwardBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:contentDescription="forward"
             android:src="@drawable/ic_next_video"
-            android:tint="@color/hint"
-            android:contentDescription="forward"/>
+            app:tint="@color/hint" />
 
     </LinearLayout>
 

@@ -78,6 +78,14 @@ interface ApiInterface {
     @POST("streams/{id}/join")
     fun joinStream(@Path("id") id: Int): Single<SuccessResp>
 
+    @FormUrlEncoded
+    @POST("streams/{id}/direct_url")
+    fun getStreamUrl(
+        @Path("id") id: Int,
+        @Field("html") html: String,
+        @Field("script") script: String
+    ): Single<StreamUrlResp>
+
     @GET("store_items/categories")
     fun getStoreCategories(): Single<StoreCategories>
 

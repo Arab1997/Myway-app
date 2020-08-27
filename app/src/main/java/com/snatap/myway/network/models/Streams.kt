@@ -32,3 +32,5 @@ data class Stream(
     val youtube_id: String,
     val youtube_url: String
 )
+
+data class LastStream(val id: Int, val url: String)

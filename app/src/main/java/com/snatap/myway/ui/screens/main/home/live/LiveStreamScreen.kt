@@ -4,10 +4,9 @@ import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
-import androidx.databinding.adapters.SeekBarBindingAdapter.setProgress
 import androidx.lifecycle.Observer
 import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.analytics.AnalyticsListener
+import com.google.android.exoplayer2.source.BehindLiveWindowException
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
@@ -17,20 +16,24 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.LastStream
 import com.snatap.myway.network.models.Stream
+import com.snatap.myway.network.models.StreamUrlResp
 import com.snatap.myway.ui.adapters.LiveCommentAdapter
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_live_header.*
 import kotlinx.android.synthetic.main.screen_live_streams.*
 import kotlinx.android.synthetic.main.stream_controller.*
+import org.jsoup.Jsoup
 import java.util.*
-
+import kotlin.properties.Delegates
 
 class LiveStreamScreen : BaseFragment(R.layout.screen_live_streams) {
 
     companion object {
         private var isCurrentLiveStream: Boolean = false
         private var streamData: Stream? = null
+        private var lastStream: LastStream? = null
         fun newInstance(isCurrentLiveStream: Boolean, stream: Stream): LiveStreamScreen {
             this.isCurrentLiveStream = isCurrentLiveStream
             this.streamData = stream
@@ -38,16 +41,63 @@ class LiveStreamScreen : BaseFragment(R.layout.screen_live_streams) {
         }
     }
 
+    private var urlRequest = false
+    private var script: String by Delegates.observable("") { property, oldValue, newValue ->
+        streamData?.id?.let {
+            if (htmlContent.isNotEmpty() && script.isNotEmpty()) {
+                urlRequest = true
+                viewModel.getStreamUrl(it, htmlContent, script)
+            }
+        }
+    }
+
+    private var htmlContent: String by Delegates.observable("") { property, oldValue, newValue ->
+        streamData?.id?.let {
+            if (htmlContent.isNotEmpty() && script.isNotEmpty()) {
+                urlRequest = true
+                viewModel.getStreamUrl(it, htmlContent, script)
+            }
+        }
+    }
+
+    private fun fetchLiveUrl() {
+        if (lastStream != null && streamData!!.id == lastStream!!.id) {
+            play(lastStream!!.url)
+        } else newThread {
+            //Connect to website
+            val doc = Jsoup.connect(streamData!!.youtube_url).get()
+            htmlContent = doc.html()
+
+            val scriptElements = doc.getElementsByTag("script")
+            scriptElements.forEach {
+                if (it.attributes().get("src").contains("/s/player")) {
+                    fetchScriptUrl("https://youtube.com" + it.attributes().get("src"))
+                    return@forEach
+                }
+            }
+        }
+    }
+
+    private fun fetchScriptUrl(scriptUrl: String) {
+        newThread {
+            //Connect to website
+            loge(scriptUrl)
+            val doc = Jsoup.connect(scriptUrl).get()
+            script = doc.html()
+        }
+    }
+
     private lateinit var exoPlayer: SimpleExoPlayer
     override fun initialize() {
+
+        initStreaming()
+
+        fetchLiveUrl()
 
         initClicks()
 
         initData()
-
-        initStreaming()
-
-        play("https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4")
+//        play("https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4")
     }
 
     private lateinit var whiteAdapter: LiveCommentAdapter
@@ -151,16 +201,21 @@ class LiveStreamScreen : BaseFragment(R.layout.screen_live_streams) {
             }
 
             override fun onError(error: ExoPlaybackException?) {
-                progressBar.gone()
-                toast(requireContext(), R.string.smth_wrong)
-                error?.printStackTrace()
                 loge(error?.localizedMessage.toString())
+                if (error?.cause is BehindLiveWindowException) {
+                    initStreaming()
+                    lastStream?.url?.let { play(it) }
+                } else {
+                    progressBar.gone()
+                    toast(requireContext(), R.string.smth_wrong)
+                    error?.printStackTrace()
+                }
             }
         })
     }
 
     private fun play(url: String) {
-
+        lastStream = LastStream(streamData!!.id, url)
         val userAgent = Util.getUserAgent(context, requireContext().getString(R.string.app_name))
         val videoSource = if (url.toUpperCase(Locale.getDefault()).contains("M3U8")) {
             HlsMediaSource.Factory(DefaultDataSourceFactory(context, userAgent))
@@ -197,6 +252,12 @@ class LiveStreamScreen : BaseFragment(R.layout.screen_live_streams) {
                 whiteAdapter.setData(ArrayList(it.reversed()))
                 recyclerBlack.layoutManager?.scrollToPosition(0)
                 recyclerWhite.layoutManager?.scrollToPosition(0)
+            })
+            data.observe(viewLifecycleOwner, Observer {
+                if (urlRequest && it is StreamUrlResp) {
+                    urlRequest = false
+                    play(it.url)
+                }
             })
         }
     }
