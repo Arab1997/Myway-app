@@ -30,7 +30,7 @@
             android:layout_toStartOf="@id/cart"
             android:padding="10sp"
             android:src="@drawable/ic_message"
-            android:tint="@color/white"
+            app:tint="@color/white"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -42,7 +42,7 @@
             android:layout_marginEnd="10dp"
             android:padding="10sp"
             android:src="@drawable/ic_cart"
-            android:tint="@color/white"
+            app:tint="@color/white"
             tools:ignore="ContentDescription" />
 
     </RelativeLayout>

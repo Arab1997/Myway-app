@@ -7,10 +7,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.MyTaskAdapter
-import com.snatap.myway.ui.adapters.TaskAdapter
 import kotlinx.android.synthetic.main.content_simple_toolbar.*
 import kotlinx.android.synthetic.main.fragement_task_detail.*
-import kotlinx.android.synthetic.main.fragment_task.*
 import kotlinx.android.synthetic.main.screen_visualization.*
 
 class VisualizationScreen : BaseFragment(R.layout.screen_visualization) {
@@ -42,9 +40,9 @@ class TaskDetailFragment : BaseFragment(R.layout.fragement_task_detail) {
 
 class TasksFragment : BaseFragment(R.layout.fragment_task) {
     override fun initialize() {
-
+/*
         recyclerTask.adapter = TaskAdapter()
-            .apply { setData(arrayListOf(1, 2, 3, 4, 5)) }
+            .apply { setData(arrayListOf(1, 2, 3, 4, 5)) }*/ // todo
     }
 
 }

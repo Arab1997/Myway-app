@@ -15,8 +15,10 @@ import java.text.SimpleDateFormat
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
-class MediaContentAdapter(private val listener: (LessonDay) -> Unit) :
-    BaseAdapter<LessonDay>(R.layout.item_content) {
+class MediaContentAdapter(
+    private val task: (LessonDay, Int) -> Unit,
+    private val listener: (LessonDay) -> Unit
+) : BaseAdapter<LessonDay>(R.layout.item_content) {
 
     @SuppressLint("SimpleDateFormat")
     private val sdf = SimpleDateFormat("HH:mm:ss")
@@ -45,7 +47,7 @@ class MediaContentAdapter(private val listener: (LessonDay) -> Unit) :
                 it.training_items?.let { taskContainer.showGone(it.isNotEmpty()) }
                 play.setOnClickListener { v -> listener.invoke(it) }
 
-                duration.text = generateDuration(it.start_time, it.end_time)
+                dur.text = generateDuration(it.start_time, it.end_time)
                 duration1.text =
                     "${it.start_time.removeSuffix(":00")} - ${it.end_time.removeSuffix(":00")}"
 
@@ -71,12 +73,17 @@ class MediaContentAdapter(private val listener: (LessonDay) -> Unit) :
                         typeImg.setImageResource(0)
                     }
                 }
-            }
-            setOnClickListener {
-                expandableLayout.toggle()
 
-                recyclerTask.adapter = TaskAdapter()
-                    .apply { setData(arrayListOf(1, 2, 3, 4, 5)) }
+                start.setOnClickListener { task.invoke(data, 0) }
+
+                setOnClickListener { v ->
+                    expandableLayout.toggle()
+                    it.training_items?.let {
+                        recyclerTask.adapter = TaskAdapter {
+                            task.invoke(data, it)
+                        }.apply { setData(ArrayList(it)) }
+                    }
+                }
             }
         }
     }

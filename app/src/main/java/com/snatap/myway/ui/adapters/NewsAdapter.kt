@@ -30,6 +30,8 @@ class NewsAdapter(
                 authorName.text = author_name
                 createdDate.text = created_at.formatTime()
 
+                commentCount.text = comments_count.toString()
+                shareCount.text = shares_count.toString()
                 mark.apply {
 
                     setOnClickListener {

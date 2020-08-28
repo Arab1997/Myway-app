@@ -3,6 +3,7 @@ package com.snatap.myway.utils.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.snatap.myway.network.models.User
 import com.snatap.myway.utils.preferences.PreferenceHelper.get
 import com.snatap.myway.utils.preferences.PreferenceHelper.set
@@ -10,7 +11,7 @@ import com.snatap.myway.utils.preferences.PreferenceHelper.set
 class SharedManager(
     private val preferences: SharedPreferences,
     private val gson: Gson,
-    private val context: Context
+    context: Context
 ) {
 
     val default = PreferenceHelper.defaultPrefs(context)
@@ -21,6 +22,7 @@ class SharedManager(
         const val LANGUAGE = "LANGUAGE"
         const val USER = "USER"
         const val USER_ID = "USER_ID"
+        const val FINISHED_TASKS = "FINISHED_TASKS"
     }
 
     var token: String
@@ -48,6 +50,17 @@ class SharedManager(
         }
         set(value) {
             preferences[USER] = gson.toJson(value)
+        }
+
+    var finishedTasks: ArrayList<Int>
+        get() {
+            val json = preferences.getString(FINISHED_TASKS, "")
+            return if (json == "") arrayListOf()
+            else gson.fromJson(json, object : TypeToken<List<Int>>() {}.type)
+
+        }
+        set(value) {
+            preferences[FINISHED_TASKS] = gson.toJson(value)
         }
 
     fun deleteAll() {

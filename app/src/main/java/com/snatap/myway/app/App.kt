@@ -1,6 +1,7 @@
 package com.snatap.myway.app
 
 import androidx.multidex.MultiDexApplication
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.snatap.myway.BuildConfig
 import com.snatap.myway.di.networkModule
 import com.snatap.myway.di.sharedPrefModule
@@ -33,7 +34,7 @@ class App : MultiDexApplication() {
     }
 
     private fun initFirebase(){
-//        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
     }
 
     private fun initKoin() {

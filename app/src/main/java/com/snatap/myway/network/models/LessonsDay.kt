@@ -20,7 +20,8 @@ data class LessonDay(
     val type: String,
     val updated_at: String,
     val video: String?,
-    val training_items: List<Training>?
+    val audio: String?,
+    var training_items: List<Training>?
 )
 
 data class Training(
@@ -37,5 +38,7 @@ data class Training(
     val selected: Int,
     val title: String,
     val updated_at: String,
-    val video: String
+    val video: String,
+    var playing: Boolean = false,
+    var finished: Boolean = false
 )

@@ -39,8 +39,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
         sharedManager.code = "4444" // todo
 
-        debug()
-//        startFragment()
+//        debug()
+        startFragment()
     }
 
     private fun debug() = initialFragment(StreamsFragment())

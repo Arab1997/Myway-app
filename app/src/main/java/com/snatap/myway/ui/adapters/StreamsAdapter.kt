@@ -29,7 +29,7 @@ class StreamsAdapter(
             announcement.showGone(isAnnouncementStream)
             register.showGone(isAnnouncementStream)
 
-            duration.showGone(!isAnnouncementStream)
+            dur.showGone(!isAnnouncementStream)
             userDate.showGone(!isAnnouncementStream)
 
         }

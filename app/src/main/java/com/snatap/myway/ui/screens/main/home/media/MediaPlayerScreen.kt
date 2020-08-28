@@ -1,5 +1,6 @@
 package com.snatap.myway.ui.screens.main.home.media
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Handler
@@ -13,27 +14,43 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Training
 import com.snatap.myway.ui.adapters.MediaPlayerAdapter
 import com.snatap.myway.ui.screens.main.home.live.PlayerListener
 import com.snatap.myway.utils.extensions.*
 import com.snatap.myway.utils.views.CountDownAnimation
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.screen_media_player.*
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
 
     companion object {
         private var url: String = "https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4"
-        private var showContents: Boolean = true
         private var videoName: String = ""
-        fun newInstance(url: String, showContents: Boolean, videoName: String): MediaPlayerScreen {
+        private var trainings = arrayListOf<Training>()
+        fun newInstance(url: String, videoName: String): MediaPlayerScreen {
             this.url = url
             this.videoName = videoName
-            this.showContents = showContents
             return MediaPlayerScreen()
         }
+
+        fun newInstance(
+            url: String, videoName: String, trainings: ArrayList<Training>
+        ): MediaPlayerScreen {
+            this.url = url
+            this.videoName = videoName
+            this.trainings = trainings
+            return MediaPlayerScreen()
+        }
+
     }
+
+    private var playbackProgressObservable: Observable<Long> =
+        Observable.interval(1, TimeUnit.SECONDS)
+            .map { exoPlayer.currentPosition }
 
     private val timerTime = 4
     private lateinit var exoPlayer: SimpleExoPlayer
@@ -49,13 +66,16 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
     }
 
     private fun initData() {
-        next.setOnClickListener { inDevelopment(requireContext()) }
+        next.setOnClickListener {
+            currentPos++
+            updatePlayingItem(currentPos)
+        }
 
         finish.setOnClickListener { finishFragment() }
 
         adapter = MediaPlayerAdapter {
-
-        }.apply { setData(arrayListOf(1, 2, 3, 4)) }
+            updatePlayingItem(it)
+        }.apply { setData(trainings) }
 
         recycler.adapter = adapter
 
@@ -81,13 +101,14 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
     private fun showHideContent(show: Boolean) {
         gradient.showGone(show)
         name.showGone(show)
-        if (showContents) {
+        if (trainings.isNotEmpty()) {
             next.showGone(show)
             finish.showGone(show)
             recycler.showGone(show)
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun initPlayer() {
 
         val loadControl: LoadControl = DefaultLoadControl()
@@ -120,6 +141,28 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
         videoPlayer.setControllerVisibilityListener {
             showHideContent(it == 0)
         }
+
+        playbackProgressObservable.subscribe { progress ->
+            if (exoPlayer.duration - progress <= 100.toLong() && trainings.isNotEmpty()) {
+                if (trainings.any { it.playing }) {
+                    val tasks = sharedManager.finishedTasks
+                    tasks.add(trainings.first().id)
+                    sharedManager.finishedTasks = tasks
+                }
+            }
+        }
+    }
+
+    private var currentPos = 0
+    private fun updatePlayingItem(pos: Int) {
+        currentPos = pos
+        trainings.forEach { it.playing = false }
+        trainings[pos] = trainings[pos].apply { playing = true }
+        adapter.setData(trainings)
+        recycler.scrollToPosition(pos)
+
+        play(trainings[pos].video)
+        next.showGone(pos != trainings.lastIndex)
     }
 
     private fun play(url: String) {
@@ -150,6 +193,8 @@ class MediaPlayerScreen : BaseFragment(R.layout.screen_media_player) {
     override fun onDestroyView() {
         super.onDestroyView()
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        trainings = arrayListOf()
+        videoName = ""
     }
 
 }
