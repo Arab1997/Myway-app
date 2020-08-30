@@ -14,15 +14,15 @@ class SettingsScreen : BaseFragment(R.layout.screen_settings) {
 
         back.setOnClickListener { finishFragment() }
 
-        profile.setOnClickListener { inDevelopment(requireContext()) }
+        profile.setOnClickListener { addFragment(EditProfileScreen()) }
 
         syncContacts.setOnClickListener { inDevelopment(requireContext()) }
 
-        notifications.setOnClickListener { inDevelopment(requireContext()) }
+        notifications.setOnClickListener { addFragment(NotificationsScreen()) }
 
         referral.setOnClickListener { inDevelopment(requireContext()) }
 
-        history.setOnClickListener { inDevelopment(requireContext()) }
+        history.setOnClickListener { addFragment(OrdersHistoryScreen()) }
 
         logout.setOnClickListener { inDevelopment(requireContext()) }
 

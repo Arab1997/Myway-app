@@ -5,6 +5,27 @@ data class StoreResp(
     val success: Boolean
 )
 
+data class OrderHistoryResp(
+    val store_orders: List<OrderHistory>,
+    val success: Boolean
+)
+
+data class OrderHistory(
+    val card: String,
+    val created_at: String,
+    val id: Int,
+    val is_expired: Int,
+    val paid: Int,
+    val payment_date: String,
+    val payment_id: String,
+    val status: Int,
+    val store_order_items: List<Store>,
+    val total_price: Int,
+    val type: Int,
+    val updated_at: String,
+    val user_id: Int
+)
+
 data class Store(
     val available: Boolean,
     val category_id: Int,

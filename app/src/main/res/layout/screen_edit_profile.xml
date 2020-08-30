@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backStyle">
+
+    <include layout="@layout/content_rounded_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <com.snatap.myway.utils.views.RoundImageView
+                    android:id="@+id/image"
+                    android:layout_width="140dp"
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"
+                    app:rect_radius="8dp"
+                    tools:src="@drawable/logo" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Аватар профиля"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Сделай свой профиль ярче! Заполни информацию о себе и добавь фото 🤗"
+                        android:textColor="@color/hint"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/addPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/rounded_white_card"
+                        android:gravity="center"
+                        android:text="Добавить фото"
+                        android:textColor="#112B4F" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Имя Фамилия" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/job"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Сфера деятельности" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    app:hint="День рождения"
+                    app:icon="@drawable/ic_calendar" />
+
+                <TextView
+                    android:id="@+id/edtHint"
+                    style="@style/editTextHintStyle"
+                    android:text="Пол" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="4sp">
+
+                    <TextView
+                        android:id="@+id/male"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_red_card_transparent"
+                        android:drawablePadding="15sp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="30sp"
+                        android:paddingEnd="30sp"
+                        android:text="Мужчина"
+                        android:textColor="@color/red"
+                        app:drawableStartCompat="@drawable/ic_male_red" />
+
+                    <TextView
+                        android:id="@+id/female"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_edt_card"
+                        android:drawablePadding="15sp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="30sp"
+                        android:paddingEnd="30sp"
+                        android:text="Женщина"
+                        android:textColor="@color/black"
+                        app:drawableStartCompat="@drawable/ic_female" />
+
+                </LinearLayout>
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Телефон" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/userEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="E-mail"
+                    app:icon="@drawable/ic_mail" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/userInstagram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Instagram"
+                    app:icon="@drawable/ic_instagram" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/userAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Адрес" />
+
+                <com.snatap.myway.utils.views.MyWayEditText
+                    android:id="@+id/index"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="Индекс"
+                    app:input_type="number" />
+
+                <Button
+                    android:id="@+id/next"
+                    style="@style/buttonStyle"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/rounded_violet_blue_gradient_card"
+                    android:text="Сохранить" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -41,9 +41,11 @@ class ChatUserScreen : BaseFragment(R.layout.screen_chat_user) {
 
         img.setOnClickListener {
             TedImagePicker.with(requireContext())
-                .start { uri ->
+                .start {
                     lifecycleScope.launch {
-                        val compressedImg = Compressor.compress(requireContext(), File(uri.path))
+                        val compressedImg = Compressor.compress(
+                            requireContext(), File(mainActivity.getFilePath(it))
+                        )
                     }
                 }
         }

@@ -58,8 +58,7 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/syncContactsSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        style="@style/switchStyle" />
                 </LinearLayout>
             </LinearLayout>
 

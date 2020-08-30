@@ -92,6 +92,9 @@ interface ApiInterface {
     @GET("store_items")
     fun getStoreItems(): Single<StoreResp>
 
+    @GET("store_items/orders_history")
+    fun getUserOrdersHistory(): Single<OrderHistoryResp>
+
     @GET("user/lesson_day_items")
     fun getLessonsDay(): Single<LessonsDayResp>
 

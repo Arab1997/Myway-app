@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screenStyle">
 
@@ -22,7 +23,7 @@
         android:background="@drawable/oval_trans"
         android:padding="10dp"
         android:src="@drawable/ic_close"
-        android:tint="@color/white"
+        app:tint="@color/white"
         tools:ignore="ContentDescription" />
 
     <ImageView

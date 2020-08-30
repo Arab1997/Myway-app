@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+  <path
+      android:pathData="M8,0L28,0A8,8 0,0 1,36 8L36,28A8,8 0,0 1,28 36L8,36A8,8 0,0 1,0 28L0,8A8,8 0,0 1,8 0z"
+      android:strokeAlpha="0.15"
+      android:fillColor="#F88118"
+      android:fillAlpha="0.15"/>
+  <path
+      android:strokeWidth="1"
+      android:pathData="M8,0L28,0A8,8 0,0 1,36 8L36,28A8,8 0,0 1,28 36L8,36A8,8 0,0 1,0 28L0,8A8,8 0,0 1,8 0z"
+      android:strokeAlpha="0.15"
+      android:fillColor="#00000000"
+      android:fillAlpha="0.15">
+    <aapt:attr name="android:strokeColor">
+      <gradient 
+          android:startY="21"
+          android:startX="3.1665E-8"
+          android:endY="20.7767"
+          android:endX="36.0172"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF0688FF"/>
+        <item android:offset="1" android:color="#FFB312FF"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M24.1875,7.5H11.8125C10.2609,7.5 9,8.7609 9,10.3125V25.6875C9,27.2391 10.2609,28.5 11.8125,28.5H24.1875C25.7391,28.5 27,27.2391 27,25.6875V10.3125C27,8.7609 25.7391,7.5 24.1875,7.5ZM25.6875,25.6875C25.6875,26.5125 25.0125,27.1875 24.1875,27.1875H11.8125C10.9875,27.1875 10.3125,26.5125 10.3125,25.6875V10.3125C10.3125,9.4875 10.9875,8.8125 11.8125,8.8125H24.1875C25.0125,8.8125 25.6875,9.4875 25.6875,10.3125V25.6875Z"
+      android:fillColor="#F88118"/>
+  <path
+      android:pathData="M22.875,14.25H13.125C12.5063,14.25 12,14.7562 12,15.375V24.375C12,24.9937 12.5063,25.5 13.125,25.5H22.875C23.4937,25.5 24,24.9937 24,24.375V15.375C24,14.7562 23.4937,14.25 22.875,14.25ZM12.6562,11.8125H17.3438C17.7047,11.8125 18,11.5172 18,11.1562C18,10.7953 17.7047,10.5 17.3438,10.5H12.6562C12.2953,10.5 12,10.7953 12,11.1562C12,11.5172 12.2953,11.8125 12.6562,11.8125Z"
+      android:fillColor="#F88118"/>
+</vector>

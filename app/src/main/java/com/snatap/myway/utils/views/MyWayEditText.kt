@@ -14,7 +14,7 @@ import com.snatap.myway.utils.extensions.setTextColorRes
 import com.snatap.myway.utils.extensions.showGone
 import kotlinx.android.synthetic.main.view_edit_text.view.*
 
-class   MyWayEditText : LinearLayout {
+class MyWayEditText : LinearLayout {
 
     constructor(context: Context?) : super(context) {
         init(context, null)
@@ -47,7 +47,12 @@ class   MyWayEditText : LinearLayout {
         context?.obtainStyledAttributes(attrs, R.styleable.MyWayEditText)?.let {
             val inputType = it.getInt(R.styleable.MyWayEditText_input_type, 1)
             val hint = it.getString(R.styleable.MyWayEditText_hint)
+            val icon = it.getDrawable(R.styleable.MyWayEditText_hint)
+            val clickable = it.getBoolean(R.styleable.MyWayEditText_clickable, true)
 
+            edt.isClickable = clickable
+            edt.isEnabled = clickable
+            icon?.let { edt.setCompoundDrawables(null, null, it, null) }
             hint?.let { setHint(it) }
 
             when (inputType) {

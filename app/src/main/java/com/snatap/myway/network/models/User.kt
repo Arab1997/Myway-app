@@ -3,7 +3,7 @@ package com.snatap.myway.network.models
 data class UserResp(val success: Boolean, val user: User)
 
 data class User(
-    val address: Any?,
+    val address: String?,
     val avatar: String,
     val coins: Int,
     val created_at: String,
@@ -11,7 +11,7 @@ data class User(
     val full_name: String,
     val group_id: Int?,
     val id: Int,
-    val instagram: Any?,
+    val instagram: String?,
     val is_premium: Boolean,
     val is_premium_updated_at: String?,
     val max_month_coins: Int,

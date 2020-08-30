@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle">
+
+    <ImageView
+        android:layout_width="172dp"
+        android:layout_height="255dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="-10dp"
+        android:src="@drawable/elements1"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="23dp"
+        android:paddingTop="23dp"
+        android:paddingEnd="23dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:padding="5sp"
+            android:src="@drawable/ic_close"
+            app:tint="@color/hint"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="Введи данные своего друга"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="36dp">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                style="@style/edtStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                app:ccp_defaultLanguage="RUSSIAN"
+                app:ccp_defaultNameCode="ru"
+                app:ccp_rememberLastSelection="true"
+                app:ccp_showNameCode="false"
+                app:ccp_textSize="14sp" />
+
+            <EditText
+                android:id="@+id/phone"
+                style="@style/edtStyle"
+                android:layout_marginStart="7dp"
+                android:hint="9999999999"
+                android:inputType="phone"
+                android:maxLength="13" />
+
+        </LinearLayout>
+
+        <com.snatap.myway.utils.views.MyWayEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="E-mail"
+            app:input_type="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/comfortaa_regular"
+            android:text="На указанный номер поступит смс с приглашением. В день ты можешь приглашать не более 5 друзей"
+            android:textColor="@color/hint"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/next"
+            style="@style/buttonStyle"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/rounded_violet_blue_gradient_card"
+            android:text="Отправить" />
+
+    </LinearLayout>
+</RelativeLayout>

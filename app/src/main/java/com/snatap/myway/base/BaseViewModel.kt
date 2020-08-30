@@ -389,6 +389,15 @@ open class BaseViewModel(
             })
     )
 
+    fun getUserOrdersHistory() = compositeDisposable.add(
+        api.getUserOrdersHistory().observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
     fun getStoreCategories() = compositeDisposable.add(
         api.getStoreCategories().observeAndSubscribe()
             .subscribe({
