@@ -47,12 +47,6 @@ class RadioPicker : LinearLayout {
         pickerList = ArrayList(list.map { PickerData(it, false) })
 
         initRecycler()
-
-        if (pickerList.isNotEmpty()) {
-            pickerList.forEach { it.isChecked = false }
-            pickerList[activePos].isChecked = true
-            adapter.setData(pickerList)
-        }
     }
 
     fun getCheckedItems() = pickerList.filter { it.isChecked }

@@ -10,6 +10,7 @@ import com.snatap.myway.ui.screens.main.events.FilterType
 import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
 import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.ui.screens.main.home.story.StoriesFragment
+import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.blockClickable
 import kotlinx.android.synthetic.main.fragment_news.*
 
@@ -40,7 +41,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }.apply { setData(data) }
 
         newsAdapter = NewsAdapter({
-            addFragment(NewsDetailScreen.newInstance(it.id))
+            addFragment(NewsDetailScreen.newInstance(it.id),tag = Constants.NEWS_DETAILED_FRAGMENT)
         }, { like, id ->
             if (like) viewModel.addLike(id)
             else viewModel.addBookmark(id)

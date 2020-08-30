@@ -26,7 +26,7 @@ object Constants {
     const val CHECKBOX = "multiple"
     const val TEXT = "text"
 
-    const val IS_REGISTER_KEY = "register"
+    const val NEWS_DETAILED_FRAGMENT = "NEWS_DETAILED_FRAGMENT"
 
     val colors = arrayListOf(
         R.color.orange,

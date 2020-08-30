@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.NewsAdapter
+import com.snatap.myway.utils.Constants
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_recycler.*
 
@@ -17,7 +18,7 @@ class FavoriteNewsScreen : BaseFragment(R.layout.screen_recycler) {
         title.text = "Моя подборка"
 
         newsAdapter = NewsAdapter({
-            addFragment(NewsDetailScreen.newInstance(it.id))
+            addFragment(NewsDetailScreen.newInstance(it.id),tag = Constants.NEWS_DETAILED_FRAGMENT)
         }, { like, id ->
             if (like) viewModel.addLike(id)
             else viewModel.addBookmark(id)

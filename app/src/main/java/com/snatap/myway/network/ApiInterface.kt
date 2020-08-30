@@ -99,10 +99,8 @@ interface ApiInterface {
     fun getQuiz(@Path("id") id: Int): Single<QuizResp>
 
     @POST("user/quiz/{id}/answers")
-    @FormUrlEncoded
     fun sendQuizAnswers(
-        @Path("id") id: Int,
-        @Field("answers") answers: ArrayList<QuizAnswerRequest>
+        @Path("id") id: Int, @Body body: QuizAnswerRequestList
     ): Single<SuccessResp>
 
 }

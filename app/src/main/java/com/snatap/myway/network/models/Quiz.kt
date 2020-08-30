@@ -35,6 +35,7 @@ data class Answer(
     val updated_at: String
 )
 
+data class QuizAnswerRequestList(val answers: ArrayList<QuizAnswerRequest>)
 
 data class QuizAnswerRequest(
     val question_id: Int,

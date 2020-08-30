@@ -33,7 +33,6 @@ class QuizScreen : BaseFragment(R.layout.screen_quizes) {
     override fun initialize() {
 
         currentQuestion = NewsDetailScreen.quiz.quiz.questions[currentPos]
-        loge(currentQuestion)
         currentQuestion.let {
             position.text = "${currentPos + 1} из ${NewsDetailScreen.quiz.quiz.questions.size}"
             question.text = it.text
@@ -65,6 +64,7 @@ class QuizScreen : BaseFragment(R.layout.screen_quizes) {
             next.text = "завершить"
 
         next.setOnClickListener {
+            it.blockClickable()
             when (currentQuestion.type) {
                 Constants.RADIO -> {
                     val selectedAnswer = radio.getCheckedItems().first().name
@@ -101,7 +101,9 @@ class QuizScreen : BaseFragment(R.layout.screen_quizes) {
             if (request && it is SuccessResp) {
                 request = false
                 showProgress(false)
-                addFragment(newInstance(currentPos + 1))
+                if (currentPos == NewsDetailScreen.quiz.quiz.questions.lastIndex)
+                    popInclusive(Constants.NEWS_DETAILED_FRAGMENT)
+                else addFragment(newInstance(currentPos + 1))
             }
         })
     }

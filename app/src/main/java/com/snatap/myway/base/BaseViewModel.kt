@@ -417,7 +417,7 @@ open class BaseViewModel(
     )
 
     fun sendQuizAnswers(id: Int, answers: ArrayList<QuizAnswerRequest>) = compositeDisposable.add(
-        api.sendQuizAnswers(id, answers).observeAndSubscribe()
+        api.sendQuizAnswers(id, QuizAnswerRequestList(answers)).observeAndSubscribe()
             .subscribe({
                 data.postValue(it)
             }, {
