@@ -7,6 +7,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.BlankScreen
 import com.snatap.myway.ui.screens.main.EventsScreen
 import com.snatap.myway.ui.screens.main.HomeScreen
+import com.snatap.myway.ui.screens.main.ProfileScreen
 import com.snatap.myway.ui.screens.main.path.PathScreen
 import kotlinx.android.synthetic.main.screen_bottom_nav.*
 
@@ -15,7 +16,7 @@ class BottomNavScreen : BaseFragment(R.layout.screen_bottom_nav) {
     private var bottomFragments = arrayListOf<Fragment>(
         HomeScreen(),
         PathScreen(),
-        BlankScreen(),
+        ProfileScreen(),
         BlankScreen(),
         EventsScreen()
     )

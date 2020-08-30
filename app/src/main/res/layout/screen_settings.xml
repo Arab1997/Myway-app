@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/backStyle">
+
+    <include layout="@layout/content_rounded_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="16sp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:id="@+id/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:drawablePadding="16sp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:text="Личные данные"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
+                    app:drawableStartCompat="@drawable/ic_profile_user" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/syncContacts"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="16sp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="16dp"
+                        android:text="Синхронизация контактов"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        app:drawableStartCompat="@drawable/ic_profile_sync_contacts" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/syncContactsSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="272dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/profile_img">
+
+                <TextView
+                    android:id="@+id/h1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Стань Членом Сообщества"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/h2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/h1"
+                    android:layout_alignStart="@id/h1"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/details"
+                    style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/rounded_red_card_gradient"
+                    android:text="Узнать о приемуществах членства" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/notifications"
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:drawablePadding="16sp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:text="Уведомления"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
+                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+
+            <TextView
+                android:id="@+id/referral"
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:drawablePadding="16sp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:text="Реферальная система"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
+                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+
+            <TextView
+                android:id="@+id/history"
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:drawablePadding="16sp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:text="История покупок"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
+                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+
+            <TextView
+                android:id="@+id/logout"
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="16sp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:text="Выход"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
+                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+
+            <TextView
+                android:id="@+id/faq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:text="FAQ"
+                android:textColor="@color/hint"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp"
+                android:text="О приложении"
+                android:id="@+id/about"
+                android:textColor="@color/hint"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
