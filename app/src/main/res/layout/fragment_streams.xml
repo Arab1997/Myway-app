@@ -15,6 +15,7 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
+                android:splitMotionEvents="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_live_stream" />
@@ -60,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16sp"
                     android:nestedScrollingEnabled="false"
+                    android:splitMotionEvents="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="1"
                     tools:listitem="@layout/item_streams" />
@@ -106,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16sp"
                     android:nestedScrollingEnabled="false"
+                    android:splitMotionEvents="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="1"
                     tools:listitem="@layout/item_streams" />

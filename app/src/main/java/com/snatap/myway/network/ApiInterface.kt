@@ -95,6 +95,16 @@ interface ApiInterface {
     @GET("user/lesson_day_items")
     fun getLessonsDay(): Single<LessonsDayResp>
 
+    @GET("user/quiz/{id}")
+    fun getQuiz(@Path("id") id: Int): Single<QuizResp>
+
+    @POST("user/quiz/{id}/answers")
+    @FormUrlEncoded
+    fun sendQuizAnswers(
+        @Path("id") id: Int,
+        @Field("answers") answers: ArrayList<QuizAnswerRequest>
+    ): Single<SuccessResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)

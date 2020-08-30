@@ -53,6 +53,22 @@ open class BaseViewModel(
     val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
     val sharedStore: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
 
+    private var answers = arrayListOf<QuizAnswerRequest>()
+
+    fun addAnswer(item: QuizAnswerRequest) {
+        val temp = answers.filter { it.question_id == item.question_id }
+        if (temp.isNotEmpty()) {
+            for (i in 0 until answers.size)
+                if (answers[i].question_id == item.question_id) answers[i] = item
+
+        } else answers.add(item)
+    }
+
+    fun removeAnswer(questionId: Int) {
+        answers = ArrayList(answers.filter { it.question_id != questionId })
+        loge(answers)
+    }
+
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
         .create(ApiInterface::class.java)
@@ -386,6 +402,24 @@ open class BaseViewModel(
         api.getLessonsDay().observeAndSubscribe()
             .subscribe({
                 if (it.success) lessonsDay.postValue(ArrayList(it.lesson_day_items))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getQuiz(id: Int) = compositeDisposable.add(
+        api.getQuiz(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun sendQuizAnswers(id: Int, answers: ArrayList<QuizAnswerRequest>) = compositeDisposable.add(
+        api.sendQuizAnswers(id, answers).observeAndSubscribe()
+            .subscribe({
+                data.postValue(it)
             }, {
                 parseError(it)
             })

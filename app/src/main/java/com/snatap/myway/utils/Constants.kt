@@ -1,6 +1,7 @@
 package com.snatap.myway.utils
 
 import com.snatap.myway.BuildConfig
+import com.snatap.myway.R
 
 object Constants {
 
@@ -21,7 +22,20 @@ object Constants {
     const val DAILY_CONTENT_TYPE_DAY = "day"
     const val DAILY_CONTENT_TYPE_EVENING_VIP = "evening_vip"
 
+    const val RADIO = "single"
+    const val CHECKBOX = "multiple"
+    const val TEXT = "text"
+
     const val IS_REGISTER_KEY = "register"
+
+    val colors = arrayListOf(
+        R.color.orange,
+        R.color.red,
+        R.color.green,
+        R.color.blue,
+        R.color.violet,
+        R.color.yellow
+    )
 }
 
 data class KeyValue(val key: String, val value: String)

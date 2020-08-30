@@ -1,32 +1,24 @@
 package com.snatap.myway.ui.screens.main.home.story
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.os.CountDownTimer
-import android.util.TypedValue
-import android.view.MotionEvent
-import android.view.View
-import android.widget.RelativeLayout
-import androidx.core.view.setMargins
+import com.jackandphantom.instagramvideobutton.InstagramVideoButton
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.path.ImageScreen
-import com.snatap.myway.utils.extensions.blockClickable
+import com.snatap.myway.utils.extensions.*
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.screen_create_story.*
 
-
 class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
 
-    private var timer: CountDownTimer? = null
-    private var timeRemaining = 0L
-    private var timeFinished = 0L
-
-    private val recordTime = 10;
     private var imgFilePath = ""
 
     @SuppressLint("ClickableViewAccessibility")
     override fun initialize() {
+
+        close.setOnClickListener { finishFragment() }
+
+        changeCamera.setOnClickListener { inDevelopment(requireContext()) }
 
         addImage.setOnClickListener {
             it.blockClickable()
@@ -41,57 +33,32 @@ class CreateStoryScreen : BaseFragment(R.layout.screen_create_story) {
             }
         }
 
-        startRecordLayout.setOnTouchListener { _, event ->
-            if (event?.action == MotionEvent.ACTION_DOWN) {
-                changeView()
-                timer = getTimer(timeRemaining)
-                timer?.start()
+        record.actionListener = object : InstagramVideoButton.ActionListener {
+            override fun onStartRecord() {
+                loge("CALL the on start record ", "MY TAG")
+                info.gone()
+
             }
-            if (event?.action == MotionEvent.ACTION_UP) {
-                addFragment(StoriesFragment())
-                timer?.cancel()
+
+            override fun onEndRecord() {
+                loge("CALL the on end record ", "MY TAG")
+                info.visible()
             }
-            true
-        }
-//        timer?.start()
-    }
 
-    private fun changeView() {
-        val lp = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.MATCH_PARENT,
-            RelativeLayout.LayoutParams.MATCH_PARENT
-        )
-        lp.setMargins(dpToPx(15f).toInt())
-        recordStartBtn.layoutParams = lp
+            override fun onSingleTap() {
+                loge("CALL the on single tap record ", "MY TAG")
+            }
 
-        progressBarBg.visibility = View.VISIBLE
+            override fun onDurationTooShortError() {
+                loge("CALL the on on duration record ", "MY TAG")
 
-        startRecordLayout.setBackgroundResource(0)
+            }
 
-        info.visibility = View.GONE
-    }
+            override fun onCancelled() {
+                loge("CALL the on on cancel record ", "MY TAG")
+            }
 
-    private fun dpToPx(dip: Float): Float {
-        val r: Resources = resources
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dip,
-            r.displayMetrics
-        )
-    }
 
-    private fun getTimer(time: Long = 0) = object :
-        CountDownTimer(if (time > 0) time else recordTime.times(1000.toLong()) ?: 0, 50) {
-        override fun onFinish() {
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            timeRemaining = millisUntilFinished
-            val numerator = (recordTime.times(1000.toLong()) ?: 0) - millisUntilFinished
-            timeFinished = numerator
-            progressBar.progress =
-                (numerator * 100 / (recordTime.times(1000.toLong()) ?: 0)).toInt()
         }
     }
-
 }

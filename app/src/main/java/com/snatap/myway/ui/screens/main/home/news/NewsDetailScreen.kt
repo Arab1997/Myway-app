@@ -6,6 +6,7 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.models.Comment
 import com.snatap.myway.network.models.NewsDetail
 import com.snatap.myway.network.models.NewsDetailResp
+import com.snatap.myway.network.models.QuizResp
 import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.ui.adapters.SimilarNewsAdapter
 import com.snatap.myway.ui.adapters.TagsAdapter
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.screen_news_detailed.*
 class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
     companion object {
+        lateinit var quiz: QuizResp
         private var newsId = 0
         fun newInstance(newsId: Int): NewsDetailScreen {
             this.newsId = newsId
@@ -48,7 +50,7 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
         changeFontSize.setOnClickListener { inDevelopment(requireContext()) }
 
-        questions.setOnClickListener { inDevelopment(requireContext()) } // todo open victorina
+        quizLayout.setOnClickListener { addFragment(QuizScreen()) }
 
         liked.setOnClickListener { viewModel.addLike(newsId) }
 
@@ -67,7 +69,11 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
         viewModel.getNewsDetail(newsId)
 
         viewModel.data.observe(viewLifecycleOwner, Observer {
-            if (it is NewsDetailResp) initViews(it.news_item)
+            if (it is NewsDetailResp) {
+                initViews(it.news_item)
+                it.news_item.quiz_id?.let { viewModel.getQuiz(it) }
+            }
+            if (it is QuizResp) quiz = it
         })
     }
 
@@ -91,6 +97,8 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
         recyclerTags.adapter = TagsAdapter().apply {
             setData(ArrayList(it.tags))
         }
+
+        quizLayout.showGone(it.quiz_id != null)
 
         if (it.comments_count != 0) {
             contentComments.visible()

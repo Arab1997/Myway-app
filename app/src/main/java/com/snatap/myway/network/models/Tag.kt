@@ -4,6 +4,7 @@ data class Tag(
     val created_at: String,
     val id: Int,
     val pivot: Pivot,
+    val icon: String,
     val title: String,
     val updated_at: String
 )

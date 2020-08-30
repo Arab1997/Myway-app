@@ -12,6 +12,7 @@ data class NewsDetail(
     val datetime: String,
     val description: String,
     val id: Int,
+    val quiz_id: Int?,
     val is_bookmarked: Boolean,
     val is_liked: Boolean,
     val likes_count: Int,

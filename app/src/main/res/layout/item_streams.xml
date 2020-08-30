@@ -48,9 +48,10 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/announcementTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 : 16 : 23"
+                android:text="00 : 00 : 00"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -67,33 +68,13 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/icons"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:contentDescription="@string/icon"
-                android:src="@drawable/ic_business"
-                app:tint="@color/blue" />
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="@string/icon"
-                android:src="@drawable/ic_cuboc" />
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="@string/icon"
-                android:src="@drawable/ic_star"
-                app:tint="@color/green" />
-        </LinearLayout>
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_tag_icons" />
 
         <TextView
             android:id="@+id/name"

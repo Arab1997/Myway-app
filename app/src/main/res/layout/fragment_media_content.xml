@@ -79,13 +79,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="36dp"
                         android:layout_marginTop="22dp"
                         android:gravity="bottom">
 
                         <ImageView
                             android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_height="match_parent"
                             android:background="@drawable/rounded_white_card_transparent"
                             android:padding="7dp"
                             android:src="@drawable/ic_calendar"
@@ -104,7 +104,7 @@
 
                         <TextView
                             android:layout_width="100dp"
-                            android:layout_height="36dp"
+                            android:layout_height="match_parent"
                             android:background="@drawable/rounded_edt_card"
                             android:gravity="center"
                             android:text="Перейти"
