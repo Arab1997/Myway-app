@@ -45,7 +45,7 @@ class ChatMessageAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (data[position].user_id) {
-            sharedManager.userId -> Constants.MESSAGE_MY
+            sharedManager.user.id -> Constants.MESSAGE_MY
             // todo for my and server images
             else -> Constants.MESSAGE_SERVER
         }

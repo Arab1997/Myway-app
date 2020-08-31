@@ -2,6 +2,7 @@ package com.snatap.myway.network
 
 import com.snatap.myway.network.models.*
 import io.reactivex.Single
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiInterface {
@@ -56,6 +57,12 @@ interface ApiInterface {
 
     @GET("user/info")
     fun getUser(): Single<UserResp>
+
+    @POST("user/edit")
+    fun editUser(@Body body: UserRequest): Single<UserResp>
+
+    @POST("user/edit")
+    fun updateUserPhoto(@Body requestBody: RequestBody): Single<UserResp>
 
     @GET("user/notifications")
     fun getUserNotifications(): Single<NotificationsResp>

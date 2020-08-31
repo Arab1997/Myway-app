@@ -14,6 +14,7 @@
         android:id="@+id/edt"
         style="@style/edtStyle"
         android:imeOptions="actionNext"
+        android:importantForAutofill="no"
         android:maxLines="1"
         android:singleLine="true"
         tools:ignore="Autofill" />

@@ -30,7 +30,7 @@ class CommentAdapter(private val sharedManager: SharedManager) :
                 date.text = created_at.formatTime()
 
                 container.setBackgroundResource(
-                    if (user_id == sharedManager.userId) R.drawable.rounded_red_card_transparent
+                    if (user_id == sharedManager.user.id) R.drawable.rounded_red_card_transparent
                     else 0
                 )
             }

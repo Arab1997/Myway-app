@@ -79,7 +79,7 @@
                     app:hint="Имя Фамилия" />
 
                 <com.snatap.myway.utils.views.MyWayEditText
-                    android:id="@+id/job"
+                    android:id="@+id/userJob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hint="Сфера деятельности" />
@@ -88,7 +88,7 @@
                     android:id="@+id/dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    app:clickable="false"
                     app:hint="День рождения"
                     app:icon="@drawable/ic_calendar" />
 

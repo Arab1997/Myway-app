@@ -47,12 +47,15 @@ class MyWayEditText : LinearLayout {
         context?.obtainStyledAttributes(attrs, R.styleable.MyWayEditText)?.let {
             val inputType = it.getInt(R.styleable.MyWayEditText_input_type, 1)
             val hint = it.getString(R.styleable.MyWayEditText_hint)
-            val icon = it.getDrawable(R.styleable.MyWayEditText_hint)
+            val icon = it.getDrawable(R.styleable.MyWayEditText_icon)
             val clickable = it.getBoolean(R.styleable.MyWayEditText_clickable, true)
 
             edt.isClickable = clickable
             edt.isEnabled = clickable
-            icon?.let { edt.setCompoundDrawables(null, null, it, null) }
+            edt.isFocusable = clickable
+
+            edt.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, icon, null)
+
             hint?.let { setHint(it) }
 
             when (inputType) {
@@ -75,6 +78,10 @@ class MyWayEditText : LinearLayout {
     fun setHint(hint: String) {
         if (hint.isEmpty()) edtHint.gone()
         else edtHint.text = hint
+    }
+
+    fun setText(hint: String) {
+        edt.setText(hint)
     }
 
     fun setError(error: String) {

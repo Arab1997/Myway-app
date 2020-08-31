@@ -18,8 +18,7 @@ class App : MultiDexApplication() {
 
     companion object {
         private lateinit var app: App
-        fun get(): App =
-            app
+        fun get(): App = app
     }
 
     override fun onCreate() {
@@ -33,7 +32,7 @@ class App : MultiDexApplication() {
         initKoin()
     }
 
-    private fun initFirebase(){
+    private fun initFirebase() {
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
     }
 

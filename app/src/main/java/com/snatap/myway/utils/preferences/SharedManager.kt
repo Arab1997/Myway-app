@@ -21,7 +21,6 @@ class SharedManager(
         const val CODE = "CODE"
         const val LANGUAGE = "LANGUAGE"
         const val USER = "USER"
-        const val USER_ID = "USER_ID"
         const val FINISHED_TASKS = "FINISHED_TASKS"
     }
 
@@ -35,12 +34,6 @@ class SharedManager(
         get() = default[CODE, ""]
         set(value) {
             default[CODE] = value
-        }
-
-    var userId: Int
-        get() = preferences[USER_ID, 0]
-        set(value) {
-            preferences[USER_ID] = value
         }
 
     var user: User

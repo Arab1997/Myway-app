@@ -20,6 +20,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.RequestBody
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.qualifier.named
@@ -311,9 +312,34 @@ open class BaseViewModel(
                 if (it.success) {
                     user.postValue(it.user)
                     sharedManager.user = it.user
-                    sharedManager.userId = it.user.id
                 }
             }, {
+                parseError(it)
+            })
+    )
+
+    fun editUser(body: UserRequest) = compositeDisposable.add(
+        api.editUser(body).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    user.postValue(it.user)
+                    sharedManager.user = it.user
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun updateUserPhoto(body: RequestBody) = compositeDisposable.add(
+        api.updateUserPhoto(body)
+            .observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    user.postValue(it.user)
+                    sharedManager.user = it.user
+                }
+            }, {
+                data.value = false
                 parseError(it)
             })
     )
