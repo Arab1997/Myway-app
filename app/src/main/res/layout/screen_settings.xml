@@ -38,9 +38,9 @@
                     app:drawableStartCompat="@drawable/ic_profile_user" />
 
                 <LinearLayout
+                    android:id="@+id/syncContacts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/syncContacts"
                     android:layout_marginTop="8dp">
 
                     <TextView
@@ -138,7 +138,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
-                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+                app:drawableStartCompat="@drawable/ic_profile_referral" />
 
             <TextView
                 android:id="@+id/history"
@@ -155,7 +155,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
-                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+                app:drawableStartCompat="@drawable/ic_profile_history" />
 
             <TextView
                 android:id="@+id/logout"
@@ -171,7 +171,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_hint"
-                app:drawableStartCompat="@drawable/ic_profile_notifications" />
+                app:drawableStartCompat="@drawable/ic_profile_logout" />
 
             <TextView
                 android:id="@+id/faq"
@@ -184,6 +184,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -191,7 +192,6 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 android:text="О приложении"
-                android:id="@+id/about"
                 android:textColor="@color/hint"
                 android:textSize="15sp" />
 
