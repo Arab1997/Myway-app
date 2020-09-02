@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="17dp"
-            tools:text="Все"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            tools:text="Все" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -66,13 +66,16 @@
 
         <TextView
             android:id="@+id/selectedDate"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="24sp"
             android:layout_marginEnd="17dp"
             android:background="@drawable/rounded_red_card_transparent"
             android:gravity="center"
-            tools:text="23-27 июля"
-            android:textColor="@color/red" />
+            android:minWidth="120dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/red"
+            tools:text="23-27 июля" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -98,13 +101,16 @@
 
         <TextView
             android:id="@+id/selectedCity"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="24sp"
             android:layout_marginEnd="17dp"
             android:background="@drawable/rounded_red_card_transparent"
             android:gravity="center"
-            tools:text="Москва"
-            android:textColor="@color/red" />
+            android:minWidth="120dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/red"
+            tools:text="Москва" />
 
         <ImageView
             android:layout_width="wrap_content"

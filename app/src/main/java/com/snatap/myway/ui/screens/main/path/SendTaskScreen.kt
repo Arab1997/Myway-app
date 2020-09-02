@@ -25,7 +25,7 @@ import java.io.File
 class SendTaskScreen : BaseFragment(R.layout.screen_send_task) {
 
     companion object {
-        private var lessonId: Int = 316
+        private var lessonId: Int = 0
         fun newInstance(lessonId: Int): SendTaskScreen {
             this.lessonId = lessonId
             return SendTaskScreen()
@@ -104,7 +104,6 @@ class SendTaskScreen : BaseFragment(R.layout.screen_send_task) {
                 if (videos.isNotEmpty()) videos else null,
                 if (files.isNotEmpty()) files else null
             )
-
         }
     }
 

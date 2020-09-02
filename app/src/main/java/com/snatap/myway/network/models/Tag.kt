@@ -11,6 +11,7 @@ data class Tag(
     val pivot: Pivot,
     val icon: String,
     val title: String,
+    var color: Int,
     var isChecked: Boolean,
     val updated_at: String
 )

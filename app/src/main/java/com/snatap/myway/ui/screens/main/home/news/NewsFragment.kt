@@ -13,6 +13,7 @@ import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.ui.screens.main.home.story.StoriesFragment
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.blockClickable
+import com.snatap.myway.utils.extensions.formatTime4
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : BaseFragment(R.layout.fragment_news) {
@@ -28,12 +29,13 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
             it.blockClickable()
             val bottomSheet = FilterBottomSheet.newInstance(
                 true,
-                selectedTags.size.toString(),
-                "$startDate - $endDate",
+                if (selectedTags.isNotEmpty()) selectedTags.size.toString() else "",
+                if (startDate.isNotEmpty() && endDate.isNotEmpty()) "${startDate.formatTime4()} - ${endDate.formatTime4()}" else "",
                 ""
             ).apply {
                 setListener {
                     if (it == FilterType.TAGS) addFragment(FilterTagsScreen().apply {
+                        setSelectedTags(selectedTags)
                         setListener {
                             selectedTags = it
                             getNews()

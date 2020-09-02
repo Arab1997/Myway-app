@@ -28,7 +28,7 @@ interface ApiInterface {
     fun getNews(
         @Query("start_date") start_date: String? = null,
         @Query("end_date") end_date: String? = null,
-        @Query("tag_ids") tag_ids: ArrayList<Int>? = null
+        @Query("tag_ids[]") tag_ids: ArrayList<Int>? = null
     ): Single<NewsResp>
 
     @GET("news_items/{id}")
