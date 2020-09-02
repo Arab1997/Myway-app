@@ -27,24 +27,18 @@ class LessonDetailScreen : BaseFragment(R.layout.screen_lesson_detail) {
             return LessonDetailScreen()
         }
     }
-
     override fun initialize() {
-
         back.setOnClickListener { finishFragment() }
-
         lesson?.let {
             pager.adapter = TaskDetailPagerAdapter(
                 it, arrayListOf("Описание урока", "Задание"), childFragmentManager
             )
             title.text = it.title
         }
-
         tabLayout.setupWithViewPager(pager)
     }
 }
-
 class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
-
     companion object {
         fun newInstance(data: Lesson, showTasks: Boolean): TaskDetailFragment {
             return TaskDetailFragment().apply {

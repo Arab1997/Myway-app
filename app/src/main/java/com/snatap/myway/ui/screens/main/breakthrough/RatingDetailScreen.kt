@@ -12,16 +12,13 @@ import com.snatap.myway.ui.adapters.*
 import com.snatap.myway.ui.screens.main.home.media.MediaPlayerScreen
 import com.snatap.myway.ui.screens.main.path.*
 import com.snatap.myway.utils.extensions.*
-import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.content_simple_toolbar.*
-import kotlinx.android.synthetic.main.content_simple_toolbar.back
-import kotlinx.android.synthetic.main.content_simple_toolbar.title
 import kotlinx.android.synthetic.main.content_task.*
 import kotlinx.android.synthetic.main.fragment_task_detail.*
+import kotlinx.android.synthetic.main.fragment_task_detail.image
+import kotlinx.android.synthetic.main.fragment_task_detail.myTasks
 import kotlinx.android.synthetic.main.screen_break_visual.*
-import kotlinx.android.synthetic.main.screen_break_visual.recyclerChamps
 import kotlinx.android.synthetic.main.screen_lesson_detail.*
-import kotlinx.android.synthetic.main.screen_lesson_detail.tabLayout
 import kotlinx.android.synthetic.main.screen_rating_detail.*
 
 class RatingDetailScreen : BaseFragment(R.layout.screen_rating_detail) {
@@ -35,26 +32,26 @@ class RatingDetailScreen : BaseFragment(R.layout.screen_rating_detail) {
     }
 
     override fun initialize() {
-        title.text = "Рейтинг участников"
-        back.setOnClickListener { finishFragment() }
-
+        initViews()
         lesson?.let {
-            pager.adapter = TaskDetailPagerAdapter(
+            pagerRating.adapter = TaskDetailPagerAdapter(
                 it, arrayListOf("Общий", "Друзья"), childFragmentManager
             )
             title.text = it.title
         }
 
-        tabLayout.setupWithViewPager(pager)
+        tabLayoutRating.setupWithViewPager(pagerRating)
+    }
 
-        recyclerParticipants.adapter = ChampsAdapter {
+
+    private fun initViews() {
+        recyclerParticipants.adapter = ParticipantAdapter {
             addFragment(ChampsDetailsScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3))
         }
-
-
     }
+
 }
 
 class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
@@ -72,15 +69,14 @@ class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
 
     private var data: Lesson? = null
     override fun initialize() {
-        /*data = Gson().fromJson(requireArguments().getString("data"), Lesson::class.java)
+        data = Gson().fromJson(requireArguments().getString("data"), Lesson::class.java)
 
         initCommonView()
-
         if (requireArguments().getBoolean("showTasks")) initTasks()
-        else initMyTasks()*/
+        else initMyTasks()
     }
 
-/*    private fun initCommonView() {
+    private fun initCommonView() {
         data?.let {
             name.text = it.title
             shortDesc.text = it.assignment_text.fromHtml()
@@ -121,9 +117,9 @@ class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
         val list = ArrayList(lesson.training_items!!)
         list[currentTaskPos] = list[currentTaskPos].apply { playing = true }
         addFragment(MediaPlayerScreen.newInstance(task.video, task.title, list))
-    }*/
+    }
 
-   /* private fun initMyTasks() {
+    private fun initMyTasks() {
         taskDetails.show()
         sendTask.gone()
         contentTask.gone()
@@ -132,7 +128,7 @@ class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
             addFragment(MyTasksScreen.newInstance(data!!))
         }
 
-       *//* recyclerMyTasks.adapter = ReportsAdapter(sharedManager.user.avatar) {
+        recyclerMyTasks.adapter = ReportsAdapter(sharedManager.user.avatar) {
             when (it.type) {
                 Types.IMAGE -> addFragment(ImageScreen.newInstance(it.path))
                 Types.VIDEO -> addFragment(VideoScreen.newInstance(it.path))
@@ -140,8 +136,8 @@ class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
             }
         }.apply {
             data?.let { setData(ArrayList(it.lesson_reports)) }
-        }*//*
-    }*/
+        }
+    }
 }
 
 class TaskDetailPagerAdapter(

@@ -23,7 +23,7 @@ companion object {
         recyclerChamps.adapter = PrizesChildDetailsAdapter {
             //addFragment(PrizesDetailsScreen())
         }.apply {
-            setData(arrayListOf(1))
+            setData(arrayListOf(1,2,3))
         }
 
     }
