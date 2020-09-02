@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.*
+import com.snatap.myway.ui.screens.main.path.LessonDetailScreen
 import kotlinx.android.synthetic.main.screen_break_visual.*
 import kotlinx.android.synthetic.main.screen_break_visual.recyclerChamps
 
@@ -32,6 +33,7 @@ private fun initViews() {
 
 
     recyclerFriends.adapter = FriendsAdapter {
+        // addFragment(LessonDetailScreen())
         addFragment(RatingDetailScreen())
     }.apply {
         setData(arrayListOf(1, 2, 3))
