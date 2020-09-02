@@ -1,6 +1,7 @@
 package com.snatap.myway.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
@@ -13,16 +14,21 @@ import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
 import com.snatap.myway.base.initialFragment
 import com.snatap.myway.ui.screens.BottomNavScreen
-import com.snatap.myway.ui.screens.main.profile.SettingsScreen
+import com.snatap.myway.ui.screens.main.path.SendTaskScreen
 import com.snatap.myway.ui.screens.splash.SplashScreen
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.preferences.SharedManager
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
 
@@ -39,12 +45,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
         sharedManager.code = "4444" // todo
 
-//        debug()
-        startFragment()
+        debug()
+//        startFragment()
     }
 
     private fun debug() {
-        initialFragment(SettingsScreen())
+        initialFragment(SendTaskScreen())
     }
 
     private fun startFragment() {
@@ -68,6 +74,25 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         return super.dispatchKeyEvent(event)
     }
 
+    fun openPdf(path: String) {
+        startActivity(Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(Uri.fromFile(File(path)), "application/pdf")
+            flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+        })
+    }
+
+    fun createFileMultipart(name: String, file: File): MultipartBody.Part {
+        return MultipartBody.Part.createFormData(name, file.name, file.asRequestBody("multipart/form-data".toMediaTypeOrNull()))
+    }
+
+    fun createBuilder(partName: String, file: File): RequestBody {
+        val builder: MultipartBody.Builder = MultipartBody.Builder()
+        builder.setType(MultipartBody.FORM)
+        builder.addFormDataPart(
+            partName, file.name, file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        )
+        return builder.build()
+    }
 
     fun getFilePath(it: Uri): String {
         //Later we will use this bitmap to create the File.

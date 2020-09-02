@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/eventsback">
+    style="@style/screenStyle"
+    android:background="@drawable/splash">
+
+    <ImageView
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -16,22 +23,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
         android:layout_marginStart="23dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="23dp"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_calendar_white"
             android:drawablePadding="11dp"
             android:gravity="center_vertical"
             android:text="@string/date_city"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:drawableStartCompat="@drawable/ic_calendar_white" />
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
@@ -41,6 +50,7 @@
             android:textSize="32sp" />
 
         <TextView
+            android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Поздравляем всех.\nЭто была цель  и она реализовалась, в следующем году мы порадуем всех слушателей и зрителей таким же большим количеством хитов😘
@@ -48,154 +58,168 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-
     </LinearLayout>
 
     <LinearLayout
-        android:layout_above="@id/deadline_layout"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="24dp"
-        android:id="@+id/first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inter_bold"
-            android:text="700 ₽"
-            android:textColor="@color/white"
-            android:textSize="32sp" />
-
-        <TextView
-            android:id="@+id/participate"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1.5"
-            android:background="@drawable/rounded_red_card_gradient"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
-            android:text="Зарегистрироваться"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            tools:ignore="RtlCompat" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/deadline_layout"
-        android:layout_marginBottom="55dp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_marginBottom="55dp"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_marginEnd="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingStart="21dp"
-            android:paddingEnd="21dp"
-            android:background="@drawable/rounded_white_card_transparent">
+        <LinearLayout
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:gravity="center_vertical">
+
             <TextView
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
+                android:id="@+id/price_rub"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="До начала"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_bold"
+                android:text="700 ₽"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/participate"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_red_card_gradient"
+                android:gravity="center_vertical"
+                android:text="Зарегистрироваться"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/comfortaa_regular"
-                />
-        </RelativeLayout>
+                tools:ignore="RtlCompat" />
 
-
-
-        <LinearLayout
-            android:layout_marginEnd="3dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_card_transparent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="дней"
-                android:textColor="@color/white"
-                android:alpha="0.64"
-                android:layout_marginTop="6dp"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginEnd="3dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_card_transparent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <TextView
+            android:id="@+id/deadline_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="часов"
-                android:textColor="@color/white"
-                android:alpha="0.64"
-                android:layout_marginTop="6dp"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                />
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:paddingStart="21dp"
+                android:paddingEnd="21dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="До начала"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="дней"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="часов"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="минут"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_white_card_transparent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="минут"
-                android:textColor="@color/white"
-                android:alpha="0.64"
-                android:layout_marginTop="6dp"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/next"
+            style="@style/buttonStyle"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_violet_blue_gradient_card"
+            android:text="Начать!" />
 
     </LinearLayout>
-
 </RelativeLayout>

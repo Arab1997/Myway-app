@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backStyle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/screenStyle">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/titleStyle"
+                android:text="Как ставить цели правильно" />
+
+            <TextView
+                android:id="@+id/shortDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:text="Занимайтесь три-четыре дня в неделю. Вместе с разминкой и растяжкой тренировка займёт около 40 минут."
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="395dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/splash"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/temp_text4"
+                android:textColor="#212121"
+                android:textSize="15sp" />
+
+            <FrameLayout
+                android:id="@+id/videoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/videoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/gradient"
+                    style="@style/screenStyle"
+                    android:background="@drawable/live_gradient"
+                    android:clickable="false"
+                    android:contentDescription="@string/layer"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@id/play"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/taskDetails"
+            style="@style/screenStyle"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/myTasks"
+                style="@style/titleStyle"
+                android:text="Мои задания" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMyTasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_reports" />
+        </LinearLayout>
+
+        <include layout="@layout/content_task" />
+
+        <Button
+            android:id="@+id/sendTask"
+            style="@style/buttonStyle"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rounded_violet_blue_gradient_card"
+            android:text="Отправить задание" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

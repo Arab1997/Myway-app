@@ -4,23 +4,42 @@ import android.os.Handler
 import androidx.recyclerview.widget.RecyclerView
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseAdapter
+import com.snatap.myway.network.models.Lesson
 import com.snatap.myway.utils.common.ViewHolder
+import com.snatap.myway.utils.extensions.formatTime
+import com.snatap.myway.utils.extensions.formatTime4
+import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.views.SwipeLayout
 import kotlinx.android.synthetic.main.item_path_task.view.*
 
-class PathTasksScreenAdapter(private val listener: (Any, Boolean) -> Unit) :
-    BaseAdapter<Any>(R.layout.item_path_task) {
+class PathTasksScreenAdapter(private val listener: (Lesson, Boolean) -> Unit) :
+    BaseAdapter<Lesson>(R.layout.item_path_task) {
 
     private var itemsOffset = IntArray(0)
-    override fun setData(data: ArrayList<Any>) {
+    override fun setData(data: ArrayList<Lesson>) {
         super.setData(data)
         itemsOffset = IntArray(data.size)
     }
 
-    override fun bindViewHolder(holder: ViewHolder, data: Any) {
+    override fun bindViewHolder(holder: ViewHolder, data: Lesson) {
         holder.itemView.apply {
-            dataBlock.setOnClickListener {
-                listener.invoke(holder.adapterPosition, false)
+            data.apply {
+
+                dataBlock.setOnClickListener {
+                    listener.invoke(this, false)
+                }
+                date.text = datetime.formatTime4()
+                name.text = title
+                deadline.text =
+                    resources.getString(R.string.deadline_s, report_deadline_at.formatTime())
+                pin.showGone(pinned)
+
+                /* todo lesson status
+                * status.text
+                * dataBlock.setBackgroundResource(R.drawable.rounded_blue_bordered_card)
+                *  dataBlock.setBackgroundResource(R.drawable.rounded_green_bordered_card)
+                *  dataBlock.setBackgroundResource(R.drawable.rounded_red_bordered_card)
+                * */
             }
         }
 

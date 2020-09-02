@@ -147,7 +147,7 @@
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
                     tools:ignore="ContentDescription"
-                    tools:src="@drawable/eventsback" />
+                    tools:src="@drawable/splash" />
 
                 <TextView
                     android:id="@+id/desc"

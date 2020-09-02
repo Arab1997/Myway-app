@@ -32,10 +32,6 @@ class StreamsAdapter(
                         @SuppressLint("SetTextI18n")
                         override fun onTick(millisUntilFinished: Long) {
                             diff = (date.getTime() - System.currentTimeMillis()) / 1000
-                            loge(date)
-                            loge(date.getTime())
-                            loge(diff)
-                            loge("---------------------------")
                             s = diff % 60
                             m = (diff / 60) % 60
                             h = (diff / 60 / 60) % 60

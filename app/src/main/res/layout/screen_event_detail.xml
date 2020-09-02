@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/eventsback"
+                android:src="@drawable/splash"
                 tools:ignore="ContentDescription" />
 
             <ImageView
@@ -264,7 +264,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img1"
+                    android:src="@drawable/splash"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -272,7 +272,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img2"
+                    android:src="@drawable/splash"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -280,7 +280,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img3"
+                    android:src="@drawable/splash"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -295,13 +295,40 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
-            <ImageView
+            <FrameLayout
+                android:id="@+id/videoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="24dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/video"
-                tools:ignore="ContentDescription" />
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/videoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/gradient"
+                    style="@style/screenStyle"
+                    android:background="@drawable/live_gradient"
+                    android:clickable="false"
+                    android:contentDescription="@string/layer"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@id/play"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
 
             <TextView
                 android:layout_width="match_parent"

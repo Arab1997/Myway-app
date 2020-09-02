@@ -10,6 +10,7 @@ import com.snatap.myway.utils.extensions.fromHtml
 import com.snatap.myway.utils.extensions.loadImage
 import com.snatap.myway.utils.extensions.showGone
 import com.snatap.myway.utils.extensions.visible
+import kotlinx.android.synthetic.main.content_task.view.*
 import kotlinx.android.synthetic.main.item_content.view.*
 import java.text.SimpleDateFormat
 import java.util.concurrent.TimeUnit
@@ -79,6 +80,7 @@ class MediaContentAdapter(
                 setOnClickListener { v ->
                     expandableLayout.toggle()
                     it.training_items?.let {
+                        start.showGone(it.isNotEmpty())
                         recyclerTask.adapter = TaskAdapter {
                             task.invoke(data, it)
                         }.apply { setData(ArrayList(it)) }

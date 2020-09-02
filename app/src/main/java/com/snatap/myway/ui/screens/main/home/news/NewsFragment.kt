@@ -3,6 +3,7 @@ package com.snatap.myway.ui.screens.main.home.news
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Tag
 import com.snatap.myway.ui.adapters.NewsAdapter
 import com.snatap.myway.ui.adapters.NewsRoundedAdapter
 import com.snatap.myway.ui.screens.main.events.FilterBottomSheet
@@ -18,15 +19,33 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var newsRoundedAdapter: NewsRoundedAdapter
-
+    private var selectedTags = arrayListOf<Tag>()
+    private var startDate: String = ""
+    private var endDate: String = ""
     override fun initialize() {
 
         filter.setOnClickListener {
             it.blockClickable()
-            val bottomSheet = FilterBottomSheet.newInstance(false).apply {
+            val bottomSheet = FilterBottomSheet.newInstance(
+                true,
+                selectedTags.size.toString(),
+                "$startDate - $endDate",
+                ""
+            ).apply {
                 setListener {
-                    if (it == FilterType.TAGS) addFragment(FilterTagsScreen())
-                    if (it == FilterType.DATES) addFragment(FilterDatesScreen())
+                    if (it == FilterType.TAGS) addFragment(FilterTagsScreen().apply {
+                        setListener {
+                            selectedTags = it
+                            getNews()
+                        }
+                    })
+                    if (it == FilterType.DATES) addFragment(FilterDatesScreen().apply {
+                        setListener {
+                            startDate = it.key
+                            endDate = it.value
+                            getNews()
+                        }
+                    })
                 }
             }
             bottomSheet.show(childFragmentManager, "")
@@ -41,7 +60,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }.apply { setData(data) }
 
         newsAdapter = NewsAdapter({
-            addFragment(NewsDetailScreen.newInstance(it.id),tag = Constants.NEWS_DETAILED_FRAGMENT)
+            addFragment(NewsDetailScreen.newInstance(it.id), tag = Constants.NEWS_DETAILED_FRAGMENT)
         }, { like, id ->
             if (like) viewModel.addLike(id)
             else viewModel.addBookmark(id)
@@ -55,6 +74,16 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }
     }
 
+    private fun getNews() {
+        val ids = ArrayList(selectedTags.map { it.id })
+        viewModel.getNews(
+            startDate.getOrNull(),
+            endDate.getOrNull(),
+            if (ids.isNotEmpty()) ids else null
+        )
+    }
+
+    private fun String.getOrNull() = if (this.isNotEmpty()) this else null
     override fun observe() {
         viewModel.news.observe(viewLifecycleOwner, Observer {
             swipeLayout?.isRefreshing = false

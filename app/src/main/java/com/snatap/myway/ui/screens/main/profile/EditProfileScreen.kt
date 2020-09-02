@@ -1,6 +1,5 @@
 package com.snatap.myway.ui.screens.main.profile
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
@@ -11,17 +10,10 @@ import com.snatap.myway.utils.validators.TextValidator
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_edit_profile.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
-import java.text.SimpleDateFormat
 import java.util.*
 
 class EditProfileScreen : BaseFragment(R.layout.screen_edit_profile) {
-
-    @SuppressLint("SimpleDateFormat")
-    private val dateMonthForUser = SimpleDateFormat("yyyy-MM-dd", Locale("ru"))
 
     private val calendar = Calendar.getInstance()
     private var request = false
@@ -73,7 +65,7 @@ class EditProfileScreen : BaseFragment(R.layout.screen_edit_profile) {
                     set(Calendar.MONTH, monthOfYear)
                     set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-                dob.setText(dateMonthForUser.format(cal.time))
+                dob.setText(userDF1.format(cal.time))
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -144,18 +136,9 @@ class EditProfileScreen : BaseFragment(R.layout.screen_edit_profile) {
 
     private fun editUserImage(file: File?) {
         file?.let {
-            val requestBody = createBuilder(it).build()
+            val requestBody = mainActivity.createBuilder("avatar", it)
             viewModel.updateUserPhoto(requestBody)
         }
-    }
-
-    private fun createBuilder(file: File): MultipartBody.Builder {
-        val builder: MultipartBody.Builder = MultipartBody.Builder()
-        builder.setType(MultipartBody.FORM)
-        builder.addFormDataPart(
-            "avatar", file.name, file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-        )
-        return builder
     }
 
 }

@@ -20,6 +20,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -51,24 +52,9 @@ open class BaseViewModel(
     val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
     val streams: MutableLiveData<ArrayList<Stream>> by inject(named("streams"))
     val lessonsDay: MutableLiveData<ArrayList<LessonDay>> by inject(named("lessonsDay"))
+    val lessonSeasons: MutableLiveData<ArrayList<Season>> by inject(named("lessonSeasons"))
     val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
     val sharedStore: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
-
-    private var answers = arrayListOf<QuizAnswerRequest>()
-
-    fun addAnswer(item: QuizAnswerRequest) {
-        val temp = answers.filter { it.question_id == item.question_id }
-        if (temp.isNotEmpty()) {
-            for (i in 0 until answers.size)
-                if (answers[i].question_id == item.question_id) answers[i] = item
-
-        } else answers.add(item)
-    }
-
-    fun removeAnswer(questionId: Int) {
-        answers = ArrayList(answers.filter { it.question_id != questionId })
-        loge(answers)
-    }
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
@@ -158,6 +144,7 @@ open class BaseViewModel(
             getUserNotifications()
             getStoreItems()
             getLessonsDay()
+            getLessonSeasons()
         }
     }
 
@@ -214,8 +201,12 @@ open class BaseViewModel(
             })
     )
 
-    fun getNews() = compositeDisposable.add(
-        api.getNews().observeAndSubscribe()
+    fun getNews(
+        start_date: String? = null,
+        end_date: String? = null,
+        tag_ids: ArrayList<Int>? = null
+    ) = compositeDisposable.add(
+        api.getNews(start_date, end_date, tag_ids).observeAndSubscribe()
             .subscribe({
                 if (it.success) news.postValue(it.news_items)
             }, {
@@ -225,6 +216,15 @@ open class BaseViewModel(
 
     fun getNewsDetail(newsId: Int) = compositeDisposable.add(
         api.getNewsDetail(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getNewsTags() = compositeDisposable.add(
+        api.getNewsTags().observeAndSubscribe()
             .subscribe({
                 if (it.success) data.postValue(it)
             }, {
@@ -255,6 +255,19 @@ open class BaseViewModel(
 
     fun addLike(newsId: Int) = compositeDisposable.add(
         api.addLike(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getNews()
+                    getNewsDetail(newsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun addShareCount(newsId: Int) = compositeDisposable.add(
+        api.addShareCount(newsId).observeAndSubscribe()
             .subscribe({
                 if (it.success) {
                     data.postValue(it)
@@ -456,6 +469,41 @@ open class BaseViewModel(
             .subscribe({
                 data.postValue(it)
             }, {
+                parseError(it)
+            })
+    )
+
+    fun getLessonSeasons() = compositeDisposable.add(
+        api.getLessonSeasons().observeAndSubscribe()
+            .subscribe({
+                if (it.success) lessonSeasons.postValue(ArrayList(it.lesson_seasons))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getLessonSeason(id: Int) = compositeDisposable.add(
+        api.getLessonSeason(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun uploadReport(
+        id: Int,
+        text: String,
+        photo: List<MultipartBody.Part>?,
+        video: List<MultipartBody.Part>?,
+        file: List<MultipartBody.Part>?
+    ) = compositeDisposable.add(
+        api.uploadReport(id, mapOf("text" to text), photo, video, file)
+            .observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                data.value = false
                 parseError(it)
             })
     )

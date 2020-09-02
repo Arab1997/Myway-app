@@ -2,9 +2,11 @@ package com.snatap.myway.network
 
 import com.snatap.myway.network.models.*
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
+@JvmSuppressWildcards
 interface ApiInterface {
 
     @POST("auth/login")
@@ -23,10 +25,17 @@ interface ApiInterface {
     fun forgotPassword(@Body body: ForgotRequest): Single<ForgotResponse>
 
     @GET("news_items")
-    fun getNews(): Single<NewsResp>
+    fun getNews(
+        @Query("start_date") start_date: String? = null,
+        @Query("end_date") end_date: String? = null,
+        @Query("tag_ids") tag_ids: ArrayList<Int>? = null
+    ): Single<NewsResp>
 
     @GET("news_items/{id}")
     fun getNewsDetail(@Path("id") id: Int): Single<NewsDetailResp>
+
+    @GET("news_items/tags")
+    fun getNewsTags(): Single<TagResp>
 
     @GET("news_items/{id}/comments")
     fun getComments(@Path("id") id: Int): Single<CommentsResp>
@@ -43,6 +52,9 @@ interface ApiInterface {
 
     @POST("news_items/{id}/like")
     fun addLike(@Path("id") id: Int): Single<Like>
+
+    @POST("news_items/{id}/share")
+    fun addShareCount(@Path("id") id: Int): Single<Share>
 
     @GET("user/chat/messages")
     fun getChats(): Single<ChatsResp>
@@ -113,6 +125,22 @@ interface ApiInterface {
         @Path("id") id: Int, @Body body: QuizAnswerRequestList
     ): Single<SuccessResp>
 
+    @GET("lesson_seasons")
+    fun getLessonSeasons(): Single<SeasonsResp>
+
+    @GET("user/lesson_seasons/{id}")
+    fun getLessonSeason(@Path("id") id: Int): Single<SeasonResp>
+
+    @Multipart
+    @POST("user/lesson_items/{id}/upload_report")
+    fun uploadReport(
+        @Path("id") id: Int,
+        @PartMap partMap: Map<String, String>,
+        @Part photo: List<MultipartBody.Part>?,
+        @Part video: List<MultipartBody.Part>?,
+        @Part file: List<MultipartBody.Part>?
+    ): Single<SuccessResp>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)
@@ -157,4 +185,11 @@ data class PasswordRequest(val password: String)
 data class LoginRequest(
     val phone: String,
     val password: String
+)
+
+data class ReportRequest(
+    val text: String,
+    val photo: List<RequestBody>? = null,
+    val video: List<RequestBody>? = null,
+    val file: List<RequestBody>? = null
 )

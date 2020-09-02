@@ -46,7 +46,10 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
         mark.setOnClickListener { viewModel.addBookmark(newsId) }
 
-        share.setOnClickListener { shareText(requireContext(), "In development") /*todo*/ }
+        share.setOnClickListener {
+            shareText(requireContext(), "In development")
+            viewModel.addShareCount(newsId)
+        }
 
         changeFontSize.setOnClickListener { inDevelopment(requireContext()) }
 

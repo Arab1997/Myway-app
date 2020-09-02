@@ -5,7 +5,7 @@
 
     <View
         style="@style/screenStyle"
-        android:background="@drawable/img1"/>
+        android:background="@drawable/splash"/>
 
     <ImageView
         style="@style/screenStyle"

@@ -3,14 +3,27 @@ package com.snatap.myway.ui.screens.main.events
 import android.os.Bundle
 import com.snatap.myway.R
 import com.snatap.myway.utils.bottomsheet.BottomSheetRoundedFragment
+import com.snatap.myway.utils.extensions.gone
 import com.snatap.myway.utils.extensions.showGone
 import kotlinx.android.synthetic.main.bottomsheet_filter.*
 
 enum class FilterType { TAGS, DATES, CITIES, FILTER }
 
 class FilterBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_filter) {
+
     companion object {
-        fun newInstance(newsFilter: Boolean): FilterBottomSheet {
+        private var tagCount = ""
+        private var date = ""
+        private var city = ""
+        fun newInstance(
+            newsFilter: Boolean,
+            tagCount: String,
+            date: String,
+            city: String
+        ): FilterBottomSheet {
+            this.tagCount = tagCount
+            this.date = date
+            this.city = city
             return FilterBottomSheet().apply {
                 arguments = Bundle().apply {
                     putBoolean("newsFilter", newsFilter)
@@ -25,6 +38,10 @@ class FilterBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_filter
     }
 
     override fun initialize() {
+
+        if (tagCount.isNotEmpty()) selectedTag.text = tagCount else selectedTag.gone()
+        if (date.isNotEmpty()) selectedDate.text = date else selectedDate.gone()
+        if (city.isNotEmpty()) selectedCity.text = city else selectedCity.gone()
 
         arguments?.let {
             val newsFilter = it.getBoolean("newsFilter")
@@ -44,5 +61,12 @@ class FilterBottomSheet : BottomSheetRoundedFragment(R.layout.bottomsheet_filter
     private fun invoke(type: FilterType) {
         listener.invoke(type)
         dismiss()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        date = ""
+        city = ""
+        tagCount = ""
     }
 }

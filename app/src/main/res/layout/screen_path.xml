@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        style="@style/screenStyle" />
+        style="@style/screenStyle"
+        tools:background="@drawable/splash" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,6 +45,5 @@
         app:piv_padding="12dp"
         app:piv_radius="4dp"
         app:piv_selectedColor="@color/red"
-        app:piv_unselectedColor="@color/white"
-        app:piv_viewPager="@id/pager" />
+        app:piv_unselectedColor="@color/white" />
 </RelativeLayout>

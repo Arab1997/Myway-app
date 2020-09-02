@@ -19,19 +19,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="224dp"
                 android:layout_margin="8dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <com.snatap.myway.utils.views.RoundImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/content_first" />
+                    android:src="@drawable/splash" />
 
                 <com.snatap.myway.utils.views.RoundImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/content_home_first"
+                    android:src="@drawable/splash"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -89,8 +91,8 @@
                             android:background="@drawable/rounded_white_card_transparent"
                             android:padding="7dp"
                             android:src="@drawable/ic_calendar"
-                            tools:ignore="ContentDescription"
-                            app:tint="@color/white" />
+                            app:tint="@color/white"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:layout_width="match_parent"
