@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screenStyle">
+
+    <LinearLayout
+        style="@style/screenStyle"
+        android:paddingBottom="24dp">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/champs"
+            style="@style/titleStyle"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:text="Чемпионы" />
+
+        <TextView
+            android:id="@+id/allChamps"
+            style="@style/titleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:textColor="#899196"
+            android:text="Все" />
+    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_champs" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

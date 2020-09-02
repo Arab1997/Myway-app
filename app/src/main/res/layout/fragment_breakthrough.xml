@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        style="@style/screenStyle"
+        android:paddingBottom="24dp">
+
+    <RelativeLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        style="@style/screenStyle"
+
+
+        android:padding="10dp"
+        android:background="@drawable/image650"
+        android:paddingBottom="14dp">
+
+       <!-- <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />-->
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="23dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Эге ге! Активно участвуй и получай призы ;)"
+                android:textColor="@color/white"
+                android:textSize="27sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout1"
+            android:layout_alignStart="@+id/layout1"
+            android:layout_alignEnd="@+id/layout1"
+            android:layout_marginStart="37dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="-484dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/participate1"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_red_card_gradient"
+                android:gravity="center_vertical"
+                android:text="Участовать!"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/deadline_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_white_card_transparent"
+
+            android:layout_above="@+id/layout1"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="-422dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:paddingStart="21dp"
+                android:paddingEnd="21dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text=" До конца \n марафона"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="дней"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="часов"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_white_card_transparent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.64"
+                    android:text="минут"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginEnd="23dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="11dp"
+                android:gravity="center_vertical"
+                android:text="на картинке представлен главный приз"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/image1"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/rounded_blue_card"
+                android:paddingBottom="14dp">
+
+
+                <TextView
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/userImg"
+                    android:layout_alignBottom="@+id/userImgd"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="22dp"
+
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@+id/userImgd"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:text="Испытай удачу!:)"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+
+                <TextView
+                    android:id="@+id/user1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/user"
+                    android:layout_alignBottom="@+id/userImgd"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@+id/userImgd"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:text="Получи  дополннительные призы \n от MyWay"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+            <com.snatap.myway.utils.views.RoundImageView
+                android:id="@+id/circle"
+                android:layout_width="142dp"
+                android:layout_height="142dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="57dp"
+                android:src="@drawable/prizes" />
+        </RelativeLayout>
+<LinearLayout
+    android:layout_marginStart="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:text="Спринты"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Тип гонок, которые позваляют за короткий  \n период получить неплоохие призы"
+        android:textColor="#736F6F"
+        android:textSize="17sp" />
+</LinearLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/firstt"
+        android:layout_below="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <com.snatap.myway.utils.views.RoundImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image11" />
+
+        <com.snatap.myway.utils.views.RoundImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/content_home_first"
+            tools:ignore="ContentDescription" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comingSoon"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="21sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Огненая неделька"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Главный приз VR очки"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                 />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="до спринта"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="bottom">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="10:16:23"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_white_bordered_card"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:text="Регистрация"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/firsttt"
+            android:layout_below="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="224dp"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <com.snatap.myway.utils.views.RoundImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image9" />
+
+            <com.snatap.myway.utils.views.RoundImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/content_home_first"
+                tools:ignore="ContentDescription" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/comingSoons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="21sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Run Run Run"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="IPhone XS"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="до спринта"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:gravity="bottom">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="10:16:23"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_white_bordered_card"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:text="Нет мест :("
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
