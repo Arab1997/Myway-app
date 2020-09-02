@@ -32,7 +32,7 @@ private fun initViews() {
 
 
     recyclerFriends.adapter = FriendsAdapter {
-        addFragment(FriendsScreen())
+        addFragment(RatingDetailScreen())
     }.apply {
         setData(arrayListOf(1, 2, 3))
     }
