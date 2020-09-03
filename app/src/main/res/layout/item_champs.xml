@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/container2"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/image"
+            android:layout_width="401dp"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradient_blue_purple"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImg"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="9dp"
+            android:src="@drawable/user" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImgd"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignTop="@+id/userImg"
+            android:layout_alignBottom="@+id/userImg"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@+id/userImg"
+            android:src="@drawable/instagram" />
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/userImg"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/userImgd"
+            android:gravity="center_horizontal"
+            android:text="Anna 123458"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <com.snatap.myway.utils.views.RoundImageView
+            android:id="@+id/circle"
+            android:layout_width="100dp"
+            android:layout_height="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/user"
+            android:src="@drawable/vector" />
+
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/circle"
+            android:layout_alignTop="@+id/circle"
+            android:layout_alignEnd="@+id/circle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="0dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>
