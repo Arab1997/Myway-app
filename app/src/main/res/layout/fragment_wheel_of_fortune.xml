@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
-            android:id="@+id/twist"
+            android:id="@+id/twist2"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
@@ -62,12 +62,12 @@
 
 
         <com.hsalf.smileyrating.SmileyRating
-            android:id="@+id/smile_rating"
+            android:id="@+id/smile_rating2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/twist"
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
