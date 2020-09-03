@@ -44,18 +44,18 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
 
         back.setOnClickListener { finishFragment() }
 
-        mark.setOnClickListener { viewModel.addBookmark(newsId) }
+        mark.setOnClickListener { viewModel.bookmarkNews(newsId) }
 
         share.setOnClickListener {
             shareText(requireContext(), "In development")
-            viewModel.addShareCount(newsId)
+            viewModel.shareNews(newsId)
         }
 
         changeFontSize.setOnClickListener { inDevelopment(requireContext()) }
 
         quizLayout.setOnClickListener { addFragment(QuizScreen()) }
 
-        liked.setOnClickListener { viewModel.addLike(newsId) }
+        liked.setOnClickListener { viewModel.likeNews(newsId) }
 
         allComments.setOnClickListener { openComments() }
 
@@ -66,7 +66,7 @@ class NewsDetailScreen : BaseFragment(R.layout.screen_news_detailed) {
         }
     }
 
-    private fun openComments() = addFragment(CommentsScreen.newInstance(newsId))
+    private fun openComments() = addFragment(CommentsScreen.newInstance(newsId,false))
 
     override fun observe() {
         viewModel.getNewsDetail(newsId)

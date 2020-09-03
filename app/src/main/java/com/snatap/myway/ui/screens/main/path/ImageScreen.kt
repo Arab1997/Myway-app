@@ -39,4 +39,8 @@ class ImageScreen : BaseFragment(R.layout.screen_image) {
         publish.setOnClickListener { publishListener.invoke() }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showPublishBtn = false
+    }
 }

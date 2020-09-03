@@ -24,7 +24,7 @@
         android:gravity="center"
         android:text="Викторина MyWay"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="17sp" />
 
     <ImageView
         android:id="@+id/close"

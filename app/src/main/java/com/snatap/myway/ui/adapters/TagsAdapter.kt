@@ -10,13 +10,13 @@ import kotlin.random.Random
 
 class TagsAdapter : BaseAdapter<Tag>(R.layout.item_tags) {
 
-    private var color = 0
     override fun bindViewHolder(holder: ViewHolder, data: Tag) {
         holder.itemView.apply {
             data.apply {
                 tagName.text = title
-                color = Constants.colors[Random.nextInt(0, 100) % Constants.colors.size]
-                tagName.setBackgroundResource(color)
+                tagName.setBackgroundResource(
+                    Constants.colors[Random.nextInt(0, 100) % Constants.colors.size]
+                )
             }
         }
     }

@@ -87,7 +87,7 @@
     <style name="imgStyle">
         <item name="android:layout_width">45dp</item>
         <item name="android:layout_height">45dp</item>
-        <item name="android:padding">10sp</item>
+        <item name="android:padding">12sp</item>
     </style>
 
     <style name="elevationStyle">

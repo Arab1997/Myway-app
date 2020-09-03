@@ -24,14 +24,15 @@ class CommentAdapter(private val sharedManager: SharedManager) :
     override fun bindViewHolder(holder: ViewHolder, data: Comment) {
         holder.itemView.apply {
             data.apply {
-                userImg.loadImage(user_avatar)
-                name.text = user_name.capitalize()
+                user?.let {
+                    userImg.loadImage(it.avatar)
+                    name.text = it.full_name?.capitalize()
+                }
                 comment.text = text
                 date.text = created_at.formatTime()
 
                 container.setBackgroundResource(
-                    if (user_id == sharedManager.user.id) R.drawable.rounded_red_card_transparent
-                    else 0
+                    if (user_id == sharedManager.user.id) R.drawable.rounded_red_card_transparent else 0
                 )
             }
         }

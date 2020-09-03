@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/cardStyle"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="2dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp"
-    >
+    android:layout_marginBottom="2dp">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -21,45 +21,27 @@
         android:paddingEnd="8dp"
         android:paddingBottom="5dp">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/icons"
             android:layout_width="match_parent"
-            android:layout_height="30sp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20sp"
-                android:src="@drawable/ic_art"
-                tools:ignore="ContentDescription" />
-
-            <ImageView
-                android:layout_marginStart="15sp"
-                android:layout_width="20dp"
-                android:layout_height="20sp"
-                android:src="@drawable/ic_business_blue"
-                tools:ignore="ContentDescription" />
-
-            <ImageView
-                android:layout_marginStart="15sp"
-                android:layout_width="20dp"
-                android:layout_height="20sp"
-                android:src="@drawable/ic_cariers"
-                tools:ignore="ContentDescription" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_tag_icons" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:maxLines="2"
             android:text="Как найти баланс?"
             android:textColor="@color/black"
             android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/timerBtn"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:background="@drawable/rounded_edt_card"

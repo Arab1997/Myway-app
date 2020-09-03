@@ -91,13 +91,13 @@ class PathFragment : BaseFragment(R.layout.fragment_path) {
 class PathsPagerAdapter(fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    override fun getItem(position: Int) = PathFragment.newInstance(data[position])
-
     private var data = arrayListOf<Season>()
     fun setData(data: ArrayList<Season>) {
         this.data = data
         notifyDataSetChanged()
     }
+
+    override fun getItem(position: Int) = PathFragment.newInstance(data[position])
 
     override fun getCount(): Int = data.size
 

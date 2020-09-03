@@ -1,38 +1,38 @@
 package com.snatap.myway.ui.screens.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.DisplayMetrics
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
+import androidx.lifecycle.Observer
+import com.google.gson.Gson
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Event
+import com.snatap.myway.ui.adapters.PastEventsFragmentAdapter
+import com.snatap.myway.ui.adapters.TagsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
-import com.snatap.myway.utils.common.ViewHolder
-import com.snatap.myway.utils.extensions.dpToPx
-import com.snatap.myway.utils.extensions.inDevelopment
-import com.snatap.myway.utils.extensions.inflate
+import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_past_events.*
 import kotlinx.android.synthetic.main.screen_events.*
-import kotlin.math.roundToInt
 
 class EventsScreen : BaseFragment(R.layout.screen_events) {
 
+    private lateinit var eventsAdapter: EventsPagerAdapter
     override fun initialize() {
 
         initClicks()
 
+        eventsAdapter = EventsPagerAdapter(childFragmentManager)
+
         pager.apply {
-            adapter =
-                EventsPagerAdapter(arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9), childFragmentManager)
+            adapter = eventsAdapter
 
             pageMargin = dpToPx(mainActivity, 15)
 
@@ -48,81 +48,79 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
         cart.setOnClickListener { addFragment(StoreScreen()) }
         message.setOnClickListener { addFragment(ChatScreen()) }
 
-        filter.setOnClickListener { inDevelopment(requireContext()) }
-        tickets.setOnClickListener { inDevelopment(requireContext()) }
+        filter.setOnClickListener { inDevelopment(requireContext()) }// todo
+        tickets.setOnClickListener { inDevelopment(requireContext()) } // todo
     }
 
-    private fun ViewPager.setMargin() {
-        val displayMetrics = mainActivity.resources.displayMetrics
-        val margin = (10 * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
-        this.pageMargin = margin
+    override fun observe() {
+        viewModel.events.observe(viewLifecycleOwner, Observer {
+            eventsAdapter.setData(it)
+        })
     }
 }
 
 class EventsFragment : BaseFragment(R.layout.fragment_events) {
 
-    override fun initialize() {
-        container.setOnClickListener { addFragment(EventDetailsScreen()) }
+    companion object {
+        fun newInstance(data: Event): EventsFragment {
+            return EventsFragment().apply {
+                arguments = Bundle().apply {
+                    putString("data", Gson().toJson(data))
+                }
+            }
+        }
     }
 
+    @SuppressLint("SetTextI18n")
+    override fun initialize() {
+
+        val data = Gson().fromJson(requireArguments().getString("data"), Event::class.java)
+
+        data.apply {
+            container.setOnClickListener { addFragment(EventDetailsScreen.newInstance(this)) }
+
+            recyclerTags.adapter = TagsAdapter().apply { setData(ArrayList(tags)) }
+            backgroundImage.loadImage(photo)
+            name.text = title
+            desc.text = short_description.fromHtml()
+            date.text = city.title + " " + start_date.formatTime4()
+        }
+    }
 }
 
 class PastEventsFragment : BaseFragment(R.layout.fragment_past_events) {
 
-    private val data = arrayListOf(
-        PastEventsData("", "Как найти баланс?", "24, 23 июля\n2019"),
-        PastEventsData("", "Мероприятия года", "24, 23 июля\n2019"),
-        PastEventsData("", "Как найти баланс?", "24, 23 июля\n2019")
-    )
-
+    private lateinit var adapter: PastEventsFragmentAdapter
     override fun initialize() {
-        recycler.adapter = Adapter(data) {
-            inDevelopment(requireContext())
+
+        adapter = PastEventsFragmentAdapter {
+            addFragment(EventDetailsScreen.newInstance(it))
         }
-        showAll.setOnClickListener {
-            addFragment(PastEventsScreen())
-        }
+        recycler.adapter = adapter
+        showAll.setOnClickListener { addFragment(PastEventsScreen.newInstance(data)) }
     }
 
-    data class PastEventsData(val img: String, val title: String, val desc: String)
-
-    class Adapter(
-        private val data: ArrayList<PastEventsData>,
-        private val listener: (PastEventsData) -> Unit
-    ) :
-        RecyclerView.Adapter<ViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-            parent.inflate(R.layout.item_past_events_fragment)
-        )
-
-        override fun getItemCount(): Int = data.size
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.itemView.apply {
-                data[holder.adapterPosition].apply {
-/*
-                    image.loadImage(img)
-                    name.text = title
-                    date.text = desc
-*/
-
-                    setOnClickListener { listener.invoke(this) }
-                }
-            }
-        }
-
+    private var data = arrayListOf<Event>()
+    override fun observe() {
+        viewModel.events.observe(viewLifecycleOwner, Observer {
+            data = ArrayList(it.filter { it.end_date.getTime() > System.currentTimeMillis() })
+            adapter.setData(data)
+        })
     }
 }
 
-class EventsPagerAdapter(private val data: ArrayList<Any>, fm: FragmentManager) :
+class EventsPagerAdapter(fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
+    private var data = arrayListOf<Event>()
+    fun setData(data: ArrayList<Event>) {
+        this.data = data
+        notifyDataSetChanged()
+    }
+
     override fun getItem(position: Int): Fragment {
-        return if (position == 0) PastEventsFragment()
-        else EventsFragment().apply {
-            arguments = Bundle().apply {
-            }
-        }
+        return if (position == 0 && data.any { it.end_date.getTime() > System.currentTimeMillis() }) PastEventsFragment()
+        else EventsFragment.newInstance(data[position])
     }
 
     override fun getCount(): Int = data.size

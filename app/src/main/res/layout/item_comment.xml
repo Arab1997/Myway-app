@@ -17,7 +17,7 @@
             android:id="@+id/userImg"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/user1"
+            android:src="@drawable/logo"
             app:civ_border_color="@color/black"
             app:civ_border_width="1dp" />
 
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/inter_medium"
-                    android:text="Анна Ковальт"
+                    android:text="Unknown"
                     android:textColor="@color/black" />
 
                 <TextView

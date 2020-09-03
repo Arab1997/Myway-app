@@ -22,8 +22,9 @@ val viewModelModule = module {
     single(named("sharedLive")) { provideMutableLiveData() }
     single(named("errorLive")) { MutableLiveData<ErrorResp>() }
     single(named("news")) { MutableLiveData<ArrayList<News>>() }
+    single(named("events")) { MutableLiveData<ArrayList<Event>>() }
     single(named("chats")) { MutableLiveData<ArrayList<Chats>>() }
-    single(named("comments")) { MutableLiveData<ArrayList<Comment>>() }
+    factory(named("comments")) { MutableLiveData<ArrayList<Comment>>() }
     single(named("user")) { MutableLiveData<User>() }
     single(named("notifications")) { MutableLiveData<ArrayList<Notification>>() }
     single(named("achievements")) { MutableLiveData<ArrayList<UserAchievement>>() }

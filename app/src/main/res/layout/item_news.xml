@@ -101,50 +101,6 @@
         android:layout_height="1dp"
         android:background="@color/edt" />
 
-    <LinearLayout
-        android:id="@+id/commentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/commentCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_icon_comment"
-            android:drawablePadding="7dp"
-            android:text="0"
-            android:textColor="@color/hint"
-            android:textSize="15sp"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/shareCount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:drawableStart="@drawable/ic_icon_share"
-            android:drawablePadding="7dp"
-            android:text="0"
-            android:textColor="@color/hint"
-            android:textSize="15sp"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_like"
-            android:drawablePadding="7dp"
-            android:gravity="center_vertical"
-            android:text="1222"
-            android:textColor="@color/hint"
-            android:textSize="15sp"
-            tools:ignore="ContentDescription" />
-
-    </LinearLayout>
+    <include layout="@layout/content_comment_layout" />
 
 </LinearLayout>

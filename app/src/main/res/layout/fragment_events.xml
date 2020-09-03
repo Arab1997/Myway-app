@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,57 +12,44 @@
         android:scaleType="centerCrop"
         android:src="@drawable/splash" />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTags"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            style="@style/cardStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/rounded_green_card"
-            android:drawableStart="@drawable/ic_star"
-            android:paddingStart="11dp"
-            android:paddingEnd="14sp"
-            android:text="Здоровье"
-            android:textColor="@color/white"
-            android:translationZ="0dp" />
-
-        <TextView
-            style="@style/cardStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:background="@drawable/rounded_blue_card"
-            android:drawableStart="@drawable/ic_business"
-            android:paddingStart="11dp"
-            android:paddingEnd="14sp"
-            android:text="Бизнес"
-            android:textColor="@color/white"
-            android:translationZ="0dp" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_tags" />
 
     <LinearLayout
+        android:id="@+id/container"
         style="@style/cardStyle"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:minHeight="140dp"
         android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:maxLines="2"
             android:text="Как найти баланс?"
             android:textColor="@color/black"
             android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:text="Узнай новый подход к жизни и успеху"
             android:textColor="@color/black"
             android:textSize="12sp" />
@@ -79,9 +66,11 @@
                 android:background="@drawable/ic_rectangle_red_015"
                 android:padding="7dp"
                 android:src="@drawable/ic_calendar"
-                app:tint="@color/red" />
+                app:tint="@color/red"
+                tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
