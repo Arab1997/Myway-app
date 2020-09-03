@@ -24,38 +24,6 @@ interface ApiInterface {
     @POST("auth/forgot_password")
     fun forgotPassword(@Body body: ForgotRequest): Single<ForgotResponse>
 
-    @GET("news_items")
-    fun getNews(
-        @Query("start_date") start_date: String? = null,
-        @Query("end_date") end_date: String? = null,
-        @Query("tag_ids[]") tag_ids: ArrayList<Int>? = null
-    ): Single<NewsResp>
-
-    @GET("news_items/{id}")
-    fun getNewsDetail(@Path("id") id: Int): Single<NewsDetailResp>
-
-    @GET("news_items/tags")
-    fun getNewsTags(): Single<TagResp>
-
-    @GET("news_items/{id}/comments")
-    fun getComments(@Path("id") id: Int): Single<CommentsResp>
-
-    @POST("news_items/{id}/comment")
-    @FormUrlEncoded
-    fun addComment(
-        @Path("id") id: Int,
-        @Field("text") comment: String
-    ): Single<AddCommentResp>
-
-    @POST("news_items/{id}/bookmark")
-    fun addBookmark(@Path("id") id: Int): Single<Bookmark>
-
-    @POST("news_items/{id}/like")
-    fun addLike(@Path("id") id: Int): Single<Like>
-
-    @POST("news_items/{id}/share")
-    fun addShareCount(@Path("id") id: Int): Single<Share>
-
     @GET("user/chat/messages")
     fun getChats(): Single<ChatsResp>
 
@@ -140,6 +108,70 @@ interface ApiInterface {
         @Part video: List<MultipartBody.Part>?,
         @Part file: List<MultipartBody.Part>?
     ): Single<SuccessResp>
+
+    @POST("user/lesson_items/{id}/lesson_complete")
+    fun completeLesson(@Path("id") id: Int): Single<SuccessResp>
+
+    // News
+    @GET("news_items")
+    fun getNews(
+        @Query("start_date") start_date: String? = null,
+        @Query("end_date") end_date: String? = null,
+        @Query("tag_ids[]") tag_ids: ArrayList<Int>? = null
+    ): Single<NewsResp>
+
+    @GET("news_items/{id}")
+    fun getNewsDetail(@Path("id") id: Int): Single<NewsDetailResp>
+
+    @GET("news_items/{id}/comments")
+    fun getNewsComments(@Path("id") id: Int): Single<NewsCommentsResp>
+
+    @POST("news_items/{id}/comment")
+    @FormUrlEncoded
+    fun addCommentToNews(
+        @Path("id") id: Int,
+        @Field("text") comment: String
+    ): Single<AddCommentNewsResp>
+
+    @POST("news_items/{id}/like")
+    fun likeNews(@Path("id") id: Int): Single<Like>
+
+    @POST("news_items/{id}/share")
+    fun shareNews(@Path("id") id: Int): Single<Share>
+
+    @POST("news_items/{id}/bookmark")
+    fun bookmarkNews(@Path("id") id: Int): Single<Bookmark>
+
+    @GET("news_items/tags")
+    fun getNewsTags(): Single<TagResp>
+
+    // Event
+    @GET("events")
+    fun getEvents(
+        @Query("start_date") start_date: String? = null,
+        @Query("end_date") end_date: String? = null,
+        @Query("tag_ids[]") tag_ids: ArrayList<Int>? = null,
+        @Query("city_ids[]") city_ids: ArrayList<Int>? = null
+    ): Single<EventsResp>
+
+    @GET("events/{id}")
+    fun getEventsDetail(@Path("id") id: Int): Single<EventResp>
+
+    @GET("events/{id}/comments")
+    fun getEventsComments(@Path("id") id: Int): Single<EventsCommentsResp>
+
+    @POST("events/{id}/comment")
+    @FormUrlEncoded
+    fun addCommentToEvent(
+        @Path("id") id: Int,
+        @Field("text") comment: String
+    ): Single<AddCommentEventsResp>
+
+    @POST("events/{id}/like")
+    fun likeEvents(@Path("id") id: Int): Single<Like>
+
+    @POST("events/{id}/share")
+    fun shareEvents(@Path("id") id: Int): Single<Share>
 
 }
 

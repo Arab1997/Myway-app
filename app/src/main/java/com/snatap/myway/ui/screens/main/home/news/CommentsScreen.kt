@@ -3,6 +3,7 @@ package com.snatap.myway.ui.screens.main.home.news
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Comment
 import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.utils.common.TextWatcherInterface
 import com.snatap.myway.utils.extensions.loadImage
@@ -14,9 +15,11 @@ import kotlinx.android.synthetic.main.screen_comments.*
 class CommentsScreen : BaseFragment(R.layout.screen_comments) {
 
     companion object {
-        private var newsId = 0
-        fun newInstance(newsId: Int): CommentsScreen {
-            this.newsId = newsId
+        private var itemId = 0
+        private var isEventComments: Boolean = false
+        fun newInstance(itemId: Int, isEventComments: Boolean): CommentsScreen {
+            this.itemId = itemId
+            this.isEventComments = isEventComments
             return CommentsScreen()
         }
     }
@@ -37,29 +40,43 @@ class CommentsScreen : BaseFragment(R.layout.screen_comments) {
             override fun textChanged(s: String) {
                 send.showGone(s.isNotEmpty())
             }
-
         })
 
         send.setOnClickListener {
-            viewModel.addComment(newsId, addComment.text.toString())
+            if (isEventComments) viewModel.addCommentToEvent(itemId, addComment.text.toString())
+            else viewModel.addCommentToNews(itemId, addComment.text.toString())
             addComment.text.clear()
         }
         userImg.loadImage(sharedManager.user.avatar)
 
         swipeLayout.setOnRefreshListener {
-            removePreviousCallback({
-                swipeLayout?.isRefreshing = false
-            })
-            // todo
+            fetchData()
         }
     }
 
-    override fun observe() {
-        viewModel.getComments(newsId)
+    private fun fetchData() {
+        if (isEventComments) viewModel.getEventsComments(itemId)
+        else viewModel.getNewsComments(itemId)
+    }
 
-        viewModel.comments.observe(viewLifecycleOwner, Observer {
-            adapter.setData(ArrayList(it.sortedByDescending { it.created_at }))
-            recycler.layoutManager?.scrollToPosition(0)
-        })
+    override fun observe() {
+        fetchData()
+
+        viewModel.apply {
+            if (isEventComments) commentEvents.observe(viewLifecycleOwner, Observer { setData(it) })
+            else commentNews.observe(viewLifecycleOwner, Observer { setData(it) })
+        }
+    }
+
+    private fun setData(it: ArrayList<Comment>) {
+        swipeLayout?.isRefreshing = false
+        adapter.setData(ArrayList(it.sortedByDescending { it.created_at }))
+        recycler.layoutManager?.scrollToPosition(0)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        itemId = 0
+        isEventComments = false
     }
 }

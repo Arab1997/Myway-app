@@ -7,6 +7,7 @@ import com.snatap.myway.network.models.News
 import com.snatap.myway.utils.common.ViewHolder
 import com.snatap.myway.utils.diffutils.NewsDiffUtil
 import com.snatap.myway.utils.extensions.*
+import kotlinx.android.synthetic.main.content_comment_layout.view.*
 import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter(
@@ -30,8 +31,8 @@ class NewsAdapter(
                 authorName.text = author_name
                 createdDate.text = created_at.formatTime()
 
-                commentCount.text = comments_count.toString()
-                shareCount.text = shares_count.toString()
+                commentsCount.text = comments_count.toString()
+                sharesCount.text = shares_count.toString()
                 mark.apply {
 
                     setOnClickListener {
@@ -41,7 +42,7 @@ class NewsAdapter(
                     setImageResource(if (is_bookmarked) R.drawable.ic_marked else R.drawable.ic_mark)
                 }
 
-                like.apply {
+                likesCount.apply {
                     text = likes_count.toString()
 
                     if (is_liked) {

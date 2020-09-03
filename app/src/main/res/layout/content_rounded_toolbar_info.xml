@@ -33,5 +33,4 @@
         android:text="Инфо"
         android:textColor="@color/hint" />
 
-
 </LinearLayout>

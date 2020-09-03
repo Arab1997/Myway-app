@@ -2,13 +2,21 @@ package com.snatap.myway.ui.screens.main.events
 
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Event
 import com.snatap.myway.ui.adapters.PastEventsAdapter
 import com.snatap.myway.utils.extensions.blockClickable
-import com.snatap.myway.utils.extensions.inDevelopment
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_recycler.*
 
 class PastEventsScreen : BaseFragment(R.layout.screen_recycler) {
+
+    companion object {
+        private var data = arrayListOf<Event>()
+        fun newInstance(data: ArrayList<Event>): PastEventsScreen {
+            this.data = data
+            return PastEventsScreen()
+        }
+    }
 
     override fun initialize() {
 
@@ -31,14 +39,9 @@ class PastEventsScreen : BaseFragment(R.layout.screen_recycler) {
         }
 
         recycler.adapter = PastEventsAdapter {
-            inDevelopment(requireContext())
-        }.apply { setData(arrayListOf(1, 2, 3, 4, 5, 6)) }
+            addFragment(EventDetailsScreen.newInstance(it))
+        }.apply { setData(data) }
 
-        swipeLayout.setOnRefreshListener {
-            removePreviousCallback({
-                swipeLayout?.isRefreshing = false
-            })
-            // todo
-        }
+        swipeLayout.isEnabled = false
     }
 }

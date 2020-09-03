@@ -45,8 +45,10 @@ open class BaseViewModel(
 
     val user: MutableLiveData<User> by inject(named("user"))
     val news: MutableLiveData<ArrayList<News>> by inject(named("news"))
+    val events: MutableLiveData<ArrayList<Event>> by inject(named("events"))
     val chats: MutableLiveData<ArrayList<Chats>> by inject(named("chats"))
-    val comments: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
+    val commentNews: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
+    val commentEvents: MutableLiveData<ArrayList<Comment>> by inject(named("comments"))
     val notifications: MutableLiveData<ArrayList<Notification>> by inject(named("notifications"))
     val achievements: MutableLiveData<ArrayList<UserAchievement>> by inject(named("achievements"))
     val streamsMessages: MutableLiveData<ArrayList<StreamMessage>> by inject(named("stream_messages"))
@@ -139,6 +141,7 @@ open class BaseViewModel(
 
             getUser()
             getNews()
+            getEvents()
             getStreams()
             getUserAchievements()
             getUserNotifications()
@@ -232,42 +235,29 @@ open class BaseViewModel(
             })
     )
 
-    fun getComments(newsId: Int) = compositeDisposable.add(
-        api.getComments(newsId).observeAndSubscribe()
+    fun getNewsComments(newsId: Int) = compositeDisposable.add(
+        api.getNewsComments(newsId).observeAndSubscribe()
             .subscribe({
-                if (it.success) comments.postValue(ArrayList(it.news_item_comments))
+                if (it.success) commentNews.postValue(ArrayList(it.news_item_comments))
             }, {
                 parseError(it)
             })
     )
 
-    fun addComment(newsId: Int, comment: String) = compositeDisposable.add(
-        api.addComment(newsId, comment).observeAndSubscribe()
+    fun addCommentToNews(newsId: Int, comment: String) = compositeDisposable.add(
+        api.addCommentToNews(newsId, comment).observeAndSubscribe()
             .subscribe({
                 if (it.success) {
                     data.postValue(it)
-                    getComments(newsId)
+                    getNewsComments(newsId)
                 }
             }, {
                 parseError(it)
             })
     )
 
-    fun addLike(newsId: Int) = compositeDisposable.add(
-        api.addLike(newsId).observeAndSubscribe()
-            .subscribe({
-                if (it.success) {
-                    data.postValue(it)
-                    getNews()
-                    getNewsDetail(newsId)
-                }
-            }, {
-                parseError(it)
-            })
-    )
-
-    fun addShareCount(newsId: Int) = compositeDisposable.add(
-        api.addShareCount(newsId).observeAndSubscribe()
+    fun likeNews(newsId: Int) = compositeDisposable.add(
+        api.likeNews(newsId).observeAndSubscribe()
             .subscribe({
                 if (it.success) {
                     data.postValue(it)
@@ -279,8 +269,21 @@ open class BaseViewModel(
             })
     )
 
-    fun addBookmark(newsId: Int) = compositeDisposable.add(
-        api.addBookmark(newsId).observeAndSubscribe()
+    fun shareNews(newsId: Int) = compositeDisposable.add(
+        api.shareNews(newsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getNews()
+                    getNewsDetail(newsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun bookmarkNews(newsId: Int) = compositeDisposable.add(
+        api.bookmarkNews(newsId).observeAndSubscribe()
             .subscribe({
                 if (it.success) {
                     data.postValue(it)
@@ -507,6 +510,87 @@ open class BaseViewModel(
                 parseError(it)
             })
     )
+
+    fun completeLesson(id: Int) = compositeDisposable.add(
+        api.completeLesson(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it) // todo
+            }, {
+                data.value = false
+                parseError(it)
+            })
+    )
+
+    fun getEvents(
+        start_date: String? = null,
+        end_date: String? = null,
+        tag_ids: ArrayList<Int>? = null,
+        city_ids: ArrayList<Int>? = null
+    ) = compositeDisposable.add(
+        api.getEvents(start_date, end_date, tag_ids, city_ids).observeAndSubscribe()
+            .subscribe({
+                if (it.success) events.postValue(ArrayList(it.events))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getEventsDetail(id: Int) = compositeDisposable.add(
+        api.getEventsDetail(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getEventsComments(eventsId: Int) = compositeDisposable.add(
+        api.getEventsComments(eventsId).observeAndSubscribe()
+            .subscribe({
+                if (it.success) commentEvents.postValue(ArrayList(it.event_comments))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun addCommentToEvent(eventsId: Int, comment: String) = compositeDisposable.add(
+        api.addCommentToEvent(eventsId, comment).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getEventsComments(eventsId)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun likeEvents(id: Int) = compositeDisposable.add(
+        api.likeEvents(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getEvents()
+                    getEventsDetail(id)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun shareEvents(id: Int) = compositeDisposable.add(
+        api.shareEvents(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getEvents()
+                    getEventsDetail(id)
+                }
+            }, {
+                parseError(it)
+            })
+    )
+
 
     override fun onCleared() {
         super.onCleared()

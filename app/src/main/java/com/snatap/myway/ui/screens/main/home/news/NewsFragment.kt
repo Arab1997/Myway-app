@@ -64,8 +64,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         newsAdapter = NewsAdapter({
             addFragment(NewsDetailScreen.newInstance(it.id), tag = Constants.NEWS_DETAILED_FRAGMENT)
         }, { like, id ->
-            if (like) viewModel.addLike(id)
-            else viewModel.addBookmark(id)
+            if (like) viewModel.likeNews(id)
+            else viewModel.bookmarkNews(id)
         })
 
         recycler.adapter = newsRoundedAdapter

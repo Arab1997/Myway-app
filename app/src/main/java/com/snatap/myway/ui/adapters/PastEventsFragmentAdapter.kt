@@ -4,22 +4,19 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseAdapter
 import com.snatap.myway.network.models.Event
 import com.snatap.myway.utils.common.ViewHolder
+import com.snatap.myway.utils.extensions.formatTime4
 import com.snatap.myway.utils.extensions.loadImage
-import com.snatap.myway.utils.extensions.showGone
-import kotlinx.android.synthetic.main.item_past_events.view.*
+import kotlinx.android.synthetic.main.item_past_events_fragment.view.*
 
-class PastEventsAdapter(private val listener: (Event) -> Unit) :
-    BaseAdapter<Event>(R.layout.item_past_events) {
+class PastEventsFragmentAdapter(private val listener: (Event) -> Unit) :
+    BaseAdapter<Event>(R.layout.item_past_events_fragment) {
 
     override fun bindViewHolder(holder: ViewHolder, data: Event) {
         holder.itemView.apply {
             data.apply {
                 image.loadImage(photo)
                 name.text = title
-
-                val iconList = ArrayList(tags.filter { it.icon.isNotEmpty() })
-                icons.adapter = TagIconsAdapter().apply { setData(iconList) }
-                icons.showGone(iconList.isNotEmpty())
+                date.text = start_date.formatTime4()
 
                 setOnClickListener { listener.invoke(this) }
             }

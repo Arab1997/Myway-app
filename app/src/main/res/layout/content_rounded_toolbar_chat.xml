@@ -16,26 +16,27 @@
         tools:ignore="ContentDescription" />
 
     <LinearLayout
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="17dp"
         android:id="@+id/title"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/splash"/>
+            android:src="@drawable/splash" />
+
         <LinearLayout
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
                 android:text="Основная"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,8 +60,7 @@
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/hint"
-        android:text="Инфо" />
-
+        android:text="Инфо"
+        android:textColor="@color/hint" />
 
 </LinearLayout>
