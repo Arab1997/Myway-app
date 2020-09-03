@@ -250,6 +250,7 @@ open class BaseViewModel(
                 if (it.success) {
                     data.postValue(it)
                     getNewsComments(newsId)
+                    getNewsDetail(newsId)
                 }
             }, {
                 parseError(it)
@@ -559,6 +560,7 @@ open class BaseViewModel(
                 if (it.success) {
                     data.postValue(it)
                     getEventsComments(eventsId)
+                    getEventsDetail(eventsId)
                 }
             }, {
                 parseError(it)
@@ -586,6 +588,15 @@ open class BaseViewModel(
                     getEvents()
                     getEventsDetail(id)
                 }
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getEventsTags() = compositeDisposable.add(
+        api.getEventsTags().observeAndSubscribe()
+            .subscribe({
+                if (it.success) data.postValue(it)
             }, {
                 parseError(it)
             })

@@ -34,13 +34,14 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                 ""
             ).apply {
                 setListener {
-                    if (it == FilterType.TAGS) addFragment(FilterTagsScreen().apply {
-                        setSelectedTags(selectedTags)
-                        setListener {
-                            selectedTags = it
-                            getNews()
-                        }
-                    })
+                    if (it == FilterType.TAGS) addFragment(
+                        FilterTagsScreen.newInstance(false).apply {
+                            setSelectedTags(selectedTags)
+                            setListener {
+                                selectedTags = it
+                                getNews()
+                            }
+                        })
                     if (it == FilterType.DATES) addFragment(FilterDatesScreen().apply {
                         setListener {
                             startDate = it.key

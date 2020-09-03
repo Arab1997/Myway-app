@@ -3,16 +3,24 @@ package com.snatap.myway.ui.screens.main.filter
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.EventsTagResp
+import com.snatap.myway.network.models.NewsTagResp
 import com.snatap.myway.network.models.Tag
-import com.snatap.myway.network.models.TagResp
 import com.snatap.myway.ui.adapters.FilterTagsAdapter
 import com.snatap.myway.utils.Constants
-import com.snatap.myway.utils.extensions.loge
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_recycler.*
 import kotlin.random.Random
 
 class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
+
+    companion object {
+        private var isEventTags = false
+        fun newInstance(isEventTags: Boolean): FilterTagsScreen {
+            this.isEventTags = isEventTags
+            return FilterTagsScreen()
+        }
+    }
 
     private var listener: (ArrayList<Tag>) -> Unit = {}
     fun setListener(listener: (ArrayList<Tag>) -> Unit) {
@@ -39,27 +47,41 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
         }
         recycler.adapter = adapter
 
-        swipeLayout.setOnRefreshListener { viewModel.getNewsTags() }
+        swipeLayout.setOnRefreshListener { fetchData() }
+    }
+
+    private fun fetchData() {
+        if (isEventTags) viewModel.getEventsTags()
+        else viewModel.getNewsTags()
     }
 
     override fun observe() {
         viewModel.apply {
-            getNewsTags()
+
+            fetchData()
+
             data.observe(viewLifecycleOwner, Observer {
-                if (it is TagResp) {
-                    swipeLayout.isRefreshing = false
+                if (it is NewsTagResp) {
                     tags = ArrayList(it.news_item_tags)
-                    selectedTags.forEach { selected ->
-                        tags.forEach { if (it.id == selected.id) it.isChecked = true }
-                    }
-                    tags.forEach {
-                        it.color = Constants.colors[Random.nextInt(0, 100) % Constants.colors.size]
-                    }
-                    loge(tags.filter { it.isChecked }.size)
-                    adapter.setData(tags)
+                    setData()
+                }
+                if (it is EventsTagResp) {
+                    tags = ArrayList(it.event_tags)
+                    setData()
                 }
             })
         }
     }
 
+    private fun setData() {
+        swipeLayout.isRefreshing = false
+
+        selectedTags.forEach { selected ->
+            tags.forEach { if (it.id == selected.id) it.isChecked = true }
+        }
+        tags.forEach {
+            it.color = Constants.colors[Random.nextInt(0, 100) % Constants.colors.size]
+        }
+        adapter.setData(tags)
+    }
 }

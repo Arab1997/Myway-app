@@ -159,7 +159,7 @@ dependencies {
 
     implementation 'com.andrewjapar.rangedatepicker:rangedatepicker:0.2.4'
 
-    // todo enable databinding //    dataBinding { enabled = true }
+    //  enable databinding //    dataBinding { enabled = true }
     implementation 'gun0912.ted:tedimagepicker:1.1.3'
 
     // Image Compressor

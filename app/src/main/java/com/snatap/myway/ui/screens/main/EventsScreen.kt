@@ -10,12 +10,18 @@ import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.City
 import com.snatap.myway.network.models.Event
+import com.snatap.myway.network.models.Tag
 import com.snatap.myway.ui.adapters.PastEventsFragmentAdapter
 import com.snatap.myway.ui.adapters.TagsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
+import com.snatap.myway.ui.screens.main.events.FilterBottomSheet
+import com.snatap.myway.ui.screens.main.events.FilterType
 import com.snatap.myway.ui.screens.main.events.PastEventsScreen
+import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
+import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.fragment_events.*
@@ -25,6 +31,11 @@ import kotlinx.android.synthetic.main.screen_events.*
 class EventsScreen : BaseFragment(R.layout.screen_events) {
 
     private lateinit var eventsAdapter: EventsPagerAdapter
+    private var selectedTags = arrayListOf<Tag>()
+    private var selectedCities = arrayListOf<City>()
+
+    private var startDate: String = ""
+    private var endDate: String = ""
     override fun initialize() {
 
         initClicks()
@@ -48,10 +59,47 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
         cart.setOnClickListener { addFragment(StoreScreen()) }
         message.setOnClickListener { addFragment(ChatScreen()) }
 
-        filter.setOnClickListener { inDevelopment(requireContext()) }// todo
+        filter.setOnClickListener {
+            it.blockClickable()
+            val bottomSheet = FilterBottomSheet.newInstance(// todo cities
+                true,
+                if (selectedTags.isNotEmpty()) selectedTags.size.toString() else "",
+                if (startDate.isNotEmpty() && endDate.isNotEmpty()) "${startDate.formatTime4()} - ${endDate.formatTime4()}" else "",
+                ""
+            ).apply {
+                setListener {
+                    if (it == FilterType.TAGS) addFragment(
+                        FilterTagsScreen.newInstance(false).apply {
+                            setSelectedTags(selectedTags)
+                            setListener {
+                                selectedTags = it
+                                getEvents()
+                            }
+                        })
+                    if (it == FilterType.DATES) addFragment(FilterDatesScreen().apply {
+                        setListener {
+                            startDate = it.key
+                            endDate = it.value
+                            getEvents()
+                        }
+                    })
+                }
+            }
+            bottomSheet.show(childFragmentManager, "")
+        }
         tickets.setOnClickListener { inDevelopment(requireContext()) } // todo
     }
 
+    private fun getEvents() {
+        val ids = ArrayList(selectedTags.map { it.id })
+        viewModel.getEvents(
+            startDate.getOrNull(),
+            endDate.getOrNull(),
+            if (ids.isNotEmpty()) ids else null
+        )
+    }
+
+    private fun String.getOrNull() = if (this.isNotEmpty()) this else null
     override fun observe() {
         viewModel.events.observe(viewLifecycleOwner, Observer {
             eventsAdapter.setData(it)

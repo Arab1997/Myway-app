@@ -18,7 +18,7 @@ class FavoriteNewsScreen : BaseFragment(R.layout.screen_recycler) {
         title.text = "Моя подборка"
 
         newsAdapter = NewsAdapter({
-            addFragment(NewsDetailScreen.newInstance(it.id),tag = Constants.NEWS_DETAILED_FRAGMENT)
+            addFragment(NewsDetailScreen.newInstance(it.id), tag = Constants.NEWS_DETAILED_FRAGMENT)
         }, { like, id ->
             if (like) viewModel.likeNews(id)
             else viewModel.bookmarkNews(id)
@@ -26,12 +26,7 @@ class FavoriteNewsScreen : BaseFragment(R.layout.screen_recycler) {
 
         recycler.adapter = newsAdapter
 
-        swipeLayout.setOnRefreshListener {
-            removePreviousCallback({
-                swipeLayout?.isRefreshing = false
-            })
-            // todo
-        }
+        swipeLayout.isEnabled = false
     }
 
     override fun observe() {

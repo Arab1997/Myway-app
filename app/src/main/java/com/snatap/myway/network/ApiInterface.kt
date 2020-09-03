@@ -143,7 +143,7 @@ interface ApiInterface {
     fun bookmarkNews(@Path("id") id: Int): Single<Bookmark>
 
     @GET("news_items/tags")
-    fun getNewsTags(): Single<TagResp>
+    fun getNewsTags(): Single<NewsTagResp>
 
     // Event
     @GET("events")
@@ -172,6 +172,9 @@ interface ApiInterface {
 
     @POST("events/{id}/share")
     fun shareEvents(@Path("id") id: Int): Single<Share>
+
+    @GET("events/tags")
+    fun getEventsTags(): Single<EventsTagResp>
 
 }
 
