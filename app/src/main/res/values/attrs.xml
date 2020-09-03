@@ -6,8 +6,8 @@
             <enum name="left" value="-1" />
             <enum name="right" value="1" />
             <enum name="center" value="0" />
-        </attr>
 
+        </attr>
         <!--Does view should been stick after touch up-->
         <attr name="sticky" format="dimension">
             <!--stick mode is off-->
@@ -39,6 +39,26 @@
 
     </declare-styleable>
 
+
+    <declare-styleable name="WheelView">
+        <attr name="wheelDividerStrokeWidth" format="dimension" />
+        <attr name="wheelSelectedArcBackgroundColor" format="color" />
+        <attr name="wheelArcBackgroundColor" format="color" />
+        <attr name="wheelCenterIconTint" format="color" />
+        <attr name="wheelCenterIcon" format="reference" />
+        <attr name="wheelAnchorAngle" format="float" />
+        <attr name="wheelStartAngle" format="float" />
+        <attr name="wheelAnimationDuration" format="float" />
+        <attr name="wheelCenterIconPadding" format="dimension" />
+        <attr name="wheelTextSize" format="dimension" />
+        <attr name="wheelTextColor" format="color" />
+        <attr name="wheelSelectedTextColor" format="color" />
+        <attr name="wheelMode" format="enum">
+            <enum name="ANIMATE_TO_ANCHOR" value="0" />
+            <enum name="STATIC" value="1" />
+        </attr>
+        <attr name="userInputMode" format="boolean" />
+    </declare-styleable>
     <declare-styleable name="MaxHeightScrollView">
         <attr name="maxHeight" format="dimension" />
     </declare-styleable>

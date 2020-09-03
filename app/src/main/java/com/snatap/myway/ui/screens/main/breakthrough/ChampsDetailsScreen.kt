@@ -8,15 +8,16 @@ import kotlinx.android.synthetic.main.item_prizes_detail_screen.*
 
 
 class ChampsDetailsScreen : BaseFragment(R.layout.item_prizes_detail_screen) {
-companion object {
-    private var txtTitle: String? = null
-    fun newInstance(txtTitle: String): ChampsDetailsScreen {
-        Companion.txtTitle = txtTitle
-        return ChampsDetailsScreen()
+    companion object {
+        private var txtTitle: String? = null
+        fun newInstance(txtTitle: String): ChampsDetailsScreen {
+            Companion.txtTitle = txtTitle
+            return ChampsDetailsScreen()
+        }
     }
-}
+
     override fun initialize() {
-      //  setClicks()
+        //  setClicks()
         initViews()
     }
 
@@ -26,13 +27,10 @@ companion object {
         }.apply {
             setData(arrayListOf(1))
         }
-
     }
 
     private fun setClicks() {
-       // containerChamps.setOnClickListener { addFragment(BreakthroughScreen()) }
-
-
+        // containerChamps.setOnClickListener { addFragment(BreakthroughScreen()) }
     }
 }
 

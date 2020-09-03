@@ -10,13 +10,13 @@ import kotlinx.android.synthetic.main.fragment_champs_screen.*
 class FriendsScreen : BaseFragment(R.layout.fragment_prizes_screen) {
 
 
-companion object {
-    private var txtTitle: String? = null
-    fun newInstance(txtTitle: String): FriendsScreen {
-        Companion.txtTitle = txtTitle
-        return FriendsScreen()
+    companion object {
+        private var txtTitle: String? = null
+        fun newInstance(txtTitle: String): FriendsScreen {
+            Companion.txtTitle = txtTitle
+            return FriendsScreen()
+        }
     }
-}
 
 
     override fun initialize() {
@@ -26,7 +26,7 @@ companion object {
 
     private fun initViews() {
         recyclerChamps.adapter = FriendsAdapter {
-         //   addFragment(BreakthroughScreen())
+            //   addFragment(BreakthroughScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3))
         }

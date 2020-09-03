@@ -7,15 +7,16 @@ import kotlinx.android.synthetic.main.item_prizes_detail_screen.*
 
 
 class PrizesDetailsScreen : BaseFragment(R.layout.item_prizes_detail_screen) {
-companion object {
-    private var txtTitle: String? = null
-    fun newInstance(txtTitle: String): PrizesDetailsScreen {
-        Companion.txtTitle = txtTitle
-        return PrizesDetailsScreen()
+    companion object {
+        private var txtTitle: String? = null
+        fun newInstance(txtTitle: String): PrizesDetailsScreen {
+            Companion.txtTitle = txtTitle
+            return PrizesDetailsScreen()
+        }
     }
-}
+
     override fun initialize() {
-      //  setClicks()
+        //  setClicks()
         initViews()
     }
 
@@ -23,15 +24,12 @@ companion object {
         recyclerChamps.adapter = PrizesChildDetailsAdapter {
             //addFragment(PrizesDetailsScreen())
         }.apply {
-            setData(arrayListOf(1,2,3))
+            setData(arrayListOf(1, 2, 3))
         }
-
     }
 
     private fun setClicks() {
-       // containerChamps.setOnClickListener { addFragment(BreakthroughScreen()) }
-
-
+        // containerChamps.setOnClickListener { addFragment(BreakthroughScreen()) }
     }
 }
 

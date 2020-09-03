@@ -6,42 +6,7 @@
     style="@style/screenStyle"
     android:paddingBottom="24dp">
 
-<RelativeLayout android:id="@+id/relativeLayout"
-    style="@style/elevationStyle"
-    android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
-    android:background="@drawable/toolbar_back"
-   >
-
-    <TextView
-        android:layout_width="218dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="11dp"
-        android:gravity="center"
-        android:text="Чемпионы"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp">
-        <ImageView
-            android:id="@+id/cart"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:contentDescription="@string/icon"
-            android:src="@drawable/ic_close" />
-    </LinearLayout>
-</RelativeLayout>
+    <include layout="@layout/content_rounded_toolbar_events" />
 
 <FrameLayout
     android:id="@+id/containerPrizes"

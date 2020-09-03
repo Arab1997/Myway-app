@@ -22,6 +22,8 @@ import com.snatap.myway.ui.screens.main.path.MyTasksScreen
 import com.snatap.myway.ui.screens.main.path.SendTaskScreen
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
+import kotlinx.android.synthetic.main.content_rounded_toolbar.title
+import kotlinx.android.synthetic.main.content_rounded_toolbar_events.*
 import kotlinx.android.synthetic.main.content_task.*
 import kotlinx.android.synthetic.main.fragment_task_detail.*
 import kotlinx.android.synthetic.main.screen_rating_detail.*
@@ -36,11 +38,9 @@ class RatingDetailScreen : BaseFragment(R.layout.screen_rating_detail) {
             return ChampsDetailsScreen()
         }
     }
-
-
     override fun initialize() {
 
-      // pagerRating.adapter = RatingPagerAdapter(arrayListOf("Общий", "Друзья"), childFragmentManager)
+        // pagerRating.adapter = RatingPagerAdapter(arrayListOf("Общий", "Друзья"), childFragmentManager)
 
         lesson?.let {
             pagerRating.adapter = TaskDetailPagerAdapter(
@@ -50,29 +50,20 @@ class RatingDetailScreen : BaseFragment(R.layout.screen_rating_detail) {
         }
 
         tabLayoutRating.setupWithViewPager(pagerRating)
-
-        tabLayoutRating.getTabAt(0)!!.setIcon(data[0].icon)
-        tabLayoutRating.getTabAt(1)!!.setIcon(data[1].icon)
-
+        title.text = "Рейтинг участников"
         initViews()
     }
 
     private fun initViews() {
         recyclerParticipants.adapter = ParticipantAdapter {
+           // addFragment(WheelFortuneScreen())
             addFragment(WheelFortuneScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3))
         }
 
-
-      /*  recyclerAllFriendd.adapter = WheelAllFriendsAdapter {
-            addFragment(WheelFortuneAllFriendsScreen())
-        }.apply {
-            setData(arrayListOf(1, 2, 3))
-        }*/
     }
 }
-
 
 
 class TaskDetailPagerAdapter(
@@ -80,12 +71,7 @@ class TaskDetailPagerAdapter(
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
-       // return TaskDetailFragment.newInstance(lesson, position != 0)
-
-       /* return if (position != 0) TaskDetailFragment.newInstance(lesson, position == 0)
-        else SecondFragment()*/
-
-
+        // return TaskDetailFragment.newInstance(lesson, position != 0)
         return if (position == 0) FirstFragment()
         else SecondFragment()
     }
@@ -94,7 +80,6 @@ class TaskDetailPagerAdapter(
 
     override fun getCount(): Int = data.size
 }
-
 
 class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
     companion object {
@@ -184,7 +169,8 @@ class TaskDetailFragment : BaseFragment(R.layout.fragment_task_detail) {
 
 
 class RatingPagerAdapter(
-    private val data: ArrayList<Any>, fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+    private val data: ArrayList<Any>, fm: FragmentManager
+) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         return if (position == 0) FirstFragment()
@@ -196,18 +182,23 @@ class RatingPagerAdapter(
     override fun saveState(): Parcelable? = null
 
     override fun restoreState(state: Parcelable?, loader: ClassLoader?) {
-        try { super.restoreState(state, loader) } catch (e: Exception) { }
+        try {
+            super.restoreState(state, loader)
+        } catch (e: Exception) {
+        }
     }
 }
-class FirstFragment: BaseFragment(R.layout.fragment_all_friends){
+
+class FirstFragment : BaseFragment(R.layout.fragment_all_friends) {
 
     override fun initialize() {
-       // recyclerAllFriend.setOnClickListener { addFragment(WheelFortuneAllFriendsScreen()) }
+        // recyclerAllFriend.setOnClickListener { addFragment(WheelFortuneAllFriendsScreen()) }
     }
 }
-class SecondFragment: BaseFragment(R.layout.fragment_my_friends){
+
+class SecondFragment : BaseFragment(R.layout.fragment_my_friends) {
     override fun initialize() {
-       // recyclerMyFriend.setOnClickListener { addFragment(WheelFortuneMyFriendsScreen()) }
+        // recyclerMyFriend.setOnClickListener { addFragment(WheelFortuneMyFriendsScreen()) }
     }
 }
 

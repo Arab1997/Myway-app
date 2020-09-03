@@ -22,6 +22,7 @@ import com.snatap.myway.utils.preferences.SharedManager
 
 abstract class BaseFragment(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
 
+
     protected lateinit var mainActivity: MainActivity
     protected lateinit var viewModel: BaseViewModel
     protected lateinit var sharedManager: SharedManager
@@ -139,6 +140,8 @@ abstract class BaseFragment(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
         baseRunnable = Runnable { action() }
         baseHandler.postDelayed(baseRunnable, millis)
     }
+
+
 
 }
 

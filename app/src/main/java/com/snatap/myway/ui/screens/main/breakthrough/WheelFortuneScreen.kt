@@ -1,51 +1,70 @@
 package com.snatap.myway.ui.screens.main.breakthrough
 
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.Constraints.TAG
+import com.hsalf.smileyrating.SmileyRating
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.adapters.ChampsChildDetailsAdapter
 import kotlinx.android.synthetic.main.fragment_wheel_of_fortune.*
-import kotlinx.android.synthetic.main.item_prizes_detail_screen.*
-import kotlinx.android.synthetic.main.item_prizes_detail_screen.recyclerChamps
-import me.sujanpoudel.wheelview.WheelView
 
 
 class WheelFortuneScreen : BaseFragment(R.layout.fragment_wheel_of_fortune) {
-companion object {
-    private var txtTitle: String? = null
-    fun newInstance(txtTitle: String): WheelFortuneScreen {
-        Companion.txtTitle = txtTitle
-        return WheelFortuneScreen()
-    }
-}
-    override fun initialize() {
-      //  setClicks()
-        initViews()
 
+    companion object {
+        private var txtTitle: String? = null
+        fun newInstance(txtTitle: String): WheelFortuneScreen {
+            Companion.txtTitle = txtTitle
+            return WheelFortuneScreen()
+        }
+    }
+
+    override fun initialize() {
+
+        initViews()
+        //  setClicks()
 
     }
 
     private fun initViews() {
-      /*  recyclerAllFriend.adapter = ChampsChildDetailsAdapter {
-            //addFragment(PrizesDetailsScreen())
-        }.apply {
-            setData(arrayListOf(1))
-        }*/
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         wheel_view.setOnClickListener {
         }
         wheel_view.titles = listOf("Упс", "+12 ", "-5", "Подарок", "Промокод", "Упс", "-5")
 
+
+        smile_rating.setSmileySelectedListener {
+            if (SmileyRating.Type.GREAT == it) {
+                Log.i(TAG, "Wow, the user gave high rating");
+            }
+
+        }
+
+      /*  smile_rating.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
+            @Override
+            public void onSmileySelected(SmileyRating.Type type) {
+                // You can compare it with rating Type
+                if (SmileyRating.Type.GREAT == type) {
+                    Log.i(TAG, "Wow, the user gave high rating");
+                }
+                // You can get the user rating too
+                // rating will between 1 to 5
+                int rating = type.getRating();
+            }
+        });
+*/
     }
 
     private fun setClicks() {
-       // containerChamps.setOnClickListener { addFragment(BreakthroughScreen()) }
-
-
     }
 }
+
+
+
+
+
+
+
 
 
 
