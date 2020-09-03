@@ -6,7 +6,14 @@ import androidx.constraintlayout.widget.Constraints.TAG
 import com.hsalf.smileyrating.SmileyRating
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.ui.adapters.FriendsAdapter
+import com.snatap.myway.ui.screens.main.chat.ChatScreen
+import com.snatap.myway.ui.screens.main.store.StoreScreen
+import kotlinx.android.synthetic.main.content_rounded_toolbar_events.*
+import kotlinx.android.synthetic.main.content_rounded_toolbar_events.cart
+import kotlinx.android.synthetic.main.content_rounded_toolbar_events.message
 import kotlinx.android.synthetic.main.fragment_wheel_of_fortune.*
+import kotlinx.android.synthetic.main.screen_break_visual.*
 
 
 class WheelFortuneScreen : BaseFragment(R.layout.fragment_wheel_of_fortune) {
@@ -23,10 +30,19 @@ class WheelFortuneScreen : BaseFragment(R.layout.fragment_wheel_of_fortune) {
 
         initViews()
         //  setClicks()
-
+        title.text = "Колесо фортуны MyWay"
+        cart.setOnClickListener { addFragment(StoreScreen()) }
+        message.setOnClickListener { addFragment(ChatScreen()) }
     }
 
     private fun initViews() {
+        recyclerFriends.adapter = FriendsAdapter {
+            // addFragment(LessonDetailScreen())
+            addFragment(RatingDetailScreen())
+        }.apply {
+            setData(arrayListOf(1, 2, 3))
+        }
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         wheel_view.setOnClickListener {
         }

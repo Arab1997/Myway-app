@@ -14,7 +14,7 @@
         <me.sujanpoudel.wheelview.WheelView
             android:id="@+id/wheel_view"
             android:layout_width="match_parent"
-            android:layout_height="346dp"
+            android:layout_height="316dp"
             android:layout_margin="16dp"
             app:wheelAnchorAngle="270"
             app:wheelAnimationDuration="800"
@@ -29,12 +29,55 @@
             app:wheelStartAngle="315"
             app:wheelTextColor="#000000"
             app:wheelTextSize="16sp" />
+        <TextView
+            android:id="@+id/twist"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/rounded_blue_card"
+            android:gravity="center_vertical"
+            android:text="Крутить"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            tools:ignore="RtlCompat" />
+
+        <com.hsalf.smileyrating.SmileyRating
+            android:id="@+id/smile_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/twist"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="1 попытка без членства в Cообществе My Way "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:ignore="RtlCompat" />
+
+
         <com.hsalf.smileyrating.SmileyRating
             android:id="@+id/smile_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
+        <TextView
+            android:id="@+id/twist"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="5 попыток с членством в Cообществе My Way "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:ignore="RtlCompat" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerAllFriend"
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import com.snatap.myway.ui.adapters.ChampsAdapter
 import com.snatap.myway.ui.adapters.FriendsAdapter
 import com.snatap.myway.ui.adapters.PrizesAdapter
 import kotlinx.android.synthetic.main.content_rounded_toolbar_events.*
+import kotlinx.android.synthetic.main.fragment_wheel_of_fortune.*
 import kotlinx.android.synthetic.main.screen_break_visual.*
 
 class VisualizationBreakthroughScreen : BaseFragment(R.layout.screen_break_visual) {
@@ -28,11 +29,9 @@ class VisualizationBreakthroughScreen : BaseFragment(R.layout.screen_break_visua
             setData(arrayListOf(1, 2, 3))
         }
 
-
-        recyclerFriends.adapter = FriendsAdapter {
+        recyclerAllFriend.adapter = FriendsAdapter {
             // addFragment(LessonDetailScreen())
-             addFragment(RatingDetailScreen())
-         //   addFragment(WFScreen())
+            addFragment(RatingDetailScreen())
         }.apply {
             setData(arrayListOf(1, 2, 3))
         }
