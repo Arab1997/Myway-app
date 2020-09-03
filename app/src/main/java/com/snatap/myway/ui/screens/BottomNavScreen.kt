@@ -4,7 +4,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.screens.main.BlankScreen
+import com.snatap.myway.ui.screens.main.BreakthroughScreen
 import com.snatap.myway.ui.screens.main.EventsScreen
 import com.snatap.myway.ui.screens.main.HomeScreen
 import com.snatap.myway.ui.screens.main.ProfileScreen
@@ -17,7 +17,7 @@ class BottomNavScreen : BaseFragment(R.layout.screen_bottom_nav) {
         HomeScreen(),
         PathScreen(),
         ProfileScreen(),
-        BlankScreen(),
+        BreakthroughScreen(),
         EventsScreen()
     )
 

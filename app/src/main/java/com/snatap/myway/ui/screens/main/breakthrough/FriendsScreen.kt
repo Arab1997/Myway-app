@@ -3,8 +3,8 @@ package com.snatap.myway.ui.screens.main.breakthrough
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.FriendsAdapter
+import com.snatap.myway.ui.screens.main.BreakthroughScreen
 import kotlinx.android.synthetic.main.fragment_champs_screen.*
-import kotlinx.android.synthetic.main.fragment_prizes_screen.*
 
 
 class FriendsScreen : BaseFragment(R.layout.fragment_prizes_screen) {

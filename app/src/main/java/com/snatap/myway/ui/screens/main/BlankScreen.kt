@@ -3,7 +3,6 @@ package com.snatap.myway.ui.screens.main
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.adapters.BreakAdapter
-import com.snatap.myway.ui.screens.main.breakthrough.BreakthroughScreen
 import kotlinx.android.synthetic.main.fragment_past_break.*
 
 class BlankScreen : BaseFragment(R.layout.fragment_past_break) {

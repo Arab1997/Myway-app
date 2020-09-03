@@ -5,8 +5,8 @@ import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.models.Gallery
 import com.snatap.myway.ui.adapters.GalleryAdapter
-import com.snatap.myway.ui.screens.main.path.ImageScreen
-import com.snatap.myway.ui.screens.main.path.VideoScreen
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_recycler.*
 

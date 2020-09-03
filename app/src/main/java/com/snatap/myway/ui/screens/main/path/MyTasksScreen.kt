@@ -7,6 +7,8 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.models.Lesson
 import com.snatap.myway.ui.adapters.ReportsAdapter
 import com.snatap.myway.ui.adapters.Types
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import com.snatap.myway.utils.extensions.invisible
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.screen_my_tasks.*

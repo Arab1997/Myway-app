@@ -9,20 +9,21 @@ import com.google.gson.Gson
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.models.Lesson
-import com.snatap.myway.ui.adapters.*
+import com.snatap.myway.ui.adapters.ParticipantAdapter
+import com.snatap.myway.ui.adapters.ReportsAdapter
+import com.snatap.myway.ui.adapters.TaskAdapter
+import com.snatap.myway.ui.adapters.Types
 import com.snatap.myway.ui.screens.main.HomeData
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import com.snatap.myway.ui.screens.main.home.media.MediaPlayerScreen
-import com.snatap.myway.ui.screens.main.path.*
 import com.snatap.myway.ui.screens.main.path.LessonDetailScreen.Companion.lesson
+import com.snatap.myway.ui.screens.main.path.MyTasksScreen
+import com.snatap.myway.ui.screens.main.path.SendTaskScreen
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_rounded_toolbar.*
 import kotlinx.android.synthetic.main.content_task.*
-import kotlinx.android.synthetic.main.fragment_all_friends.*
-import kotlinx.android.synthetic.main.fragment_my_friends.*
 import kotlinx.android.synthetic.main.fragment_task_detail.*
-import kotlinx.android.synthetic.main.fragment_task_detail.image
-import kotlinx.android.synthetic.main.fragment_task_detail.myTasks
-import kotlinx.android.synthetic.main.screen_home.*
 import kotlinx.android.synthetic.main.screen_rating_detail.*
 
 class RatingDetailScreen : BaseFragment(R.layout.screen_rating_detail) {

@@ -11,6 +11,8 @@ import com.snatap.myway.network.models.Lesson
 import com.snatap.myway.ui.adapters.ReportsAdapter
 import com.snatap.myway.ui.adapters.TaskAdapter
 import com.snatap.myway.ui.adapters.Types
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import com.snatap.myway.ui.screens.main.home.media.MediaPlayerScreen
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_simple_toolbar.*

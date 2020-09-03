@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.path
+package com.snatap.myway.ui.screens.main.common
 
 import android.net.Uri
 import com.google.android.exoplayer2.*
@@ -24,7 +24,7 @@ class VideoScreen : BaseFragment(R.layout.screen_video) {
     companion object {
         private var url: String = ""
         fun newInstance(url: String): VideoScreen {
-            this.url = url
+            Companion.url = url
             return VideoScreen()
         }
     }

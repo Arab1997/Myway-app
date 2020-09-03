@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.path
+package com.snatap.myway.ui.screens.main.common
 
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
@@ -12,13 +12,13 @@ class ImageScreen : BaseFragment(R.layout.screen_image) {
         private var url: String = ""
         private var showPublishBtn: Boolean = false
         fun newInstance(url: String): ImageScreen {
-            this.url = url
+            Companion.url = url
             return ImageScreen()
         }
 
         fun newInstance(url: String, showPublishBtn: Boolean): ImageScreen {
-            this.url = url
-            this.showPublishBtn = showPublishBtn
+            Companion.url = url
+            Companion.showPublishBtn = showPublishBtn
             return ImageScreen()
         }
     }

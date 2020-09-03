@@ -12,6 +12,7 @@ import com.snatap.myway.network.models.Season
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.extensions.*
+import kotlinx.android.synthetic.main.content_events_toolbar.*
 import kotlinx.android.synthetic.main.fragment_path.*
 import kotlinx.android.synthetic.main.screen_path.*
 
@@ -20,9 +21,11 @@ class PathScreen : BaseFragment(R.layout.screen_path) {
     private lateinit var adapter: PathsPagerAdapter
     override fun initialize() {
 
-        message.setOnClickListener { addFragment(ChatScreen()) }
+        back.gone()
 
-        cart.setOnClickListener { addFragment(StoreScreen()) }
+        rightExtra.setOnClickListener { addFragment(ChatScreen()) }
+
+        right.setOnClickListener { addFragment(StoreScreen()) }
 
         adapter = PathsPagerAdapter(childFragmentManager)
         pager.adapter = adapter

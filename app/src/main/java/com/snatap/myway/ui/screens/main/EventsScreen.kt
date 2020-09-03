@@ -13,19 +13,18 @@ import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.network.models.City
 import com.snatap.myway.network.models.Event
 import com.snatap.myway.network.models.Tag
-import com.snatap.myway.ui.adapters.PastEventsFragmentAdapter
 import com.snatap.myway.ui.adapters.TagsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
+import com.snatap.myway.ui.screens.main.common.PastFragment
 import com.snatap.myway.ui.screens.main.events.EventDetailsScreen
 import com.snatap.myway.ui.screens.main.events.FilterBottomSheet
 import com.snatap.myway.ui.screens.main.events.FilterType
-import com.snatap.myway.ui.screens.main.events.PastEventsScreen
 import com.snatap.myway.ui.screens.main.filter.FilterDatesScreen
 import com.snatap.myway.ui.screens.main.filter.FilterTagsScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.extensions.*
+import kotlinx.android.synthetic.main.content_rounded_toolbar_events.*
 import kotlinx.android.synthetic.main.fragment_events.*
-import kotlinx.android.synthetic.main.fragment_past_events.*
 import kotlinx.android.synthetic.main.screen_events.*
 
 class EventsScreen : BaseFragment(R.layout.screen_events) {
@@ -55,6 +54,7 @@ class EventsScreen : BaseFragment(R.layout.screen_events) {
     }
 
     private fun initClicks() {
+        title.text = "События"
 
         cart.setOnClickListener { addFragment(StoreScreen()) }
         message.setOnClickListener { addFragment(ChatScreen()) }
@@ -136,27 +136,6 @@ class EventsFragment : BaseFragment(R.layout.fragment_events) {
     }
 }
 
-class PastEventsFragment : BaseFragment(R.layout.fragment_past_events) {
-
-    private lateinit var adapter: PastEventsFragmentAdapter
-    override fun initialize() {
-
-        adapter = PastEventsFragmentAdapter {
-            addFragment(EventDetailsScreen.newInstance(it))
-        }
-        recycler.adapter = adapter
-        showAll.setOnClickListener { addFragment(PastEventsScreen.newInstance(data)) }
-    }
-
-    private var data = arrayListOf<Event>()
-    override fun observe() {
-        viewModel.events.observe(viewLifecycleOwner, Observer {
-            data = ArrayList(it.filter { it.end_date.getTime() > System.currentTimeMillis() })
-            adapter.setData(data)
-        })
-    }
-}
-
 class EventsPagerAdapter(fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -167,7 +146,7 @@ class EventsPagerAdapter(fm: FragmentManager) :
     }
 
     override fun getItem(position: Int): Fragment {
-        return if (position == 0 && data.any { it.end_date.getTime() > System.currentTimeMillis() }) PastEventsFragment()
+        return if (position == 0 && data.any { it.end_date.getTime() > System.currentTimeMillis() }) PastFragment.newInstance(true)
         else EventsFragment.newInstance(data[position])
     }
 

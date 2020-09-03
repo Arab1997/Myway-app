@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/elevationStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@drawable/toolbar_back"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:text="@tools:sample/lorem" />
+
+    <ImageView
+        android:id="@+id/message"
+        style="@style/imgStyle"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/cart"
+        android:src="@drawable/ic_message"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/cart"
+        style="@style/imgStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_cart"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

@@ -15,9 +15,9 @@ import com.snatap.myway.ui.adapters.CommentAdapter
 import com.snatap.myway.ui.adapters.GalleryAdapter
 import com.snatap.myway.ui.adapters.SponsorsAdapter
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import com.snatap.myway.ui.screens.main.home.news.CommentsScreen
-import com.snatap.myway.ui.screens.main.path.ImageScreen
-import com.snatap.myway.ui.screens.main.path.VideoScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
 import com.snatap.myway.utils.extensions.*
 import kotlinx.android.synthetic.main.content_add_comments.*

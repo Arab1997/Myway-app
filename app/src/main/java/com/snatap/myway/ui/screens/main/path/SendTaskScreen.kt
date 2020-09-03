@@ -13,6 +13,8 @@ import com.snatap.myway.network.models.SuccessResp
 import com.snatap.myway.ui.adapters.ImageData
 import com.snatap.myway.ui.adapters.TaskImagesAdapter
 import com.snatap.myway.ui.adapters.Types
+import com.snatap.myway.ui.screens.main.common.ImageScreen
+import com.snatap.myway.ui.screens.main.common.VideoScreen
 import com.snatap.myway.utils.extensions.blockClickable
 import com.snatap.myway.utils.extensions.invisible
 import com.snatap.myway.utils.extensions.snackbar

@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         style="@style/screenStyle"
         android:paddingBottom="24dp">
 
         <RelativeLayout
-            android:layout_marginRight="10dp"
+            style="@style/screenStyle"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            style="@style/screenStyle"
+            android:layout_marginRight="10dp"
 
 
-            android:padding="10dp"
             android:background="@drawable/image650"
+            android:padding="10dp"
             android:paddingBottom="14dp">
             <!-- <ImageView
                       android:id="@+id/image"
@@ -57,48 +54,49 @@
                     tools:ignore="RtlCompat" />
 
             </LinearLayout>
-        <LinearLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/image"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="23dp"
-            android:orientation="vertical">
-            <TextView
+
+            <LinearLayout
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_calendar_white"
-                android:drawablePadding="11dp"
-                android:gravity="center_vertical"
-                android:text="@string/date_city"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="Эге ге! Активно участвуй и получай призы ;)"
-                android:textColor="@color/white"
-                android:textSize="27sp" />
+                android:layout_alignTop="@+id/image"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="46dp"
+                android:layout_marginEnd="23dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_calendar_white"
+                    android:drawablePadding="11dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/date_city"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Эге ге! Активно участвуй и получай призы ;)"
+                    android:textColor="@color/white"
+                    android:textSize="27sp" />
 
             </LinearLayout>
-
-
 
 
             <LinearLayout
                 android:id="@+id/deadline_layout"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/rounded_white_card_transparent"
-
                 android:layout_above="@+id/layout1"
+
                 android:layout_marginStart="22dp"
                 android:layout_marginEnd="22dp"
-                android:layout_marginBottom="-422dp">
+                android:layout_marginBottom="-422dp"
+                android:background="@drawable/rounded_white_card_transparent">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -207,10 +205,6 @@
             </LinearLayout>
 
 
-
-
-
-
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="match_parent"
@@ -237,10 +231,10 @@
 
         <RelativeLayout
             android:id="@+id/image1"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="ContentDescription" >
+            android:padding="10dp"
+            tools:ignore="ContentDescription">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -296,10 +290,11 @@
                 android:layout_marginStart="57dp"
                 android:src="@drawable/prizes" />
         </RelativeLayout>
+
         <LinearLayout
-            android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
 
@@ -313,23 +308,20 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Тип гонок, которые позваляют за короткий  \n период получить неплоохие призы"
                 android:textColor="#736F6F"
                 android:textSize="17sp" />
         </LinearLayout>
 
 
-
-
-
         <RelativeLayout
             android:id="@+id/firstt"
-            android:layout_below="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="224dp"
+            android:layout_below="@+id/layout1"
             android:layout_margin="8dp"
             android:orientation="vertical">
 
@@ -363,10 +355,10 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="21sp"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Огненая неделька"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -376,9 +368,7 @@
                     android:layout_marginBottom="20dp"
                     android:text="Главный приз VR очки"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    />
-
+                    android:textSize="15sp" />
 
 
                 <TextView
@@ -410,9 +400,9 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
                         android:background="@drawable/rounded_white_bordered_card"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
                         android:text="Регистрация"
                         android:textColor="@color/white" />
 
@@ -422,12 +412,11 @@
         </RelativeLayout>
 
 
-
         <RelativeLayout
             android:id="@+id/firsttt"
-            android:layout_below="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="224dp"
+            android:layout_below="@+id/layout1"
             android:layout_margin="8dp"
             android:orientation="vertical">
 
@@ -461,10 +450,10 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="21sp"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="Run Run Run"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -474,9 +463,7 @@
                     android:layout_marginBottom="20dp"
                     android:text="IPhone XS"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    />
-
+                    android:textSize="15sp" />
 
 
                 <TextView
@@ -508,9 +495,9 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
                         android:background="@drawable/rounded_white_bordered_card"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
                         android:text="Нет мест :("
                         android:textColor="@color/white" />
 

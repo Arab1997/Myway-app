@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import com.jackandphantom.instagramvideobutton.InstagramVideoButton
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.ui.screens.main.path.ImageScreen
+import com.snatap.myway.ui.screens.main.common.ImageScreen
 import com.snatap.myway.utils.extensions.*
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.screen_create_story.*
