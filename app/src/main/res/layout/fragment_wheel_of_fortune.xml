@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<LinearLayout
+    style="@style/screenStyle"
+    android:paddingBottom="24dp">
+
+<RelativeLayout android:id="@+id/relativeLayout"
+    style="@style/elevationStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@drawable/toolbar_back"
+   >
+
+    <TextView
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="11dp"
+        android:gravity="center"
+        android:text="Колесо фортуны MyWay"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_close" />
+    </LinearLayout>
+</RelativeLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SSSSSS"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wheel_view" />
+
+    <me.sujanpoudel.wheelview.WheelView
+        android:id="@+id/wheel_view"
+        android:layout_width="match_parent"
+        android:layout_height="338dp"
+        android:layout_margin="16dp"
+        app:wheelAnchorAngle="270"
+        app:wheelAnimationDuration="800"
+        app:wheelArcBackgroundColor="#F7F8FB"
+        app:wheelCenterIcon="@drawable/bonus"
+        app:wheelCenterIconPadding="6dp"
+        app:wheelCenterIconTint="@color/white"
+        app:wheelDividerStrokeWidth="16dp"
+        app:wheelMode="ANIMATE_TO_ANCHOR"
+        app:wheelSelectedArcBackgroundColor="#FE6447"
+        app:wheelSelectedTextColor="#FFF"
+        app:wheelStartAngle="415"
+        app:wheelTextColor="#000000"
+        app:wheelTextSize="16sp" />
+
+    <TextView
+        android:id="@+id/twist"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/rounded_blue_card"
+        android:gravity="center_vertical"
+        android:text="Крутить"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAllFriend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
+        tools:itemCount="3"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_all_friends"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    <TextView
+        android:id="@+id/enter"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_red_card_gradient"
+        android:gravity="center_vertical"
+        android:text="Стать Членом Сообщества"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat" />
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

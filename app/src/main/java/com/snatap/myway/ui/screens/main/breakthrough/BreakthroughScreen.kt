@@ -23,18 +23,14 @@ class BreakthroughScreen: BaseFragment(R.layout.screen_breakthrough){
         message.setOnClickListener { addFragment(ChatScreen()) }
         cart.setOnClickListener { addFragment(StoreScreen()) }
     }
-
 }
-
 class PathFragment: BaseFragment(R.layout.fragment_breakthrough){
 
     override fun initialize() {
         participate1.setOnClickListener { addFragment(VisualizationBreakthroughScreen()) }
     }
 }
-
 class PastPathFragment: BaseFragment(R.layout.fragment_past_breakthrough){
-
     override fun initialize() {
         participate1.setOnClickListener { addFragment(VisualizationBreakthroughScreen()) }
     }
