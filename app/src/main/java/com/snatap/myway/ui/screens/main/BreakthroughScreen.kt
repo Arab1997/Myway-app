@@ -45,9 +45,6 @@ class BreakthroughScreen : BaseFragment(R.layout.screen_events) {
 
     override fun observe() {
         pagerAdapter.setData(arrayListOf(1, 2, 3))
-//        viewModel.events.observe(viewLifecycleOwner, Observer {
-//            eventsAdapter.setData(it)
-//        })
     }
 }
 

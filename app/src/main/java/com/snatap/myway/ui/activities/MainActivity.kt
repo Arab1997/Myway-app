@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.view.KeyEvent
+import androidx.appcompat.app.AppCompatDelegate
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseActivity
 import com.snatap.myway.base.BaseViewModel
@@ -29,13 +30,14 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
-
 class MainActivity : BaseActivity(R.layout.activity_main) {
 
     val viewModel by viewModel<BaseViewModel>()
     val sharedManager: SharedManager by inject()
 
     override fun onActivityCreated() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         viewModel.apply {
             parentLayoutId = R.id.fragmentContainer
             navLayoutId = R.id.navContainer

@@ -15,19 +15,19 @@
             android:id="@+id/filter"
             style="@style/cardStyle"
             android:layout_weight="1"
-            android:drawableStart="@drawable/ic_filter"
             android:paddingStart="11dp"
             android:paddingEnd="15dp"
-            android:text="Фильтры" />
+            android:text="Фильтры"
+            app:drawableStartCompat="@drawable/ic_filter" />
 
         <TextView
             android:id="@+id/tickets"
             style="@style/cardStyle"
             android:layout_weight="1"
-            android:drawableStart="@drawable/ic_ticket"
             android:paddingStart="11dp"
             android:paddingEnd="15dp"
-            android:text="Мои билеты" />
+            android:text="Мои билеты"
+            app:drawableStartCompat="@drawable/ic_ticket" />
     </LinearLayout>
 
     <com.snatap.myway.utils.views.KKViewPager
