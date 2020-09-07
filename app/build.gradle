@@ -179,6 +179,8 @@ dependencies {
     implementation 'com.github.jaiselrahman:FilePicker:1.3.2'
     implementation 'com.github.psuzn:WheelView:1.0.0'
 
-
+// WheelView UI library
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+    implementation 'com.github.psuzn:WheelView:1.0.2'
 
 }
