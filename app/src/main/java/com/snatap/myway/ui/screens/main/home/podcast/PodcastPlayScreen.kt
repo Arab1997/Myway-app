@@ -7,15 +7,26 @@ import android.os.Handler
 import android.widget.SeekBar
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
+import com.snatap.myway.network.models.Audio
+import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.gone
+import com.snatap.myway.utils.extensions.loadImage
 import kotlinx.android.synthetic.main.screen_podcast_play.*
 import java.util.*
 
 class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
     companion object {
+        private var playlistName: String = ""
+        private lateinit var data: Audio
         private lateinit var mediaPlayer: MediaPlayer
-        fun newInstance(mediaPlayer: MediaPlayer): PodcastPlayScreen {
+        fun newInstance(
+            playlistName: String,
+            data: Audio,
+            mediaPlayer: MediaPlayer
+        ): PodcastPlayScreen {
+            this.data = data
+            this.playlistName = playlistName
             this.mediaPlayer = mediaPlayer
             return PodcastPlayScreen()
         }
@@ -26,6 +37,7 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     private var playerSpeed: Float = 1f
 
     override fun initialize() {
+
         checkMedia()
 
         initViews()
@@ -36,14 +48,17 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     }
 
     private fun checkMedia() {
-        if (mediaPlayer.isPlaying) {
-            play.setImageResource(R.drawable.ic_white_pause)
-        } else {
-            play.setImageResource(R.drawable.ic_white_play)
-        }
+        play.setImageResource(
+            if (mediaPlayer.isPlaying) R.drawable.ic_white_pause else R.drawable.ic_white_play
+        )
     }
 
     private fun initViews() {
+
+        playList.text = playlistName
+        image.loadImage(data.photo)
+        name.text = data.title
+
         seekBar.max = mediaPlayer.duration
 
         txtEndTime.text = stringForTime(mediaPlayer.duration)
@@ -72,6 +87,7 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
 
     @SuppressLint("SetTextI18n")
     private fun initClicks() {
+
         close.setOnClickListener { finishFragment() }
 
         play.setOnClickListener {
@@ -134,8 +150,6 @@ class PodcastPlayScreen : BaseFragment(R.layout.screen_podcast_play) {
     override fun onDestroyView() {
         super.onDestroyView()
         handler.removeCallbacks(runnable)
-        viewModel.data.value = true
+        if (mediaPlayer.isPlaying) viewModel.data.value = Constants.PLAYING
     }
-
-
 }

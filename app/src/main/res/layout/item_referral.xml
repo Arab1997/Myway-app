@@ -13,7 +13,7 @@
         android:id="@+id/avatar"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        tools:src="@drawable/user" />
+        tools:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"

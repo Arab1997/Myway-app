@@ -16,8 +16,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/banner_image"
-        android:scaleType="fitXY"
-        android:src="@drawable/user" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -29,12 +29,14 @@
         android:paddingBottom="8dp">
 
         <TextView
+            android:id="@+id/name"
             style="@style/titleStyle"
             android:layout_margin="0dp"
             android:text="Время перемен"
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/currentTrack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -43,6 +45,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/dur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -57,6 +60,7 @@
             tools:ignore="NestedWeights" />
 
         <TextView
+            android:id="@+id/listen"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:background="@drawable/rounded_white_bordered_card"
@@ -71,16 +75,4 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="38dp"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="31dp"
-            android:contentDescription="@string/icon"
-            android:src="@drawable/ic_mark_white" />
-    </RelativeLayout>
 </LinearLayout>

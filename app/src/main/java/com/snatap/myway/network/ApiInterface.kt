@@ -176,6 +176,18 @@ interface ApiInterface {
     @GET("events/tags")
     fun getEventsTags(): Single<EventsTagResp>
 
+    @GET("audio_playlists")
+    fun getPlaylists(): Single<AudioPlaylistsResp>
+
+    @GET("audio_playlists/{id}")
+    fun getPlaylist(@Path("id") id: Int): Single<AudioPlaylistResp>
+
+    @GET("audio_playlists/tags")
+    fun getPlaylistTags(): Single<AudioTagResp>
+
+    @POST("audio_playlists/{id}/bookmark")
+    fun bookmarkPlaylist(@Path("id") id: Int): Single<Bookmark>
+
 }
 
 data class ErrorResp(val message: String, val errors: Any? = null)

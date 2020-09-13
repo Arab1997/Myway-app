@@ -57,6 +57,8 @@ open class BaseViewModel(
     val lessonSeasons: MutableLiveData<ArrayList<Season>> by inject(named("lessonSeasons"))
     val stores: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
     val sharedStore: MutableLiveData<ArrayList<Store>> by inject(named("stores"))
+    val playlists: MutableLiveData<ArrayList<AudioPlaylist>> by inject(named("playlists"))
+    val tags: MutableLiveData<ArrayList<Tag>> by inject(named("tags"))
 
     private val api = RetrofitClient
         .getRetrofit(Constants.BASE_URL, context, sharedManager, gson)
@@ -148,6 +150,7 @@ open class BaseViewModel(
             getStoreItems()
             getLessonsDay()
             getLessonSeasons()
+            getPlaylists()
         }
     }
 
@@ -229,7 +232,7 @@ open class BaseViewModel(
     fun getNewsTags() = compositeDisposable.add(
         api.getNewsTags().observeAndSubscribe()
             .subscribe({
-                if (it.success) data.postValue(it)
+                if (it.success) tags.postValue(ArrayList(it.news_item_tags))
             }, {
                 parseError(it)
             })
@@ -596,12 +599,51 @@ open class BaseViewModel(
     fun getEventsTags() = compositeDisposable.add(
         api.getEventsTags().observeAndSubscribe()
             .subscribe({
+                if (it.success) tags.postValue(ArrayList(it.event_tags))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getPlaylists() = compositeDisposable.add(
+        api.getPlaylists().observeAndSubscribe()
+            .subscribe({
+                if (it.success) playlists.postValue(ArrayList(it.audio_playlists))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun getPlaylist(id: Int) = compositeDisposable.add(
+        api.getPlaylist(id).observeAndSubscribe()
+            .subscribe({
                 if (it.success) data.postValue(it)
             }, {
                 parseError(it)
             })
     )
 
+    fun getPlaylistTags() = compositeDisposable.add(
+        api.getPlaylistTags().observeAndSubscribe()
+            .subscribe({
+                if (it.success) tags.postValue(ArrayList(it.audio_playlist_tags))
+            }, {
+                parseError(it)
+            })
+    )
+
+    fun bookmarkPlaylist(id: Int) = compositeDisposable.add(
+        api.bookmarkPlaylist(id).observeAndSubscribe()
+            .subscribe({
+                if (it.success) {
+                    data.postValue(it)
+                    getPlaylists()
+                    getPlaylist(id)
+                }
+            }, {
+                parseError(it)
+            })
+    )
 
     override fun onCleared() {
         super.onCleared()

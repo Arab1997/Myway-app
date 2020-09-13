@@ -8,6 +8,8 @@ object Constants {
     const val BASE_URL = BuildConfig.BASE_URL
     const val TIMEOUT = 40.toLong()
 
+    const val PLAYING = 12134
+
     const val MESSAGE_MY = 100
     const val MESSAGE_SERVER = 101
     const val MESSAGE_CENTER = 102

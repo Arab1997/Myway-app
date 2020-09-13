@@ -32,6 +32,8 @@ val viewModelModule = module {
     single(named("streams")) { MutableLiveData<ArrayList<Stream>>() }
     single(named("lessonsDay")) { MutableLiveData<ArrayList<LessonDay>>() }
     single(named("lessonSeasons")) { MutableLiveData<ArrayList<Season>>() }
+    single(named("playlists")) { MutableLiveData<ArrayList<AudioPlaylist>>() }
+    single(named("tags")) { MutableLiveData<ArrayList<Tag>>() }
     factory(named("stores")) { MutableLiveData<ArrayList<Store>>() }
 }
 

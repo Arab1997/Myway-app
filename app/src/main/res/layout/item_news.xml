@@ -74,7 +74,7 @@
             android:layout_width="24dp"
             android:layout_height="24sp"
             android:scaleType="centerCrop"
-            android:src="@drawable/user" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/authorName"

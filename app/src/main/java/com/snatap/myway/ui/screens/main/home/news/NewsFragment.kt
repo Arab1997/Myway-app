@@ -14,6 +14,7 @@ import com.snatap.myway.ui.screens.main.home.story.StoriesFragment
 import com.snatap.myway.utils.Constants
 import com.snatap.myway.utils.extensions.blockClickable
 import com.snatap.myway.utils.extensions.formatTime4
+import kotlinx.android.synthetic.main.content_filter.*
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : BaseFragment(R.layout.fragment_news) {

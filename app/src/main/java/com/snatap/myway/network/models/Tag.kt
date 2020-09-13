@@ -1,5 +1,10 @@
 package com.snatap.myway.network.models
 
+data class AudioTagResp(
+    val success: Boolean,
+    val audio_playlist_tags: List<Tag>
+)
+
 data class NewsTagResp(
     val success: Boolean,
     val news_item_tags: List<Tag>

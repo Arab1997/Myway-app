@@ -3,8 +3,6 @@ package com.snatap.myway.ui.screens.main.filter
 import androidx.lifecycle.Observer
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.snatap.myway.network.models.EventsTagResp
-import com.snatap.myway.network.models.NewsTagResp
 import com.snatap.myway.network.models.Tag
 import com.snatap.myway.ui.adapters.FilterTagsAdapter
 import com.snatap.myway.utils.Constants
@@ -32,7 +30,7 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
         selectedTags = tags
     }
 
-    private var tags = arrayListOf<Tag>()
+    private var tagsList = arrayListOf<Tag>()
     private lateinit var adapter: FilterTagsAdapter
     override fun initialize() {
 
@@ -41,9 +39,9 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
         title.text = "Тэги"
 
         adapter = FilterTagsAdapter {
-            tags[it].isChecked = !tags[it].isChecked
-            adapter.setData(tags)
-            listener.invoke(ArrayList(tags.filter { it.isChecked }))
+            tagsList[it].isChecked = !tagsList[it].isChecked
+            adapter.setData(tagsList)
+            listener.invoke(ArrayList(tagsList.filter { it.isChecked }))
         }
         recycler.adapter = adapter
 
@@ -60,15 +58,9 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
 
             fetchData()
 
-            data.observe(viewLifecycleOwner, Observer {
-                if (it is NewsTagResp) {
-                    tags = ArrayList(it.news_item_tags)
-                    setData()
-                }
-                if (it is EventsTagResp) {
-                    tags = ArrayList(it.event_tags)
-                    setData()
-                }
+            tags.observe(viewLifecycleOwner, Observer {
+                tagsList = ArrayList(it)
+                setData()
             })
         }
     }
@@ -77,11 +69,11 @@ class FilterTagsScreen : BaseFragment(R.layout.screen_recycler) {
         swipeLayout.isRefreshing = false
 
         selectedTags.forEach { selected ->
-            tags.forEach { if (it.id == selected.id) it.isChecked = true }
+            tagsList.forEach { if (it.id == selected.id) it.isChecked = true }
         }
-        tags.forEach {
+        tagsList.forEach {
             it.color = Constants.colors[Random.nextInt(0, 100) % Constants.colors.size]
         }
-        adapter.setData(tags)
+        adapter.setData(tagsList)
     }
 }

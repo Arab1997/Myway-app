@@ -83,8 +83,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userImg"
                 android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/user" />
+                android:layout_height="22dp"
+                android:src="@drawable/logo" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                 android:id="@+id/userImgg"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/user" />
+                android:src="@drawable/logo" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                 android:id="@+id/userImgc"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/user" />
+                android:src="@drawable/logo" />
 
             <TextView
                 android:layout_width="match_parent"
