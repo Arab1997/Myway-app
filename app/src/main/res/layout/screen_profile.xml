@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/backStyle">
 
@@ -42,16 +43,87 @@
             tools:ignore="ContentDescription" />
 
     </RelativeLayout>
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/image659">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/darker_bottom"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/name"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/comfortaa_regular"
+                android:text="Мария Иванова"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:layout_marginStart="20dp"
+                    android:text="1 224 "
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:paddingTop="10dp"
+                    android:src="@drawable/monet"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:tabIconTint="@color/tab_color"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorGravity="bottom"
+                app:tabIndicatorHeight="1dp"
+                app:tabMode="scrollable"
+                app:tabGravity="fill"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/tabCustomText"
+                app:tabTextColor="@color/hint" />
+
+
+            <!--<android.support.design.widget.TabLayout
+    android:id="@+id/tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tabMode="scrollable"
+    app:tabGravity="fill"/>-->
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--         <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
 </LinearLayout>

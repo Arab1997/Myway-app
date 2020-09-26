@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/elevationStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@drawable/toolbar_back"
+    android:elevation="5dp"
+    android:gravity="center_vertical"
+    android:padding="13sp"
+    android:translationZ="5dp">
+
+    <ImageView
+        android:id="@+id/back"
+        style="@style/imgStyle"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:text="Викторина MyWay"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/close"
+        style="@style/imgStyle"
+        android:src="@drawable/ic_close"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backStyle">
+    <include layout="@layout/content_rounded_toolbar_black_quiz" />
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/backStyle1"
+        android:background="@drawable/imagesmyway"
+        android:paddingTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/blur_dark"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="21sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/blur_dark"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="1. Как твое состояние? "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+                <EditText
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:hint="Введи свой ответ"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_edt_card"
+                    android:textColor="@color/text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/blur_dark"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="2. Инсайт дня"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/edit_answer2"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:hint="Введи свой ответ"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_edt_card"
+                    android:textColor="@color/text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/blur_dark"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="3. За что я благодарен этому дню"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/edit_answer3"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:hint="Введи свой ответ"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_edt_card"
+                    android:textColor="@color/text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/cardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/blur_dark"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="4. Над чем нужно поработать"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/edit_answer4"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:hint="Введи свой ответ"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_edt_card"
+                    android:textColor="@color/text" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/send"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="40dp"
+                android:background="@drawable/rounded_blue_card"
+                android:gravity="center_vertical"
+                android:text="Отправить"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

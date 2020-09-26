@@ -183,4 +183,10 @@ dependencies {
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
     implementation 'com.github.psuzn:WheelView:1.0.2'
 
+    implementation 'com.github.marcinmoskala:ArcSeekBar:0.31'
+    // indicatorseekbar
+    implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
+     //Emoji Slider
+  //  implementation 'com.bernaferrari.emojislider:emojislider:0.3.2'
+
 }
