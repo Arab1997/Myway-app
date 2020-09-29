@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/backStyle">
     <include layout="@layout/content_rounded_toolbar_black_quiz" />
 
@@ -18,7 +19,7 @@
             <LinearLayout
                 style="@style/cardStyle"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="21sp"
                 android:layout_marginEnd="16dp"
@@ -35,20 +36,88 @@
                     android:text="1. Как твое состояние? "
                     android:textColor="@color/white"
                     android:textSize="15sp" />
-                <EditText
-                    android:layout_margin="10dp"
+
+              <!--  <com.github.naz013.emojislider.EmojiRateSlider
+                    android:id="@+id/slider"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    app:ers_color_bg="#7E7777"
+                    app:ers_color_happy="#EC793B"
+                    app:ers_color_sad="#EC793B"
+                    android:background="@drawable/blur"
+                    app:ers_color_weird="#FFC107"
+                    app:ers_has_weird="true"
+                    app:ers_max="34"
+                    app:ers_progress="29" />-->
+
+                <com.warkiz.widget.IndicatorSeekBar
                     android:layout_width="match_parent"
-                    android:hint="Введи свой ответ"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/rounded_edt_card"
-                    android:textColor="@color/text" />
+                    android:layout_height="wrap_content"
+                    app:isb_max="100"
+                    app:isb_min="-1.0"
+                    app:isb_progress="25"
+                    app:isb_seek_smoothly="true"
+                    app:isb_ticks_count="5"
+                    app:isb_show_tick_marks_type="oval"
+                    app:isb_tick_marks_size="13dp"
+                    app:isb_tick_marks_drawable="@drawable/logo_circle"
+                    app:isb_show_tick_texts="true"
+                    app:isb_tick_texts_size="15sp"
+                    app:isb_tick_texts_color="@color/blue"
+                    app:isb_thumb_color="@color/blue"
+                    app:isb_thumb_size="20dp"
+                    app:isb_show_indicator="rounded_rectangle"
+                    app:isb_indicator_color="@color/blue"
+                    app:isb_indicator_text_color="@color/colorAccent"
+                    app:isb_indicator_text_size="18sp"
+                    app:isb_track_background_color="@color/blue"
+                    app:isb_track_background_size="2dp"
+                    app:isb_track_progress_color="@color/blue"
+                    app:isb_track_progress_size="4dp"
+                    app:isb_only_thumb_draggable="false"/>
+
+
+                <com.warkiz.widget.IndicatorStayLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--your layout-->
+                    <com.warkiz.widget.IndicatorSeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:isb_show_indicator="rectangle"/>
+
+                </com.warkiz.widget.IndicatorStayLayout>
+<!--
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_max="100"
+                    app:isb_min="-1.0"
+                    app:isb_progress="25"
+                    app:isb_seek_smoothly="true"
+                    app:isb_ticks_count="5"
+                    app:isb_show_tick_marks_type="oval"
+                    app:isb_tick_marks_size="9dp"
+                    app:isb_tick_marks_drawable="@color/gray_70_hint"
+                    app:isb_thumb_size="30dp"
+                    app:isb_show_indicator="rounded_rectangle"
+                    app:isb_indicator_color="@color/gray_70_hint"
+                    app:isb_indicator_text_color="@color/orange"
+                    app:isb_indicator_text_size="18sp"
+                    app:isb_track_background_color="@color/orange"
+                    app:isb_track_background_size="17dp"
+                    app:isb_track_progress_color="@color/orange"
+                    app:isb_track_progress_size="17dp"
+                    app:isb_only_thumb_draggable="false"/>-->
 
             </LinearLayout>
 
             <LinearLayout
                 style="@style/cardStyle"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
@@ -72,17 +141,16 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:hint="Введи свой ответ"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:background="@drawable/rounded_edt_card"
                     android:textColor="@color/text" />
-
 
             </LinearLayout>
 
             <LinearLayout
                 style="@style/cardStyle"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
@@ -106,17 +174,16 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:hint="Введи свой ответ"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:background="@drawable/rounded_edt_card"
                     android:textColor="@color/text" />
-
 
             </LinearLayout>
 
             <LinearLayout
                 style="@style/cardStyle"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
@@ -140,10 +207,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:hint="Введи свой ответ"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:background="@drawable/rounded_edt_card"
                     android:textColor="@color/text" />
-
 
             </LinearLayout>
 

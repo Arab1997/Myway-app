@@ -2,128 +2,454 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/cardStyle"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/rounded_white_card"
-    android:orientation="horizontal"
-    android:paddingBottom="5sp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical"
     android:translationZ="5dp">
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:layout_marginTop="8dp"
+         android:gravity="center_vertical"
+         android:orientation="vertical">
 
-    <net.cachapa.expandablelayout.ExpandableLayout
-        android:id="@+id/expandableLayout"
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="8dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginEnd="8dp"
+             android:layout_marginBottom="20dp"
+             android:layout_weight="1"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginStart="8dp"
+                 android:layout_marginEnd="8dp"
+                 android:layout_weight="1"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/author"
+                     android:layout_width="280dp"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/inter_medium"
+                     android:textColor="@color/white"
+                     android:textSize="15sp"
+                     android:textStyle="bold"
+                     tools:text="За вход сегодня" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:drawablePadding="10dp"
+                     android:text="+4"
+                     android:textColor="@color/white"
+                     android:textSize="17sp"
+                     app:drawableEndCompat="@drawable/ic_coins" />
+
+             </LinearLayout>
+
+             <ProgressBar
+                 android:id="@+id/view"
+                 style="?android:attr/progressBarStyleHorizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="10dp"
+                 android:layout_marginTop="10dp"
+                 android:foregroundGravity="fill"
+                 android:indeterminate="false"
+                 android:indeterminateOnly="false"
+                 android:max="100"
+                 android:maxHeight="151dp"
+                 android:minHeight="151dp"
+                 android:padding="0dp"
+                 android:progress="100"
+                 android:progressDrawable="@drawable/blue_progress_drawable"
+                 android:visibility="visible" />
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginStart="8dp"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginEnd="8dp"
+                 android:layout_weight="1"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/text2"
+                     android:layout_width="280dp"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/inter_medium"
+                     android:textColor="@color/white"
+                     android:textSize="15sp"
+                     android:textStyle="bold"
+                     tools:text="4 / 5" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="перейти"
+                     android:textColor="@color/hint"
+                     android:textSize="12sp" />
+
+             </LinearLayout>
+
+         </LinearLayout>
+
+     </LinearLayout>-->
+    <View
         android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/blur"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:el_duration="500"
-        app:el_expanded="false"
-        app:el_parallax="0.5"
-        tools:el_expanded="true">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/blur_dark"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="За вход сегодня"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:text="+4"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:drawableEndCompat="@drawable/ic_coins" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/view"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="fill"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:max="100"
+            android:maxHeight="151dp"
+            android:minHeight="151dp"
+            android:padding="0dp"
+            android:progress="100"
+            android:progressDrawable="@drawable/blue_progress_drawable"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="1 / 1"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="перейти"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+    </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/blur"
+        android:visibility="visible" />
 
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/author"
-                                android:layout_width="280dp"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/inter_medium"
-                                android:textColor="@color/white"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                tools:text="За вход сегодня" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawablePadding="10dp"
-                                android:text="+4"
-                                android:textColor="@color/white"
-                                android:textSize="17sp"
-                                app:drawableEndCompat="@drawable/ic_coins" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            tools:ignore="NestedWeights">
 
-                        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="Утреннее задание"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                        <ProgressBar
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:id="@+id/view"
-                            android:padding="0dp"
-                            android:max="100"
-                            android:progress="100"
-                            android:progressDrawable="@drawable/blue_progress_drawable"
-                            android:visibility="visible"
-                            android:layout_marginTop="10dp"
-                            android:indeterminateOnly="false"
-                            android:maxHeight="151dp"
-                            android:minHeight="151dp"
-                            android:indeterminate="false"
-                            android:foregroundGravity="fill" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:text="+100"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:drawableEndCompat="@drawable/ic_coins" />
 
-                            <TextView
-                                android:id="@+id/text2"
-                                android:layout_width="280dp"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/inter_medium"
-                                android:textColor="@color/white"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                tools:text="4 / 5" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="перейти"
-                                android:textColor="@color/hint"
-                                android:textSize="12sp" />
+        </LinearLayout>
 
-                        </LinearLayout>
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="fill"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:max="100"
+            android:maxHeight="151dp"
+            android:minHeight="151dp"
+            android:padding="0dp"
+            android:progress="80"
+            android:progressDrawable="@drawable/blue_progress_drawable"
+            android:visibility="visible" />
 
-                    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="4 / 5"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        </androidx.core.widget.NestedScrollView>
-    </net.cachapa.expandablelayout.ExpandableLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="перейти"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/blur"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="Дневное задание"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:text="+4"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:drawableEndCompat="@drawable/ic_coins" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="fill"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:max="100"
+            android:maxHeight="151dp"
+            android:minHeight="151dp"
+            android:padding="0dp"
+            android:progress="100"
+            android:progressDrawable="@drawable/blue_progress_drawable"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="5 / 5"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="перейти"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/blur"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="Вечернее задание"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:text="+20"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:drawableEndCompat="@drawable/ic_coins" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="fill"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:max="100"
+            android:maxHeight="151dp"
+            android:minHeight="151dp"
+            android:padding="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/blue_progress_drawable"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="0 / 1"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="перейти"
+                android:textColor="@color/hint"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 </LinearLayout>
 

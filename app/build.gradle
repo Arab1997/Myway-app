@@ -187,6 +187,8 @@ dependencies {
     // indicatorseekbar
     implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
      //Emoji Slider
-  //  implementation 'com.bernaferrari.emojislider:emojislider:0.3.2'
+    implementation 'com.github.naz013:emoji-rate-slider:1.0.5'
+
+
 
 }
