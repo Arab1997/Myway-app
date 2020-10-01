@@ -50,9 +50,7 @@ class MyDairyScreen : BaseFragment(R.layout.screen_my_dairy) {
         title.text = "Дневник"
         //send.setOnClickListener { addFragment(MyDayScreen()) }
         close.setOnClickListener { finishFragment() }
-
     }
-
 }
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/backStyle1">
 
@@ -10,136 +11,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                style="@style/cardStyle"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="21sp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/blur_dark"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="219dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/desc1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_bold"
-                            android:text="Дневник дня"
-                            android:textColor="@color/white"
-                            android:textSize="22sp" />
-
-                        <TextView
-                            android:id="@+id/task"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/inter_medium"
-                            android:text="Расскажи, чем тебе запомнился \n этот прекрасный день"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                        <TextView
-                            android:id="@+id/enter"
-                            android:layout_width="90dp"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/rounded_edt_card"
-                            android:gravity="center"
-                            android:text="Заполнить"
-                            android:textColor="@color/text" />
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/group1461"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                style="@style/cardStyle"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/blur_dark"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <LinearLayout
+            android:orientation="horizontal">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom">
+                    android:orientation="horizontal"
+                    android:splitMotionEvents="false"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_results"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                    <TextView
-                        android:id="@+id/desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/inter_bold"
-                        android:text="Мой прогресс за сегодня"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/desc2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/inter_bold"
-                        android:text="354 из 604"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <ImageView
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:layout_marginStart="10dp"
-                        android:src="@drawable/monet"
-                        tools:ignore="ContentDescription" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="22dp"
-                    android:gravity="bottom">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Тут ты можешь отслеживать свою карму за сегодня! Добейся максимального результата 😎  "
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="90dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_edt_card"
-                        android:gravity="center"
-                        android:text="Подробнее"
-                        android:textColor="@color/text" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
+
