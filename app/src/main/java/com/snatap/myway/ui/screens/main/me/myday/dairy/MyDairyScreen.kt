@@ -1,15 +1,8 @@
-package com.snatap.myway.ui.screens.main.me.dairy
+package com.snatap.myway.ui.screens.main.me.myday.dairy
 
-import android.graphics.Color
-import android.graphics.Typeface
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
-import com.warkiz.widget.IndicatorSeekBar
-import com.warkiz.widget.IndicatorType
-import com.warkiz.widget.TickMarkType
 import kotlinx.android.synthetic.main.content_rounded_toolbar_black_quiz.*
-import kotlinx.android.synthetic.main.screen_my_dairy.*
-import kotlinx.android.synthetic.main.screen_myway.*
 
 
 class MyDairyScreen : BaseFragment(R.layout.screen_my_dairy) {
@@ -20,19 +13,13 @@ class MyDairyScreen : BaseFragment(R.layout.screen_my_dairy) {
             return MyDairyScreen()
         }
     }
-
-
     override fun initialize() {
         setClicks()
         initViews()
-
-
-
-
     }
 
     private fun initViews() {
-        val seekBar = IndicatorSeekBar
+       /* val seekBar = IndicatorSeekBar
             .with(requireContext())
             .max(110f)
             .min(10f)
@@ -56,11 +43,10 @@ class MyDairyScreen : BaseFragment(R.layout.screen_my_dairy) {
             .trackBackgroundColor(resources.getColor(R.color.green))
             .trackBackgroundSize(2)
             .onlyThumbDraggable(false)
-            .build()
+            .build()*/
     }
 
     private fun setClicks() {
-
         title.text = "Дневник"
         //send.setOnClickListener { addFragment(MyDayScreen()) }
         close.setOnClickListener { finishFragment() }

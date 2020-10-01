@@ -7,9 +7,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
 import com.snatap.myway.ui.screens.main.chat.ChatScreen
-import com.snatap.myway.ui.screens.main.me.MyDayScreen
-import com.snatap.myway.ui.screens.main.me.MyResultsScreen
-import com.snatap.myway.ui.screens.main.me.MyWayScreen
+import com.snatap.myway.ui.screens.main.me.myday.MyDayScreen
+import com.snatap.myway.ui.screens.main.me.myresults.MyResultsScreen
+import com.snatap.myway.ui.screens.main.me.myway.MyWayScreen
 import com.snatap.myway.ui.screens.main.profile.SettingsScreen
 import com.snatap.myway.ui.screens.main.store.StoreScreen
 import kotlinx.android.synthetic.main.screen_profile.*

@@ -1,4 +1,4 @@
-package com.snatap.myway.ui.screens.main.me
+package com.snatap.myway.ui.screens.main.me.myway
 
 import com.snatap.myway.R
 import com.snatap.myway.base.BaseFragment
@@ -11,7 +11,7 @@ class MyActiveScreen : BaseFragment(R.layout.screen_myevent) {
     companion object {
         private var txtTitle: String? = null
         fun newInstance(txtTitle: String): MyWayScreen {
-            this.txtTitle = txtTitle
+            Companion.txtTitle = txtTitle
             return MyWayScreen()
         }
     }
@@ -22,7 +22,7 @@ class MyActiveScreen : BaseFragment(R.layout.screen_myevent) {
     }
 
     private fun initViews() {
-        title.text = "События"
+        title.text = "Моя активность"
 
         recyclerLearn.adapter = MyActiveAdapter {
             addFragment(MyWayLearnScreen())
@@ -31,12 +31,11 @@ class MyActiveScreen : BaseFragment(R.layout.screen_myevent) {
         }
 
         recyclerEvent.adapter = MyActiveAdapter {
-            addFragment(MyActiveScreen())
+            addFragment(MyWayLearnScreen())
         }.apply {
             setData(arrayListOf(1))
         }
     }
-
     private fun setClicks() {
 
     }

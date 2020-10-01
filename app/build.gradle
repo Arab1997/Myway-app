@@ -189,6 +189,4 @@ dependencies {
      //Emoji Slider
     implementation 'com.github.naz013:emoji-rate-slider:1.0.5'
 
-
-
 }

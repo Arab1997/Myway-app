@@ -1,7 +1,10 @@
 package com.snatap.myway.utils.emoji
 
 
+import android.content.Context
+import android.graphics.Color
 import android.graphics.RectF
+import android.text.SpannableString
 import android.view.MotionEvent
 import android.view.View
 import kotlin.math.atan2
@@ -32,3 +35,18 @@ fun MotionEvent.inside(cx: Float, cy: Float, radius: Float): Boolean {
     val dy = cy - y.toDouble()
     return sqrt(dx * dx + dy * dy) <= radius
 }
+
+internal fun getCorrectColor(color0: Int, color1: Int, percentage: Float): Int {
+    val red = Color.red(color0)
+    val green = Color.green(color0)
+    val blue = Color.blue(color0)
+    return Color.rgb(
+        red + ((Color.red(color1) - red).toFloat() * percentage).toInt(),
+        green + ((Color.green(color1) - green).toFloat() * percentage).toInt(),
+        blue + ((Color.blue(color1) - blue).toFloat() * percentage).toInt()
+    )
+}
+
+internal fun Context.getWidthPixels(): Int = this.resources.displayMetrics.widthPixels
+
+
